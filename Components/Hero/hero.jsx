@@ -2,6 +2,7 @@ import React from "react";
 import Image from "next/image";
 import WbTwilightIcon from "@mui/icons-material/WbTwilight";
 import EastIcon from "@mui/icons-material/East";
+import Link from "next/link";
 
 function HeroSection() {
   return (
@@ -40,15 +41,15 @@ function HeroSection() {
 
         <div className="flex flex-col mt-5 justify-start items-start gap-8">
           <div className="flex flex-row justify-start items-start gap-3">
-            <button className="w-full md:w-48 px-4 md:px-7 py-4 bg-white text-primary hover:bg-primary hover:text-white rounded shadow justify-center items-center font-bold gap-3 flex">
+            <Link href="/" className="w-full md:w-48 px-4 md:px-7 py-4 bg-white text-primary hover:bg-primary hover:text-white rounded shadow justify-center items-center font-bold gap-3 flex">
               <WbTwilightIcon />
               <div className="">Learn More</div>
-            </button>
+            </Link>
 
-            <button className="w-full md:w-48 px-4 md:px-7 py-4 hover:bg-white hover:text-primary bg-primary text-white rounded shadow justify-center items-center font-bold gap-3 flex">
+            <Link href="/auth/login" className="w-full md:w-48 px-4 md:px-7 py-4 hover:bg-white hover:text-primary bg-primary text-white rounded shadow justify-center items-center font-bold gap-3 flex">
               <div className="">Get Started</div>
               <EastIcon />
-            </button>
+            </Link>
           </div>
 
           <div className="justify-start items-center gap-2 inline-flex">

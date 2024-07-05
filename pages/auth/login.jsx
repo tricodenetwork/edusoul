@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Router, useRouter } from "next/router";
 import { Button } from "@/Components/ui/Button";
 import Loader from "@/Components/ui/Loader";
+import AuthLayout from "@/Components/layouts/AuthLayout";
 import { toast } from "react-toastify";
 
 const SigninForm = () => {
@@ -13,17 +14,16 @@ const SigninForm = () => {
 
   // ============================== SIGN IN
 
-
+  const signInAccount = async () => {};
 
   return (
-    <div className="flex w-full sm:w-[60%] mx-auto mt-[5em] md:mt-1 p-3 justify-center items-center flex-col">
-      {/* <img src="/assets/images/logo.svg" alt="logo" /> */}
-
-      <h2 className="text-[30px] text-white font-bold pt-5 sm:pt-1">
-        Log in to your account
+    <div className="flex mx-auto w-full mt-[6em] md:mt-1 p-3 justify-center items-center flex-col">
+      <h2 className="text-[30px] text-black font-bold pt-5 sm:pt-1">
+        Welcome back to EduSoul
       </h2>
-      <p className="text-primary_A2 small-medium md:base-regular mt-2">
-        Welcome back! Please enter your details.
+      <p className="text-center w-[80%] small-medium md:base-regular mt-2">
+        Get ready to enjoy all the features and benefits we have to offer. It's
+        quick, easy, and free!
       </p>
       <div className="flex flex-col gap-5 w-full mt-4">
         <div>
@@ -33,7 +33,7 @@ const SigninForm = () => {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder="......54@gmail.com"
-            className="shad-input w-full px-3 mt-2 rounded-md"
+            className="bg-gray-30 text-sm rounded-md block w-full p-3.5 border border-gray-300"
             required
           />
         </div>
@@ -45,14 +45,14 @@ const SigninForm = () => {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             placeholder="********"
-            className="shad-input w-full px-3 mt-2 rounded-md"
+            className="bg-gray-30 text-sm rounded-md block w-full p-3.5 border border-gray-300"
             required
           />
         </div>
 
         <Button
           type="submit"
-          // onClick={signInAccount}
+          onClick={signInAccount}
           className="bg-primary_A1 text-white p-3 rounded-md"
         >
           {isLoading ? (
@@ -79,4 +79,5 @@ const SigninForm = () => {
   );
 };
 
+SigninForm.getLayout = AuthLayout;
 export default SigninForm;

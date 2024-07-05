@@ -50,12 +50,12 @@ const Navbar = ({ children }) => {
     <nav
       className={`${
         isScrolled || sideNav ? "bg-white" : "bg-white"
-      } fixed border-b w-full h-[60px] sm:h-[80px] px-3 md:px-8 lg:px-12 shadow-lg  z-50 flex flex-row justify-between items-center`}
+      } fixed border-b w-full h-[60px] sm:h-[80px] px-3 md:px-6 lg:px-14 shadow-lg  z-50 flex flex-row justify-between items-center`}
     >
       <motion.nav
         initial={{ x: 0 }}
         animate={{ x: [200, 0] }}
-        className="flex flex-row mx-auto gap-8 justify-start items-center w-full"
+        className="flex flex-row mx-auto gap-5 lg:gap-8 justify-start items-center w-full"
       >
         <div className="flex w-[24vh] h-[16vh] justify-start items-center">
           <Link href={"/"}>
@@ -71,10 +71,10 @@ const Navbar = ({ children }) => {
           </Link>
         </div>
 
-        <div className="md:flex flex-row gap-4 hidden justify-center items-center">
+        <div className="md:flex flex-row gap hidden justify-center items-center">
           <ul
             onClick={() => setSideNav(false)}
-            className="md:flex flex-row hidden gap-2"
+            className="md:flex flex-row hidden lg:gap-3"
           >
             {navdata.map((link) => {
               const sticky = pathname === link.route;
