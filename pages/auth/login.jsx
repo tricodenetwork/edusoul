@@ -25,7 +25,7 @@ const SigninForm = () => {
   const signUpAccount = async () => {};
 
   return (
-    <div className="flex mx-auto w-full text-center mt-[6em] md:mt-[11rem] p-3 justify-center items-center flex-col">
+    <div className="flex mx-auto w-full text-center mt-[6em] md:mt-[11rem] xl:mt-[5rem] p-3 justify-center items-center flex-col">
       <h2 className="text-[30px] text-black font-bold pt-5 sm:pt-1">
         Welcome back to EduSoul
       </h2>
@@ -56,7 +56,7 @@ const SigninForm = () => {
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            placeholder="......54@gmail.com"
+            placeholder="Enter your email"
             className="bg-gray-30 h-[45px] text-sm rounded-md block w-full p-3.5 border border-gray-300 outline-primary"
             required
           />
