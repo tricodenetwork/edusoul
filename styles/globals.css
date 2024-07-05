@@ -26,6 +26,9 @@ html, body {
   width: 100%;
 }
 
+label {
+  font-weight: bold;
+}
 
 .button {
   padding: 12px 4px;

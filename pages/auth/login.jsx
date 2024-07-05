@@ -17,8 +17,8 @@ const SigninForm = () => {
   const signInAccount = async () => {};
 
   return (
-    <div className="flex mx-auto w-full mt-[6em] md:mt-1 p-3 justify-center items-center flex-col">
-      <h2 className="text-[30px] text-black font-bold pt-5 sm:pt-1">
+    <div className="flex mx-auto w-full mt-[4em] md:mt-6 p-3 justify-center items-center flex-col">
+      <h2 className="text-[30px] text-center text-black font-bold pt-5 sm:pt-1">
         Welcome back to EduSoul
       </h2>
       <p className="text-center w-[80%] small-medium md:base-regular mt-2">

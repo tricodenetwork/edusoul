@@ -10,7 +10,7 @@ const Sidebar = ({ Header, Message }) => {
   //------------------------------------------------------------------USE EFFECTS
 
   return (
-    <div className="hidden md:flex px-6 py-10 pt-24 flex-col justify-start sm:w-[16em] md:w-[20em] lg:w-[25em] bg-primary h-screen">
+    <div className="fixed hidden md:flex px-6 py-10 pt-24 flex-col justify-start sm:w-[16em] md:w-[20em] lg:w-[25em] bg-primary h-screen">
       <div className="w-[] h-[22rem]">
         <Image
           loader={imageLoader}

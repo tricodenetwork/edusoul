@@ -5,7 +5,7 @@ import { baseUrl } from "@/config/config";
 
 const AuthComponent = () => {
   const ellipseStyle =
-    "w-[50px] md:w-[60px] flex items-center hover:bg-binance_green  hover:bg-opacity-40 duration-100 hover:scale-90 hover:cursor-pointer justify-center bg-[#D9D9D9] h-[50px] md:h-[60px] rounded-full";
+    "w-[30px] md:w-[40px] flex items-center hover:bg-binance_green  hover:bg-opacity-40 duration-100 hover:scale-90 hover:cursor-pointer justify-center border h-[30px] md:h-[40px] rounded-full";
   return (
     <div className='flex w-[200px] md:w-[279.468px] h-[65px] justify-between'>
       <div
@@ -18,8 +18,8 @@ const AuthComponent = () => {
       >
         <Image
           className='auth_image'
-          width={33.2}
-          height={33.2}
+          width={25}
+          height={25}
           alt='google'
           src={"/assets/icons/mdi_google.png"}
         />
@@ -34,8 +34,8 @@ const AuthComponent = () => {
       >
         <Image
           className='auth_image'
-          width={33.2}
-          height={33.2}
+          width={25}
+          height={25}
           src={"/assets/icons/github-mark.png"}
           alt='github'
         />
@@ -50,8 +50,8 @@ const AuthComponent = () => {
       >
         <Image
           className='auth_image '
-          width={33.2}
-          height={33.2}
+          width={25}
+          height={25}
           src={"/assets/icons/Slack-mark-RGB.png"}
           alt='slack'
         />

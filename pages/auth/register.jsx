@@ -5,6 +5,7 @@ import { Button } from "@/Components/ui/Button";
 import Loader from "@/Components/ui/Loader";
 import AuthLayout from "@/Components/layouts/AuthLayout";
 import { toast } from "react-toastify";
+import AuthComponent from "@/Components/shared/AuthComponent";
 
 const SignupForm = () => {
   const navigate = useRouter();
@@ -18,15 +19,23 @@ const SignupForm = () => {
   const signUpAccount = async () => {};
 
   return (
-    <div className="flex mx-auto w-full mt-[5em] md:mt-1 p-3 justify-center items-center flex-col">
+    <div className="flex mx-auto w-full text-center mt-[6em] md:mt-[17rem] p-3 justify-center items-center flex-col">
       <h2 className="text-[30px] text-black font-bold pt-5 sm:pt-1">
         Welcome to EduSoul
       </h2>
-      <p className="text-center w-[80%] small-medium md:base-regular mt-2">
+      <p className="w-[80%] small-medium md:base-regular mt-2">
         Get ready to enjoy all the features and benefits we have to offer. It's
         quick, easy, and free!
       </p>
-      <div className="flex flex-col gap-5 w-full mt-4">
+
+      <div>
+        <h2 className="text-[20px] text-black font-bold py-5 sm:pt-6">
+          Signup with
+        </h2>
+        <AuthComponent />
+      </div>
+
+      <div className="flex flex-col text-left gap-5 w-full mt-4">
         <div>
           <label>Name</label>
           <input
@@ -66,7 +75,7 @@ const SignupForm = () => {
         <Button
           type="submit"
           onClick={signUpAccount}
-          className="bg-primary_A1 text-white p-3 rounded-md"
+          className="bg-primary text-white p-3 rounded-md"
         >
           {isLoading ? (
             <div className="flex gap-3 justify-center items-center">
@@ -74,17 +83,17 @@ const SignupForm = () => {
               Loading...
             </div>
           ) : (
-            "Log in"
+            "Create Account"
           )}
         </Button>
 
         <p className="text-small-regular text-light-2 text-center mt-2">
-          Don&apos;t have an account?
+          Already have an account?
           <Link
-            href="/sign-up"
-            className="text-primary_A2 text-small-semibold ml-1"
+            href="/auth/login"
+            className="text-primary font-bold ml-1"
           >
-            Sign up
+            Login
           </Link>
         </p>
       </div>
