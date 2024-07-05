@@ -5,27 +5,51 @@ import { Button } from "@/Components/ui/Button";
 import Loader from "@/Components/ui/Loader";
 import AuthLayout from "@/Components/layouts/AuthLayout";
 import { toast } from "react-toastify";
+import AuthComponent from "@/Components/shared/AuthComponent";
+import ShowHidePassword from "@/Components/ui/ShowHidePassword";
 
 const SigninForm = () => {
   const navigate = useRouter();
+  const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setLoading] = useState(false);
+  const [showPasswordToggle, setShowPasswordToggle] = useState(false);
 
   // ============================== SIGN IN
 
-  const signInAccount = async () => {};
+  const showPassword = () => {
+    setShowPasswordToggle(!showPasswordToggle);
+  };
+
+  const signUpAccount = async () => {};
 
   return (
-    <div className="flex mx-auto w-full mt-[4em] md:mt-6 p-3 justify-center items-center flex-col">
-      <h2 className="text-[30px] text-center text-black font-bold pt-5 sm:pt-1">
+    <div className="flex mx-auto w-full text-center mt-[6em] md:mt-[11rem] p-3 justify-center items-center flex-col">
+      <h2 className="text-[30px] text-black font-bold pt-5 sm:pt-1">
         Welcome back to EduSoul
       </h2>
-      <p className="text-center w-[80%] small-medium md:base-regular mt-2">
+      <p className="w-[80%] small-medium md:base-regular mt-2">
         Get ready to enjoy all the features and benefits we have to offer. It's
         quick, easy, and free!
       </p>
-      <div className="flex flex-col gap-5 w-full mt-4">
+
+      <div>
+        <h2 className="text-[20px] text-black font-bold py-5 sm:pt-6">
+          Login with
+        </h2>
+        <AuthComponent />
+      </div>
+
+      <div className="w-[436px] h-3.5 justify-start items-center gap-4 inline-flex">
+        <div className="w-[194px] h-[0px] border border-stone-300"></div>
+        <div className="text-neutral-500 text-xs font-normal font-['Roboto']">
+          OR
+        </div>
+        <div className="w-[194px] h-[0px] border border-stone-300"></div>
+      </div>
+
+      <div className="flex flex-col text-left gap-5 w-full mt-4">
         <div>
           <label>Email</label>
           <input
@@ -33,27 +57,36 @@ const SigninForm = () => {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder="......54@gmail.com"
-            className="bg-gray-30 text-sm rounded-md block w-full p-3.5 border border-gray-300"
+            className="bg-gray-30 h-[45px] text-sm rounded-md block w-full p-3.5 border border-gray-300 outline-primary"
             required
           />
         </div>
 
         <div>
           <label>Password</label>
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            placeholder="********"
-            className="bg-gray-30 text-sm rounded-md block w-full p-3.5 border border-gray-300"
-            required
-          />
+
+          <div className="flex h-[45px] px-3.5 rounded-md border flex-row justify-center items-center gap-2 focus-within:ring-2 ring-primary">
+            <input
+              className="w-full bg-transparent outline-none border-none"
+              type={showPasswordToggle ? "text" : "password"}
+              placeholder="********"
+              onChange={(e) => setPassword(e.target.value)}
+              value={password}
+            />
+            <p className="cursor-pointer text-primary" onClick={showPassword}>
+              <ShowHidePassword
+                className=""
+                onClick={showPassword}
+                showPasswordToggle={showPasswordToggle}
+              />
+            </p>
+          </div>
         </div>
 
         <Button
           type="submit"
-          onClick={signInAccount}
-          className="bg-primary_A1 text-white p-3 rounded-md"
+          onClick={signUpAccount}
+          className="bg-primary text-white p-3 rounded-md"
         >
           {isLoading ? (
             <div className="flex gap-3 justify-center items-center">
@@ -61,17 +94,14 @@ const SigninForm = () => {
               Loading...
             </div>
           ) : (
-            "Log in"
+            "Log In"
           )}
         </Button>
 
         <p className="text-small-regular text-light-2 text-center mt-2">
-          Don&apos;t have an account?
-          <Link
-            href="/sign-up"
-            className="text-primary_A2 text-small-semibold ml-1"
-          >
-            Sign up
+          Don’t have an account?
+          <Link href="/auth/register" className="text-primary font-bold ml-1">
+            Create Account
           </Link>
         </p>
       </div>

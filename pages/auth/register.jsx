@@ -6,6 +6,7 @@ import Loader from "@/Components/ui/Loader";
 import AuthLayout from "@/Components/layouts/AuthLayout";
 import { toast } from "react-toastify";
 import AuthComponent from "@/Components/shared/AuthComponent";
+import ShowHidePassword from "@/Components/ui/ShowHidePassword";
 
 const SignupForm = () => {
   const navigate = useRouter();
@@ -13,8 +14,13 @@ const SignupForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setLoading] = useState(false);
+  const [showPasswordToggle, setShowPasswordToggle] = useState(false);
 
   // ============================== SIGN IN
+
+  const showPassword = () => {
+    setShowPasswordToggle(!showPasswordToggle);
+  };
 
   const signUpAccount = async () => {};
 
@@ -35,6 +41,14 @@ const SignupForm = () => {
         <AuthComponent />
       </div>
 
+      <div className="w-[436px] h-3.5 justify-start items-center gap-4 inline-flex">
+        <div className="w-[194px] h-[0px] border border-stone-300"></div>
+        <div className="text-neutral-500 text-xs font-normal font-['Roboto']">
+          OR
+        </div>
+        <div className="w-[194px] h-[0px] border border-stone-300"></div>
+      </div>
+
       <div className="flex flex-col text-left gap-5 w-full mt-4">
         <div>
           <label>Name</label>
@@ -43,7 +57,7 @@ const SignupForm = () => {
             value={fullName}
             onChange={(e) => setFullName(e.target.value)}
             placeholder=""
-            className="bg-gray-30 text-sm rounded-md block w-full p-3.5 border border-gray-300"
+            className="bg-gray-30 h-[45px] text-sm rounded-md block w-full p-3.5 border border-gray-300 outline-primary"
             required
           />
         </div>
@@ -55,21 +69,30 @@ const SignupForm = () => {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder="......54@gmail.com"
-            className="bg-gray-30 text-sm rounded-md block w-full p-3.5 border border-gray-300"
+            className="bg-gray-30 h-[45px] text-sm rounded-md block w-full p-3.5 border border-gray-300 outline-primary"
             required
           />
         </div>
 
         <div>
           <label>Password</label>
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            placeholder="********"
-            className="bg-gray-30 text-sm rounded-md block w-full p-3.5 border border-gray-300"
-            required
-          />
+
+          <div className="flex h-[45px] px-3.5 rounded-md border flex-row justify-center items-center gap-2 focus-within:ring-2 ring-primary">
+            <input
+              className="w-full bg-transparent outline-none border-none"
+              type={showPasswordToggle ? "text" : "password"}
+              placeholder="********"
+              onChange={(e) => setPassword(e.target.value)}
+              value={password}
+            />
+            <p className="cursor-pointer text-primary" onClick={showPassword}>
+              <ShowHidePassword
+                className=""
+                onClick={showPassword}
+                showPasswordToggle={showPasswordToggle}
+              />
+            </p>
+          </div>
         </div>
 
         <Button
@@ -89,10 +112,7 @@ const SignupForm = () => {
 
         <p className="text-small-regular text-light-2 text-center mt-2">
           Already have an account?
-          <Link
-            href="/auth/login"
-            className="text-primary font-bold ml-1"
-          >
+          <Link href="/auth/login" className="text-primary font-bold ml-1">
             Login
           </Link>
         </p>
