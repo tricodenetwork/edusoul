@@ -19,7 +19,9 @@ export default function App() {
       <main className="px-3 sm:px-6 lg:px-14 pt-[4rem]">
         <HeroSection />
         <Courses />
-        <Mandate />
+      </main>
+      <Mandate />
+      <main className="px-3 sm:px-6 lg:px-14 pt-[2rem]">
         <Modules />
         <FAQs />
       </main>
