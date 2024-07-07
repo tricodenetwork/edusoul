@@ -13,7 +13,7 @@ const FAQs = () => {
   };
 
   return (
-    <div className="flex flex-col relative md:flex-row gap-3 mb-5 mt-12 justify-between lg:justify-start  items-start w-full" id='faq'>
+    <div className="flex flex-col relative md:flex-row gap-3 mb-5 justify-between lg:justify-start  items-start w-full" id='faq'>
       <div className=" self-center">
         <div className="text-2xl md:text-5xl semiBold tracking-wide">
           Frequently asked questions
