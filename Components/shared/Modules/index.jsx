@@ -5,7 +5,7 @@ import EastIcon from "@mui/icons-material/East";
 export default function Modules({ mobile }) {
   return (
     <>
-      <section className="py-7 w-full justify-center items-center" id="modules">
+      <section className="pt-7 w-full justify-center items-center" id="modules">
         <div className="grow shrink basis-0 self-stretch bg-white flex-col justify-center items-center gap-6 inline-flex">
           <div className="self-stretch h-[438px] flex-col justify-start items-start gap-9 flex">
             <div className="self-stretch justify-start items-center gap-6 inline-flex">
