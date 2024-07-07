@@ -30,3 +30,33 @@ export const navdata = [
     label: "FAQ",
   },
 ];
+
+
+
+export const modulesData = [
+  {
+    id: 1,
+    imgURL: "",
+    label: "Courses",
+  },
+  {
+    id: 2,
+    imgURL: "",
+    label: "Courses",
+  },
+  {
+    id: 3,
+    imgURL: "",
+    label: "Courses",
+  },
+  {
+    id: 4,
+    imgURL: "",
+    label: "Modules",
+  },
+  {
+    id: 5,
+    imgURL: "",
+    label: "FAQ",
+  },
+];

@@ -8,6 +8,7 @@ import HeroSection from '@/Components/Hero/hero';
 import Courses from '@/Components/shared/Courses';
 import Mandate from '@/Components/shared/Our-Mandate';
 import FAQs from '@/Components/shared/Faq';
+import Modules from '@/Components/shared/Modules';
 
 export default function App() {
   const router = useRouter();
@@ -19,6 +20,7 @@ export default function App() {
         <HeroSection />
         <Courses />
         <Mandate />
+        <Modules />
         <FAQs />
       </main>
       <Footer />
