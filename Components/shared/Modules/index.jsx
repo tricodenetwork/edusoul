@@ -29,7 +29,7 @@ export default function Modules({ mobile }) {
             <div className="self-stretch justify-start items-start gap-6 inline-flex">
               {modulesData.map((mod) => {
                 return (
-                  <div className="border border-slate-200 flex-col justify-start items-start inline-flex">
+                  <div className="flex-col justify-start items-start inline-flex">
                     <div className="w-full h-[254px] self-stretch px-6 pt-6 pb-16 bg-gradient-to-b from-slate-900 to-slate-900 flex-col justify-start items-start gap-4 rounded-[5px] flex">
                       <div className="self-stretch h-12 flex-col justify-start items-start gap-1 flex">
                         <div className="self-stretch text-white text-base font-medium font-['Roboto'] leading-[17.60px]">
