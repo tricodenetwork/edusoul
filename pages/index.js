@@ -10,6 +10,7 @@ import CoreValues from '@/Components/shared/CoreValues';
 import Modules from '@/Components/shared/Modules';
 import FAQs from '@/Components/shared/Faq';
 import Footer from '@/Components/shared/Footer';
+import Limits from '@/Components/shared/Limits';
 
 export default function App() {
   const router = useRouter();
@@ -20,6 +21,7 @@ export default function App() {
       <main className="px-3 sm:px-6 lg:px-14 pt-[4rem]">
         <HeroSection />
         <Courses />
+        <Limits />
       </main>
       <Mandate />
       <main className="px-3 sm:px-6 lg:px-14 pt-[2rem]">
