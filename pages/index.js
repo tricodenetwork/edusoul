@@ -5,12 +5,12 @@ import Link from 'next/link';
 import Navbar from '@/Components/shared/NavBar/nav';
 import HeroSection from '@/Components/Hero/hero';
 import Courses from '@/Components/shared/Courses';
+import Limits from '@/Components/shared/Limits';
 import Mandate from '@/Components/shared/Our-Mandate';
 import CoreValues from '@/Components/shared/CoreValues';
-import Modules from '@/Components/shared/Modules';
+// import Modules from '@/Components/shared/Modules';
 import FAQs from '@/Components/shared/Faq';
 import Footer from '@/Components/shared/Footer';
-import Limits from '@/Components/shared/Limits';
 
 export default function App() {
   const router = useRouter();
@@ -26,9 +26,9 @@ export default function App() {
       <Mandate />
       <main className="px-3 sm:px-6 lg:px-14 pt-[2rem]">
         <CoreValues />
-        <Modules />
-        <FAQs />
+        {/* <Modules /> */}
       </main>
+        <FAQs />
       <Footer />
     </>
   );

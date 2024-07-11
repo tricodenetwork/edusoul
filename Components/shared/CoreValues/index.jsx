@@ -12,14 +12,14 @@ const CoreValues = () => {
             <h2 className="font-extrabold text-3xl md:text-5xl mb-4">
               Core Values
             </h2>
-            <p className="w-[50vw] mb-4">
+            <p className="md:w-[50vw] mb-4">
               Pretium lectus ultrices sit tempor, sit ullamcorper volutpat et
               et.Pretium lectus ultrices sit tempor, sit ullamcorper volutpat et
               et.
             </p>
           </div>
 
-          <div className="w-full mx-auto py-5 text-white grid lg:grid-cols-3 md:grid-cols-3 sm:grid-cols-2 lg:mx-auto sm:ml-5 gap-5">
+          <div className="w-full mx-auto py-5 text-white grid lg:grid-cols-3 md:grid-cols-3 sm:grid-cols-2 lg:mx-auto gap-4">
             <div className="py-5 text-left">
               <div className="max-w-[1200px] mx-auto">
                 <div className="mb-2">

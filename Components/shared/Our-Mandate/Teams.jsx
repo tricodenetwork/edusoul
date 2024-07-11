@@ -13,7 +13,7 @@ export default function Teams({ mobile }) {
             src="/assets/images/ideas/ideas-1.png"
           />
 
-          <div className="grow shrink basis-0 p-6 bg-rose-200 h-[79.6vh] flex-col justify-start items-start gap-8 inline-flex">
+          <div className="grow shrink basis-0 p-6 bg-rose-200 lg:h-[79.6vh] flex-col justify-start items-start gap-8 inline-flex">
             <div className="flex-col justify-start items-start gap-4 flex">
               <div className="text-primary text-xl font-bold font-['Roboto'] uppercase leading-tight tracking-[3px]">
                 Team work
