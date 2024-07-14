@@ -1,10 +1,10 @@
 import { useState, useEffect, useContext } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { Button } from "@/Components/ui/Button";
-import AuthLayout from "@/Components/layouts/AuthLayout";
-import AuthComponent from "@/Components/shared/AuthComponent";
-import ShowHidePassword from "@/Components/ui/ShowHidePassword";
+import { Button } from "@/components/ui/Button";
+import AuthLayout from "@/components/layouts/AuthLayout";
+import AuthComponent from "@/components/shared/AuthComponent";
+import ShowHidePassword from "@/components/ui/ShowHidePassword";
 
 const SignupForm = () => {
   const navigate = useRouter();

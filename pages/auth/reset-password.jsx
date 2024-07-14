@@ -1,10 +1,10 @@
 import { useState, useEffect, useContext } from "react";
 import { Router, useRouter } from "next/router";
-import { Button } from "@/Components/ui/Button";
-import AuthLayout from "@/Components/layouts/AuthLayout";
+import { Button } from "@/components/ui/Button";
+import AuthLayout from "@/components/layouts/AuthLayout";
 import ShowHidePassword, {
   ConfirmPassword,
-} from "@/Components/ui/ShowHidePassword";
+} from "@/components/ui/ShowHidePassword";
 
 const ResetPasswordForm = () => {
   const navigate = useRouter();

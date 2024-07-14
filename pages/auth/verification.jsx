@@ -1,9 +1,9 @@
 import { useState, useEffect, useContext } from "react";
 import Link from "next/link";
 import { Router, useRouter } from "next/router";
-import { Button } from "@/Components/ui/Button";
-import OTPInput from "@/Components/shared/OTPInput";
-import AuthLayout from "@/Components/layouts/AuthLayout";
+import { Button } from "@/components/ui/Button";
+import OTPInput from "@/components/shared/OTPInput";
+import AuthLayout from "@/components/layouts/AuthLayout";
 
 const VerificationForm = () => {
   const navigate = useRouter();

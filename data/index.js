@@ -83,4 +83,14 @@ export const coursesData = [
     imgURL: "",
     label: "Courses",
   },
+  {
+    id: 5,
+    imgURL: "",
+    label: "Courses",
+  },
+  {
+    id: 6,
+    imgURL: "",
+    label: "Courses",
+  },
 ];

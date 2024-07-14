@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-export default function CourseList({ mobile }) {
+export default function CourseList({ id }) {
   return (
     <>
       <div className="bg-white text-left cursor-pointer transition duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-lg rounded-[14px] shadow">
@@ -37,7 +37,7 @@ export default function CourseList({ mobile }) {
               1 - 28 July 2022
             </div>
             <div className="text-red-800 text-base font-extrabold font-['Raleway'] leading-normal tracking-tight">
-              Course 1
+              Course {id}
             </div>
             <div className="text-neutral-600 text-[12px] font-normal font-['Raleway']">
               Product Management Masterclass, you will learn with Sarah Johnson

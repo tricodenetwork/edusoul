@@ -18,9 +18,9 @@ export default function Courses({ mobile }) {
             habitant ut facilisi.
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mx-3 gap-3 mt-6">
-            {coursesData.slice(0, 4).map((course) => (
-              <CourseList key={course.id} course={course} />
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 mx-3 gap-3 mt-6">
+            {coursesData.slice(0, 6).map((course) => (
+              <CourseList key={course.id} id={course.id} course={course} />
             ))}
           </div>
 
