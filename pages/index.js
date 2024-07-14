@@ -1,7 +1,5 @@
 import React, { useEffect } from 'react';
 import { useRouter } from 'next/router';
-import Link from 'next/link';
-
 import Navbar from '@/Components/shared/NavBar/nav';
 import HeroSection from '@/Components/Hero/hero';
 import Courses from '@/Components/shared/Courses';
