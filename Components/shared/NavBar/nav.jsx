@@ -5,7 +5,7 @@ import Link from "next/link";
 import { motion, useAnimation } from "framer-motion";
 import Image from "next/image";
 
-import { navdata } from "@/Data/data";
+import { navdata } from "@/data";
 import useFunctions from "@/hooks/useFunctions";
 import SideNavMobile from "./sidenavmobile";
 import { useRouter } from "next/router";

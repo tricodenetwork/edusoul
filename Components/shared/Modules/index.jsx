@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { modulesData } from "@/Data/data";
+import { modulesData } from "@/data";
 import EastIcon from "@mui/icons-material/East";
 
 export default function Modules({ mobile }) {

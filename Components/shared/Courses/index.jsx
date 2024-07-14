@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import CourseList from "./courseList";
-import { coursesData } from "@/Data/data";
+import { coursesData } from "@/data";
 
 export default function Courses({ mobile }) {
   return (

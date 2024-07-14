@@ -1,11 +1,7 @@
 import { useState, useEffect, useContext } from "react";
-import Link from "next/link";
 import { Router, useRouter } from "next/router";
 import { Button } from "@/Components/ui/Button";
-import Loader from "@/Components/ui/Loader";
 import AuthLayout from "@/Components/layouts/AuthLayout";
-import { toast } from "react-toastify";
-import AuthComponent from "@/Components/shared/AuthComponent";
 import ShowHidePassword, {
   ConfirmPassword,
 } from "@/Components/ui/ShowHidePassword";

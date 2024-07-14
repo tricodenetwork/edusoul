@@ -1,5 +1,4 @@
 import { useState, useEffect, useContext } from "react";
-import Link from "next/link";
 import { Router, useRouter } from "next/router";
 import { Button } from "@/Components/ui/Button";
 import AuthLayout from "@/Components/layouts/AuthLayout";
