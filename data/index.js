@@ -7,11 +7,13 @@ export const navdata = [
   {
     imgURL: <Home />,
     route: "#courses",
+    route2: "/app/courses",
     label: "Courses",
   },
   {
     imgURL: <WifiTetheringIcon />,
     route: "/about",
+    route2: "/app/about",
     label: "About",
   },
   {
@@ -21,8 +23,9 @@ export const navdata = [
   },
   {
     imgURL: <LocalLibraryIcon/>,
-    route: "#modules",
-    label: "Modules",
+    route: "#events",
+    route2: "/app/events",
+    label: "Events",
   },
   {
     imgURL: <LocalLibraryIcon/>,

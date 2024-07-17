@@ -85,7 +85,7 @@ const Navbar = ({ children }) => {
                   className={` ${sticky ? "text-primary" : "text-black"}`}
                 >
                   <Link
-                    href={link.route}
+                    href={`${pathname === "/" ? link.route : link.route2}`}
                     className={`flex gap-4 items-center p-4 `}
                   >
                     {link.label}

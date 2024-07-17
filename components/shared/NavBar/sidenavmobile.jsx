@@ -59,7 +59,7 @@ const SideNavMobile = ({ setSideNav }) => {
                 className={`text-white rounded-md ${isActive && "bg-primary w-[16em]"}`}
               >
                 <Link
-                  href={link.route}
+                  href={`${pathname === "/" ? link.route : link.route2}`}
                   className={`flex gap-4 items-center p-4 `}
                 >
                   <div>{link.imgURL}</div>
