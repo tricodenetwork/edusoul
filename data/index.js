@@ -60,3 +60,37 @@ export const modulesData = [
     label: "FAQ",
   },
 ];
+
+
+export const coursesData = [
+  {
+    id: 1,
+    imgURL: "",
+    label: "Courses",
+  },
+  {
+    id: 2,
+    imgURL: "",
+    label: "Courses",
+  },
+  {
+    id: 3,
+    imgURL: "",
+    label: "Courses",
+  },
+  {
+    id: 4,
+    imgURL: "",
+    label: "Courses",
+  },
+  {
+    id: 5,
+    imgURL: "",
+    label: "Courses",
+  },
+  {
+    id: 6,
+    imgURL: "",
+    label: "Courses",
+  },
+];

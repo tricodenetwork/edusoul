@@ -5,7 +5,7 @@ import Link from "next/link";
 import { motion, useAnimation } from "framer-motion";
 import Image from "next/image";
 
-import { navdata } from "@/Data/data";
+import { navdata } from "@/data";
 import useFunctions from "@/hooks/useFunctions";
 import SideNavMobile from "./sidenavmobile";
 import { useRouter } from "next/router";
@@ -50,7 +50,7 @@ const Navbar = ({ children }) => {
     <nav
       className={`${
         isScrolled || sideNav ? "bg-white" : "bg-white"
-      } fixed border-b w-full h-[60px] sm:h-[80px] px-3 md:px-6 lg:px-14 shadow-lg  z-50 flex flex-row justify-between items-center`}
+      } fixed border-b w-full h-[60px] sm:h-[80px] px-3 md:px-10 lg:px-6 xl:px-14 shadow-lg  z-50 flex flex-row justify-between items-center`}
     >
       <motion.nav
         initial={{ x: 0 }}

@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import Image from "next/image";
 
-import { navdata } from "@/Data/data";
+import { navdata } from "@/data";
 import myContext from "@/context/myContext";
 import LogoutIcon from "@mui/icons-material/Logout";
 import CloseIcon from '@mui/icons-material/Close';

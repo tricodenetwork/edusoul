@@ -13,7 +13,7 @@ export default function Teams({ mobile }) {
             src="/assets/images/ideas/ideas-1.png"
           />
 
-          <div className="grow shrink basis-0 p-6 bg-rose-200 flex-col justify-start items-start gap-8 inline-flex">
+          <div className="grow shrink basis-0 p-6 bg-rose-200 lg:h-[79.6vh] flex-col justify-start items-start gap-8 inline-flex">
             <div className="flex-col justify-start items-start gap-4 flex">
               <div className="text-primary text-xl font-bold font-['Roboto'] uppercase leading-tight tracking-[3px]">
                 Team work
@@ -37,19 +37,19 @@ export default function Teams({ mobile }) {
 
         <div className="w-full justify-start items-start gap-2.5 inline-flex">
           <img
-            className="w-[350px] h-[110px]"
+            className="w-full h-[110px]"
             src="/assets/images/ideas/ideas-2.png"
           />
           <img
-            className="w-[200px] h-[110px]"
+            className="w-[300px] h-[110px]"
             src="/assets/images/ideas/ideas-3.png"
           />
           <img
-            className="w-[350px] h-[110px]"
+            className="w-full h-[110px]"
             src="/assets/images/ideas/ideas-4.png"
           />
           <img
-            className="w-[120px] h-[110px]"
+            className="w-[420px] h-[110px]"
             src="/assets/images/ideas/ideas-5.png"
           />
         </div>

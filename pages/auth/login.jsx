@@ -1,12 +1,10 @@
 import { useState, useEffect, useContext } from "react";
 import Link from "next/link";
 import { Router, useRouter } from "next/router";
-import { Button } from "@/Components/ui/Button";
-import Loader from "@/Components/ui/Loader";
-import AuthLayout from "@/Components/layouts/AuthLayout";
-import { toast } from "react-toastify";
-import AuthComponent from "@/Components/shared/AuthComponent";
-import ShowHidePassword from "@/Components/ui/ShowHidePassword";
+import { Button } from "@/components/ui/Button";
+import AuthLayout from "@/components/layouts/AuthLayout";
+import AuthComponent from "@/components/shared/AuthComponent";
+import ShowHidePassword from "@/components/ui/ShowHidePassword";
 
 const SigninForm = () => {
   const navigate = useRouter();
@@ -25,7 +23,7 @@ const SigninForm = () => {
 
   const isFormValid = email && password;
   return (
-    <div className="flex mx-auto w-full text-center mt-[6em] md:mt-[11rem] xl:mt-[5rem] p-3 justify-center items-center flex-col">
+    <div className="flex mx-auto w-full text-center mt-[10rem] md:mt-[14rem] xl:mt-[5rem] p-3 justify-center items-center flex-col">
       <h2 className="text-[30px] text-black font-bold pt-5 sm:pt-1">
         Welcome back to EduSoul
       </h2>
@@ -41,7 +39,7 @@ const SigninForm = () => {
         <AuthComponent />
       </div>
 
-      <div className="w-[436px] h-3.5 justify-start items-center gap-4 inline-flex">
+      <div className="w-full h-3.5 justify-center items-center gap-4 inline-flex">
         <div className="w-[194px] h-[0px] border border-stone-300"></div>
         <div className="text-neutral-500 text-xs font-normal font-['Roboto']">
           OR

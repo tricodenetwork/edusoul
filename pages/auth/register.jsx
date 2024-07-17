@@ -1,12 +1,10 @@
 import { useState, useEffect, useContext } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { Button } from "@/Components/ui/Button";
-import Loader from "@/Components/ui/Loader";
-import AuthLayout from "@/Components/layouts/AuthLayout";
-import { toast } from "react-toastify";
-import AuthComponent from "@/Components/shared/AuthComponent";
-import ShowHidePassword from "@/Components/ui/ShowHidePassword";
+import { Button } from "@/components/ui/Button";
+import AuthLayout from "@/components/layouts/AuthLayout";
+import AuthComponent from "@/components/shared/AuthComponent";
+import ShowHidePassword from "@/components/ui/ShowHidePassword";
 
 const SignupForm = () => {
   const navigate = useRouter();
@@ -29,7 +27,7 @@ const SignupForm = () => {
       <h2 className="text-[30px] text-black font-bold pt-5 sm:pt-1">
         Welcome to EduSoul
       </h2>
-      <p className="md:w-[80%] small-medium md:base-regular mt-2">
+      <p className="md:w-[90%] small-medium md:base-regular mt-2">
         Get ready to enjoy all the features and benefits we have to offer. It's
         quick, easy, and free!
       </p>
