@@ -4,7 +4,7 @@ import { useState, useEffect, useContext } from "react";
 import Link from "next/link";
 import { Router, useRouter } from "next/navigation";
 import { Button } from "@/components/ui/Button";
-import OTPInput from "@/components/shared/OTPInput";
+import OTPInput from "@/components/ui/OTPInput";
 import AuthLayout from "@/components/layouts/AuthLayout";
 
 const VerificationForm = () => {

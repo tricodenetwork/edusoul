@@ -2,8 +2,8 @@
 
 import Sidebar from "@/components/layouts/Sidebar";
 import Link from "next/link";
-import Button from "@/Components/Button";
-import OTPInput from "@/Components/OTPInput";
+import Button from "@/components/ui/Button";
+import OTPInput from "@/components/ui/OTPInput";
 
 const Index = () => {
   // --------------------------------------------VARIABLES

@@ -1,3 +1,5 @@
+"use client";
+
 import useFunctions from "@/hooks/useFunctions";
 import Image from "next/image";
 
