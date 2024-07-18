@@ -2,9 +2,9 @@
 
 import React from "react";
 import Image from "next/image";
-import Mission from "@/components/shared/Mission";
-import Belief from "@/components/shared/Belief";
-import Center from "@/components/shared/Center"
+import Mission from "@/components/shared/AboutUs/Mission";
+import Belief from "@/components/shared/AboutUs/Belief";
+import Center from "@/components/shared/AboutUs/Center"
 
 function Aboutus() {
   return (
