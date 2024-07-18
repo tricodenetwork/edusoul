@@ -2,15 +2,18 @@
 
 import React from "react";
 import Image from "next/image";
+import NavBar from "@/components/shared/NavBar/nav"
 import Mission from "@/components/shared/AboutUs/Mission";
 import Belief from "@/components/shared/AboutUs/Belief";
 import Center from "@/components/shared/AboutUs/Center"
+import Footer from "@/components/shared/Footer"
 
 function Aboutus() {
   return (
 
     <>
       {/* <!-- ===== AboutUs Start ===== --> */}
+      <NavBar />
       <section className="mx-auto">
 
         <div className="border-black border-2 h-max">
@@ -73,6 +76,7 @@ function Aboutus() {
         <Center/>
 
       </section>
+      <Footer />
       {/* <!-- ===== AboutUs End ===== --> */}
     </>
     

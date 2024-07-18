@@ -17,23 +17,23 @@ function HeroSection() {
         />
       </div>
       <section className="flex absolute top-[6rem] bottom-0 py-[5em] md:py-[4em] flex-col items-start justify-center">
-        <div className="flex flex-col justify-start items-start gap-4">
+        <div className="flex flex-col justify-start items-start gap-5">
           <div className="justify-start items-start gap-2.5 inline-flex">
-            <div className="text-white text-2xl font-medium font-['Roboto']">
+            <div className="text-white text-2xl font-medium">
               Distinct Christian Education{" "}
             </div>
           </div>
           <div className="justify-start items-start gap-2.5 inline-flex">
-            <div className="text-amber-400 text-5xl font-extrabold font-['Roboto']">
+            <div className="text-amber-400 text-5xl font-extrabold">
               EDUSOUL INSTITUTE
             </div>
           </div>
           <div className="flex flex-col gap-3 md:w-[50vw]">
-            <span className="text-white text-xl font-normal font-['Roboto'] leading-7">
+            <span className="text-white text-xl font-normal leading-7">
               An Education programme with perspective and relevance in raising
               distinctive educators within Christ-centred education.
             </span>
-            <span className="text-amber-400 text-xl font-normal font-['Roboto'] leading-7">
+            <span className="text-amber-400 text-xl font-normal leading-7">
               {"(Col.2v3. Isa.58v12)"}
             </span>
           </div>

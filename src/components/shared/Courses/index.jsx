@@ -9,19 +9,19 @@ export default function Courses() {
   return (
     <>
       <section
-        className="mt-20 sm:mt-2 md:mt-24 w-full justify-center items-center"
+        className="mt-20 sm:mt-2 md:mt-24 xxl:mt-[14rem] w-full justify-center items-center"
         id="courses"
       >
         <div className="flex flex-col justify-start items-center gap-4">
-          <div className="text-center text-slate-900 text-[30px] md:text-[56px] font-bold font-['Roboto']">
+          <div className="text-center text-slate-900 text-[30px] md:text-[56px] font-bold">
             Access transformational courses
           </div>
-          <div className="text-center text-slate-900 text-lg font-normal font-['Roboto']">
+          <div className="text-center text-slate-900 text-lg font-normal">
             Sed ut vestibulum eget purus ornare. Risus elit et fringilla
             habitant ut facilisi.
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 mx-3 gap-3 mt-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xxl:grid-cols-5 gap-4 mx-3 gap-3 mt-6">
             {coursesData.slice(0, 6).map((course) => (
               <CourseList key={course.id} id={course.id} course={course} />
             ))}
@@ -29,7 +29,7 @@ export default function Courses() {
 
           <Link href={"/page/courses"}>
             <button className="px-5 py-2.5 mt-8 rounded-[10px] border-2 border-primary justify-center items-center flex hover:bg-primary transition-all duration-300 group">
-              <div className="text-primary text-xl font-medium font-['Roboto'] leading-normal tracking-wide group-hover:text-white">
+              <div className="text-primary text-xl font-medium leading-normal tracking-wide group-hover:text-white">
                 View All Courses
               </div>
             </button>
