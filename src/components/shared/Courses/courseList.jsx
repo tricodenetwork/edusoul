@@ -1,37 +1,46 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import Image from "next/image";
 
 export default function CourseList({ id }) {
   return (
     <>
       <div className="bg-white text-left cursor-pointer transition duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-lg rounded-[14px] shadow">
-        <img
+        {/* <img
           className="w-full h-[149px] rounded-t-[14px]"
           src="/assets/images/course-1.png"
+        /> */}
+        <Image
+          alt="courses"
+          width={500}
+          height={149}
+          quality={100}
+          className="rounded-t-[14px]"
+          src="/assets/images/course-1.png"
         />
-          <div className="flex px-2.5 py-[5px] bg-white mt-[-20px] gap-[5px] mx-4 z-50 relative rounded-[40px] justify-start items-center shadow-lg">
-            <div className="flex px-2">
-              <div className="w-[29.19px] h-[29.19px] mr-[-15px] bg-yellow-300 rounded-full justify-center items-center">
-                <div className="w-[22.22px] h-[46.60px] relative"></div>
-              </div>
-              <div className="w-[29.19px] h-[29.19px] mr-[-15px] bg-indigo-700 rounded-full justify-center items-center">
-                <div className="w-[21.36px] h-[30.81px] relative"></div>
-              </div>
-              <div className="w-[29.19px] h-[29.19px] mr-[-15px] bg-indigo-400 rounded-[100px] justify-start items-center">
-                <div className="w-[19.46px] h-[23.72px] relative"></div>
-              </div>
-              <div className="w-[29.19px] h-[29.19px] mr-[-15px] bg-pink-400 rounded-full justify-end items-center">
-                <div className="w-[36.84px] h-[39.11px] relative"></div>
-              </div>
-              <div className="w-[29.19px] h-[29.19px] -z-4 bg-gradient-to-t from-indigo-400 to-blue-600 rounded-full justify-end items-center">
-                <div className="w-[43.53px] h-[96.60px] relative"></div>
-              </div>
+        <div className="flex px-2.5 py-[5px] bg-white mt-[-20px] gap-[5px] mx-4 z-50 relative rounded-[40px] justify-start items-center shadow-lg">
+          <div className="flex px-2">
+            <div className="w-[29.19px] h-[29.19px] mr-[-15px] bg-yellow-300 rounded-full justify-center items-center">
+              <div className="w-[22.22px] h-[46.60px] relative"></div>
             </div>
-            <div className="text-center text-gray-800 text-base font-normal font-['Kanit'] leading-7">
-              + 40 students
+            <div className="w-[29.19px] h-[29.19px] mr-[-15px] bg-indigo-700 rounded-full justify-center items-center">
+              <div className="w-[21.36px] h-[30.81px] relative"></div>
+            </div>
+            <div className="w-[29.19px] h-[29.19px] mr-[-15px] bg-indigo-400 rounded-[100px] justify-start items-center">
+              <div className="w-[19.46px] h-[23.72px] relative"></div>
+            </div>
+            <div className="w-[29.19px] h-[29.19px] mr-[-15px] bg-pink-400 rounded-full justify-end items-center">
+              <div className="w-[36.84px] h-[39.11px] relative"></div>
+            </div>
+            <div className="w-[29.19px] h-[29.19px] -z-4 bg-gradient-to-t from-indigo-400 to-blue-600 rounded-full justify-end items-center">
+              <div className="w-[43.53px] h-[96.60px] relative"></div>
             </div>
           </div>
+          <div className="text-center text-gray-800 text-base font-normal font-['Kanit'] leading-7">
+            + 40 students
+          </div>
+        </div>
 
         <div className="px-4 py-5">
           <div className="flex flex-col gap-3">
