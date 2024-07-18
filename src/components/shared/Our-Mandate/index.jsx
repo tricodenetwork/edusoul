@@ -7,7 +7,7 @@ export default function Mandate({ mobile }) {
   return (
     <>
       <section
-        className="py-7 px-3 sm:px-6 lg:px-14 pt-[4rem] w-full justify-center items-center"
+        className="py-7 px-3 sm:px-6 md:px-10 lg:px-6 xl:px-14 pt-[4rem] w-full justify-center items-center"
         id="our-mandate"
       >
         <div className="flex flex-col md:flex-row mt-16 justify-start items-center gap-12">
