@@ -4,53 +4,36 @@ import React, { useCallback, useEffect, useState } from "react";
 import { MdOutlineMenu } from "react-icons/md";
 import { IoCloseSharp } from "react-icons/io5";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import Image from "next/image";
-import { motion, useAnimation } from "framer-motion";
+import { motion } from "framer-motion";
 
 import { navdata } from "@/data";
 import useFunctions from "@/hooks/useFunctions";
 import SideNavMobile from "./sidenavmobile";
 
-const Navbar = ({ children }) => {
+const Navbar = () => {
+  const pathname = usePathname();
   const [sideNav, setSideNav] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
   const [sticky, setSticky] = useState(false);
   const { imageLoader } = useFunctions();
 
-  const { pathname } = useRouter();
-
-  const controls = useAnimation();
-
-  const handleScroll = useCallback(() => {
-    const scrollTop = window.scrollY;
-    if (scrollTop > 0) {
-      setIsScrolled(true);
-    } else {
-      setIsScrolled(false);
-    }
-  }, []);
-
   useEffect(() => {
+    const handleScroll = () => {
+      window.scrollY > 0 ? setSticky(true) : setSticky(false);
+    };
+
     window.addEventListener("scroll", handleScroll);
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, [handleScroll]);
-
-  useEffect(() => {
-    window.addEventListener("scroll", () => {
-      const nav = document.querySelector("nav");
-      window.scrollY > 0 ? setSticky(true) : setSticky(false);
-    });
   }, []);
-
 
   return (
     <nav
       className={`${
-        isScrolled || sideNav ? "bg-white" : "bg-white"
-      } fixed border-b w-full h-[60px] sm:h-[80px] px-3 md:px-10 lg:px-6 xl:px-14 shadow-lg  z-50 flex flex-row justify-between items-center`}
+        sideNav ? "bg-white" : "bg-white"
+      } fixed border-b w-full h-[60px] sm:h-[80px] px-3 md:px-10 lg:px-6 xl:px-14 shadow-lg z-50 flex flex-row justify-between items-center`}
     >
       <motion.nav
         initial={{ x: 0 }}
@@ -77,12 +60,12 @@ const Navbar = ({ children }) => {
             className="md:flex flex-row hidden lg:gap-3"
           >
             {navdata.map((link) => {
-              const sticky = pathname === link.route;
+              const isSticky = pathname === link.route;
 
               return (
                 <li
                   key={link.label}
-                  className={` ${sticky ? "text-primary" : "text-black"}`}
+                  className={` ${isSticky ? "text-primary" : "text-black"}`}
                 >
                   <Link
                     href={`${pathname === "/" ? link.route : link.route2}`}
@@ -100,7 +83,6 @@ const Navbar = ({ children }) => {
       <motion.div
         initial={{ width: "30%" }}
         animate={{ width: "17%" }}
-        // transition={{ type: "spring", stiffness: 500, duration: 0.1 }}
         transition={{ duration: 0.2 }}
         className="md:flex w-[15em] md:w-[20%] justify-end hidden items-center"
       >

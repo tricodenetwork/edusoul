@@ -12,24 +12,26 @@ export const navdata = [
   },
   {
     imgURL: <WifiTetheringIcon />,
-    route: "/about",
+    route: "/page/about",
     route2: "/page/about",
     label: "About",
   },
   {
     imgURL: <AutoStoriesIcon />,
     route: "#our-mandate",
+    route2: "/#our-mandate",
     label: "Our Mandate",
   },
   {
     imgURL: <LocalLibraryIcon/>,
-    route: "#events",
+    route: "/page/events",
     route2: "/page/events",
     label: "Events",
   },
   {
     imgURL: <LocalLibraryIcon/>,
     route: "#faq",
+    route2: "/#faq",
     label: "FAQ",
   },
 ];
