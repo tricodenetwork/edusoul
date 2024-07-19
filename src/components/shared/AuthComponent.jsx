@@ -23,7 +23,7 @@ const AuthComponent = () => {
           width={25}
           height={25}
           alt='google'
-          src={"/assets/icons/mdi_google.png"}
+          src={"/assets/icons/Facebook.svg"}
         />
       </div>
       <div
@@ -38,7 +38,7 @@ const AuthComponent = () => {
           className='auth_image'
           width={25}
           height={25}
-          src={"/assets/icons/github-mark.png"}
+          src={"/assets/icons/linkedin.svg"}
           alt='github'
         />
       </div>
@@ -54,7 +54,7 @@ const AuthComponent = () => {
           className='auth_image '
           width={25}
           height={25}
-          src={"/assets/icons/Slack-mark-RGB.png"}
+          src={"/assets/icons/google.svg"}
           alt='slack'
         />
       </div>
