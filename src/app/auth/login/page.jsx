@@ -4,7 +4,6 @@ import { useState } from "react";
 import Link from "next/link";
 import { Router, useRouter } from "next/navigation";
 import { Button } from "@/components/ui/Button";
-import AuthLayout from "@/components/layouts/AuthLayout";
 import AuthComponent from "@/components/shared/AuthComponent";
 import ShowHidePassword from "@/components/ui/ShowHidePassword";
 
@@ -130,5 +129,4 @@ const SigninForm = () => {
   );
 };
 
-SigninForm.getLayout = AuthLayout;
 export default SigninForm;

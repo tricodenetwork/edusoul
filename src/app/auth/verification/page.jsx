@@ -5,7 +5,6 @@ import Link from "next/link";
 import { Router, useRouter } from "next/navigation";
 import { Button } from "@/components/ui/Button";
 import OTPInput from "@/components/ui/OTPInput";
-import AuthLayout from "@/components/layouts/AuthLayout";
 
 const VerificationForm = () => {
   const navigate = useRouter();
@@ -76,5 +75,4 @@ const VerificationForm = () => {
   );
 };
 
-VerificationForm.getLayout = AuthLayout;
 export default VerificationForm;

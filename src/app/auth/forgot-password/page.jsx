@@ -3,7 +3,6 @@
 import { useState, useEffect, useContext } from "react";
 import { Router, useRouter } from "next/navigation";
 import { Button } from "@/components/ui/Button";
-import AuthLayout from "@/components/layouts/AuthLayout";
 
 const FPForm = () => {
   const navigate = useRouter();
@@ -60,5 +59,4 @@ const FPForm = () => {
   );
 };
 
-FPForm.getLayout = AuthLayout;
 export default FPForm;

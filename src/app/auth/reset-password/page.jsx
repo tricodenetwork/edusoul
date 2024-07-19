@@ -3,7 +3,6 @@
 import { useState, useEffect, useContext } from "react";
 import { Router, useRouter } from "next/navigation";
 import { Button } from "@/components/ui/Button";
-import AuthLayout from "@/components/layouts/AuthLayout";
 import ShowHidePassword, {
   ConfirmPassword,
 } from "@/components/ui/ShowHidePassword";
@@ -122,5 +121,4 @@ const ResetPasswordForm = () => {
   );
 };
 
-ResetPasswordForm.getLayout = AuthLayout;
 export default ResetPasswordForm;
