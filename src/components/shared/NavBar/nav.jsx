@@ -12,6 +12,8 @@ import { navdata } from "@/data";
 import useFunctions from "@/hooks/useFunctions";
 import SideNavMobile from "./sidenavmobile";
 
+const url = ["auth/login", "auth/register", "auth/forgot-password", "auth/verification"];
+
 const Navbar = () => {
   const pathname = usePathname();
   const [sideNav, setSideNav] = useState(false);
@@ -86,14 +88,18 @@ const Navbar = () => {
         transition={{ duration: 0.2 }}
         className="md:flex w-[15em] md:w-[20%] justify-end hidden items-center"
       >
-        <button className="font-bold bg-primary text-white hover:bg-gray-100 hover:text-primary py-3 text-center w-full md:w-[15em] rounded-md">
+        <button
+          className={`font-bold bg-primary text-white hover:bg-gray-100 hover:text-primary ${
+            pathname === `/auth/login` || `/${url}` ? "hidden" : "block"
+          } py-3 text-center w-full md:w-[15em] rounded-md`}
+        >
           Get Started
         </button>
       </motion.div>
 
       <button
         onClick={() => setSideNav(!sideNav)}
-        className="text-primary text-[4vh] flex md:hidden"
+        className={`text-primary text-[4vh] flex md:hidden`}
       >
         {sideNav ? (
           <IoCloseSharp className="" />
