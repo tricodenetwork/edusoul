@@ -2,9 +2,9 @@
 
 import React from "react";
 import Sidebar from "@/components/layouts/Sidebar";
-import Navbar from "@/Components/shared/NavBar/nav";
+import Navbar from "@/components/shared/NavBar/nav";
 
-const AuthLayout = ({children}) => {
+const AuthLayout = ({ children }) => {
   // --------------------------------------------VARIABLES
 
   //-----------------------------------------------------------FUNCTIONS
@@ -14,9 +14,9 @@ const AuthLayout = ({children}) => {
   return (
     <>
       <Navbar />
-      <div className="flex flex-row h-screen justify-between items-center">
-        <Sidebar Header="" Message="" />
-        <div className="flex flex-col mx-auto md:ml-[18rem] lg:ml-[29rem] xl:ml-[35rem] justify-center items-center w-full lg:w-[50%] overflow-y-auto">
+      <div className='flex flex-row h-screen justify-between items-center'>
+        <Sidebar Header='' Message='' />
+        <div className='flex flex-col mx-auto md:ml-[18rem] lg:ml-[29rem] xl:ml-[35rem] justify-center items-center w-full lg:w-[50%] overflow-y-auto'>
           {children}
         </div>
       </div>

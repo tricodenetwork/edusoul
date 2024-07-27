@@ -33,6 +33,7 @@ module.exports = {
         appBlack: "#0F172A",
         appGreen: "#29CC7A",
         appGold: "#DBBB00",
+        appYellow: "#DBB632",
       },
     },
   },

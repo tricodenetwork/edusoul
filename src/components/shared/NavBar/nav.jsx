@@ -12,7 +12,12 @@ import { navdata } from "@/data";
 import useFunctions from "@/hooks/useFunctions";
 import SideNavMobile from "./sidenavmobile";
 
-const url = ["auth/login", "auth/register", "auth/forgot-password", "auth/verification"];
+const url = [
+  "auth/login",
+  "auth/register",
+  "auth/forgot-password",
+  "auth/verification",
+];
 
 const Navbar = () => {
   const pathname = usePathname();
@@ -40,26 +45,26 @@ const Navbar = () => {
       <motion.nav
         initial={{ x: 0 }}
         animate={{ x: [200, 0] }}
-        className="flex flex-row mx-auto gap-5 lg:gap-8 justify-start items-center w-full"
+        className='flex flex-row mx-auto gap-5 lg:gap-8 justify-start items-center w-full'
       >
-        <div className="flex w-[24vh] h-[16vh] justify-start items-center">
+        <div className='flex w-[24vh] h-[16vh] justify-start items-center'>
           <Link href={"/"}>
             <Image
               loader={imageLoader}
-              alt="logo"
+              alt='logo'
               width={140}
               height={60}
               quality={100}
-              className=""
-              src="/assets/images/edusoul.svg"
+              className=''
+              src='/assets/images/logo.svg'
             />
           </Link>
         </div>
 
-        <div className="md:flex flex-row gap hidden justify-center items-center">
+        <div className='md:flex flex-row gap hidden justify-center items-center'>
           <ul
             onClick={() => setSideNav(false)}
-            className="md:flex flex-row hidden lg:gap-3"
+            className='md:flex flex-row hidden lg:gap-3'
           >
             {navdata.map((link) => {
               const isSticky = pathname === link.route;
@@ -86,7 +91,7 @@ const Navbar = () => {
         initial={{ width: "30%" }}
         animate={{ width: "17%" }}
         transition={{ duration: 0.2 }}
-        className="md:flex w-[15em] md:w-[20%] justify-end hidden items-center"
+        className='md:flex w-[15em] md:w-[20%] justify-end hidden items-center'
       >
         <button
           className={`font-bold bg-primary text-white hover:bg-gray-100 hover:text-primary ${
@@ -102,9 +107,9 @@ const Navbar = () => {
         className={`text-primary text-[4vh] flex md:hidden`}
       >
         {sideNav ? (
-          <IoCloseSharp className="" />
+          <IoCloseSharp className='' />
         ) : (
-          <MdOutlineMenu className="" />
+          <MdOutlineMenu className='' />
         )}
       </button>
       {sideNav && <SideNavMobile setSideNav={setSideNav} />}

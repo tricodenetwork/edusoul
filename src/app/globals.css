@@ -40,18 +40,21 @@ label {
   background-color: #000000;
   color: #ffffff;
 }
+.bord {
+  border: 1px solid black;
+}
 
 .btn-disabled {
   background-color: lightgray;
   color: #000000;
 }
-ul li,
+/* ul li,
 .medText {
   font-family: "Plus Jakar", sans-serif;
   font-size: 14px;
   font-weight: 600;
   list-style: none;
-}
+} */
 
 .icon {
   display: flex;
