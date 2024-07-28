@@ -7,20 +7,12 @@ import Link from "next/link";
 import Image from "next/image";
 
 import { navdata } from "@/data";
-import myContext from "@/context/myContext";
 import LogoutIcon from "@mui/icons-material/Logout";
-import CloseIcon from '@mui/icons-material/Close';
+import CloseIcon from "@mui/icons-material/Close";
 
 const SideNavMobile = ({ setSideNav }) => {
-  const context = useContext(myContext);
-  const { show, user, isLoading, fetchUser, logout } = context;
   let navigate = useRouter();
   const { pathname } = useRouter();
-
-  useEffect(() => {
-    fetchUser();
-  }, []);
-
 
   return (
     <div className="w-full h-screen z-[9999] top-0 sm:top-[80px] p-3 right-0 absolute bg-black m-auto justify-center items-center">
@@ -30,7 +22,7 @@ const SideNavMobile = ({ setSideNav }) => {
         className="lg:navbar mx-auto self-center justify-center items-center"
       >
         <div className="flex flex-row items-center justify-between">
-          <button> 
+          <button>
             <Image
               // loader={imageLoader}
               alt="logo"
@@ -39,7 +31,8 @@ const SideNavMobile = ({ setSideNav }) => {
               quality={100}
               className=""
               src="/assets/images/edusoul.svg"
-            /></button>
+            />
+          </button>
           <button
             className="text-white text-[25px]"
             onClick={() => setSideNav(false)}
@@ -58,7 +51,9 @@ const SideNavMobile = ({ setSideNav }) => {
             return (
               <li
                 key={link.label}
-                className={`text-white rounded-md ${isActive && "bg-primary w-[16em]"}`}
+                className={`text-white rounded-md ${
+                  isActive && "bg-primary w-[16em]"
+                }`}
               >
                 <Link
                   href={`${pathname === "/" ? link.route : link.route2}`}
@@ -71,7 +66,7 @@ const SideNavMobile = ({ setSideNav }) => {
             );
           })}
         </ul>
-        
+
         <button className="font-bold bg-primary text-white mt-8 hover:bg-gray-100 hover:text-primary py-3 text-center w-full md:w-[15em] rounded-md">
           Get Started
         </button>

@@ -9,7 +9,7 @@ export default function Courses() {
   return (
     <>
       <section
-        className="mt-20 sm:mt-2 md:mt-24 xxl:mt-[14rem] w-full justify-center items-center"
+        className="mt-20 sm:mt-2 md:mt-24 xxl:mt-[14rem] xl:px-12 w-full justify-center items-center"
         id="courses"
       >
         <div className="flex flex-col justify-start items-center gap-4">
@@ -21,7 +21,7 @@ export default function Courses() {
             habitant ut facilisi.
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xxl:grid-cols-5 gap-4 mx-3 gap-3 mt-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 mx-3 gap-3 mt-6">
             {coursesData.slice(0, 6).map((course) => (
               <CourseList key={course.id} id={course.id} course={course} />
             ))}

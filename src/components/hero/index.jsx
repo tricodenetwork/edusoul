@@ -8,7 +8,7 @@ const patners = ["astrom", "cicio", "weavy", "vRockets", "vRockets", "viewio"];
 
 function HeroSection() {
   return (
-    <div className=' w-full mx-auto flex px-5 md:px-[60px] bg-primary bg-opacity-[0.03]  pt-[12vh] md:pt-[126px]  flex-col items-start  justify-start  relative h-[120vh]'>
+    <div className=' w-full mx-auto flex mt-[80px] px-5 md:px-[60px] bg-primary bg-opacity-[0.03]  pt-[12vh] md:pt-[126px]  flex-col items-start  justify-start  relative h-[120vh]'>
       <div className='w-full md:w-[94%] mx-auto   top-0  mt-[20px] md:mt-[28px] self-center h-[70vh] md:h-[674px] absolute'>
         <Image
           alt='logo'
