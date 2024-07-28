@@ -20,7 +20,7 @@ export default function Limits() {
           <h5 className='text-[#475569] text-xl font-bold uppercase tracking-[3px]'>
             No limits
           </h5>
-          <h3 className='text-appBlack text-[56px] leading-none w-[80%] font-extrabold'>
+          <h3 className='text-appBlack text-[56px] leading-none xl:w-[80%] font-extrabold'>
             What we plan to achieve with you
           </h3>
         </div>

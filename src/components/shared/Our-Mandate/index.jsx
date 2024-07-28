@@ -1,39 +1,39 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import Teams from "./Teams";
 
 export default function Mandate({ mobile }) {
   return (
     <>
-      <section
-        className="py-7 px-3 sm:px-6 md:px-10 lg:px-6 xl:px-14 pt-[4rem] w-full justify-center items-center"
-        id="our-mandate"
-      >
-        <div className="flex flex-col md:flex-row mt-16 justify-start items-center gap-12">
-          <div className="flex-col justify-start items-start gap-4 flex">
-            <div className="flex-col justify-start items-start gap-3 flex">
-              <div className="text-primary text-[15px] font-bold uppercase tracking-[3px]">
-                Our Mandate
-              </div>
-              <div className="text-black text-[36px] font-bold font-['Roboto']">
-                What drives us to do what we do
-              </div>
-            </div>
-            <div className="text-slate-900 text-lg font-normal font-['Roboto']">
-              EduSoul focuses on transformational learning relevant to both
-              age-old and current societal challenges. The program encourages
-              participants to think critically about learning and how to best
-              support each child's unique potential.
-            </div>
+      <div className="flex h-[374px] flex-col-reverse md:flex-row my-[80px] px-3 sm:px-6 md:px-10 lg:px-6 xl:px-14 justify-between items-center">
+        <div className="flex-col w-[48%] h-full justify-center items-start gap-4 flex">
+          <div className="flex-col justify-start items-start gap-3 flex">
+            <h5 className="text-[#475569] text-xl font-bold uppercase tracking-[3px]">
+              Our Mandate
+            </h5>
+            <h3 className="text-appBlack text-[56px] leading-none xl:w-[80%] font-extrabold">
+              What drives us to do what we do
+            </h3>
           </div>
-
-          <img
-            className="w-full md:w-[350px] lg:w-[400px] h-[300px] rounded-lg"
+          <p className="text-appBlack mt-4 text-lg w-[90%]">
+            EduSoul focuses on transformational learning relevant to both
+            age-old and current societal challenges. The program encourages
+            participants to think critically about learning and how to best
+            support each child's unique potential.
+          </p>
+        </div>
+        <div className="relative w-[48%] h-full">
+          <Image
+            alt="limits"
+            fill
+            quality={100}
+            className="rounded-lg object-cover"
             src="/assets/images/our-mandate.png"
           />
         </div>
-      </section>
+      </div>
 
       <Teams />
     </>

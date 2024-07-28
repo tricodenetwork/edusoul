@@ -9,7 +9,7 @@ export default function Courses() {
   return (
     <>
       <section
-        className="mt-20 sm:mt-2 md:mt-24 xxl:mt-[14rem] xl:px-12 w-full justify-center items-center"
+        className="xl:px-12 mb-[80px] w-full justify-center items-center"
         id="courses"
       >
         <div className="flex flex-col justify-start items-center gap-4">

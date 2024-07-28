@@ -99,3 +99,37 @@ export const coursesData = [
     label: "Courses",
   },
 ];
+
+
+export const coreValuesdata = [
+  {
+    id: 1,
+    imgURL: "/assets/icons/trustsvg.svg",
+    label: "Trust",
+  },
+  {
+    id: 2,
+    imgURL: "/assets/icons/openness.svg",
+    label: "Openness",
+  },
+  {
+    id: 3,
+    imgURL: "/assets/icons/truthfulness.svg",
+    label: "Truthfulness",
+  },
+  {
+    id: 4,
+    imgURL: "/assets/icons/empowerment.svg",
+    label: "Empowerment",
+  },
+  {
+    id: 5,
+    imgURL: "/assets/icons/inclusion.svg",
+    label: "Inclusion",
+  },
+  {
+    id: 6,
+    imgURL: "/assets/icons/inclusion.svg",
+    label: "Growth",
+  },
+];

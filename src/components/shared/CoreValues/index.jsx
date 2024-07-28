@@ -2,12 +2,13 @@
 
 import React from "react";
 import Image from "next/image";
+import { coreValuesdata } from "@/data/index";
 
 const CoreValues = () => {
   return (
     <>
       {/* <!-- ===== CoreValues Start ===== --> */}
-      <section className="mt-7 mx-auto">
+      <section className="mt-20 mb-[80px] mx-auto">
         <div className="w-full mx-auto">
           <div className="w-full mx-auto lg:mx-auto sm:ml-5">
             <p className="font-bold lg:text-sm/[20px] mb-1">OUR STRENGTHS</p>
@@ -21,9 +22,9 @@ const CoreValues = () => {
             </p>
           </div>
 
-          <div className="w-full mx-auto py-5 text-white grid lg:grid-cols-3 md:grid-cols-3 sm:grid-cols-2 lg:mx-auto gap-4">
-            <div className="py-5 text-left">
-              <div className="max-w-[1200px] mx-auto">
+          <div className="w-full mx-auto py-5 text-white grid lg:grid-cols-3 md:grid-cols-3 sm:grid-cols-2 lg:mx-auto gap-8 xl:gap-18">
+            {coreValuesdata.map((value) => (
+              <div className="max-w-[1200px] py-5 text-left mx-auto">
                 <div className="mb-2">
                   <Image
                     alt="trustlogo"
@@ -31,138 +32,20 @@ const CoreValues = () => {
                     height={60}
                     quality={100}
                     className=""
-                    src="/assets/icons/trustsvg.svg"
-                  />
-                </div>
-
-                <h2 className="font-bold lg:text-3xl mb-2 text-black">Trust</h2>
-
-                <p className="text-black">
-                  Pretium lectus ultrices sit tempor, sit ullamcorper volutpat
-                  et et.
-                </p>
-              </div>
-            </div>
-
-            <div className="py-5 text-left">
-              <div className="max-w-[1200px] mx-auto">
-                <div className="mb-2">
-                  <Image
-                    alt="trustlogo"
-                    width={70}
-                    height={60}
-                    quality={100}
-                    className=""
-                    src="/assets/icons/openness.svg"
+                    src={value.imgURL}
                   />
                 </div>
 
                 <h2 className="font-bold lg:text-3xl mb-2 text-black">
-                  Openness
+                  {value.label}
                 </h2>
 
-                <p className="text-black">
+                <p className="text-black xl:w-[60%]">
                   Pretium lectus ultrices sit tempor, sit ullamcorper volutpat
                   et et.
                 </p>
               </div>
-            </div>
-
-            <div className="py-5 text-left">
-              <div className="max-w-[1200px] mx-auto">
-                <div className="mb-2">
-                  <Image
-                    alt="trustlogo"
-                    width={70}
-                    height={60}
-                    quality={100}
-                    className=""
-                    src="/assets/icons/truthfulness.svg"
-                  />
-                </div>
-
-                <h2 className="font-bold lg:text-3xl mb-2 text-black">
-                  Truthfulness
-                </h2>
-
-                <p className="text-black">
-                  Pretium lectus ultrices sit tempor, sit ullamcorper volutpat
-                  et et.
-                </p>
-              </div>
-            </div>
-
-            <div className="py-5 text-left">
-              <div className="max-w-[1200px] mx-auto">
-                <div className="mb-2">
-                  <Image
-                    alt="trustlogo"
-                    width={70}
-                    height={60}
-                    quality={100}
-                    className=""
-                    src="/assets/icons/empowerment.svg"
-                  />
-                </div>
-
-                <h2 className="font-bold lg:text-3xl mb-2 text-black">
-                  Empowerment
-                </h2>
-
-                <p className="text-black">
-                  Pretium lectus ultrices sit tempor, sit ullamcorper volutpat
-                  et et.
-                </p>
-              </div>
-            </div>
-
-            <div className="py-5 text-left">
-              <div className="max-w-[1200px] mx-auto">
-                <div className="mb-2">
-                  <Image
-                    alt="trustlogo"
-                    width={70}
-                    height={60}
-                    quality={100}
-                    className=""
-                    src="/assets/icons/inclusion.svg"
-                  />
-                </div>
-
-                <h2 className="font-bold lg:text-3xl mb-2 text-black">
-                  Inclusion
-                </h2>
-
-                <p className="text-black">
-                  Pretium lectus ultrices sit tempor, sit ullamcorper volutpat
-                  et et.
-                </p>
-              </div>
-            </div>
-
-            <div className="py-5 text-left">
-              <div className="max-w-[1200px] mx-auto">
-                <div className="mb-2">
-                  <Image
-                    alt="trustlogo"
-                    width={70}
-                    height={60}
-                    quality={100}
-                    className=""
-                    src="/assets/icons/inclusion.svg"
-                  />
-                </div>
-
-                <h2 className="font-bold lg:text-3xl mb-2 text-black">
-                  Growth
-                </h2>
-
-                <p className="text-black">
-                  Pretium lectus ultrices sit tempor, sit ullamcorper volutpat
-                  et et.
-                </p>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>

@@ -6,7 +6,7 @@ import Image from "next/image";
 export default function CourseList({ id }) {
   return (
     <>
-      <div className="bg-white text-left cursor-pointer transition duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-lg rounded-[14px] shadow">
+      <div className="bg-white text-left cursor-pointer transition duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-lg rounded-[14px] shadow-lg shadow-[#000000]/20">
         {/* <img
           className="w-full h-[149px] rounded-t-[14px]"
           src="/assets/images/course-1.png"
