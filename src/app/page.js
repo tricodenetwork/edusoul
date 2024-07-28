@@ -13,8 +13,8 @@ export default function App() {
   return (
     <>
       <Navbar />
-      <main className='w-full box-border mt-[80px]'>
-        <HeroSection />
+      <HeroSection />
+      <main className='w-full px-3 sm:px-6 md:px-10 lg:px-6 xl:px-14 pt-[2rem] box-border mt-[80px]'>
         <Courses />
         <Limits />
       </main>
