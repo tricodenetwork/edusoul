@@ -14,7 +14,7 @@ export default function App() {
     <>
       <Navbar />
       <HeroSection />
-      <main className='w-full box-border px-3 sm:px-6 md:px-10 lg:px-6 xl:px-14'>
+      <main className='w-full px-3 sm:px-6 md:px-10 lg:px-6 xl:px-14 pt-[2rem] box-border mt-[80px]'>
         <Courses />
         <Limits />
       </main>
