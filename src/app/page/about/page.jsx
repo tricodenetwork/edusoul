@@ -9,55 +9,7 @@ import Belief from "@/components/shared/AboutUs/Belief";
 import Center from "@/components/shared/AboutUs/Center";
 import Footer from "@/components/shared/Footer";
 import HeroSection from "@/components/shared/AboutUs/Hero";
-
-// function Aboutus() {
-//   return (
-//     <>
-//       {/* <!-- ===== AboutUs Start ===== --> */}
-//       <NavBar />
-//       <section className="mx-auto">
-
-
-//         <Mission />
-//         <Belief />
-//         <Center />
-//       </section>
-//       <Footer />
-//       {/* <!-- ===== AboutUs End ===== --> */}
-//     </>
-//   );
-// }
-
-// export default Aboutus;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// ABOUT US UPDATED CODE 22/07/2024 START // 
+import { motion } from "framer-motion";
 
 function Aboutus() {
   return (
@@ -72,20 +24,56 @@ function Aboutus() {
 
         <div className="h-max bg-[#90050F] pt-40 pb-20">
 
-          <iframe 
-            src="https://www.youtube.com/embed/viHILXVY_eU?si=mQqGAGXU1NhUBfQf" 
-            title="YouTube video player" 
-            frameborder="0" 
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-            referrerpolicy="strict-origin-when-cross-origin" 
-            allowfullscreen
-            className="mx-auto lg:w-[915px] lg:h-[415px] rounded-2xl"
-          />
+          <motion.div
+            variants={{
+              hidden: {
+                opacity: 0,
+                y: 50,
+              },
+
+              visible: {
+                opacity: 1,
+                y: 0,
+              },
+            }}
+            initial="hidden"
+            whileInView="visible"
+            transition={{ duration: 1, delay: 0.1 }}
+            viewport={{ once: true }}
+            className="animate_top"
+          >
+            <iframe 
+              src="https://www.youtube.com/embed/viHILXVY_eU?si=mQqGAGXU1NhUBfQf" 
+              title="YouTube video player" 
+              frameborder="0" 
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+              referrerpolicy="strict-origin-when-cross-origin" 
+              allowfullscreen
+              className="mx-auto lg:w-[915px] lg:h-[415px] rounded-2xl"
+            />
+          </motion.div>
 
         </div>
 
         <div className="h-max">
+        <motion.div
+            variants={{
+              hidden: {
+                opacity: 0,
+                y: 50,
+              },
 
+              visible: {
+                opacity: 1,
+                y: 0,
+              },
+            }}
+            initial="hidden"
+            whileInView="visible"
+            transition={{ duration: 1, delay: 0.1 }}
+            viewport={{ once: true }}
+            className="animate_top"
+          >
             <div className="p-9">
               <div className="lg:p-9 font-extrabold lg:text-5xl text-center">
                 <p className="max-sm:text-[30px] max-sm:mb-3">Empower your career</p>
@@ -108,7 +96,7 @@ function Aboutus() {
               </div>
 
             </div>
-
+          </motion.div>
         </div>
 
         <Courses />

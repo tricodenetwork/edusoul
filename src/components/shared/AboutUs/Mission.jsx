@@ -2,6 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 function Mission() {
   return (
@@ -12,6 +13,25 @@ function Mission() {
         <div className="h-max flex justify-evenly max-sm:flex-col-reverse">
 
           <div className="lg:w-[50%] p-1">
+            
+            <motion.div
+                variants={{
+                  hidden: {
+                    opacity: 0,
+                    x: -50,
+                  },
+
+                  visible: {
+                    opacity: 1,
+                    x: 0,
+                  },
+                }}
+                initial="hidden"
+                whileInView="visible"
+                transition={{ duration: 1, delay: 0.1 }}
+                viewport={{ once: true }}
+                className="animate_left"
+              >
             <Image
               alt="logo"
               width={500}
@@ -20,10 +40,28 @@ function Mission() {
               src="/assets/images/about/mission.png"
               className="p-1 mx-auto"
             />
+            </motion.div>
           </div>
 
           <div className="lg:w-[50%] h-fit my-auto">
+          <motion.div
+            variants={{
+              hidden: {
+                opacity: 0,
+                x: 50,
+              },
 
+              visible: {
+                opacity: 1,
+                x: 0,
+              },
+            }}
+            initial="hidden"
+            whileInView="visible"
+            transition={{ duration: 1, delay: 0.1 }}
+            viewport={{ once: true }}
+            className="animate_right"
+          >
             <div className="font-extrabold lg:text-5xl mb-10">
               <p className="max-sm:text-[48px] max-sm:font-semibold max-sm:-mt-2">our Mission</p>
             </div>
@@ -39,6 +77,7 @@ function Mission() {
               </p>
 
             </div>
+            </motion.div>
           </div>
 
         </div>
