@@ -6,12 +6,13 @@ import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/Button";
 import AuthComponent from "@/components/shared/AuthComponent";
 import ShowHidePassword from "@/components/ui/ShowHidePassword";
+import { useAuth } from "@/context/AuthContext";
 
 const SignupForm = () => {
   const navigate = useRouter();
+  const { password, passwordError, handlePasswordChange } = useAuth();
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
   const [isLoading, setLoading] = useState(false);
   const [showPasswordToggle, setShowPasswordToggle] = useState(false);
 
@@ -24,7 +25,7 @@ const SignupForm = () => {
   const isFormValid = fullName && email && password;
 
   return (
-    <div className="flex mx-auto w-full text-center mt-[6em] md:mt-[17rem] xl:mt-[7rem] p-3 justify-center items-center flex-col">
+    <div className="flex mx-auto w-full text-center mt-[6em] md:mt-[25rem] p-3 justify-center items-center flex-col">
       <h2 className="text-[30px] text-black font-bold pt-5 sm:pt-1">
         Welcome to EduSoul
       </h2>
@@ -87,7 +88,7 @@ const SignupForm = () => {
               className="w-full bg-transparent outline-none border-none"
               type={showPasswordToggle ? "text" : "password"}
               placeholder="********"
-              onChange={(e) => setPassword(e.target.value)}
+              onChange={handlePasswordChange}
               value={password}
             />
             <p className="cursor-pointer text-primary" onClick={showPassword}>
@@ -97,6 +98,27 @@ const SignupForm = () => {
                 showPasswordToggle={showPasswordToggle}
               />
             </p>
+          </div>
+          {passwordError && (
+            <p className="text-red-500 text-sm mt-1">{passwordError}</p>
+          )}
+        </div>
+
+        <div className="flex flex-row mt-4 justify-start items-start gap-3">
+          <input
+            type="checkbox"
+            className="px-[3.33px] mt-1.5 rounded-sm border border-zinc-400"
+          />
+          <div className="w-[90%] justify-start items-start">
+            <span className="text-[#6f6f6f] text-base font-normal">
+              I have read and understood the{" "}
+            </span>
+            <span className="text-[#90050f] text-base font-medium">
+              terms and conditions{" "}
+            </span>
+            <span className="text-[#6f6f6f] text-base font-normal">
+              agreement of EduSoul
+            </span>
           </div>
         </div>
 

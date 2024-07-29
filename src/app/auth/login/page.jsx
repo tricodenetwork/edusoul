@@ -6,11 +6,12 @@ import { Router, useRouter } from "next/navigation";
 import { Button } from "@/components/ui/Button";
 import AuthComponent from "@/components/shared/AuthComponent";
 import ShowHidePassword from "@/components/ui/ShowHidePassword";
+import { useAuth } from "@/context/AuthContext";
 
 const SigninForm = () => {
   const navigate = useRouter();
+  const { password, passwordError, handlePasswordChange } = useAuth();
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
   const [isLoading, setLoading] = useState(false);
   const [showPasswordToggle, setShowPasswordToggle] = useState(false);
 
@@ -50,7 +51,9 @@ const SigninForm = () => {
 
       <div className="flex flex-col text-left gap-5 w-full mt-4">
         <div>
-          <label>Email<span className="text-star">*</span></label>
+          <label>
+            Email<span className="text-star">*</span>
+          </label>
           <input
             type="email"
             value={email}
@@ -62,14 +65,16 @@ const SigninForm = () => {
         </div>
 
         <div>
-          <label>Password<span className="text-star">*</span></label>
+          <label>
+            Password<span className="text-star">*</span>
+          </label>
 
           <div className="flex h-[45px] px-3.5 rounded-md border flex-row justify-center items-center gap-2 focus-within:ring-2 ring-primary">
             <input
               className="w-full bg-transparent outline-none border-none"
               type={showPasswordToggle ? "text" : "password"}
               placeholder="********"
-              onChange={(e) => setPassword(e.target.value)}
+              onChange={handlePasswordChange}
               value={password}
             />
             <p className="cursor-pointer text-primary" onClick={showPassword}>
@@ -80,6 +85,9 @@ const SigninForm = () => {
               />
             </p>
           </div>
+          {passwordError && (
+            <p className="text-red-500 text-sm mt-1">{passwordError}</p>
+          )}
         </div>
 
         <div className="w-full justify-between items-center inline-flex">
