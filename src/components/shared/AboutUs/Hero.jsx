@@ -6,17 +6,17 @@ import Link from "next/link";
 
 function HeroSection() {
   return (
-    <div className='mb-[15%]'>
+    <div>
       <div className='w-[95%] h-[35rem] md:h-[30rem] -z-20 top-12 bottom-0'>
         <Image
           alt='logo'
           fill
-          className='object-cover  rounded-md'
+          className='lg:object-contain max-sm:object-cover rounded-md'
           quality={100}
           src='/assets/images/about/product-images.png'
         />
       </div>
-      <section className='flex absolute top-[6rem] bottom-0 py-[5em] md:py-[4em] flex-col items-start justify-center'>
+      <section className='flex absolute top-[6rem] bottom-0 py-[5em] md:py-[4em] flex-col items-start justify-center max-sm:ml-5'>
         <div className='flex flex-col justify-start items-start gap-4 lg:ml-20'>
           <div className='justify-start items-start gap-2.5 inline-flex'>
             <div>
