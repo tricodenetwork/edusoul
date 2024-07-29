@@ -14,11 +14,9 @@ const AuthLayout = ({ children }) => {
   return (
     <>
       <Navbar />
-      <div className="flex w-full h-screen items-center justify-center gap-8">
-        <div className="w-[40%] hidden md:flex flex-col bg-secondary h-screen border-r border-appAsh2 h-full bg-appPink">
-          <Sidebar Header="" Message="" />
-        </div>
-        <div className="flex flex-col mx-auto w-full md:w-[50%] justify-center items-center overflow-y-auto">
+      <div className="flex flex-col md:flex-row h-screen justify-between items-center">
+        <Sidebar Header="" Message="" />
+        <div className="flex flex-col h-screen lg:pr-14 md:ml-[46%] lg:ml-[52%] w-full justify-center items-center overflow-y-auto">
           {children}
         </div>
       </div>

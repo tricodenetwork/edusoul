@@ -12,8 +12,8 @@ const Sidebar = ({ Header, Message }) => {
   //------------------------------------------------------------------USE EFFECTS
 
   return (
-    <div className="fixed flex px-6 py-10 mt-[6rem] xl:mt-[8rem] flex-col justify-center items-start">
-      <div className="relative w-[70%] h-[227px] xl:w-[60%] xl:h-[307px]">
+    <div className="hidden md:flex pt-[8em] p-10 flex-col justify-between items-center sm:w-[16em] md:w-[45%] bg-secondary h-screen fixed overflow-y-auto">
+      <div className="relative w-[90%] h-[207px] lg:w-[80%] lg:h-[307px]">
         <Image
           loader={imageLoader}
           alt="logo"
@@ -22,7 +22,7 @@ const Sidebar = ({ Header, Message }) => {
           src="/assets/images/sidebar_img.png"
         />
       </div>
-      <p className="flex text-black xl:text-2xl font-bold w-[70%] text-center mt-[5rem]">
+      <p className="flex text-black xl:text-2xl font-bold w-[70%] text-center">
         Join Us As We Take Your Christ-centered Education to the next level
       </p>
     </div>
