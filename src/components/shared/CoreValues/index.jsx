@@ -40,7 +40,7 @@ const CoreValues = () => {
                   {value.label}
                 </h2>
 
-                <p className="text-black xl:w-[60%]">
+                <p className="text-black xl:w-[70%]">
                   Pretium lectus ultrices sit tempor, sit ullamcorper volutpat
                   et et.
                 </p>

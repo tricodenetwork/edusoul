@@ -21,20 +21,20 @@ export default function Courses() {
     <>
       <Navbar />
       <section
-        className="pt-[7em] sm:pt-2 md:pt-[9em] mb-8 w-full justify-center items-center"
+        className="pt-[7em] sm:pt-2 md:pt-[9em] mb-8 px-3 sm:px-6 md:px-10 lg:px-6 xl:px-14 pt-[2rem] w-full justify-center items-center"
         id="courses"
       >
         <div className="flex flex-col justify-start items-center gap-4">
-          <div className="text-center text-slate-600 text-xl font-bold font-['Roboto'] uppercase leading-tight tracking-[3px]">
+          <h5 className="text-center text-slate-600 text-xl font-bold uppercase leading-tight tracking-[3px]">
             OUR courses
-          </div>
-          <div className="text-center text-slate-900 text-[30px] md:text-[56px] font-bold font-['Roboto']">
+          </h5>
+          <h2 className="text-center text-slate-900 text-[30px] md:text-[56px] font-bold">
             Access transformational courses
-          </div>
-          <div className="text-center text-slate-900 text-lg font-normal font-['Roboto']">
+          </h2>
+          <p className="text-center text-slate-900 text-lg font-normal">
             Sed ut vestibulum eget purus ornare. Risus elit et fringilla
             habitant ut facilisi.
-          </div>
+          </p>
 
           <div className="w-[90%] flex gap-4 justify-center items-center">
             {state.map((item, index) => (
@@ -43,7 +43,7 @@ export default function Courses() {
                 key={index.toString()}
                 className={`font-medium ${
                   item === active && "text-white bg-primary"
-                } px-5 py-2.5 mt-8 rounded-[10px] border border-primary justify-center items-center flex hover:bg-primary text-primary hover:text-white font-medium leading-normal tracking-wide transition-all duration-300 group`}
+                } px-5 py-2.5 mt-8 rounded-[10px] border border-primary justify-center items-center flex hover:bg-primary text-primary hover:text-white font-medium leading-normal tracking-wide transition-all duration-300 group shadow-lg shadow-[#000000]/20`}
               >
                 {item}
               </button>

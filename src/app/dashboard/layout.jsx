@@ -83,6 +83,7 @@ export default function RootLayout({ children }) {
           </ul>
         </div>
       </div>
+      
       <div className='w-full md:w-[85%]  overflow-y-scroll h-full'>
         {/* Top Section */}
         <div className='w-full px-[40px] border-b border-appAsh2 flex items-center justify-between py-[16px]  '>

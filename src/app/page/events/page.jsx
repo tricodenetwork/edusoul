@@ -10,8 +10,8 @@ export default function EventPage() {
   return (
     <>
       <Navbar />
-      <Events />
-      <div className="px-3 sm:px-6 md:px-10 lg:px-6 xl:px-14 pb-6">
+      <div className="px-3 sm:px-6 md:px-10 lg:px-6 xl:px-14 pb-6 mt-[6rem]">
+        <Events />
         <Past_Events />
       </div>
       <Footer />

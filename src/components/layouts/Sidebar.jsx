@@ -12,22 +12,19 @@ const Sidebar = ({ Header, Message }) => {
   //------------------------------------------------------------------USE EFFECTS
 
   return (
-    <div className="fixed hidden md:flex px-6 py-10 flex-col sm:w-[16em] md:w-[16em] lg:w-[25em] xl:w-[30em] bg-secondary h-screen justify-center">
-      <div className="flex flex-col gap-2">
-        <div className="h-[22rem]">
-          <Image
-            loader={imageLoader}
-            alt="logo"
-            width={350}
-            height={260}
-            className=""
-            src="/assets/images/sidebar_img.png"
-          />
-        </div>
-        <p className="flex text-black font-bold w-full text-center mt-0 xl:mt-[10rem]">
-          Join Us As We Take Your Christ-centered Education to the next level
-        </p>
+    <div className="fixed flex px-6 py-10 mt-[6rem] xl:mt-[8rem] flex-col justify-center items-start">
+      <div className="relative w-[70%] h-[227px] xl:w-[60%] xl:h-[307px]">
+        <Image
+          loader={imageLoader}
+          alt="logo"
+          fill
+          className=""
+          src="/assets/images/sidebar_img.png"
+        />
       </div>
+      <p className="flex text-black xl:text-2xl font-bold w-[70%] text-center mt-[5rem]">
+        Join Us As We Take Your Christ-centered Education to the next level
+      </p>
     </div>
   );
 };
