@@ -28,7 +28,7 @@ export default function Footer({ mobile }) {
               height={60}
               quality={100}
               className=""
-              src="/assets/images/edusoul.svg"
+              src="/assets/images/logo.svg"
             />
           </div>
           

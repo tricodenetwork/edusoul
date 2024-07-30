@@ -6,14 +6,15 @@ import Image from "next/image";
 export default function CourseList({ id }) {
   return (
     <div className="bg-white text-left cursor-pointer transition duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-lg rounded-[14px] shadow-lg shadow-[#000000]/20">
-      <Image
-        alt="courses"
-        width={500}
-        height={149}
-        quality={100}
-        className="rounded-t-[14px]"
-        src="/assets/images/course-1.png"
-      />
+      <div className="relative w-full h-[179px]">
+        <Image
+          alt="courses"
+          fill
+          quality={100}
+          className="rounded-t-[14px]"
+          src="/assets/images/course-1.png"
+        />
+      </div>
       <div className="flex px-2.5 py-[5px] bg-white mt-[-20px] gap-[5px] mx-4 z-50 relative rounded-[40px] justify-start items-center shadow-lg">
         <div className="flex px-2">
           <div className="w-[29.19px] h-[29.19px] mr-[-15px] bg-yellow-300 rounded-full justify-center items-center">
