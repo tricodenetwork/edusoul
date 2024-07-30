@@ -109,8 +109,8 @@ export const coreValuesdata = [
   },
   {
     id: 2,
-    imgURL: "/assets/icons/openness.svg",
-    label: "Openness",
+    imgURL: "/assets/icons/category.svg",
+    label: "Category",
   },
   {
     id: 3,
@@ -129,7 +129,7 @@ export const coreValuesdata = [
   },
   {
     id: 6,
-    imgURL: "/assets/icons/inclusion.svg",
+    imgURL: "/assets/icons/growth.svg",
     label: "Growth",
   },
 ];

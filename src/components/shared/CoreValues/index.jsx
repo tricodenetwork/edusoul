@@ -25,11 +25,11 @@ const CoreValues = () => {
           <div className="w-full mx-auto py-5 text-white grid lg:grid-cols-3 md:grid-cols-3 sm:grid-cols-2 lg:mx-auto gap-8 xl:gap-18">
             {coreValuesdata.map((value) => (
               <div className="max-w-[1200px] py-5 text-left mx-auto">
-                <div className="mb-2">
+                <div className="reletive w-[41.33px] h-[64px] mb-2">
                   <Image
                     alt="trustlogo"
-                    width={70}
-                    height={60}
+                    width={64}
+                    height={64}
                     quality={100}
                     className=""
                     src={value.imgURL}
