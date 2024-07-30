@@ -18,10 +18,10 @@ function HeroSection() {
           fill
           className="object-cover mx-auto rounded-[10px]"
           quality={100}
-          src="/assets/images/hero/home-1.png"
+          src="/assets/images/hero/home-2.png"
         />
       </div>
-      <section className="flex ml-4  md:ml-[68px] z-10 self-start mt-[20px] md:mt-[28px]   md:py-[4em] flex-col items-start h-max md:justify-center">
+      <section className="flex ml-4  md:ml-[30px] ml-[68px] z-10 self-start mt-[20px] md:mt-[28px]   md:py-[4em] flex-col items-start h-max md:justify-center">
         <div className="flex  flex-col justify-start items-start gap-6">
           <div className="text-white text-2xl md:text-[28px] font-medium">
             Distinct Christian Education{" "}
