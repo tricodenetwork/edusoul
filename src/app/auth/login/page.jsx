@@ -34,21 +34,6 @@ const SigninForm = () => {
         quick, easy, and free!
       </p>
 
-      <div>
-        <h2 className="text-[20px] text-black font-bold py-5 sm:pt-6">
-          Login with
-        </h2>
-        <AuthComponent />
-      </div>
-
-      <div className="w-full h-3.5 justify-center items-center gap-4 inline-flex">
-        <div className="w-[194px] h-[0px] border border-stone-300"></div>
-        <div className="text-neutral-500 text-xs font-normal font-['Roboto']">
-          OR
-        </div>
-        <div className="w-[194px] h-[0px] border border-stone-300"></div>
-      </div>
-
       <div className="flex flex-col text-left gap-5 w-full mt-4">
         <div>
           <label>
@@ -96,13 +81,13 @@ const SigninForm = () => {
               type="checkbox"
               className="w-4 h-4 px-[3.33px] rounded-sm border border-zinc-400 justify-center items-center flex"
             />
-            <div className="text-neutral-500 text-sm font-normal font-['Roboto']">
+            <div className="text-neutral-500 text-sm font-normal">
               Remember Me
             </div>
           </div>
           <Link
             href="/auth/forgot-password"
-            className="text-red-800 text-sm font-medium font-['Roboto']"
+            className="text-red-800 text-sm font-medium"
           >
             Forgot Password?
           </Link>
@@ -126,6 +111,23 @@ const SigninForm = () => {
           )}
         </Button>
 
+        <div className="w-full h-3.5 mt-2 justify-center items-center gap-4 inline-flex">
+          <div className="w-[194px] h-[0px] border border-stone-300"></div>
+          <div className="text-neutral-500 text-xs font-normal font-['Roboto']">
+            OR
+          </div>
+          <div className="w-[194px] h-[0px] border border-stone-300"></div>
+        </div>
+
+        <div className="flex mt-1 justify-center items-center">
+          <AuthComponent />
+        </div>
+        <div className="text-center text-sm font-normal">
+          <span className="text-[#171718] leading-[25.20px]">
+            By creating an account I accept Synergy book club’s{" "}
+          </span>
+          <span className="text-[#8f060e]">Terms and Conditions</span>
+        </div>
         <p className="text-small-regular text-light-2 text-center mt-2">
           Don’t have an account?
           <Link href="/auth/register" className="text-primary font-bold ml-1">

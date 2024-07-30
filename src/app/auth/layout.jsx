@@ -16,7 +16,7 @@ const AuthLayout = ({ children }) => {
       <Navbar />
       <div className="flex flex-col md:flex-row h-screen justify-between items-center">
         <Sidebar Header="" Message="" />
-        <div className="flex flex-col h-screen lg:pr-14 md:ml-[46%] lg:ml-[52%] w-full justify-center items-center overflow-y-auto">
+        <div className="flex flex-col h-screen lg:pr-12 md:ml-[46%] lg:ml-[50%] w-full justify-center items-center overflow-y-auto">
           {children}
         </div>
       </div>
