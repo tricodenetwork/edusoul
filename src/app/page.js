@@ -14,12 +14,14 @@ export default function App() {
     <>
       <Navbar />
       <HeroSection />
-      <Courses />
-      <main className='w-full px-3 sm:px-6 md:px-10 lg:px-6 xl:px-14 pt-[2rem] mt-[80px]'>
+      <main className='mt-[80px]'>
+        <Courses />
+      </main>
+      <main className='w-full px-3 sm:px-6 md:px-10 lg:px-6 xl:px-14 mt-[80px]'>
         <Limits />
       </main>
       <Mandate />
-      <main className='px-3 sm:px-6 md:px-10 lg:px-6 xl:px-14 pt-[2rem]'>
+      <main className='px-3 sm:px-6 md:px-10 lg:px-6 xl:px-14 mt-[80px]'>
         <CoreValues />
         {/* <Modules /> */}
       </main>
