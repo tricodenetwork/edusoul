@@ -109,7 +109,7 @@ export default function RootLayout({ children }) {
           <div className="flex items-center">
             <Link
               href={"/"}
-              className="w-[48px] h-[48px] mr-[16px] hidden md:flex items-center justify-center rounded-full shadow-[0px_2px_8px] shadow-black/10"
+              className="w-[48px] h-[48px] mr-[16px] hidden sm:flex items-center justify-center rounded-full shadow-[0px_2px_8px] shadow-black/10"
             >
               <Image
                 src={"/assets/icons/bell copy 2.svg"}
@@ -120,7 +120,7 @@ export default function RootLayout({ children }) {
             </Link>
             <Link
               href={"/"}
-              className="w-[48px] h-[48px] mr-[16px] hidden md:flex items-center justify-center rounded-full shadow-[0px_2px_8px] shadow-black/10"
+              className="w-[48px] h-[48px] mr-[16px] hidden sm:flex items-center justify-center rounded-full shadow-[0px_2px_8px] shadow-black/10"
             >
               <Image
                 src={"/assets/icons/message copy 2.svg"}

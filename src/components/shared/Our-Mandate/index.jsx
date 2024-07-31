@@ -13,7 +13,7 @@ export default function Mandate({ mobile }) {
             <h5 className="text-[#475569] text-xl font-bold uppercase tracking-[3px]">
               Our Mandate
             </h5>
-            <h3 className="text-appBlack text-[26px] md:text-[56px] leading-none xl:w-[80%] font-extrabold">
+            <h3 className="text-appBlack text-[36px] md:text-[56px] leading-none xl:w-[80%] font-extrabold">
               What drives us to do what we do
             </h3>
           </div>

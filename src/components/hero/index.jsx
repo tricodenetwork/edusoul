@@ -11,8 +11,8 @@ function HeroSection() {
   // const { responsive } = useAuth();
 
   return (
-    <div className=" w-full mx-auto mt-[80px] flex px-5 md:px-[60px] bg-primary bg-opacity-[0.03]  pt-[12vh] md:pt-[126px]  flex-col items-start  justify-start  relative h-[120vh]">
-      <div className="w-full md:w-[94%] mx-auto   top-0  mt-[20px] md:mt-[28px] self-center h-[70vh] md:h-[674px] absolute">
+    <div className=" w-full mx-auto md:mt-[80px] flex px-5 md:px-[60px] bg-primary bg-opacity-[0.03]  pt-[16vh] md:pt-[126px]  flex-col items-start  justify-start  relative h-[120vh]">
+      <div className="w-full md:w-[94%] mx-auto top-0 mt-[20px] md:mt-[28px] self-center h-[86vh] md:h-[674px] absolute">
         <Image
           alt="logo"
           fill

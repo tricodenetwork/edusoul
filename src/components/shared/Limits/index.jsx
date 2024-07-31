@@ -5,8 +5,8 @@ import Image from "next/image";
 
 export default function Limits() {
   return (
-    <div className="flex md:h-[374px] flex-col-reverse md:flex-row mt-16 justify-between items-center">
-      <div className="relative md:w-[48%] h-full">
+    <div className="flex h-full md:h-[374px] flex-col-reverse md:flex-row mt-16 justify-between items-center">
+      <div className="relative w-full md:w-[48%] h-full">
         <Image
           alt="limits"
           fill
@@ -20,7 +20,7 @@ export default function Limits() {
           <h5 className="text-[#475569] text-xl font-bold uppercase tracking-[3px]">
             No limits
           </h5>
-          <h3 className="text-appBlack text-[26px] md:text-[56px] leading-none xl:w-[80%] font-extrabold">
+          <h3 className="text-appBlack text-[36px] md:text-[56px] leading-none xl:w-[80%] font-extrabold">
             What we plan to achieve with you
           </h3>
         </div>
