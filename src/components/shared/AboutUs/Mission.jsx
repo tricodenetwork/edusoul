@@ -41,6 +41,7 @@ function Mission() {
               className="p-1 mx-auto"
             />
             </motion.div>
+            
           </div>
 
           <div className="lg:w-[50%] h-fit my-auto">

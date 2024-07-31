@@ -22,7 +22,7 @@ function Aboutus() {
 
         <HeroSection />
 
-        <div className="h-max bg-[#90050F] pt-40 pb-20">
+        <div className="h-max bg-[#D6D6D6] pt-[15%] pb-[8%]">
 
           <motion.div
             variants={{
@@ -56,7 +56,7 @@ function Aboutus() {
         </div>
 
         <div className="h-max">
-        <motion.div
+          <motion.div
             variants={{
               hidden: {
                 opacity: 0,

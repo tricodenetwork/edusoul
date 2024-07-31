@@ -1,11 +1,29 @@
 "use client";
 
-import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 export default function Events() {
   return (
+      <motion.div
+        variants={{
+          hidden: {
+            opacity: 0,
+            y: 50,
+          },
+
+          visible: {
+            opacity: 1,
+            y: 0,
+          },
+        }}
+        initial="hidden"
+        whileInView="visible"
+        transition={{ duration: 1, delay: 0.1 }}
+        viewport={{ once: true }}
+        className="animate_top"
+      >
       <div className="flex lg:h-[792px] flex-col-reverse bg-[#8f060e]/5 lg:flex-row mt-[80px] px-14 xl:px-20 py-20 w-full gap-8 justify-center lg:items-center rounded">
         <div className="relative w-[48%] h-[80%]">
           <Image
@@ -60,5 +78,6 @@ export default function Events() {
           </Link>
         </div>
       </div>
+      </motion.div>
   );
 }
