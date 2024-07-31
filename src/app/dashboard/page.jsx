@@ -4,7 +4,7 @@ import React from "react";
 
 const Index = () => {
   return (
-    <div className='w-full flex-col md:flex-row flex justify-between px-[20px] lg:px-[40px] pt-[24px]'>
+    <div className='w-full flex-col md:flex-row flex justify-between px-3 sm:px-[20px] lg:px-[40px] pt-[24px]'>
       {/* First Section */}
       <section className='w-full lg:w-[65%] h-full'>
         {/* Welcome Card */}
@@ -12,7 +12,7 @@ const Index = () => {
           <h3 className='text-2xl text-white font-semibold'>
             Welcome Back, Angel
           </h3>
-          <p className='text-white max-w-[454px] text-xs'>
+          <p className='text-white z-50 max-w-[454px] text-xs'>
             You are making progress course journey. Keep going to achieve your
             educational goals! Click on the Continue button to proceed with your
             enrollment.
@@ -30,19 +30,20 @@ const Index = () => {
             />
           </div>
         </div>
+
         {/* Courses */}
-        <div className='rounded-[8px] mt-[24px] flex flex-col border border-appAsh2 p-3 lg:p-6'>
+        <div className='rounded-[8px] mt-[24px] w-full h-[344px] flex flex-col border border-appAsh2 p-3 lg:p-6'>
           <div className='flex items-center justify-between'>
             <p className='font-semibold  text-appBlack'>Montessori Course</p>
             <p className='text-xs text-appAsh uppercase font-bold'>
               View All Courses
             </p>
           </div>
-          <div className='flex-col md:flex-row flex mt-[24px] justify-between  lg:px-[16px] items-center'>
+          <div className='flex flex-col sm:flex-row w-full mt-[24px] justify-between gap-3 lg:px-[16px] items-center overflow-y-auto'>
             {[1, 2, 3].map((item) => (
               <div
                 key={item.toString()}
-                className='flex  items-center mb-6 md:mb-0 md:items-start w-full md:w-max  md:flex-col'
+                className='flex  items-center mb-6 md:mb-0 md:items-start w-full lg:w-max  md:flex-col'
               >
                 <div>
                   <Image
@@ -92,7 +93,7 @@ const Index = () => {
           </div>
         </div>
         {/* Notifications */}
-        <div className='rounded-[8px] mt-[24px] flex flex-col border border-appAsh2 p-3 lg:p-6'>
+        <div className='rounded-[8px] mt-[24px] w-full flex flex-col border border-appAsh2 p-3 lg:p-6'>
           <div className='flex items-center justify-between'>
             <p className='font-semibold  text-appBlack'>Notifications</p>
             <p className='text-xs text-appAsh uppercase font-bold'>View All</p>
@@ -151,7 +152,7 @@ const Index = () => {
       </section>
 
       {/* Second Section */}
-      <section className='lg:w-[32%] mt-6 md:mt-0'>
+      <section className='w-full md:w-[80%] lg:w-full mt-6 md:mt-0 md:ml-4'>
         {/* Deadlines */}
         <div className='w-full border border-appAsh2 mb-[24px] p-3 lg:p-6 h-max bg-appPink rounded-[12px]'>
           <h5 className='text-appBlack font-semibold mb-[24px]'>
