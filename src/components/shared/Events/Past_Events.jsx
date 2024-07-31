@@ -1,14 +1,32 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import Link from "next/link";
 import Image from "next/image";
 import { Check } from "@mui/icons-material";
+import { motion } from "framer-motion";
 
 export default function Past_Events() {
   return (
     <div className="flex flex-col lg:flex-row mt-20 justify-center lg:items-center gap-12">
+
       <div className="flex-col lg:w-[50%] h-full justify-center items-start gap-4 flex">
+      <motion.div
+          variants={{
+            hidden: {
+              opacity: 0,
+              x: -50,
+            },
+
+            visible: {
+              opacity: 1,
+              x: 0,
+            },
+          }}
+          initial="hidden"
+          whileInView="visible"
+          transition={{ duration: 1, delay: 0.1 }}
+          viewport={{ once: true }}
+          className="animate_left"
+        >
         <div className="flex-col justify-start items-start gap-3 flex">
           <h5 className="text-primary text-xl font-bold uppercase tracking-[3px]">
             Past Event
@@ -53,9 +71,30 @@ export default function Past_Events() {
             </div>
           </div>
         </div>
+        
+      </motion.div>
       </div>
 
+
       <div className="relative lg:w-[40%] h-full">
+        <motion.div
+          variants={{
+            hidden: {
+              opacity: 0,
+              x: 50,
+            },
+
+            visible: {
+              opacity: 1,
+              x: 0,
+            },
+          }}
+          initial="hidden"
+          whileInView="visible"
+          transition={{ duration: 1, delay: 0.1 }}
+          viewport={{ once: true }}
+          className="animate_right"
+        >
         <Image
           alt="past-event"
             width={550}
@@ -64,6 +103,7 @@ export default function Past_Events() {
           className="object-cover"
           src="/assets/images/post_event.png"
         />
+        </motion.div>
       </div>
 
       {/* <div className="flex flex-col md:flex-row mt-16 justify-start items-center gap-12">
