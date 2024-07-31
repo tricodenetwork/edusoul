@@ -1,8 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import WbTwilightIcon from "@mui/icons-material/WbTwilight";
-import EastIcon from "@mui/icons-material/East";
-import Link from "next/link";
+import { motion } from "framer-motion";
 
 function HeroSection() {
   return (
@@ -17,6 +15,24 @@ function HeroSection() {
         />
       </div>
       <section className='flex absolute top-[6rem] bottom-0 py-[5em] md:py-[4em] flex-col items-start justify-center max-sm:ml-5'>
+          <motion.div
+            variants={{
+              hidden: {
+                opacity: 0,
+                x: -50,
+              },
+
+              visible: {
+                opacity: 1,
+                x: 0,
+              },
+            }}
+            initial="hidden"
+            whileInView="visible"
+            transition={{ duration: 1, delay: 0.1 }}
+            viewport={{ once: true }}
+            className="animate_left"
+          >
         <div className='flex flex-col justify-start items-start gap-4 lg:ml-20'>
           <div className='justify-start items-start gap-2.5 inline-flex'>
             <div>
@@ -44,6 +60,7 @@ function HeroSection() {
             </span>
           </div>
         </div>
+        </motion.div>
       </section>
     </div>
   );
