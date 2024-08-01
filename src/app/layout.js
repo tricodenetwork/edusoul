@@ -1,6 +1,7 @@
 import { Roboto } from "next/font/google";
 import "./globals.css";
 import AuthContextProvider from "@/context/AuthContext";
+import Navbar from "@/components/shared/NavBar/nav";
 
 const inter = Roboto({
   subsets: ["latin"],
@@ -16,7 +17,11 @@ export default function RootLayout({ children }) {
   return (
     <html lang='en'>
       <AuthContextProvider>
-        <body className={inter.className}>{children}</body></AuthContextProvider>
+        <body className={`${inter.className} flex flex-col`}>
+          <Navbar />
+          {children}
+        </body>
+      </AuthContextProvider>
     </html>
   );
 }

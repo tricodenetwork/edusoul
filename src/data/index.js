@@ -1,19 +1,19 @@
 import { Home } from "@mui/icons-material";
 import WifiTetheringIcon from "@mui/icons-material/WifiTethering";
 import AutoStoriesIcon from "@mui/icons-material/AutoStories";
-import LocalLibraryIcon from '@mui/icons-material/LocalLibrary';
+import LocalLibraryIcon from "@mui/icons-material/LocalLibrary";
 
 export const navdata = [
   {
     imgURL: <Home />,
-    route: "#courses",
-    route2: "/page/courses",
+    route: "/courses",
+    route2: "/courses",
     label: "Courses",
   },
   {
     imgURL: <WifiTetheringIcon />,
-    route: "/page/about",
-    route2: "/page/about",
+    route: "/about",
+    route2: "/about",
     label: "About",
   },
   {
@@ -23,20 +23,18 @@ export const navdata = [
     label: "Our Mandate",
   },
   {
-    imgURL: <LocalLibraryIcon/>,
-    route: "/page/events",
-    route2: "/page/events",
+    imgURL: <LocalLibraryIcon />,
+    route: "/events",
+    route2: "/events",
     label: "Events",
   },
   {
-    imgURL: <LocalLibraryIcon/>,
+    imgURL: <LocalLibraryIcon />,
     route: "#faq",
     route2: "/#faq",
     label: "FAQ",
   },
 ];
-
-
 
 export const modulesData = [
   {
@@ -66,26 +64,25 @@ export const modulesData = [
   },
 ];
 
-
 export const coursesData = [
   {
-    id: 1,
-    imgURL: "",
+    id: "Advanced Classroom Assistant",
+    imgURL: "/hat.png",
     label: "Courses",
   },
   {
-    id: 2,
-    imgURL: "",
+    id: "Diploma in Christian Education",
+    imgURL: "/book.png",
     label: "Courses",
   },
   {
-    id: 3,
-    imgURL: "",
+    id: "Enhanced Professional Development Certificate in Christian Education",
+    imgURL: "/leadership.png",
     label: "Courses",
   },
   {
-    id: 4,
-    imgURL: "",
+    id: "Post Graduate Certificate in Christian Education",
+    imgURL: "/headphones.png",
     label: "Courses",
   },
   {
@@ -99,7 +96,6 @@ export const coursesData = [
     label: "Courses",
   },
 ];
-
 
 export const coreValuesdata = [
   {

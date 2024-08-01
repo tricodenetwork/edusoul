@@ -76,7 +76,7 @@ const Navbar = () => {
                 >
                   <Link
                     href={`${pathname === "/" ? link.route : link.route2}`}
-                    className={`flex gap-4 items-center p-4 `}
+                    className={`flex gap-4 hover:text-primary text-sm duration-150 items-center p-4 `}
                   >
                     {link.label}
                   </Link>
