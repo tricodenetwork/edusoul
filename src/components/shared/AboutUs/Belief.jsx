@@ -2,12 +2,13 @@
 
 import React from "react";
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 function Mission() {
   return (
     <>
       {/* <!-- ===== Mission Start ===== --> */}
-      <section className='mx-auto px-3 sm:px-6 md:px-10 lg:px-6 xl:px-14 mb-20'>
+      <section className='mx-auto mb-20'>
         <div className='h-max lg:flex justify-evenly'>
           <div className='lg:w-[50%]'>
             <div className='lg:p-9 font-extrabold lg:text-5xl'>
