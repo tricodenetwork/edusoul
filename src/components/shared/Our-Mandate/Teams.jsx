@@ -15,12 +15,12 @@ export default function Teams({ mobile }) {
             src="/assets/images/ideas/ideas-1.png"
           />
 
-          <div className="flex p-4 bg-rose-200 lg:h-[535px] flex-col justify-center items-start gap-8">
+          <div className="flex p-4 bg-rose-200 h-[535px] flex-col justify-center items-start gap-8">
             <div className="flex-col justify-start items-start gap-4 flex">
               <h4 className="text-primary text-xl font-bold uppercase tracking-[3px]">
                 Team work
               </h4>
-              <h3 className="text-primary text-[36px] md:text-[56px] leading-none xl:w-[80%] font-extrabold">
+              <h3 className="text-primary text-[36px] lg:text-[56px] leading-none xl:w-[80%] font-extrabold">
                 Easily transition with your team{" "}
               </h3>
             </div>
