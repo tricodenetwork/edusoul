@@ -38,8 +38,8 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`${
-        sideNav ? "bg-white" : "bg-white"
+      className={`${sideNav ? "bg-white" : "bg-white"} ${
+        pathname.includes("auth") && "hidden"
       } fixed border-b w-full h-[60px] sm:h-[80px] px-3 md:px-10 lg:px-6 xl:px-14 shadow-lg z-50 flex flex-row justify-between items-center`}
     >
       <motion.nav
@@ -93,13 +93,14 @@ const Navbar = () => {
         transition={{ duration: 0.2 }}
         className='md:flex w-[15em] md:w-[20%] justify-end hidden items-center'
       >
-        <button
-          className={`font-bold bg-primary text-white hover:bg-gray-100 hover:text-primary ${
-            pathname === `/auth/login` || `/${url}` ? "hidden" : "block"
-          } py-3 text-center w-full md:w-[15em] rounded-md`}
+        <Link
+          href={"/auth/login"}
+          className={`font-bold w-[150px] bg-primary text-white duration-300 hover:bg-gray-100 hover:text-primary ${
+            pathname === `/auth/login` || `/${url}` ? "" : "block"
+          } py-3 text-center w-full md:w-[150px] rounded-md`}
         >
           Get Started
-        </button>
+        </Link>
       </motion.div>
 
       <button

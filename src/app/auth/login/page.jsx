@@ -25,76 +25,73 @@ const SigninForm = () => {
 
   const isFormValid = email && password;
   return (
-    <div className="flex mx-auto text-center mt-[10rem] md:mt-[16rem] lg:mt-[19rem] xl:mt-[9rem] p-3 justify-center items-center flex-col">
-      <h2 className="text-[30px] text-black font-bold pt-5 sm:pt-1">
-        Welcome back to EduSoul
-      </h2>
-      <p className="md:w-[80%] small-medium md:base-regular mt-2">
-        Get ready to enjoy all the features and benefits we have to offer. It's
-        quick, easy, and free!
+    <div className='flex text-center  w-[68%] p-3 justify-center items-center flex-col'>
+      <h2 className='text-[30px] text-black font-bold pt-5 sm:pt-1'>Sign in</h2>
+      <p className='md:w-[80%] text-[#6f6f6f]   regular mt-2'>
+        Enter your email address and password to sign in
       </p>
 
-      <div className="flex flex-col text-left gap-5 w-full mt-4">
+      <div className='flex flex-col text-left gap-5 w-full mt-4'>
         <div>
           <label>
-            Email<span className="text-star">*</span>
+            Email <span className='text-star'> *</span>
           </label>
           <input
-            type="email"
+            type='email'
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            placeholder="Enter your email"
-            className="bg-gray-30 h-[45px] text-sm rounded-md block w-full p-3.5 border border-gray-300 outline-primary"
+            placeholder='Enter your email'
+            className='bg-gray-30 h-[45px] text-sm rounded-md block w-full p-3.5 border border-gray-300 outline-primary'
             required
           />
         </div>
 
         <div>
           <label>
-            Password<span className="text-star">*</span>
+            Password <span className='text-star'>*</span>
           </label>
 
-          <div className="flex h-[45px] px-3.5 rounded-md border flex-row justify-center items-center gap-2 focus-within:ring-2 ring-primary">
+          <div className='flex h-[45px] px-3.5 rounded-md border flex-row justify-center items-center gap-2 focus-within:ring-2 ring-primary'>
             <input
-              className="w-full bg-transparent outline-none border-none"
+              className='w-full bg-transparent outline-none border-none'
               type={showPasswordToggle ? "text" : "password"}
-              placeholder="********"
+              placeholder='********'
               onChange={handlePasswordChange}
               value={password}
             />
-            <p className="cursor-pointer text-primary" onClick={showPassword}>
+            <p className='cursor-pointer text-primary' onClick={showPassword}>
               <ShowHidePassword
-                className=""
+                className=''
                 onClick={showPassword}
                 showPasswordToggle={showPasswordToggle}
               />
             </p>
           </div>
           {passwordError && (
-            <p className="text-red-500 text-sm mt-1">{passwordError}</p>
+            <p className='text-red-500 text-xs mt-1'>{passwordError}</p>
           )}
         </div>
 
-        <div className="w-full justify-between items-center inline-flex">
-          <div className="justify-center items-center gap-1 flex">
+        <div className='w-full justify-between my-4  items-center inline-flex'>
+          <div className='justify-center items-center gap-1 flex'>
             <input
-              type="checkbox"
-              className="w-4 h-4 px-[3.33px] rounded-sm border border-zinc-400 justify-center items-center flex"
+              type='checkbox'
+              className='w-4 h-4 px-[3.33px] rounded-sm border border-zinc-400 justify-center items-center flex'
             />
-            <div className="text-neutral-500 text-sm font-normal">
+            <div className='text-neutral-500 text-sm font-normal'>
               Remember Me
             </div>
           </div>
           <Link
-            href="/auth/forgot-password"
-            className="text-red-800 text-sm font-medium"
+            href='/auth/forgot-password'
+            className='text-red-800 text-sm font-medium'
           >
             Forgot Password?
           </Link>
         </div>
 
         <Button
-          type="submit"
+          type='submit'
           onClick={signInAccount}
           className={`bg-primary text-white p-3 rounded-md ${
             !isFormValid && "opacity-50 cursor-not-allowed"
@@ -102,8 +99,8 @@ const SigninForm = () => {
           disabled={!isFormValid || isLoading}
         >
           {isLoading ? (
-            <div className="flex gap-3 justify-center items-center">
-              <div className="animate-spin rounded-full h-5 w-5 border-b-4 border-white"></div>
+            <div className='flex gap-3 justify-center items-center'>
+              <div className='animate-spin rounded-full h-5 w-5 border-b-4 border-white'></div>
               Loading...
             </div>
           ) : (
@@ -111,26 +108,24 @@ const SigninForm = () => {
           )}
         </Button>
 
-        <div className="w-full h-3.5 mt-2 justify-center items-center gap-4 inline-flex">
-          <div className="w-[194px] h-[0px] border border-stone-300"></div>
-          <div className="text-neutral-500 text-xs font-normal font-['Roboto']">
-            OR
-          </div>
-          <div className="w-[194px] h-[0px] border border-stone-300"></div>
+        <div className='w-full  h-3.5 my-4 justify-center items-center gap-4 inline-flex'>
+          <div className='w-[194px] h-[0px] border border-stone-300'></div>
+          <div className='text-neutral-500 text-xs font-normal'>Or</div>
+          <div className='w-[194px] h-[0px] border border-stone-300'></div>
         </div>
 
-        <div className="flex mt-1 justify-center items-center">
+        <div className='flex mt-1 justify-center items-center'>
           <AuthComponent />
         </div>
-        <div className="text-center text-sm font-normal">
-          <span className="text-[#171718] leading-[25.20px]">
+        <div className='text-center text-sm font-normal'>
+          <span className='text-[#171718]'>
             By creating an account I accept Synergy book club’s{" "}
           </span>
-          <span className="text-[#8f060e]">Terms and Conditions</span>
+          <span className='text-[#8f060e] text-xs'>Terms and Conditions</span>
         </div>
-        <p className="text-small-regular text-light-2 text-center mt-2">
+        <p className='text-xs  text-center'>
           Don’t have an account?
-          <Link href="/auth/register" className="text-primary font-bold ml-1">
+          <Link href='/auth/register' className='text-primary font-bold ml-1'>
             Create Account
           </Link>
         </p>

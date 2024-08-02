@@ -36,8 +36,8 @@ function Center() {
               </div>
             </div>
 
-            <div className='lg:w-[50%]  text-gray-400 leading-relaxed p-10'>
-              <li className='w-[80%] bord'>
+            <div className='lg:w-[50%] text-gray-400 leading-relaxed p-10'>
+              <li className=''>
                 Professional career developement as critical, innovative
                 educators.
               </li>

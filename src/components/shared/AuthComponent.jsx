@@ -9,7 +9,7 @@ const AuthComponent = () => {
   const ellipseStyle =
     "w-[30px] md:w-[40px] flex items-center hover:bg-binance_green  hover:bg-opacity-40 duration-100 hover:scale-90 hover:cursor-pointer justify-center border h-[30px] md:h-[40px] rounded-full";
   return (
-    <div className='flex w-[200px] md:w-[279.468px] h-[65px] justify-between'>
+    <div className='flex w-[200px] md:w-[279.468px] h-[65px] items-center justify-center center gap-6'>
       <div
         onClick={() =>
           signIn("google", {

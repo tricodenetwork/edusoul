@@ -6,49 +6,74 @@ import { motion } from "framer-motion";
 
 function Mission() {
   return (
-    <>
-      {/* <!-- ===== Mission Start ===== --> */}
-      <section className='mx-auto mb-20'>
-        <div className='h-max lg:flex justify-evenly'>
-          <div className='lg:w-[50%]'>
-            <div className='lg:p-9 font-extrabold lg:text-5xl'>
-              <p className='leading-relaxed'>
-                Fundamental of the faith we believe in
-              </p>
-            </div>
+    <div className='h-max mb-20 pt-[80px] lg:flex justify-between'>
+      <motion.div
+        variants={{
+          hidden: {
+            opacity: 0,
+            x: -50,
+          },
 
-            <div className='lg:p-9 lg:w-[96%]'>
-              <li>The inspiration of the bible.</li>
-              <li>Belief in the one God; Father, Son, and Holy Spirit.</li>
-              <li>
-                The pre-existence, incarnation, and resurrection of Jesus
-                Christ.
-              </li>
-              <li>
-                The fall of man and the need for regenration through the Holy
-                Spirit.
-              </li>
-              <li>
-                Living a life of righteousness and holiness, seperate from
-                worldly values.
-              </li>
-            </div>
-          </div>
+          visible: {
+            opacity: 1,
+            x: 0,
+          },
+        }}
+        initial='hidden'
+        whileInView='visible'
+        transition={{ duration: 1, delay: 0.1 }}
+        viewport={{ once: true }}
+        className='animate_left lg:w-[45%] flex flex-col justify-center'
+      >
+        <p className='p-2 text-[55px] max-sm:text-[30px] max-sm:leading-[2rem] font-semibold leading-[3.5rem]'>
+          Fundamental of the faith we believe in
+        </p>
 
-          <div className='lg:w-[50%] p-1'>
-            <Image
-              alt='logo'
-              width={500}
-              height={500}
-              quality={100}
-              src='/assets/images/Belief.png'
-              className='p-1 mx-auto'
-            />
-          </div>
-        </div>
-      </section>
-      {/* <!-- ===== Mission End ===== --> */}
-    </>
+        <ul className='list-disc mt-7 ml-8'>
+          <li>The inspiration of the bible.</li>
+          <li>Belief in the one God; Father, Son, and Holy Spirit.</li>
+          <li>
+            The pre-existence, incarnation, and resurrection of Jesus Christ.
+          </li>
+          <li>
+            The fall of man and the need for regenration through the Holy
+            Spirit.
+          </li>
+          <li>
+            Living a life of righteousness and holiness, seperate from worldly
+            values.
+          </li>
+        </ul>
+      </motion.div>
+
+      <motion.div
+        variants={{
+          hidden: {
+            opacity: 0,
+            x: 50,
+          },
+
+          visible: {
+            opacity: 1,
+            x: 0,
+          },
+        }}
+        initial='hidden'
+        whileInView='visible'
+        transition={{ duration: 1, delay: 0.1 }}
+        viewport={{ once: true }}
+        className='animate_right flex justify-end w-[45%]'
+      >
+        <Image
+          alt='logo'
+          width={500}
+          height={500}
+          quality={100}
+          src='/assets/images/Belief.png'
+          className='p-1'
+        />
+      </motion.div>
+    </div>
   );
 }
 

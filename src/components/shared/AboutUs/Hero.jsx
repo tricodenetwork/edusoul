@@ -4,8 +4,8 @@ import { motion } from "framer-motion";
 
 function HeroSection() {
   return (
-    <div>
-      <div className='w-[95%] h-[35rem] md:h-[30rem] -z-20 top-12 bottom-0'>
+    <div className=''>
+      <div className='w-[95%] h-[35rem] md:h-[85vh] -z-20  bottom-0'>
         <Image
           alt='logo'
           fill

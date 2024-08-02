@@ -17,7 +17,9 @@ export default function RootLayout({ children }) {
   return (
     <html lang='en'>
       <AuthContextProvider>
-        <body className={`${inter.className} flex flex-col`}>
+        <body
+          className={`${inter.className} flex w-full h-full overflow-y-hidden flex-col`}
+        >
           <Navbar />
           {children}
         </body>

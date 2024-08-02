@@ -8,7 +8,7 @@ import { coursesData } from "@/data";
 export default function Courses() {
   return (
     <section
-      className='pb-[80px]  w-full px-3 sm:px-6 md:px-10 lg:px-6 xl:px-14 pt-[2rem] box-border justify-center items-center'
+      className='pb-[80px]  w-full  pt-[2rem] box-border justify-center items-center'
       id='courses'
     >
       <div className='flex flex-col justify-start items-center gap-4'>
@@ -20,7 +20,7 @@ export default function Courses() {
           ut facilisi.
         </div>
 
-        <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4  gap-[25px] mt-6'>
+        <div className=' w-full grid  grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4  gap-[25px] mt-6'>
           {coursesData.slice(0, 4).map((course) => (
             <CourseList key={course.id} course={course} />
           ))}
@@ -28,7 +28,7 @@ export default function Courses() {
 
         <Link href={"/courses"}>
           <button className='px-5 py-2.5 mt-8 rounded-[10px] hover:bg-white border-2 hover:border-primary justify-center items-center flex bg-primary transition-all duration-300 group'>
-            <div className='hover:text-primary text-xl font-medium leading-normal tracking-wide text-white'>
+            <div className='group-hover:text-primary text-xl font-medium leading-normal tracking-wide text-white'>
               View All Courses
             </div>
           </button>

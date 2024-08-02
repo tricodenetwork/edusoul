@@ -16,76 +16,91 @@ export default function Footer({ mobile }) {
   return (
     <>
       <section
-        className="w-full md:h-72 px-5 md:px-12 bg-gray flex-col justify-center items-start border-t inline-flex"
-        id="footer"
+        className='w-full md:h-72 px-5 md:px-12 bg-gray flex-col justify-center items-start border-t inline-flex'
+        id='footer'
       >
-        <div className="flex flex-col md:flex-row md:w-full py-3 border-b border-slate-200 justify-between items-start md:items-center gap-3">
-          <div className="w-[24vh] h-[16vh] bg-white justify-center items-center flex">
+        <div className='flex flex-col md:flex-row md:w-full py-3 border-b border-slate-200 justify-between items-start md:items-center gap-3'>
+          <div className='w-[24vh] h-[16vh] bg-white justify-center items-center flex'>
             <Image
               loader={imageLoader}
-              alt="logo"
+              alt='logo'
               width={200}
               height={60}
               quality={100}
-              className=""
-              src="/assets/images/logo.svg"
+              className=''
+              src='/assets/images/logo.svg'
             />
           </div>
-          
-          <div className="flex flex-col md:flex-row w-auto gap-8 justify-center items-start md:items-center">
-            <div className="h-11 py-3 justify-start items-center gap-2 flex">
-              <div className="text-slate-900 text-base font-normal font-['Roboto'] leading-snug">
+
+          <div className='flex flex-col md:flex-row w-auto gap-8 justify-center items-start md:items-center'>
+            <div className='h-11 py-3 justify-start items-center gap-2 flex'>
+              <Link
+                href={"/courses"}
+                className="text-slate-900 text-base font-normal font-['Roboto'] leading-snug"
+              >
                 Our Courses
-              </div>
+              </Link>
             </div>
-            <div className="h-11 py-3 justify-start items-center gap-2 flex">
-              <div className="text-slate-900 text-base font-normal font-['Roboto'] leading-snug">
+            <div className='h-11 py-3 justify-start items-center gap-2 flex'>
+              <Link
+                href={"/about"}
+                className="text-slate-900 text-base font-normal font-['Roboto'] leading-snug"
+              >
                 About
-              </div>
+              </Link>
             </div>
-            <div className="h-11 py-3 justify-start items-center gap-2 flex">
-              <div className="text-slate-900 text-base font-normal font-['Roboto'] leading-snug">
+            <div className='h-11 py-3 justify-start items-center gap-2 flex'>
+              <Link
+                href={"/#our-mandate"}
+                className="text-slate-900 text-base font-normal font-['Roboto'] leading-snug"
+              >
                 Our Mandate
-              </div>
+              </Link>
             </div>
-            <div className="h-11 py-3 justify-start items-center gap-2 flex">
-              <div className="text-slate-900 text-base font-normal font-['Roboto'] leading-snug">
+            <div className='h-11 py-3 justify-start items-center gap-2 flex'>
+              <Link
+                href={"/courses"}
+                className="text-slate-900 text-base font-normal font-['Roboto'] leading-snug"
+              >
                 Modules
-              </div>
+              </Link>
             </div>
-            <div className="h-11 py-3 justify-start items-center gap-2 flex">
-              <div className="text-slate-900 text-base font-normal font-['Roboto'] leading-snug">
+            <div className='h-11 py-3 justify-start items-center gap-2 flex'>
+              <Link
+                href={"/#faq"}
+                className="text-slate-900 text-base font-normal font-['Roboto'] leading-snug"
+              >
                 FAQ
-              </div>
+              </Link>
             </div>
           </div>
         </div>
 
-        <div className="flex flex-col-reverse md:flex-row w-full py-3 justify-between items-start md:items-center gap-4 md:gap-12">
+        <div className='flex flex-col-reverse md:flex-row w-full py-3 justify-between items-start md:items-center gap-4 md:gap-12'>
           <div className="w-full text-slate-900 text-base font-normal font-['Roboto'] leading-snug">
             @ 2024 Edusoul. All rights reserved.
           </div>
 
-          <div className="flex w-full flex-row gap-16 justify-end items-center">
-            <div className="flex w-auto flex-row gap-4 justify-center items-center">
-              <div className="py-3 justify-start items-center gap-2 flex">
+          <div className='flex w-full flex-row gap-16 justify-end items-center'>
+            <div className='flex w-auto flex-row gap-4 justify-center items-center'>
+              <div className='py-3 justify-start items-center gap-2 flex'>
                 <div className="text-slate-600 text-base font-normal font-['Roboto'] leading-snug">
                   Terms
                 </div>
               </div>
-              <div className="py-3 justify-start items-center gap-2 flex">
+              <div className='py-3 justify-start items-center gap-2 flex'>
                 <div className="text-slate-600 text-base font-normal font-['Roboto'] leading-snug">
                   Privacy
                 </div>
               </div>
-              <div className="py-3 justify-start items-center gap-2 flex">
+              <div className='py-3 justify-start items-center gap-2 flex'>
                 <div className="text-slate-600 text-base font-normal font-['Roboto'] leading-snug">
                   Contact
                 </div>
               </div>
             </div>
 
-            <div className="justify-end items-center gap-4 flex">
+            <div className='justify-end items-center gap-4 flex'>
               <LinkedInIcon />
               <TwitterIcon />
               <InstagramIcon />

@@ -8,17 +8,19 @@ import CoreValues from "@/components/shared/CoreValues";
 // import Modules from '@/components/shared/Modules';
 import FAQs from "@/components/shared/Faq";
 import Footer from "@/components/shared/Footer";
+import Teams from "@/components/shared/Our-Mandate/Teams";
 
 export default function App() {
   return (
     <>
       <HeroSection />
-      <main className='mt-[80px]'>
+      <main className='mt-[80px] px-[90.5px]'>
         <Courses />
+        <Limits />
+        <Mandate />
       </main>
-      <Limits />
-      <Mandate />
-      <main className='px-3 sm:px-6 md:px-10 lg:px-6 xl:px-14 mt-[80px]'>
+      <Teams />
+      <main className='px-[90.5px] mt-[80px]'>
         <CoreValues />
         {/* <Modules /> */}
       </main>

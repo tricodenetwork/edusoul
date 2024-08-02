@@ -79,7 +79,7 @@ function Aboutus() {
             </div>
           </div>
         </div>
-        <div className='bord'>
+        <div className='px-[90.5px]'>
           <Courses />
           <Mission />
           <Belief />
