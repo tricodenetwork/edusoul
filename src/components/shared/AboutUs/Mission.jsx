@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 
 function Mission() {
   return (
-    <div className='h-max w-full flex justify-between max-sm:flex-col-reverse'>
+    <div className='h-max w-full flex justify-between gap-5 md:gap-0 max-sm:flex-col-reverse'>
       {/* <!-- ===== Mission Start ===== --> */}
       <motion.div
         variants={{
@@ -24,7 +24,7 @@ function Mission() {
         whileInView='visible'
         transition={{ duration: 1, delay: 0.1 }}
         viewport={{ once: true }}
-        className='animate_left   w-[40%]'
+        className='animate_left w-full  md:w-[40%]'
       >
         <Image
           alt='logo'
@@ -52,9 +52,9 @@ function Mission() {
         whileInView='visible'
         transition={{ duration: 1, delay: 0.1 }}
         viewport={{ once: true }}
-        className='animate_right  flex flex-col justify-center w-[53%]'
+        className='animate_right  flex flex-col justify-center w-full md:w-[53%]'
       >
-        <div className='font-extrabold lg:text-[56px] mb-10'>
+        <div className='font-extrabold  lg:text-[56px] mb-3 md:mb-10'>
           <p className='max-sm:text-[48px] max-sm:font-semibold max-sm:-mt-2'>
             our Mission
           </p>

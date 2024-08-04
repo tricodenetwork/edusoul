@@ -4,8 +4,8 @@ import { motion } from "framer-motion";
 
 function HeroSection() {
   return (
-    <div className=''>
-      <div className='w-[95%] h-[35rem] md:h-[85vh] -z-20  bottom-0'>
+    <div className='h-[35rem] w-full relative  md:h-[85vh]'>
+      <div className='w-full h-[35rem]  md:h-[85vh] -z-20 '>
         <Image
           alt='logo'
           fill
@@ -14,7 +14,7 @@ function HeroSection() {
           src='/assets/images/about/product-images.png'
         />
       </div>
-      <section className='flex absolute top-[6rem] bottom-0 py-[5em] md:py-[4em] flex-col items-start justify-center max-sm:ml-5'>
+      <section className='flex absolute top-[5rem] bottom-0 py-[5em] md:py-[4em] flex-col items-start justify-center max-sm:ml-5'>
         <motion.div
           variants={{
             hidden: {
@@ -46,16 +46,16 @@ function HeroSection() {
               </div>
             </div>
             <div className='justify-start items-start gap-2.5 inline-flex'>
-              <div className='text-white text-[65px] font-semibold'>
+              <div className='text-white text-[30px]  md:text-[65px] font-semibold'>
                 Our Vision
               </div>
             </div>
             <div className='flex flex-col gap-3 md:w-[50vw]'>
-              <span className='text-white text-xl font-normal leading-7'>
+              <span className='text-white text-lg md:text-xl font-normal leading-7'>
                 To provide an education program that raises distinctive
                 educators within a Christ-centered framework
               </span>
-              <span className='text-white text-xl font-normal leading-7'>
+              <span className='text-white text-base md:text-xl font-normal leading-7'>
                 {"(Col.2v3. Isa.58v12)"}
               </span>
             </div>

@@ -7,8 +7,11 @@ import { motion } from "framer-motion";
 
 export default function Mandate({ mobile }) {
   return (
-    <div className='flex h-[374px] flex-col-reverse pt-[80px] md:flex-row md:my-[80px] justify-between items-center'>
-      <div className='flex-col md:w-[48%] h-full justify-center items-start gap-4 flex'>
+    <div
+      id='our-mandate'
+      className='flex md:h-[374px] flex-col gap-[5vh] md:gap-0 pt-[80px] md:flex-row md:my-[80px] justify-between items-center'
+    >
+      <div className='flex-col md:w-[48%]  h-full justify-center  items-start gap-4 flex'>
         <motion.div
           variants={{
             hidden: {
@@ -44,7 +47,7 @@ export default function Mandate({ mobile }) {
         </motion.div>
       </div>
 
-      <div className='relative md:w-[48%] h-full'>
+      <div className='relative md:w-[48%] w-full  h-[374px] md:h-full'>
         <motion.div
           variants={{
             hidden: {

@@ -35,10 +35,10 @@ function Aboutus() {
   return (
     <>
       {/* <!-- ===== About us Start ===== --> */}
-      <section className='mx-auto '>
+      <section className='w-full'>
         <HeroSection />
 
-        <div className='h-max bg-[#170E13] bg-opacity-5  lg:p-20 sm:p-5'>
+        <div className='h-max bg-[#170E13]  bg-opacity-5 relative md:bottom-[6.5vh]  lg:p-20 px-10 py-20'>
           <iframe
             src='https://www.youtube.com/embed/viHILXVY_eU?si=mQqGAGXU1NhUBfQf'
             title='YouTube video player'
@@ -79,7 +79,7 @@ function Aboutus() {
             </div>
           </div>
         </div>
-        <div className='px-[90.5px]'>
+        <div className='px-[7vw]'>
           <Courses />
           <Mission />
           <Belief />

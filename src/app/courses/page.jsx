@@ -21,22 +21,22 @@ export default function Courses() {
     <>
       <Navbar />
       <section
-        className="pt-[7em] sm:pt-2 md:pt-[9em] mb-8 sm:px-4 md:px-8 lg:px-4 xl:px-12 pt-[2rem] w-full justify-center items-center"
-        id="courses"
+        className='pt-[7em] sm:pt-2 md:pt-[9em] mb-8 px-[7vw] w-full justify-center items-center'
+        id='courses'
       >
-        <div className="flex flex-col justify-center items-center gap-4">
-          <h5 className="text-center text-slate-600 text-xl font-bold uppercase leading-tight tracking-[3px]">
+        <div className='flex flex-col justify-center items-center gap-4'>
+          <h5 className='text-center text-slate-600 text-xl font-bold uppercase leading-tight tracking-[3px]'>
             OUR courses
           </h5>
-          <h2 className="text-center text-slate-900 text-[30px] md:text-[56px] font-bold">
+          <h2 className='text-center text-slate-900 text-[30px] md:text-[56px] font-bold'>
             Access transformational courses
           </h2>
-          <p className="w-[90%] text-center text-slate-900 text-lg font-normal">
+          <p className='w-[90%] text-center text-slate-900 text-lg font-normal'>
             Sed ut vestibulum eget purus ornare. Risus elit et fringilla
             habitant ut facilisi.
           </p>
 
-          <div className="w-[90%] grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 mt-8 justify-center items-center">
+          <div className='w-[100%] grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 mt-8 justify-center items-center'>
             {state.map((item, index) => (
               <button
                 onClick={() => setActive(item)}
@@ -50,7 +50,7 @@ export default function Courses() {
             ))}
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 mx-3 gap-3 mt-6">
+          <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4  gap-5 mt-6'>
             {coursesData.map((course) => (
               <CourseList key={course.id} id={course.id} course={course} />
             ))}

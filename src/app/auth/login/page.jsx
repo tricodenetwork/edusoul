@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/Button";
 import AuthComponent from "@/components/shared/AuthComponent";
 import ShowHidePassword from "@/components/ui/ShowHidePassword";
 import { useAuth } from "@/context/AuthContext";
+import Image from "next/image";
 
 const SigninForm = () => {
   const navigate = useRouter();
@@ -25,13 +26,20 @@ const SigninForm = () => {
 
   const isFormValid = email && password;
   return (
-    <div className='flex text-center  w-[68%] p-3 justify-center items-center flex-col'>
-      <h2 className='text-[30px] text-black font-bold pt-5 sm:pt-1'>Sign in</h2>
-      <p className='md:w-[80%] text-[#6f6f6f]   regular mt-2'>
+    <div className='flex relative text-center w-[80%] md:w-[68%] justify-between py-[5%] items-center flex-col'>
+      <Image
+        src={"/assets/images/logo.svg"}
+        width={120}
+        height={40}
+        alt='logo'
+        className=' md:hidden absolute -top-[6%] -left-[5%]'
+      />
+      <h2 className='text-[30px]  text-black font-bold  sm:pt-1'>Sign in</h2>
+      <p className='md:w-[80%]  text-[#6f6f6f]   regular mt-2'>
         Enter your email address and password to sign in
       </p>
 
-      <div className='flex flex-col text-left gap-5 w-full mt-4'>
+      <div className='flex flex-col  text-left gap-5 w-full mt-4'>
         <div>
           <label>
             Email <span className='text-star'> *</span>

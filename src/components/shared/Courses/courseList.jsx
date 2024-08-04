@@ -5,13 +5,13 @@ import Image from "next/image";
 
 export default function CourseList({ course }) {
   return (
-    <div className='bg-white text-left w-[296px] h-[450px] relative cursor-pointer transition duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-[0_4px_4px] hover:shadow-black/25 rounded-[14px] shadow-[0_10px_60px] shadow-appBlue/10 '>
+    <div className='bg-white text-left w-full md:w-[296px] h-[450px] relative cursor-pointer transition duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-[0_4px_4px] hover:shadow-black/25 rounded-[14px] shadow-[0_10px_60px] shadow-appBlue/10 '>
       <div className='relative w-full h-[179px]'>
         <Image
           alt='courses'
           fill
           quality={100}
-          className='rounded-t-[14px]'
+          className='rounded-t-[14px] object-cover bg-primary/80'
           src={`/assets/images${course.imgURL}`}
         />
       </div>

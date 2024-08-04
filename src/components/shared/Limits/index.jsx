@@ -6,8 +6,8 @@ import { motion } from "framer-motion";
 
 export default function Limits() {
   return (
-    <div className='flex h-[374px] flex-col-reverse md:flex-row mt-16 justify-between items-center'>
-      <div className='relative md:w-[48%] h-full'>
+    <div className='flex md:h-[374px] flex-col-reverse gap-[5vh] md:gap-0 md:flex-row mt-16 justify-between items-center'>
+      <div className='relative w-full md:w-[48%] h-[374px] md:h-full'>
         <motion.div
           variants={{
             hidden: {
@@ -24,7 +24,7 @@ export default function Limits() {
           whileInView='visible'
           transition={{ duration: 1, delay: 0.1 }}
           viewport={{ once: true }}
-          className='animate_left'
+          className='animate_left '
         >
           <Image
             alt='limits'

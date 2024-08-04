@@ -7,6 +7,13 @@ import { Button } from "@/components/ui/Button";
 import AuthComponent from "@/components/shared/AuthComponent";
 import ShowHidePassword from "@/components/ui/ShowHidePassword";
 import { useAuth } from "@/context/AuthContext";
+import { Montserrat } from "next/font/google";
+import Image from "next/image";
+const mont = Montserrat({
+  subsets: ["cyrillic", "cyrillic-ext", "latin", "latin-ext", "vietnamese"],
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+  style: ["italic"],
+});
 
 const SignupForm = () => {
   const navigate = useRouter();
@@ -25,23 +32,33 @@ const SignupForm = () => {
   const isFormValid = fullName && email && password;
 
   return (
-    <div className='flex text-center h-full  w-[68%] p-3 justify-center items-center py-5 flex-col'>
-      <h2 className='text-[30px] text-black font-bold pt-5 sm:pt-1'>
-        Welcome to EduSoul
+    <div className='flex text-center h-full w-[80%]  md:w-[68%]  justify-between py-[5%] items-center md:py-5 flex-col'>
+      <Image
+        src={"/assets/icons/logo.svg"}
+        width={50}
+        height={50}
+        alt='logo'
+        className='relative bottom-2 md:bottom-0'
+      />
+      <h2 className='text-[30px] text-black font-bold'>
+        Welcome to{" "}
+        <span style={mont.style} className='text-primary italic '>
+          EduSoul
+        </span>
       </h2>
-      <p className='md:w-[90%] small-medium md:base-regular mt-2'>
+      <p className='md:w-[90%]  mt-[1%]'>
         Get ready to enjoy all the features and benefits we have to offer. It's
         quick, easy, and free!
       </p>
 
       <div>
-        <h2 className='text-[20px] text-black font-bold py-5 sm:pt-6'>
+        <h2 className='text-[20px] text-black font-bold mt-[2%]'>
           Signup with
         </h2>
         <AuthComponent />
       </div>
 
-      <div className='w-[436px] h-3.5 justify-start items-center gap-4 inline-flex'>
+      <div className='w-full md:w-[436px] h-3.5 justify-start items-center gap-4 inline-flex'>
         <div className='w-[194px] h-[0px] border border-stone-300'></div>
         <div className="text-neutral-500 text-xs font-normal font-['Roboto']">
           OR

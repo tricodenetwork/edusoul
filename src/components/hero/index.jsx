@@ -4,9 +4,10 @@ import Image from "next/image";
 import WbTwilightIcon from "@mui/icons-material/WbTwilight";
 import EastIcon from "@mui/icons-material/East";
 import Link from "next/link";
+import Marquee from "react-fast-marquee";
 import { AnimatePresence, motion } from "framer-motion";
 
-const patners = ["astrom", "cicio", "weavy", "vRockets", "vRockets", "viewio"];
+const patners = ["astrom", "cicio", "weavy", "vRockets", "viewio"];
 const carousel = [
   "/assets/images/hero/1.png",
   "/assets/images/hero/2.png",
@@ -28,7 +29,7 @@ function HeroSection() {
   }, []);
 
   return (
-    <div className='w-full mx-auto md:mt-[80px] flex px-5 md:px-[60px] bg-primary bg-opacity-[0.03] pt-[16vh] md:pt-[126px] flex-col items-start justify-start relative h-[120vh]'>
+    <div className='w-full mx-auto mt-[60px] md:mt-[80px] flex px-5 md:px-[60px] bg-primary bg-opacity-[0.03] pt-[16vh] md:pt-[126px] flex-col items-start justify-start relative h-screen md:h-[120vh]'>
       {carousel.map((item, index) => (
         <AnimatePresence key={index.toString()}>
           {activeIndex === index && (
@@ -42,7 +43,7 @@ function HeroSection() {
               <Image
                 alt='logo'
                 fill
-                className='object-cover mx-auto rounded-[10px]'
+                className='object-cover mx-auto md:rounded-[10px]'
                 quality={100}
                 src={item}
               />
@@ -111,16 +112,30 @@ function HeroSection() {
           </div>
         </div>
       </section>
-      <section className='flex z-30 absolute w-full px-[80px] justify-between bottom-10 self-center items-center'>
-        {patners.map((item, ind) => (
-          <Image
-            width={150}
-            height={46}
-            key={ind.toString()}
-            src={`/assets/logos/${item}.svg`}
-            alt='log'
-          />
-        ))}
+      <section className='flex z-30 absolute  w-full px-[20px] md:px-[80px] justify-between gap-[5vw] bottom-7 md:bottom-10 self-center items-center'>
+        <Marquee
+          direction='left'
+          speed={80}
+          delay={5}
+          play={!false}
+          pauseOnHover={true}
+          autoFill={!true}
+          // className=' overflow-x-scroll bord w-screen'
+        >
+          <div className='flex w-[200vw]  md:w-[85vw] justify-around  items-center'>
+            {patners.map((item, ind) => (
+              <div className='w-[80px] h-[30px] md:w-[150px] md:h-[46px] relative'>
+                <Image
+                  fill
+                  key={ind.toString()}
+                  src={`/assets/logos/${item}.svg`}
+                  alt='log'
+                  className=''
+                />
+              </div>
+            ))}
+          </div>
+        </Marquee>
       </section>
     </div>
   );

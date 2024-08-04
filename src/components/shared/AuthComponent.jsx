@@ -12,8 +12,8 @@ const AuthComponent = () => {
     <div className='flex w-[200px] md:w-[279.468px] h-[65px] items-center justify-center center gap-6'>
       <div
         onClick={() =>
-          signIn("google", {
-            callbackUrl: `${baseUrl}/menu/dashboard`,
+          signIn("facebook", {
+            callbackUrl: `${baseUrl}`,
           })
         }
         className={ellipseStyle}
@@ -28,8 +28,8 @@ const AuthComponent = () => {
       </div>
       <div
         onClick={() =>
-          signIn("github", {
-            callbackUrl: `${baseUrl}/menu/dashboard`,
+          signIn("linkedin", {
+            callbackUrl: `${baseUrl}`,
           })
         }
         className={ellipseStyle}
@@ -44,8 +44,8 @@ const AuthComponent = () => {
       </div>
       <div
         onClick={() =>
-          signIn("slack", {
-            callbackUrl: `${baseUrl}/menu/dashboard`,
+          signIn("google", {
+            callbackUrl: `${baseUrl}`,
           })
         }
         className={ellipseStyle}

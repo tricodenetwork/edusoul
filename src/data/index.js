@@ -86,13 +86,13 @@ export const coursesData = [
     label: "Courses",
   },
   {
-    id: 5,
-    imgURL: "",
+    id: "Enhanced Professional Development Certificate in Christian Education",
+    imgURL: "/leadership.png",
     label: "Courses",
   },
   {
-    id: 6,
-    imgURL: "",
+    id: "Post Graduate Certificate in Christian Education",
+    imgURL: "/headphones.png",
     label: "Courses",
   },
 ];

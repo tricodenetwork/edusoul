@@ -14,7 +14,7 @@ export default function App() {
   return (
     <>
       <HeroSection />
-      <main className='mt-[80px] px-[90.5px]'>
+      <main className='mt-[2vh] md:mt-[9vh] w-full px-[7vw]'>
         <Courses />
         <Limits />
         <Mandate />

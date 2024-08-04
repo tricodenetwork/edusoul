@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 
 function Mission() {
   return (
-    <div className='h-max mb-20 pt-[80px] lg:flex justify-between'>
+    <div className='h-max mb-20 flex flex-col gap-5 md:gap-0 pt-[80px] lg:flex-row justify-between'>
       <motion.div
         variants={{
           hidden: {
@@ -62,7 +62,7 @@ function Mission() {
         whileInView='visible'
         transition={{ duration: 1, delay: 0.1 }}
         viewport={{ once: true }}
-        className='animate_right flex justify-end w-[45%]'
+        className='animate_right flex justify-end md:w-[45%]'
       >
         <Image
           alt='logo'
