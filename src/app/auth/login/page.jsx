@@ -26,7 +26,7 @@ const SigninForm = () => {
 
   const isFormValid = email && password;
   return (
-    <div className='flex relative text-center w-[80%] md:w-[68%] justify-between py-[5%] items-center flex-col'>
+    <div className='flex relative text-center w-[80%] md:w-[68%] pt-[10rem] justify-between py-[5%] items-center flex-col'>
       <Image
         src={"/assets/images/logo.svg"}
         width={120}
