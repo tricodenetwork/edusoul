@@ -8,6 +8,8 @@ import AuthComponent from "@/components/shared/AuthComponent";
 import ShowHidePassword from "@/components/ui/ShowHidePassword";
 import { useAuth } from "@/context/AuthContext";
 import Image from "next/image";
+import axios from "axios";
+import { baseUrl } from "@/config/config";
 
 const SigninForm = () => {
   const navigate = useRouter();
@@ -22,9 +24,20 @@ const SigninForm = () => {
     setShowPasswordToggle(!showPasswordToggle);
   };
 
-  const signInAccount = async () => {};
+  const signInAccount = async () => {
+    setLoading(true);
+    try {
+      const res = await axios.post(`${baseUrl}/api/test`, { email, password });
+      console.log(res.data);
+      setLoading(false);
+    } catch (error) {
+      console.error(error);
+      setLoading(false);
+    }
+  };
 
   const isFormValid = email && password;
+
   return (
     <div className='flex relative text-center w-[80%] md:w-[68%] justify-between py-[5%] items-center flex-col'>
       <Image
