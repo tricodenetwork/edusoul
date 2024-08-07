@@ -39,7 +39,7 @@ const SigninForm = () => {
   const isFormValid = email && password;
 
   return (
-    <div className='flex relative text-center w-[80%] md:w-[68%] justify-between py-[5%] items-center flex-col'>
+    <div className='flex relative text-center w-[80%] md:w-[75%] pt-[10rem] justify-between py-[5%] items-center flex-col'>
       <Image
         src={"/assets/images/logo.svg"}
         width={120}
@@ -48,7 +48,7 @@ const SigninForm = () => {
         className=' md:hidden absolute -top-[6%] -left-[5%]'
       />
       <h2 className='text-[30px]  text-black font-bold  sm:pt-1'>Sign in</h2>
-      <p className='md:w-[80%]  text-[#6f6f6f]   regular mt-2'>
+      <p className='md:w-[90%]  text-[#6f6f6f]   regular mt-2'>
         Enter your email address and password to sign in
       </p>
 
@@ -93,19 +93,19 @@ const SigninForm = () => {
           )}
         </div>
 
-        <div className='w-full justify-between my-4  items-center inline-flex'>
+        <div className='w-full justify-between my-3  items-center inline-flex'>
           <div className='justify-center items-center gap-1 flex'>
-            <input
+            {/* <input
               type='checkbox'
               className='w-4 h-4 px-[3.33px] rounded-sm border border-zinc-400 justify-center items-center flex'
             />
             <div className='text-neutral-500 text-sm font-normal'>
               Remember Me
-            </div>
+            </div> */}
           </div>
           <Link
             href='/auth/forgot-password'
-            className='text-red-800 text-sm font-medium'
+            className='text-black text-sm font-medium'
           >
             Forgot Password?
           </Link>
@@ -129,7 +129,7 @@ const SigninForm = () => {
           )}
         </Button>
 
-        <div className='w-full  h-3.5 my-4 justify-center items-center gap-4 inline-flex'>
+        <div className='w-full  h-3.5 my-3 justify-center items-center gap-4 inline-flex'>
           <div className='w-[194px] h-[0px] border border-stone-300'></div>
           <div className='text-neutral-500 text-xs font-normal'>Or</div>
           <div className='w-[194px] h-[0px] border border-stone-300'></div>
