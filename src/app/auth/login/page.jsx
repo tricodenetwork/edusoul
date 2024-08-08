@@ -39,7 +39,7 @@ const SigninForm = () => {
   const isFormValid = email && password;
 
   return (
-    <div className='flex relative text-center w-[80%] md:w-[75%] pt-[10rem] justify-between py-[5%] items-center flex-col'>
+    <div className='flex text-center h-full w-[80%] md:w-[75%] justify-between py-[5%] items-center md:py-5 flex-col'>
       <Image
         src={"/assets/images/logo.svg"}
         width={120}
@@ -144,7 +144,7 @@ const SigninForm = () => {
           </span>
           <span className='text-[#8f060e] text-xs'>Terms and Conditions</span>
         </div>
-        <p className='text-xs  text-center'>
+        <p className='text-xs text-center'>
           Don’t have an account?
           <Link href='/auth/register' className='text-primary font-bold ml-1'>
             Create Account

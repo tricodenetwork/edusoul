@@ -37,7 +37,7 @@ const ResetPasswordForm = () => {
 
   const isFormValid = password && confirmPassword;
   return (
-    <div className='flex text-center h-full  w-[68%] p-3 justify-center items-center py-5 flex-col'>
+    <div className='flex text-center h-full w-[68%] p-3 justify-center items-center py-5 flex-col'>
       <h2 className='text-[30px] text-black font-bold pt-5 sm:pt-1'>
         Reset Password?
       </h2>
