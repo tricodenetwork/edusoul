@@ -1,5 +1,6 @@
 "use client";
 
+import AppButton from "@/components/ui/AppButton";
 import Image from "next/image";
 import { useState } from "react";
 
@@ -75,9 +76,7 @@ const Index = () => {
                 </p>
               </div>
             </div>
-            <button className='bg-primary rounded-[8px] w-[180px] p-4 text-white text-sm font-semibold'>
-              Continue Course
-            </button>
+            <AppButton title={"Continue Course"} />
           </div>
         );
       })}

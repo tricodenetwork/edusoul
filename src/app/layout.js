@@ -1,6 +1,6 @@
 import { Roboto } from "next/font/google";
 import "./globals.css";
-import AuthContextProvider from "@/context/AuthContext";
+import AuthContextProvider from "../context/AuthContext";
 import Navbar from "@/components/shared/NavBar/nav";
 
 const inter = Roboto({

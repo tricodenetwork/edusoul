@@ -2,10 +2,13 @@
 
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
+import Link from "next/link";
 
 export default function CourseList({ course }) {
+  const path = usePathname();
   return (
-    <div className='bg-white text-left w-full md:w-[296px] h-[450px] relative cursor-pointer transition duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-[0_4px_4px] hover:shadow-black/25 rounded-[14px] shadow-[0_10px_60px] shadow-appBlue/10 '>
+    <div className='bg-white text-left w-full md:w-[296px] lg:w-[100%] h-[450px] relative cursor-pointer transition duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-[0_4px_4px] hover:shadow-black/25 rounded-[14px] shadow-[0_10px_60px] shadow-appBlue/10 '>
       <div className='relative w-full h-[179px]'>
         <Image
           alt='courses'
@@ -87,9 +90,12 @@ export default function CourseList({ course }) {
           </div>
 
           <div className='px-5 py-2.5 bg-white rounded-[5px] border border-[#8F060E] justify-start items-start gap-2.5 flex hover:bg-primary transition-all duration-300 group shadow- shadow-[#000000]/20'>
-            <div className='text-[#8F060E] text-xs font-medium  capitalize group-hover:text-white'>
-              enroll now
-            </div>
+            <Link
+              href={"/admin/modules"}
+              className='text-[#8F060E] text-xs font-medium  capitalize group-hover:text-white'
+            >
+              {path.includes("/admin") ? "Manage Course" : " enroll now"}
+            </Link>
           </div>
         </div>
       </div>
