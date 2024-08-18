@@ -41,7 +41,7 @@ const SignupForm = () => {
   return (
     <div
       className={`flex text-center w-full md:w-[80%] px-3 ${
-        registerType !== "fullname" && "h-full mt-12"
+        registerType !== "fullname" && "mt-12"
       } md:w-[75%] justify-between py-[5%] items-center md:py-5 flex-col`}
     >
       <Image
@@ -174,7 +174,7 @@ const SignupForm = () => {
               )}
             </Button>
 
-            <div className="w-full md:w-full h-3.5 mt-4 justify-start items-center gap-4 inline-flex">
+            <div className="w-full md:w-full h-3.5 mt-4 justify-center items-center gap-4 inline-flex">
               <div className="w-[194px] h-[0px] border border-stone-300"></div>
               <div className="text-neutral-500 text-xs font-normal font-['Roboto']">
                 OR

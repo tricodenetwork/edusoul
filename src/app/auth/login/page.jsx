@@ -39,7 +39,7 @@ const SigninForm = () => {
   const isFormValid = email && password;
 
   return (
-    <div className='flex text-center h-full w-full md:w-[75%] px-3 justify-between py-[4%] md:py-5 items-center flex-col'>
+    <div className='flex text-center w-full md:w-[75%] px-3 justify-between py-[4%] md:py-5 items-center flex-col'>
       <Image
         src={"/assets/images/logo.svg"}
         width={120}
