@@ -146,7 +146,7 @@ const SigninForm = () => {
         </div>
         <p className='text-xs text-center'>
           Don’t have an account?
-          <Link href='/auth/register' className='text-primary font-bold ml-1'>
+          <Link href={`/auth/register?type=fullname`} className='text-primary font-bold ml-1'>
             Create Account
           </Link>
         </p>
