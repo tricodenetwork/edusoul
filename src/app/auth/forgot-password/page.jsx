@@ -18,7 +18,7 @@ const FPForm = () => {
   const isFormValid = email;
 
   return (
-    <div className="flex text-center h-[80%] w-[90%] md:w-[80%] mx-3 p-3 justify-center items-center py-5 flex-col -translate-y-1 shadow-[0_4px_4px] shadow-black/25 rounded-[14px]">
+    <div className="flex text-center h-[80%] md:h-[50%] w-[90%] md:w-[80%] mx-3 p-3 justify-center items-center py-5 flex-col -translate-y-1 shadow-[0_4px_4px] shadow-black/25 rounded-[14px]">
       <h2 className="text-[30px] text-black font-bold pt-5 sm:pt-1">
         Forgot Password
       </h2>
