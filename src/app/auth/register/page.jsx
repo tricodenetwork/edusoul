@@ -21,7 +21,8 @@ const SignupForm = () => {
   const searchParams = useSearchParams();
   const registerType = searchParams.get("type");
   const { password, passwordError, handlePasswordChange } = useAuth();
-  const [fullName, setFullName] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [isLoading, setLoading] = useState(false);
   const [showPasswordToggle, setShowPasswordToggle] = useState(false);
@@ -34,7 +35,7 @@ const SignupForm = () => {
     // Your signup logic here
   };
 
-  const isFormFullName = fullName;
+  const isFormFullName = firstName && lastName;
   const isFormValid = email && password;
 
   return (
@@ -74,8 +75,8 @@ const SignupForm = () => {
               </label>
               <input
                 type="text"
-                value={fullName}
-                onChange={(e) => setFullName(e.target.value)}
+                value={firstName}
+                onChange={(e) => setFirstName(e.target.value)}
                 placeholder="Enter your name"
                 className="bg-gray-30 h-[45px] text-sm rounded-md block w-full p-3.5 border border-gray-300 outline-primary"
                 required
@@ -87,8 +88,8 @@ const SignupForm = () => {
               </label>
               <input
                 type="text"
-                value={fullName}
-                onChange={(e) => setFullName(e.target.value)}
+                value={lastName}
+                onChange={(e) => setLastName(e.target.value)}
                 placeholder="Enter your name"
                 className="bg-gray-30 h-[45px] text-sm rounded-md block w-full p-3.5 border border-gray-300 outline-primary"
                 required
