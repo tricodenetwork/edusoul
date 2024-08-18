@@ -40,7 +40,7 @@ const SignupForm = () => {
 
   return (
     <div
-      className={`flex text-center w-[80%] ${
+      className={`flex text-center w-full md:w-[80%] px-3 ${
         registerType !== "fullname" && "h-full mt-12"
       } md:w-[75%] justify-between py-[5%] items-center md:py-5 flex-col`}
     >

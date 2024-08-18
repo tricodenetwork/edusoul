@@ -39,7 +39,7 @@ const SigninForm = () => {
   const isFormValid = email && password;
 
   return (
-    <div className='flex text-center h-full w-[80%] md:w-[75%] justify-between py-[5%] items-center md:py-5 flex-col'>
+    <div className='flex text-center h-full w-full md:w-[75%] px-3 justify-between py-[4%] md:py-5 items-center flex-col'>
       <Image
         src={"/assets/images/logo.svg"}
         width={120}
@@ -48,7 +48,7 @@ const SigninForm = () => {
         className=' md:hidden absolute -top-[6%] -left-[5%]'
       />
       <h2 className='text-[30px]  text-black font-bold  sm:pt-1'>Sign in</h2>
-      <p className='md:w-[90%]  text-[#6f6f6f]   regular mt-2'>
+      <p className='md:w-[90%] w-[80%] text-[#6f6f6f]   regular mt-2'>
         Enter your email address and password to sign in
       </p>
 
