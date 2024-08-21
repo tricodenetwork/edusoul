@@ -8,6 +8,7 @@ import OutsideClickHandler from "react-outside-click-handler";
 
 const Index = () => {
   const [add, setAdd] = useState(false);
+
   if (add) {
     return (
       <OutsideClickHandler onOutsideClick={() => setAdd(false)}>
@@ -18,7 +19,7 @@ const Index = () => {
     );
   } else {
     return (
-      <div className='border border-[#99B2C6] w-full h-max pl-[5%] pr-[5%] mt-4 pt-[40px] pb-[120px] my-4 bg-white rounded-[8px]'>
+      <div className='border border-[#99B2C6] w-full h-max pl-[5%] pr-[5%] mt-4 pt-[40px] pb-[40px] my-4 bg-white rounded-[8px]'>
         <div className='flex flex-col gap-1'>
           <div className='flex py-3 border-b relative border-appAsh2 items-center '>
             <Image

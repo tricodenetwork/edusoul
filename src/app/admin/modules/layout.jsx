@@ -35,7 +35,7 @@ const Index = ({ children }) => {
       </Link>
       <div className='flex w-full  justify-between'>
         {/* <TopNav first={"Module"} firstLink={"modules"} /> */}
-        <SelectComponent style={"w-[8vw]"} placeholder={"Module 1"} />
+        <SelectComponent style={"w-[7.5vw]"} placeholder={"Module 1"} />
         <AppButton title={"Edit Course"} href={"/"} />
       </div>
       <div className='w-full flex mt-8 pr-[15%] justify-between items-center'>
