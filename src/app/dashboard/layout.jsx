@@ -15,7 +15,7 @@ const links = [
   { href: "/dashboard/courses", label: "Courses" },
   { href: "/", label: "Assignment" },
   { href: "/", label: "Live" },
-  { href: "/", label: "Settings" },
+  { href: "/dashboard/settings", label: "Settings" },
 ];
 
 export default function RootLayout({ children }) {
