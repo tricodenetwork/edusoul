@@ -12,7 +12,7 @@ import { IoCloseSharp } from "react-icons/io5";
 const nunito = Nunito({ subsets: ["latin"] });
 const links = [
   { href: "/dashboard", label: "Home" },
-  { href: "/dashboard/courses", label: "Courses" },
+  { href: "/dashboard/courses", href2: "/dashboard/lessons", label: "Courses" },
   { href: "/", label: "Assignment" },
   { href: "/", label: "Live" },
   { href: "/dashboard/settings", label: "Settings" },
@@ -23,7 +23,7 @@ export default function RootLayout({ children }) {
   const [sideNav, setSideNav] = useState(false);
 
   return (
-    <div className="flex w-full h-screen items-center justify-center">
+    <div className="flex w-full h-screen items-center justify-center bg-appPink">
       {/* Side Navigation */}
       <div className="w-[18%] lg:w-[15%] hidden md:flex flex-col border-r border-appAsh2 h-full bg-appPink">
         <Image
@@ -77,7 +77,7 @@ export default function RootLayout({ children }) {
               <li
                 key={index.toString()}
                 className={`cursor-pointer ${
-                  path === link.href
+                  path === link.href || link.href2
                     ? "text-primary hover:text-appAsh font-semibold"
                     : "text-appAsh hover:text-primary"
                 }`}
