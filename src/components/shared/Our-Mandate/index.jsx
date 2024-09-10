@@ -39,10 +39,10 @@ export default function Mandate({ mobile }) {
             </h3>
           </div>
           <p className='text-appBlack mt-4 text-lg lg:w-[90%]'>
-            EduSoul focuses on transformational learning relevant to both
-            age-old and current societal challenges. The program encourages
-            participants to think critically about learning and how to best
-            support each child's unique potential.
+            EduSoul focuses on transformational (Christ-centered ) curriculum
+            learning relevant to both age-old and current societal challenges.
+            The program encourages participants to think critically about
+            learning and how to best support each child's unique potential.
           </p>
         </motion.div>
       </div>
