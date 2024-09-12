@@ -35,15 +35,24 @@ export default function Mandate({ mobile }) {
               Our Mandate
             </h5>
             <h3 className='text-appBlack text-[36px] md:text-[56px] leading-none xl:w-[80%] font-extrabold'>
-              What drives us to do what we do
+              What propels us to do what we do
             </h3>
           </div>
-          <p className='text-appBlack mt-4 text-lg lg:w-[90%]'>
-            EduSoul focuses on transformational (Christ-centered ) curriculum
-            learning relevant to both age-old and current societal challenges.
-            The program encourages participants to think critically about
-            learning and how to best support each child's unique potential.
-          </p>
+          <ul className='text-appBlack list-item mt-4 text-lg lg:w-[90%]'>
+            <li className='list-disc'>
+              EduSoul focuses on transformational learning relevant to both
+              age-old and current societal challenges. The programmes encourage
+              participants to think critically about learning and how to best
+              support each child's unique potential.
+            </li>
+            <li className='list-disc'>
+              Developing critical competence in Christian educators
+            </li>
+            <li className='list-disc'>
+              Fulfilling personal conviction of high calling and professional
+              discipline to impact future generations.
+            </li>
+          </ul>
         </motion.div>
       </div>
 

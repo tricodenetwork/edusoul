@@ -8,7 +8,7 @@ const AppButton = ({ dark = true, href, title, style, action }) => {
       <Link
         href={href}
         style={style}
-        className="bg-primary hover:bg-white hover:text-primary duration-150 hover:border-primary hover:border border rounded-[8px] flex items-center justify-center w-[180px] p-4 text-white text-sm font-semibold"
+        className='bg-primary hover:bg-white hover:text-primary duration-150 hover:border-primary hover:border border rounded-[8px] flex items-center justify-center w-[180px] p-4 text-white text-sm'
       >
         {title}
       </Link>
@@ -19,7 +19,7 @@ const AppButton = ({ dark = true, href, title, style, action }) => {
       <button
         onClick={action}
         style={style}
-        className="bg-primary hover:bg-white hover:text-primary duration-150 hover:border-primary hover:border border rounded-[8px] flex items-center justify-center w-[180px] p-4 text-white text-sm font-semibold"
+        className='bg-primary hover:bg-white hover:text-primary duration-150 hover:border-primary hover:border border rounded-[8px] flex items-center justify-center w-[180px] p-4 text-white text-sm'
       >
         {title}
       </button>

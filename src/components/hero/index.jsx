@@ -124,10 +124,12 @@ function HeroSection() {
         >
           <div className='flex w-[200vw]  md:w-[85vw] justify-around  items-center'>
             {patners.map((item, ind) => (
-              <div className='w-[80px] h-[30px] md:w-[150px] md:h-[46px] relative'>
+              <div
+                key={ind.toString()}
+                className='w-[80px] h-[30px] md:w-[150px] md:h-[46px] relative'
+              >
                 <Image
                   fill
-                  key={ind.toString()}
                   src={`/assets/logos/${item}.svg`}
                   alt='log'
                   className=''

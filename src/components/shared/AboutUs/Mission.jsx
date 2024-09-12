@@ -63,12 +63,12 @@ function Mission() {
         <div className='lg:leading-7 lg:w-[100%] text-lg border-l-4 border-[#AA205E] rounded-s-sm pl-6 max-sm:m-2'>
           <p className='lg:mb-5 text-[#AA205E]'>
             To equip 21st-century-leaders with skills and methodologies for
-            evolving professionalism with christain education.
+            evolving professionalism for Christ-centred education.
           </p>
 
           <p className='w-[90%]'>
-            The program facilitate transformational learning relevant to both
-            historical and contemporary educational challenges.
+            The programmes and trainings facilitate transformational learning
+            relevant to both historical and contemporary educational challenges.
           </p>
         </div>
       </motion.div>

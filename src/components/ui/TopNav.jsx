@@ -22,7 +22,7 @@ const TopNav = ({ homeLink = "/", first, firstLink, second, secondLink }) => {
           href={firstLink}
           className={`${
             second ? "text-appAsh" : "text-primary font-medium"
-          } text-sm`}
+          } text-sm capitalize`}
         >
           {first}
         </Link>
@@ -39,7 +39,7 @@ const TopNav = ({ homeLink = "/", first, firstLink, second, secondLink }) => {
         <Link
           cn
           href={secondLink}
-          className={`${"text-primary font-medium"} text-sm`}
+          className={`${"text-primary font-medium"} capitalize text-sm`}
         >
           {second}
         </Link>

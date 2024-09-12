@@ -66,33 +66,45 @@ export const modulesData = [
 
 export const coursesData = [
   {
-    id: "Advanced Classroom Assistant",
+    id: "Advance Classroom Assistance",
     imgURL: "/hat.png",
+    snippet:
+      "In this course, participants will learn valuable skills and techniques to support teachers in creating a nurturing and educational environment for students.",
     label: "Courses",
   },
   {
     id: "Diploma in Christian Education",
     imgURL: "/book.png",
+    snippet:
+      "Our Diploma in Christian Education provides students with the knowledge and skills needed to effectively teach and lead within a Christian, world-view context. ",
     label: "Courses",
   },
   {
     id: "Enhanced Professional Development Certificate in Christian Education",
     imgURL: "/leadership.png",
+    snippet:
+      "Designed for educators who are seeking to synergise Christ-centred curriculum into their teaching practices, thereby creating a more meaningful and impactful learning experience for their students.",
     label: "Courses",
   },
   {
     id: "Post Graduate Certificate in Christian Education",
     imgURL: "/headphones.png",
+    snippet:
+      "A specialised programme designed for individuals seeking to deepen their understanding of Christian teachings and principles, as well as enhancing their skills in teaching and ministry.",
     label: "Courses",
   },
   {
-    id: "Enhanced Professional Development Certificate in Christian Education",
+    id: "S.E.N.D (SPECIAL EDUCATIONAL NEEDS AND DISABIITIES) ",
     imgURL: "/leadership.png",
+    snippet:
+      "In the world of education, it is essential to have a clear understanding of the different types of disabilities, their spectrums and how they can impact learning.",
     label: "Courses",
   },
   {
-    id: "Post Graduate Certificate in Christian Education",
+    id: "CHRISTIAN SCHOOL HEADSHIP/LEADERSHIP",
     imgURL: "/headphones.png",
+    snippet:
+      "The course emphasises the importance of building strong relationships within the school community.",
     label: "Courses",
   },
 ];
@@ -106,7 +118,7 @@ export const coreValuesdata = [
   {
     id: 2,
     imgURL: "/assets/icons/category.svg",
-    label: "Category",
+    label: "Sustainability",
   },
   {
     id: 3,

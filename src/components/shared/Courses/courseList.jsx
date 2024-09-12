@@ -73,8 +73,7 @@ export default function CourseList({ course }) {
             {course.id}
           </div>
           <h4 className="text-neutral-600 mt-2 text-[12px] font-normal font-['Raleway']">
-            Product Management Masterclass, you will learn with Sarah Johnson -
-            Head of Product Customer Platform Gojek Indonesia.
+            {course.snippet}
           </h4>
           <div className='w-[264.27px] h-[16.17px]' />
         </div>
