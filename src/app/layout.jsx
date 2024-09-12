@@ -9,6 +9,7 @@ const inter = Roboto({
 });
 
 export const metadata = {
+  metadataBase: new URL("https://edusouldistrict.com"),
   title: "Edusoul",
   description: "Christian Leadership at its peak",
 };
