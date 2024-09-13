@@ -38,7 +38,7 @@ export default function Mandate({ mobile }) {
               What propels us to do what we do
             </h3>
           </div>
-          <ul className='text-appBlack list-item mt-4 text-lg lg:w-[90%]'>
+          <ul className='text-appBlack gap-2 flex flex-col  mt-4 text-lg lg:w-[90%]'>
             <li className='list-disc'>
               EduSoul focuses on transformational learning relevant to both
               age-old and current societal challenges. The programmes encourage

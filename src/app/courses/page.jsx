@@ -19,7 +19,6 @@ export default function Courses() {
 
   return (
     <>
-      <Navbar />
       <section
         className='pt-[7em] sm:pt-2 md:pt-[9em] mb-8 px-[7vw] w-full justify-center items-center'
         id='courses'
@@ -32,11 +31,10 @@ export default function Courses() {
             Access transformational courses
           </h2>
           <p className='w-[90%] text-center text-slate-900 text-lg font-normal'>
-            Sed ut vestibulum eget purus ornare. Risus elit et fringilla
-            habitant ut facilisi.
+            Here are a list of all courses we currently offer at Edusoul
           </p>
 
-          <div className='w-[100%] grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 mt-8 justify-center items-center'>
+          {/* <div className='w-[100%] grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 mt-8 justify-center items-center'>
             {state.map((item, index) => (
               <button
                 onClick={() => setActive(item)}
@@ -48,7 +46,7 @@ export default function Courses() {
                 {item}
               </button>
             ))}
-          </div>
+          </div> */}
 
           <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4  gap-5 mt-6'>
             {coursesData.map((course) => (
@@ -57,7 +55,6 @@ export default function Courses() {
           </div>
         </div>
       </section>
-      <Footer />
     </>
   );
 }

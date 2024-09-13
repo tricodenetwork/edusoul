@@ -118,11 +118,8 @@ export default function RootLayout({ children }) {
           <div className='w-full px-4 mt-8'>
             {course.modules.map((item, index) => {
               return (
-                <div>
-                  <div
-                    key={index.toString()}
-                    className='flex  border-b py-4 border-ash w-full items-center'
-                  >
+                <div key={index.toString()}>
+                  <div className='flex  border-b py-4 border-ash w-full items-center'>
                     <p className='text-appAsh w-[70%] font-medium'>
                       {item.name}
                     </p>
@@ -147,7 +144,10 @@ export default function RootLayout({ children }) {
                   {submenu === index + 1 &&
                     item.lessons.map((item, inde) => {
                       return (
-                        <p className='text-appAsh my-2 w-[70%] font-medium'>
+                        <p
+                          key={inde.toString()}
+                          className='text-appAsh my-2 w-[70%] font-medium'
+                        >
                           {item.name}
                         </p>
                       );
