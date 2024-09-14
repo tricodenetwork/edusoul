@@ -168,7 +168,7 @@ export const coursesData = [
     ],
   },
   {
-    id: "7",
+    id: 7,
     title: "CHRISTIAN SCHOOL PROPRIETORSHIP ",
     imgURL: "/leadership.png",
     price: "40.00",
@@ -185,7 +185,7 @@ export const coursesData = [
     ],
   },
   {
-    id: "8",
+    id: 8,
     title: "SENIOR / MIDDLE MANAGEMENT",
     imgURL: "/book.png",
     price: "259.00",
@@ -201,7 +201,7 @@ export const coursesData = [
     ],
   },
   {
-    id: "9",
+    id: 9,
     title: "HOMESCHOOLING STARTUPS",
     imgURL: "/hat.png",
     price: "15.00",
@@ -216,7 +216,7 @@ export const coursesData = [
     ],
   },
   {
-    id: "10",
+    id: 10,
     title: "APPLIED (CHRIST -CENTRED) MONTESSORI DIPLOMA PROGRAMME",
     imgURL: "/leadership.png",
     price: "40.00",
@@ -235,7 +235,7 @@ export const coursesData = [
     ],
   },
   {
-    id: "11",
+    id: 11,
     title: "SCHOOL PLANTING COURSE",
     imgURL: "/book.png",
     price: "40.00",
@@ -253,7 +253,7 @@ export const coursesData = [
     ],
   },
   {
-    id: "12",
+    id: 12,
     title: "ADVANCE DIPLOMA CERTIFICATE PROGRAMME",
     imgURL: "/book.png",
     price: "40.00",
