@@ -70,7 +70,7 @@ export default function CourseList({ course }) {
             1 - 28 July 2022
           </p>
           <div className='text-primary text-base font-extrabold '>
-            {course.id}
+            {course.title}
           </div>
           <h4 className="text-neutral-600 mt-2 text-[12px] font-normal font-['Raleway']">
             Product Management Masterclass, you will learn with Sarah Johnson -
@@ -91,7 +91,7 @@ export default function CourseList({ course }) {
 
           <div className='px-5 py-2.5 bg-white rounded-[5px] border border-[#8F060E] justify-start items-start gap-2.5 flex hover:bg-primary transition-all duration-300 group shadow- shadow-[#000000]/20'>
             <Link
-              href={"/admin/modules"}
+              href={`/course-details/?id=${course.id}`}
               className='text-[#8F060E] text-xs font-medium  capitalize group-hover:text-white'
             >
               {path.includes("/admin") ? "Manage Course" : " enroll now"}

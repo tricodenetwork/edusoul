@@ -66,32 +66,38 @@ export const modulesData = [
 
 export const coursesData = [
   {
-    id: "Advanced Classroom Assistant",
+    id: 1,
+    title: "Advanced Classroom Assistant",
     imgURL: "/hat.png",
     label: "Courses",
   },
   {
-    id: "Diploma in Christian Education",
+    id: 2,
+    title: "Diploma in Christian Education",
     imgURL: "/book.png",
     label: "Courses",
   },
   {
-    id: "Enhanced Professional Development Certificate in Christian Education",
+    id: 3,
+    title: "Enhanced Professional Development Certificate in Christian Education",
     imgURL: "/leadership.png",
     label: "Courses",
   },
   {
-    id: "Post Graduate Certificate in Christian Education",
+    id: 4,
+    title: "Post Graduate Certificate in Christian Education",
     imgURL: "/headphones.png",
     label: "Courses",
   },
   {
-    id: "Enhanced Professional Development Certificate in Christian Education",
+    id: 5,
+    title: "Enhanced Professional Development Certificate in Christian Education",
     imgURL: "/leadership.png",
     label: "Courses",
   },
   {
-    id: "Post Graduate Certificate in Christian Education",
+    id: 6,
+    title: "Post Graduate Certificate in Christian Education",
     imgURL: "/headphones.png",
     label: "Courses",
   },
