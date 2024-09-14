@@ -20,7 +20,7 @@ const Accordion = ({
         onClick={() => toggleAccordion(accordionId)}
         className='border-t w-full   cursor-pointer flex flex-row pt-4 gap-3 rounded-md justify-between items-center'
       >
-        <p className={`text-[15px] md:text-[18.687px] w-full font-bold`}>
+        <p className={`text-[15px] md:text-[18.687px] w-full font-medium`}>
           {question}
         </p>
         <div className='flex mr-auto justify-end items-end'>

@@ -25,7 +25,7 @@ export default function App() {
         {/* <Modules /> */}
       </main>
       <FAQs />
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 }

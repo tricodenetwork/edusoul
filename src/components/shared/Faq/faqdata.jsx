@@ -1,34 +1,68 @@
 export const faqdata = [
   {
     id: 1,
-    question: "Enim sodales consequat adipiscinon lorem lobortis? ",
-    answer: `Businesses of all sizes and across various industries use Tricode to optimize their remote work environments, work with skilled talents, and build custom software solutions.`,
+    question:
+      "Is Edusoul affiliated or in collaboration with other established bodies or tertiary education providers?",
+    answer: `Yes, Edusoul has a broad link with an established University, Higher education institute in UK & International Schools/ training centres.`,
   },
 
   {
     id: 2,
-    question: "Enim sodales consequat adipiscing facilisis massa venenatis, non lorem lobortis? ",
-    answer: `Enim sodales consequat adipiscing facilisis massa venenatis, non lorem lobortis?`,
+    question:
+      "Are there  professional development workshop  networks, or conferences organised by Edusoul? ",
+    answer: `Yes, there are periodic conferences and workshops.`,
   },
 
   {
     id: 3,
-    question: "Enim sodales consequat adipiscing facilisis massa venenatis, non lorem lobortis? utilize?",
-    answer: `We leverage a multi-cloud approach, primarily utilizing AWS and Google Cloud Platform for scalability, reliability, and global reach.`,
+    question:
+      "Where / or in which organisation can I use qualification from Edusoul?",
+    answer: `In any established Christian-School or education providers (including Institutions providing for special education needs).`,
   },
 
   {
     id: 4,
-    question: "What technologies power Enim sodales consequat adipiscing facilisis?",
+    question:
+      "Is it possible to use my professional development training in a non-Christian  organisation?",
     answer:
-      "Vitae congue eu consequat ac felis placerat vestibulum lectus mauris ultrices. Cursus sit amet dictum sit amet justo donec enim diam porttitor lacus luctus accumsan tortor posuere.",
+      "Yes, such organisations are very interested in looking at hiring people with godly virtues and character, above circular qualifications.",
   },
 
   {
     id: 5,
     question:
-      "What tools and environments are available to Tricode's developers?",
+      "Are there professional development seminars organised by Edusoul?",
     answer:
-      "Vitae congue eu consequat ac felis placerat vestibulum lectus mauris ultrices. Cursus sit amet dictum sit amet justo donec enim diam porttitor lacus luctus accumsan tortor posuere.",
+      "Yes, we organise seminars throughout the year for various categories of professional niches.",
+  },
+  {
+    id: 6,
+    question: "What support services are available for students?",
+    answer:
+      "Edusoul endeavours to give students access to various resources and facilities for scholarship programmes.",
+  },
+  {
+    id: 7,
+    question: "Is EDUSOL an accredited institution?",
+    answer:
+      "Edusoul is an online professional development institute which awards professional enhancement certificates and advance diploma.",
+  },
+  {
+    id: 8,
+    question: "Can I enrol on any course from any part of the world?",
+    answer:
+      "The application process at Edusoul Distinct is simple and student friendly. You can visit our official website www... and complete your enrolment online. Ensure to submit all required documents and personal statements. We will revert regarding the outcome of your application.",
+  },
+  {
+    id: 9,
+    question: "What makes my Christ - centered awards different from others?",
+    answer: "See why Edusoul.",
+  },
+  {
+    id: 10,
+    question:
+      "What qualification must I have to enrol on any of the programmes/courses?",
+    answer:
+      "Our admission requirements depend on the programme of your choice, and experience in your field. Generally, you will need the minimum SSCE... and professional statement.Kindly see our programme requirement on the website.",
   },
 ];

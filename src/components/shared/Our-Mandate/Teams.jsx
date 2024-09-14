@@ -21,7 +21,7 @@ export default function Teams({ mobile }) {
               Team work
             </h4>
             <h3 className='text-primary text-[36px] lg:text-[56px] leading-none xl:w-[80%] font-extrabold'>
-              Easily transition with your team{" "}
+              Easily transition with our team{" "}
             </h3>
           </div>
           <p className='text-primary mt-3 text-lg xl:w-[90%]'>

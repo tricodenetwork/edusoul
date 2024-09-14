@@ -38,14 +38,12 @@ function Center() {
 
             <div className='lg:w-[50%] text-gray-400 leading-relaxed p-10'>
               <li className=''>
-                Professional career developement as critical, innovative
-                educators.
-              </li>
-              <li className='mb-1'>
-                Moral and spiritual transformation in learners.
+                Professional career development is critical for innovative
+                educators to effect moral and spiritual transformation in
+                learners.
               </li>
               <li className='lg:w-[78%]'>
-                Empower to impact and raise Godly. Global Generations (G3s).
+                Empower to impact and raise Godly Global Generations (G3s).
               </li>
             </div>
           </div>

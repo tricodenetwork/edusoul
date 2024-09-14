@@ -16,8 +16,7 @@ export default function Courses() {
           Access transformational courses
         </div>
         <div className='text-center text-slate-900 text-lg font-normal'>
-          Sed ut vestibulum eget purus ornare. Risus elit et fringilla habitant
-          ut facilisi.
+          Here are a list of all courses we currently offer at Edusoul
         </div>
 
         <div className=' w-full grid  place-items-center  grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4  gap-[25px] mt-6'>
