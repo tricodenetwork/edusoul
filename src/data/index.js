@@ -66,13 +66,9 @@ export const modulesData = [
 
 export const coursesData = [
   {
-<<<<<<< HEAD
     id: 1,
     title: "Advanced Classroom Assistant",
-=======
     id: "1",
-    name: "Advance Classroom Assistance",
->>>>>>> 0e14e298db67d764935ba6b04d886fbbd93f352a
     imgURL: "/hat.png",
     price: "15.00",
     price2: "45.00",
@@ -87,13 +83,8 @@ export const coursesData = [
     ],
   },
   {
-<<<<<<< HEAD
     id: 2,
     title: "Diploma in Christian Education",
-=======
-    id: "2",
-    name: "Diploma in Christian Education",
->>>>>>> 0e14e298db67d764935ba6b04d886fbbd93f352a
     imgURL: "/book.png",
     price: "40.00",
     price2: "85.00",
@@ -109,13 +100,8 @@ export const coursesData = [
     ],
   },
   {
-<<<<<<< HEAD
     id: 3,
     title: "Enhanced Professional Development Certificate in Christian Education",
-=======
-    id: "3",
-    name: "Enhanced Professional Development Certificate in Christian Education",
->>>>>>> 0e14e298db67d764935ba6b04d886fbbd93f352a
     imgURL: "/leadership.png",
     price: "125.00",
     price2: "220.00",
@@ -132,13 +118,8 @@ export const coursesData = [
     ],
   },
   {
-<<<<<<< HEAD
     id: 4,
     title: "Post Graduate Certificate in Christian Education",
-=======
-    id: "4",
-    name: "Post Graduate Certificate in Christian Education",
->>>>>>> 0e14e298db67d764935ba6b04d886fbbd93f352a
     imgURL: "/headphones.png",
     price: "100.00",
     price2: "170.00",
@@ -154,13 +135,8 @@ export const coursesData = [
     ],
   },
   {
-<<<<<<< HEAD
     id: 5,
-    title: "Enhanced Professional Development Certificate in Christian Education",
-=======
-    id: "5",
-    name: "S.E.N.D (SPECIAL EDUCATIONAL NEEDS AND DISABIITIES) ",
->>>>>>> 0e14e298db67d764935ba6b04d886fbbd93f352a
+    title: "S.E.N.D (SPECIAL EDUCATIONAL NEEDS AND DISABIITIES)",
     imgURL: "/leadership.png",
     price: "259.00",
     price2: "350.00",
@@ -175,13 +151,8 @@ export const coursesData = [
     ],
   },
   {
-<<<<<<< HEAD
     id: 6,
-    title: "Post Graduate Certificate in Christian Education",
-=======
-    id: "6",
-    name: "CHRISTIAN SCHOOL HEADSHIP/LEADERSHIP",
->>>>>>> 0e14e298db67d764935ba6b04d886fbbd93f352a
+    title: "CHRISTIAN SCHOOL HEADSHIP/LEADERSHIP",
     imgURL: "/headphones.png",
     price: "40.00",
     price2: "80.00",
@@ -198,7 +169,7 @@ export const coursesData = [
   },
   {
     id: "7",
-    name: "CHRISTIAN SCHOOL PROPRIETORSHIP ",
+    title: "CHRISTIAN SCHOOL PROPRIETORSHIP ",
     imgURL: "/leadership.png",
     price: "40.00",
     price2: "85.00",
@@ -215,7 +186,7 @@ export const coursesData = [
   },
   {
     id: "8",
-    name: "SENIOR / MIDDLE MANAGEMENT",
+    title: "SENIOR / MIDDLE MANAGEMENT",
     imgURL: "/book.png",
     price: "259.00",
     price2: "350.00",
@@ -231,7 +202,7 @@ export const coursesData = [
   },
   {
     id: "9",
-    name: "HOMESCHOOLING STARTUPS",
+    title: "HOMESCHOOLING STARTUPS",
     imgURL: "/hat.png",
     price: "15.00",
     price2: "45.00",
@@ -246,7 +217,7 @@ export const coursesData = [
   },
   {
     id: "10",
-    name: "APPLIED (CHRIST -CENTRED) MONTESSORI DIPLOMA PROGRAMME",
+    title: "APPLIED (CHRIST -CENTRED) MONTESSORI DIPLOMA PROGRAMME",
     imgURL: "/leadership.png",
     price: "40.00",
     price2: "85.00",
@@ -265,7 +236,7 @@ export const coursesData = [
   },
   {
     id: "11",
-    name: "SCHOOL PLANTING COURSE",
+    title: "SCHOOL PLANTING COURSE",
     imgURL: "/book.png",
     price: "40.00",
     price2: "85.00",
@@ -283,7 +254,7 @@ export const coursesData = [
   },
   {
     id: "12",
-    name: "ADVANCE DIPLOMA CERTIFICATE PROGRAMME",
+    title: "ADVANCE DIPLOMA CERTIFICATE PROGRAMME",
     imgURL: "/book.png",
     price: "40.00",
     price2: "85.00",

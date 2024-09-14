@@ -29,7 +29,6 @@ function CourseDetails() {
 
   return (
     <>
-      <Navbar />
       <div className="flex flex-col my-14">
         <div className="flex flex-col w-full h-[365px] px-3 md:px-[6vh] bg-rose-200 justify-center items-start">
           <div className="flex flex-col justify-start items-start gap-2">
@@ -65,7 +64,7 @@ function CourseDetails() {
             <div className="flex-col justify-start items-start gap-3 flex">
               <div className="h-8 flex-col justify-start items-start gap-3 flex">
                 <div className="self-stretch h-8 text-zinc-800 text-2xl font-bold font-['Roboto'] leading-normal">
-                  ${CourseId}34.99
+                  ${course.price}
                 </div>
               </div>
               <button className="w-36 h-10 px-6 bg-red-800 rounded border border-red-800 justify-center items-center inline-flex">
@@ -109,7 +108,7 @@ function CourseDetails() {
               </div>
               <div className="h-10 flex-col justify-start items-center gap-2.5 flex">
                 <div className="self-stretch h-3.5 text-center text-neutral-500 text-xs font-normal">
-                  Starting at ${CourseId}34.00 per month after trial
+                  Starting at ${course.price} per month after trial
                 </div>
                 <div className="self-stretch h-4 text-center text-neutral-500 text-xs font-normal">
                   Cancel anytime
@@ -123,7 +122,6 @@ function CourseDetails() {
       <section className="mt-[2vh] md:mt-[9vh] w-full px-[7vw]">
         <Courses />
       </section>
-      <Footer />
     </>
   );
 }

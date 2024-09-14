@@ -148,7 +148,7 @@ export default function RootLayout({ children }) {
                           key={inde.toString()}
                           className='text-appAsh my-2 w-[70%] font-medium'
                         >
-                          {item.name}
+                          {item.title}
                         </p>
                       );
                     })}
