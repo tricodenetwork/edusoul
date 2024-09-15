@@ -69,11 +69,11 @@ export default function CourseList({ course }) {
           <p className="text-slate-500 text-[10px] font-normal font-['Raleway'] leading-[15px]">
             1 - 28 July 2022
           </p>
-          <div className='text-primary text-base font-extrabold '>
+          <div className='text-primary text-base font-extrabold truncate'>
             {course.title}
             {/* {course.name} */}
           </div>
-          <h4 className="text-neutral-600 mt-2 text-[12px] font-normal font-['Raleway']">
+          <h4 className="text-neutral-600 mt-2 text-[12px] font-normal font-['Raleway'] text-ellipsis line-clamp-3">
             {course.snippet}
           </h4>
           <div className='w-[264.27px] h-[16.17px]' />
