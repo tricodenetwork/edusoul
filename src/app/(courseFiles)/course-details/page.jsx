@@ -6,8 +6,6 @@ import { coursesData } from "@/data";
 import { useSearchParams, usePathname } from "next/navigation";
 import Link from "next/link";
 import Courses from "@/components/shared/Courses";
-import Footer from "@/components/shared/Footer";
-import Navbar from "@/components/shared/NavBar/nav";
 import CheckIcon from "@mui/icons-material/Check";
 
 function CourseDetails() {
@@ -67,11 +65,14 @@ function CourseDetails() {
                   ${course.price}
                 </div>
               </div>
-              <button className="w-36 h-10 px-6 bg-red-800 rounded border border-red-800 justify-center items-center inline-flex">
+              <Link
+                href={`/add-to-cart/?id=${course.id}`}
+                className="w-36 h-10 px-6 bg-red-800 rounded border border-red-800 justify-center items-center inline-flex"
+              >
                 <div className="text-center text-white text-lg font-semibold">
                   Buy Course
                 </div>
-              </button>
+              </Link>
             </div>
           </div>
 
