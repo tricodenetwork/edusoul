@@ -68,7 +68,6 @@ export const coursesData = [
   {
     id: 1,
     title: "Advanced Classroom Assistant",
-    id: "1",
     imgURL: "/hat.png",
     price: "15.00",
     price2: "45.00",
