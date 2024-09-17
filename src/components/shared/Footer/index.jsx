@@ -9,13 +9,20 @@ import InstagramIcon from "@mui/icons-material/Instagram";
 import useFunctions from "@/hooks/useFunctions";
 import { Inter } from "next/font/google";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const inter = Inter({ subsets: ["latin"] });
 export default function Footer({ mobile }) {
+  const pathname = usePathname();
   const { imageLoader } = useFunctions();
   return (
     <section
-      className='w-full md:h-72 px-5 md:px-12 bg-gray flex-col justify-center items-start border-t inline-flex'
+      className={`w-full md:h-72 px-5 md:px-12 bg-gray ${
+        (pathname.includes("auth") ||
+          pathname.includes("admin") ||
+          pathname.includes("dashboard")) &&
+        "hidden"
+      }  flex-col justify-center items-start border-t inline-flex `}
       id='footer'
     >
       <div className='flex flex-col md:flex-row md:w-full py-3 border-b border-slate-200 justify-between items-start md:items-center gap-3'>
