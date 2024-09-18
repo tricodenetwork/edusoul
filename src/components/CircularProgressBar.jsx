@@ -1,4 +1,4 @@
-const CircularProgressBar = ({ percentage, diameter = 64, radius = 25 }) => {
+const CircularProgressBar = ({ percentage, diameter = 74, radius = 30 }) => {
   const circumference = 2 * Math.PI * radius;
   const offset = circumference - (percentage / 100) * circumference;
 
@@ -31,7 +31,7 @@ const CircularProgressBar = ({ percentage, diameter = 64, radius = 25 }) => {
           y='50%'
           textAnchor='middle'
           dy='.3em'
-          className='text-[8px] fill-appBlack font-semibold'
+          className='text-[10px] fill-appBlack font-semibold'
         >
           {`${percentage}%`}
         </text>

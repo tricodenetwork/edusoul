@@ -12,8 +12,6 @@ const nunito = Nunito({ subsets: ["latin"] });
 const links = [
   { href: "/dashboard", label: "Home" },
   { href: "/dashboard/courses", href2: "/dashboard/lessons", label: "Courses" },
-  { href: "/", label: "Assignment" },
-  { href: "/", label: "Live" },
   { href: "/dashboard/settings", label: "Settings" },
 ];
 
@@ -51,20 +49,6 @@ export default function RootLayout({ children }) {
             />
             <Image
               className=''
-              src={"/assets/icons/assignment.svg"}
-              width={24}
-              height={24}
-              alt='assignment'
-            />
-            <Image
-              className=''
-              src={"/assets/icons/live.svg"}
-              width={24}
-              height={24}
-              alt='live'
-            />
-            <Image
-              className=''
               src={"/assets/icons/settings.svg"}
               width={24}
               height={24}
@@ -76,7 +60,7 @@ export default function RootLayout({ children }) {
               <li
                 key={index.toString()}
                 className={`cursor-pointer ${
-                  path === link.href || link.href2
+                  path === link.href
                     ? "text-primary hover:text-appAsh font-semibold"
                     : "text-appAsh hover:text-primary"
                 }`}
@@ -88,9 +72,9 @@ export default function RootLayout({ children }) {
         </div>
       </div>
 
-      <div className='w-full md:w-[85%] overflow-y-scroll h-full'>
+      <div className='w-full md:w-[85%] pt-[11vh]  overflow-y-scroll h-full'>
         {/* Top Section */}
-        <div className='w-full px-3 sm:px-[20px] lg:px-[40px] border-b border-appAsh2 flex items-center justify-between py-[16px]  '>
+        <div className='w-full px-3 sm:px-[20px] fixed top-0 z-50  lg:px-[40px] border-b  bg-white border-appAsh2 flex items-center justify-between py-[16px]  '>
           <div className='px-[16px] h-[51px] flex items-center justify-between relative w-[45%] rounded-[8px]  shadow-[0px_2px_8px] shadow-black/10'>
             <input
               style={nunito.style}
