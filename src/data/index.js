@@ -314,3 +314,34 @@ export const coreValuesdata = [
       "Fostering personal and professional development through continuous learning and improvement.",
   },
 ];
+
+
+
+export const coreStudents = [
+  {
+    name: "Luke Okagha",
+    courseId: 1, // Reference the course ID from coursesData
+    modules: [
+      {
+        moduleId: 1,
+        name: "Module 1",
+        lessons: [
+          {
+            lessonId: 1,
+            name: "Lesson 1",
+            content: "Lesson content",
+            completionStatus: "completed", // or "in progress", "not started"
+          },
+          // ... other lessons
+        ],
+      },
+      // ... other modules
+    ],
+    startDate: "2024-09-18", // Use ISO 8601 format
+    progress: 75, // Percentage completion
+    enrollmentDate: "2024-09-15", // Use ISO 8601 format
+    enrollmentStatus: "confirmed", // or "pending", "cancelled"
+  },
+  // ... other students
+];
+  
