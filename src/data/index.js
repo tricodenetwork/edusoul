@@ -344,4 +344,43 @@ export const coreStudents = [
   },
   // ... other students
 ];
+
+
+const export NotificationData[
+  {
+  "notificationId": "67890",
+  "senderId": "instructor456",
+  "recipientId": "student789",
+  "title": "Upcoming Live Class",
+  "message": "Join the live class on 'Introduction to Programming' tomorrow at 10 AM.",
+  "createdAt": "2024-09-17T15:30:22Z",
+  "isRead": false,
+  "notificationType": "LIVE_CLASS",
+  "classId": "123",
+  "startTime": "2024-09-19T10:00:00Z"
+},
+{
+  "notificationId": "12345",
+  "senderId": "admin123",
+  "recipientId": "all_students",
+  "title": "Important Announcement",
+  "message": "New course materials have been added to the platform.",
+  "createdAt": "2024-09-18T18:26:53Z",
+  "isRead": false,
+  "notificationType": "ADMIN"
+},  
+
+  {
+  "notificationId": "111222",
+  "senderId": "system",
+  "recipientId": "student789",
+  "title": "Assignment Reminder",
+  "message": "Don't forget to submit your 'Data Structures' assignment by Friday.",
+  "createdAt": "2024-09-16T12:00:00Z",
+  "isRead": false,
+  "notificationType": "ASSIGNMENT",
+  "assignmentId": "456",
+  "dueDate": "2024-09-20T23:59:59Z"
+},
   
+]
