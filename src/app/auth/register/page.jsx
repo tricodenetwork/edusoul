@@ -10,6 +10,9 @@ import { IoCheckmarkDoneCircle } from "react-icons/io5";
 import { useAuth } from "@/context/AuthContext";
 import { Montserrat } from "next/font/google";
 import Image from "next/image";
+import bcrypt from "bcryptjs";
+import toast from "react-hot-toast";
+import axios from "axios";
 
 const mont = Montserrat({
   subsets: ["cyrillic", "cyrillic-ext", "latin", "latin-ext", "vietnamese"],
@@ -17,6 +20,11 @@ const mont = Montserrat({
   style: ["italic"],
 });
 
+const labelStyle = "text-sm mb-2 font-normal text-[#151515]";
+const inputStyle =
+  "pt-2 h-[57px] placeholder:text-[#00054C] placeholder:opacity-40  focus:outline-none text-sm rounded-md block w-full p-3.5 border border-gray-300";
+
+const passwordStrengthStyle = "w-[64px] h-[4px]";
 const SignupForm = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -25,9 +33,11 @@ const SignupForm = () => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [password, setPassword] = useState("");
-  const [passwordStrength, setPasswordStrength] = useState("Weak");
+  const [passwordStrength, setPasswordStrength] = useState({});
   const [isLoading, setLoading] = useState(false);
   const [showPasswordToggle, setShowPasswordToggle] = useState(false);
+  const [emailError, setEmailError] = useState(null);
+  const [err, setErr] = useState(null);
 
   const showPassword = () => setShowPasswordToggle(!showPasswordToggle);
   const togglePasswordVisibility = () => {
@@ -35,7 +45,7 @@ const SignupForm = () => {
   };
   // Password strength validation logic
   const validatePassword = (value) => {
-    let strength = "Weak";
+    let strength = 0;
     const criteria = {
       length: value.length >= 8,
       uppercase: /[A-Z]/.test(value),
@@ -52,11 +62,17 @@ const SignupForm = () => {
       case 3:
         strength = "Moderate";
         break;
-      default:
+      case 2:
         strength = "Weak";
+        break;
+      case 1:
+        strength = "Poor";
+        break;
+      default:
+        strength = "Poor";
     }
 
-    setPasswordStrength(strength);
+    setPasswordStrength({ strength, value: fulfilledCriteria });
   };
 
   const handlePasswordChange = (e) => {
@@ -64,81 +80,137 @@ const SignupForm = () => {
     validatePassword(e.target.value);
   };
 
+  const validateEmail = (mail) => {
+    // Regular expression for a simple email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const isValidEmail = emailRegex.test(mail);
+
+    // Set emailError based on validation result
+    setEmailError(isValidEmail ? null : "Invalid email address");
+  };
+
+  const handleEmailChange = (e) => {
+    validateEmail(e.target.value); // Validate email on each change
+    setEmail(e.target.value);
+  };
+
   const signUpAccount = async () => {
     // Your signup logic here
+    setLoading(true);
+    try {
+      const hashedPassword = await bcrypt.hash(password, 10);
+      await axios.post("/api/register", {
+        name: firstName,
+        surname: lastName,
+        email,
+        password: hashedPassword,
+      });
+
+      //   router.push("/dashboard");
+      toast.success("Registered successfully!!");
+
+      setLoading(false);
+
+      // Handle successful response
+    } catch (error) {
+      // Handle error
+      console.error("Error:", error);
+      toast.error(`Error registering: ${error.response.data.message ?? ""}`);
+      setErr(error);
+      setLoading(false);
+    }
   };
 
   const isFormFullName = firstName && lastName;
-  const isFormValid = email && password;
+  const isFormValid =
+    isFormFullName && email && password && passwordStrength.value == 4;
+  const criteria = [
+    {
+      condition: password.length >= 8,
+      text: "At least 8 characters",
+    },
+    {
+      condition: /[A-Z]/.test(password),
+      text: "At least 1 uppercase character",
+    },
+    {
+      condition: /[a-z]/.test(password),
+      text: "At least 1 lowercase character",
+    },
+    {
+      condition: /\d/.test(password),
+      text: "At least 1 number",
+    },
+  ];
 
   return (
     <div
-      className={`flex text-center w-full md:w-[80%] px-3 ${
-        registerType !== "fullname" && "mt-12"
-      } md:w-[75%] justify-between py-[5%] items-center md:py-5 flex-col`}
+      className={`flex text-center w-full px-3 h-full justify-center py-[5%] items-center md:py-5 flex-col`}
     >
-      <Image
+      {/* <Image
         src={"/assets/icons/logo.svg"}
         width={50}
         height={50}
-        alt="logo"
-        className="relative bottom-2 md:bottom-0"
+        alt='logo'
+        className='relative bottom-2 md:bottom-0'
       />
-      <h2 className="text-[30px] text-black font-bold">
+      <h2 className='text-[30px] text-black font-bold'>
         Welcome to{" "}
-        <span style={mont.style} className="text-primary italic ">
+        <span style={mont.style} className='text-primary italic '>
           EduSoul
         </span>
-      </h2>
+      </h2> */}
 
-      <p className="md:w-[90%]  mt-[1%]">
+      {/* <p className='md:w-[90%]  mt-[1%]'>
         {registerType !== "fullname" ? (
           <>Enter your email address to sign up to Edusoul</>
         ) : (
           <>Enter full name to begin</>
         )}
-      </p>
+      </p> */}
 
-      <div className="flex flex-col text-left gap-3 w-full mt-4">
-        {registerType !== "nextForms" && (
-          <div className="flex flex-col gap-4">
-            <div>
-              <label>
-                First name<span className="text-star">*</span>
-              </label>
+      {registerType == "fullname" && (
+        <div className='w-[80%] '>
+          <div className='flex mb-6 items-center flex-col'>
+            <h4 className='font-bold text-[40px] mb-4 leading-normal text-appBlack'>
+              Tell us your name
+            </h4>
+            <p className='text-sm text-[#475569]'>Enter full name to begin</p>
+          </div>
+          <div className='flex  p-8 flex-col'>
+            <div className='mb-4 flex flex-col items-start'>
+              <label className={labelStyle}>First name</label>
               <input
-                type="text"
+                type='text'
                 value={firstName}
                 onChange={(e) => setFirstName(e.target.value)}
-                placeholder="Enter your name"
-                className="bg-gray-30 h-[45px] text-sm rounded-md block w-full p-3.5 border border-gray-300 outline-primary"
+                placeholder='Enter your name'
+                className={inputStyle}
                 required
               />
             </div>
-            <div>
-              <label>
-                Last name<span className="text-star">*</span>
-              </label>
+            <div className='mb-6 flex flex-col items-start'>
+              <label className={labelStyle}>Last name</label>
               <input
-                type="text"
+                type='text'
                 value={lastName}
                 onChange={(e) => setLastName(e.target.value)}
-                placeholder="Enter your name"
-                className="bg-gray-30 h-[45px] text-sm rounded-md block w-full p-3.5 border border-gray-300 outline-primary"
+                placeholder='Enter your surname'
+                className={inputStyle}
                 required
               />
             </div>
 
             <Link
               className={`bg-primary text-white text-center p-3 rounded-md ${
-                !isFormFullName && "opacity-50 cursor-not-allowed"
+                !isFormFullName && "bg-opacity-20 cursor-not-allowed"
               }`}
               href={`/auth/register?type=nextForms`}
               disabled={!isFormFullName || isLoading}
             >
               {isLoading ? (
-                <div className="flex gap-3 justify-center items-center">
-                  <div className="animate-spin rounded-full h-5 w-5 border-b-4 border-white"></div>
+                <div className='flex gap-3 justify-center items-center'>
+                  <div className='animate-spin rounded-full h-5 w-5 border-b-4 border-white'></div>
                   Loading...
                 </div>
               ) : (
@@ -146,158 +218,173 @@ const SignupForm = () => {
               )}
             </Link>
           </div>
-        )}
+        </div>
+      )}
 
-        {registerType !== "fullname" && (
-          <>
-            <div>
-              <label>
-                Email<span className="text-star">*</span>
-              </label>
+      {registerType !== "fullname" && (
+        <div className='w-[80%]'>
+          {/* Header */}
+          <div className='flex mb-6 items-center flex-col'>
+            <h4 className='font-bold text-[28px] lg:text-[40px] mb-4 leading-normal text-appBlack'>
+              Create your account
+            </h4>
+            <p className=' text-xs lg:text-sm text-[#475569]'>
+              Enter your emaill address to signup for Edusoul
+            </p>
+          </div>
+          {/* Email */}
+          <div className='mb-4 flex flex-col items-start'>
+            <label className={labelStyle}>Email</label>
+            <input
+              type='email'
+              value={email}
+              onChange={handleEmailChange}
+              placeholder='Enter your email'
+              className={inputStyle}
+              required
+            />
+            {emailError && (
+              <p className='text-red-500 mt-1 light text-xs'>{emailError}</p>
+            )}
+          </div>
+          {/* Password */}
+          <div className='mb-6 flex flex-col items-start'>
+            <label className={labelStyle}>Password</label>
+
+            <div className='flex w-full relative   h-max rounded-md justify-center items-center '>
               <input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="Enter your email"
-                className="bg-gray-30 h-[45px] text-sm rounded-md block w-full p-3.5 border border-gray-300 outline-primary"
-                required
+                className={inputStyle}
+                type={showPasswordToggle ? "text" : "password"}
+                placeholder='********'
+                onChange={handlePasswordChange}
+                value={password}
               />
+              <p
+                className='cursor-pointer absolute right-2  text-primary'
+                onClick={showPassword}
+              >
+                <ShowHidePassword showPasswordToggle={showPasswordToggle} />
+              </p>
+            </div>
+          </div>
+          {/* Password Strength */}
+          <div className='mb-4'>
+            {/* Password strength indicator */}
+            <div className='mt-2 flex items-center gap-2'>
+              <div
+                className={`w-[64px] h-1 rounded ${
+                  passwordStrength.value >= 2
+                    ? "bg-green-500"
+                    : passwordStrength.value == 1
+                    ? "bg-[#FC7E15]"
+                    : "bg-[#e8e8e8]"
+                }`}
+              ></div>
+              <div
+                className={`w-[64px] h-1 rounded ${
+                  passwordStrength.value >= 2 ? "bg-green-500" : "bg-[#e8e8e8]"
+                }`}
+              ></div>
+              <div
+                className={`w-[64px] h-1 rounded ${
+                  passwordStrength.value >= 3 ? "bg-green-500" : "bg-[#e8e8e8]"
+                }`}
+              ></div>
+              <div
+                className={`w-[64px] h-1 rounded ${
+                  passwordStrength.value >= 4 ? "bg-green-500" : "bg-[#e8e8e8]"
+                }`}
+              ></div>
+
+              <p className='text-xs text-[#686868]'>
+                {passwordStrength.strength}
+              </p>
             </div>
 
-            <div>
-              <label>
-                Password<span className="text-star">*</span>
-              </label>
-
-              <form className="flex h-[45px] px-3.5 rounded-md border flex-row justify-center items-center gap-2 focus-within:ring-2 ring-primary">
-                <input
-                  className="w-full bg-transparent outline-none border-none"
-                  type={showPasswordToggle ? "text" : "password"}
-                  placeholder="********"
-                  onChange={handlePasswordChange}
-                  value={password}
-                />
-                <p
-                  className="cursor-pointer text-primary"
-                  onClick={showPassword}
-                >
-                  <ShowHidePassword showPasswordToggle={showPasswordToggle} />
-                </p>
-              </form>
-            </div>
-
-            <div className="mb-4">
-              {/* Password strength indicator */}
-              <div className="mt-2 flex items-center gap-2">
-                <div
-                  className={`w-full h-2 rounded ${
-                    passwordStrength === "Weak" ? "bg-red-500" : "bg-red-500"
-                  }`}
-                ></div>
-                <div
-                  className={`w-full h-2 rounded ${
-                    passwordStrength === "Moderate" ||
-                    passwordStrength === "Strong"
-                      ? "bg-yellow-500"
-                      : "bg-gray-500"
-                  }`}
-                ></div>
-                <div
-                  className={`w-full h-2 rounded ${
-                    passwordStrength === "Strong"
-                      ? "bg-green-500"
-                      : "bg-gray-500"
-                  }`}
-                ></div>
-
-                <p className="text-sm text-gray-600">{passwordStrength}</p>
-              </div>
-
-              {/* Password criteria */}
-              <ul className="flex flex-col gap-3 text-gray-600 text-sm mt-6">
-                <li className={``}>Strong password. Must contain at least;</li>
-                <li
-                  className={`flex gap-1 items-center ${
-                    password.length >= 8 ? "text-green-500" : ""
-                  }`}
-                >
-                  <IoCheckmarkDoneCircle />
-                  At least 8 characters
-                </li>
-                <li
-                  className={`flex gap-1 items-center ${
-                    /[A-Z]/.test(password) ? "text-green-500" : ""
-                  }`}
-                >
-                  <IoCheckmarkDoneCircle />
-                  At least 1 uppercase character
-                </li>
-                <li
-                  className={`flex gap-1 items-center ${
-                    /[a-z]/.test(password) ? "text-green-500" : ""
-                  }`}
-                >
-                  <IoCheckmarkDoneCircle />
-                  At least 1 lowercase character
-                </li>
-                <li
-                  className={`flex gap-1 items-center ${
-                    /\d/.test(password) ? "text-green-500" : ""
-                  }`}
-                >
-                  <IoCheckmarkDoneCircle />
-                  At least 1 number
-                </li>
+            {/* Password criteria */}
+            <div className='flex items-start flex-col'>
+              <p className={`text-xs text-[#686868] mt-[14px]`}>
+                Strong password. Must contain at least;
+              </p>
+              <ul className='flex flex-col gap-3 text-[#686868] pt-4 text-xs'>
+                {criteria.map((item, index) => (
+                  <li
+                    key={index}
+                    className={`flex gap-1 items-center ${
+                      item.condition ? "text-green-500" : ""
+                    }`}
+                  >
+                    {item.condition ? (
+                      <Image
+                        src={"/assets/icons/good.svg"}
+                        alt='good'
+                        width={16}
+                        height={16}
+                      />
+                    ) : (
+                      <Image
+                        src={"/assets/icons/bad.svg"}
+                        alt='bad'
+                        width={16}
+                        height={16}
+                      />
+                    )}
+                    {item.text}
+                  </li>
+                ))}
               </ul>
             </div>
+          </div>
 
-            <Button
-              type="submit"
-              onClick={signUpAccount}
-              className={`bg-primary text-white p-3 rounded-md ${
-                !isFormValid && "opacity-50 cursor-not-allowed"
-              }`}
-              disabled={!isFormValid || isLoading}
-            >
-              {isLoading ? (
-                <div className="flex gap-3 justify-center items-center">
-                  <div className="animate-spin rounded-full h-5 w-5 border-b-4 border-white"></div>
-                  Loading...
-                </div>
-              ) : (
-                "Create Account"
-              )}
-            </Button>
-
-            <div className="w-full md:w-full h-3.5 mt-4 justify-center items-center gap-4 inline-flex">
-              <div className="w-[194px] h-[0px] border border-stone-300"></div>
-              <div className="text-neutral-500 text-xs font-normal font-['Roboto']">
-                OR
+          <Button
+            type='submit'
+            onClick={signUpAccount}
+            className={`text-white p-3  w-full mt-4 rounded-md ${
+              !isFormValid
+                ? "bg-[#FDCED1] h-[48px] cursor-not-allowed"
+                : "bg-primary"
+            }`}
+            disabled={!isFormValid || isLoading}
+          >
+            {isLoading ? (
+              <div className='flex gap-3 justify-center items-center'>
+                <div className='animate-spin rounded-full h-5 w-5 border-b-4 border-white'></div>
+                Loading...
               </div>
-              <div className="w-[194px] h-[0px] border border-stone-300"></div>
-            </div>
-            <div className="flex mt-1 justify-center items-center">
-              <AuthComponent />
-            </div>
+            ) : (
+              "Create Account"
+            )}
+          </Button>
 
-            <div className="text-center text-sm font-normal">
-              <span className="text-[#171718]">
-                By creating an account I accept Synergy book club’s{" "}
-              </span>
-              <span className="text-[#8f060e] text-xs">
-                Terms and Conditions
-              </span>
+          <div className='w-full md:w-full h-3.5 relative mt-6 justify-center items-center gap-4 inline-flex'>
+            <div className='w-full h-[0px] border border-[#EAEAEA]'></div>
+            <div className='text-[#494C5B] bg-white px-8 absolute font-normal'>
+              Or
             </div>
+          </div>
 
-            <p className="text-xs mt-1 mb-4 text-center">
-              Already have an account?
-              <Link href="/auth/login" className="text-primary font-bold ml-1">
-                Login
-              </Link>
-            </p>
-          </>
-        )}
-      </div>
+          {/* Social Login */}
+          <div className='flex mt-1 justify-center items-center'>
+            <AuthComponent />
+          </div>
+
+          <div className='text-center text-sm font-normal'>
+            <span className='text-[#171718]'>
+              By creating an account I accept Synergy book club’s{" "}
+            </span>
+            <span className='text-[#8f060e] text-sm '>
+              Terms and Conditions
+            </span>
+          </div>
+
+          <p className='text-sm text-[#171818] mt-4 text-center'>
+            Already have an account?
+            <Link href='/auth/login' className='text-primary underline   ml-1'>
+              Sign In
+            </Link>
+          </p>
+        </div>
+      )}
     </div>
   );
 };

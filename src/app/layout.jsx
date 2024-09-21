@@ -3,6 +3,7 @@ import "./globals.css";
 import AuthContextProvider from "../context/AuthContext";
 import Navbar from "@/components/shared/NavBar/nav";
 import Footer from "@/components/shared/Footer";
+import { Toaster } from "react-hot-toast";
 
 const inter = Roboto({
   subsets: ["cyrillic", "cyrillic-ext", "latin", "latin-ext"],
@@ -23,6 +24,7 @@ export default function RootLayout({ children }) {
           style={inter.style}
           className={`${inter.className} flex w-full h-full overflow-y-scroll flex-col`}
         >
+          <Toaster position='top-center' />
           <Navbar />
           {children}
           <Footer />

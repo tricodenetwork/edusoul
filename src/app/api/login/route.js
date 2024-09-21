@@ -10,8 +10,11 @@ const login = async (req) => {
     // Check if any required field is missing
     const requiredFields = ["password", "email"];
     for (const field of requiredFields) {
-      if (body[field]) {
-        return res.status(400).json({ error: `${field} is required` });
+      if (!body[field]) {
+        return Response.json(
+          { error: `${field} is required` },
+          { status: 400 }
+        );
       }
     }
 
@@ -23,10 +26,13 @@ const login = async (req) => {
     if (!existingUser) {
       return Response.json({ error: "User not found" }, { status: 400 });
     }
-    const hashedPassword = await bcrypt.hash(existingUser.password, 10);
+    const hashedPassword = await bcrypt.hash(body.password, 10);
 
     // Verify the password using bcrypt
-    const passwordMatch = await bcrypt.compare(body.password, hashedPassword);
+    const passwordMatch = await bcrypt.compare(
+      body.password,
+      existingUser.password
+    );
 
     if (!passwordMatch) {
       return Response.json({ error: "Invalid password" }, { status: 400 });
@@ -37,9 +43,11 @@ const login = async (req) => {
     return Response.json(userData, { status: 200 });
   } catch (error) {
     console.error("API Error:", error);
-    res
-      .status(500)
-      .json({ error: "An error occurred while processing the request" });
+
+    Response.json(
+      { error: "An error occurred while processing the request" },
+      { status: 500 }
+    );
   }
 };
 

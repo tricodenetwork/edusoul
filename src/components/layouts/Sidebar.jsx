@@ -18,21 +18,21 @@ const Sidebar = ({ Header, Message }) => {
   //------------------------------------------------------------------USE EFFECTS
 
   return (
-    <div className='hidden relative md:flex pt-[11em] p-10 flex-col justify-start items-center md:w-full bg-primary h-screen'>
-      <div className='relative flex items-center justify-center w-[90%] h-[207px] lg:w-[80%] lg:h-[307px]'>
+    <div className='hidden relative md:flex  p-10 flex-col justify-center items-center md:w-full bg-[#FFF5F6] h-screen'>
+      <div className='relative flex  mb-0  items-center justify-center w-max h-[207px] lg:w-[75%] lg:h-max py-6 px-8'>
         <Image
           alt='logo'
           width={24}
           height={24}
           className='object-cover absolute top-0 left-0'
-          src='/assets/icons/star.svg'
+          src='/assets/icons/red_star.svg'
         />
         <Image
           alt='logo'
           width={24}
           height={24}
           className='object-cover absolute bottom-0 right-0 '
-          src='/assets/icons/star.svg'
+          src='/assets/icons/red_star.svg'
         />
         <Image
           loader={imageLoader}
@@ -44,13 +44,14 @@ const Sidebar = ({ Header, Message }) => {
         />
         <h5
           style={mont.style}
-          className='text-[56px] text-white  italic font-bold'
+          className='text-[56px] text-primary leading-normal  italic font-bold'
         >
           Edusoul
         </h5>
       </div>
-      <p className='flex text-appPink xl:text-2xl absolute bottom-[8%] font-bold w-[70%] text-center'>
-        Join Us As We Take Your Christ-centered Education to the next level
+
+      <p className='flex text-appBlack xl:text-2xl h-[100px] items-center  w-[80%] text-center'>
+        Join us as we take your Christ-Centered education to the next level
       </p>
     </div>
   );

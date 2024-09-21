@@ -12,11 +12,11 @@ const AuthLayout = ({ children }) => {
   //------------------------------------------------------------------USE EFFECTS
 
   return (
-    <div className='flex flex-col md:flex-row w-full h-screen justify-between overflow-y-hidden items-center'>
-      <div className='fixed w-[45%] bg-green-400'>
+    <div className='flex flex-col  md:flex-row w-full h-screen justify-between overflow-y-hidden items-center'>
+      <div className='w-[50%] hidden md:flex bg-green-400'>
         <Sidebar Header='Hello ' Message='' />
       </div>
-      <div className='flex flex-col mx-auto mt-14 md:mt-4 md:mb-14 md:pr-5 md:pl-[47%] lg:pl-[50%] justify-center items-center w-full h-screen overflow-y-auto'>
+      <div className='flex   justify-center items-center w-full lg:w-[50%] h-screen overflow-y-auto'>
         {children}
       </div>
     </div>

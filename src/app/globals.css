@@ -169,6 +169,18 @@ label {
   scrollbar-width: none;
 }
 
+/* Hide arrows in Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+/* Hide arrows in Chrome, Safari, and Edge */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
 .drag-and-drop {
   /* border: 2px solid #061A48; */
   padding: 20px;

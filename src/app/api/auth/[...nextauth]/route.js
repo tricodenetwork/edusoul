@@ -27,6 +27,7 @@ const authOptions = {
           headers: { "Content-Type": "application/json" },
         });
         const user = await res.json();
+        console.log(user);
         // If authentication is successful, return user data
         if (res.ok && user) {
           return user;

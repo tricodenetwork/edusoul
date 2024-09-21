@@ -1,60 +1,70 @@
 "use client";
 
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect, Suspense } from "react";
 import Link from "next/link";
-import { Router, useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { Button } from "@/components/ui/Button";
 import OTPInput from "@/components/ui/OTPInput";
 
 const VerificationForm = () => {
-  const navigate = useRouter();
-  const [otp, setOTP] = useState("");
+  const router = useRouter();
+  const [otp, setOTP] = useState(Array(6).fill("")); // Store each OTP digit
   const [isLoading, setLoading] = useState(false);
+  const searchParams = useSearchParams();
+  const email = searchParams.get("email");
 
-  // ============================== SIGN IN
+  const handleOTPChange = (otpArray) => {
+    setOTP(otpArray); // Update OTP array in state
+  };
 
-  const VerificationAccount = async () => {};
+  const VerificationAccount = async () => {
+    const fullOTP = otp.join(""); // Join OTP array into a single string
 
-  const isFormValid = otp;
+    // Handle verification logic here
+  };
+
+  // Check if the form is valid by ensuring all 6 digits of OTP are filled
+  const isFormValid = otp.every((digit) => digit !== "") && otp.length == 6;
 
   return (
-    <div className="flex text-center h-full w-[80%] p-3 justify-center items-center py-5 flex-col -translate-y-1 shadow-[0_4px_4px] shadow-black/25 rounded-[14px]">
-      <h2 className="text-[30px] text-black font-bold pt-5 sm:pt-1">
-        We sent you a code
-      </h2>
-      <p className="md:w-[90%] small-medium md:base-regular mt-4">
-        Enter Code we sent to your C**********ly@gmail.com
-      </p>
+    <div className='flex text-center h-max w-[80%] py-[32px] justify-start items-center px-[36.5px] flex-col shadow-[0_4px_4px] shadow-black/5 rounded-[12px]'>
+      {/* Header */}
+      <div className='flex mb-[36px] items-center flex-col'>
+        <h4 className='font-bold mb-[36px] text-[28px] leading-normal text-appBlack'>
+          We sent you a code
+        </h4>
+        <p className=' text-xs lg:text-sm text-[#475569]'>
+          {`Enter the code we sent to ${email ?? ""}`}
+        </p>
+      </div>
 
-      <div className="flex flex-col text-left gap-3 w-full mt-6 justify-center items-center">
-        <OTPInput
-          length={5}
-          onChange={(value, index) =>
-            console.log(`Digit ${index + 1}: ${value}`)
-          }
-        />
+      {/* OTP Input */}
+      <div className='flex flex-col text-left gap-3 w-full mt-6 justify-center items-center'>
+        <OTPInput length={6} onChange={handleOTPChange} />
 
-        <div className="w-full justify-center items-center mt-4 gap-3 inline-flex">
+        {/* Resend Link */}
+        <div className='w-full justify-center text-sm text-[#171818] items-center mt-9 gap-1 inline-flex'>
           Didn’t get the code?
           <Link
-            href="/"
-            className="text-center text-primary  text-base font-bold  hover:underline"
+            href='/'
+            className='text-center text-primary text-sm hover:underline'
           >
             Click here to resend
           </Link>
         </div>
 
+        {/* Verify Button */}
         <Button
-          type="submit"
+          type='submit'
           onClick={VerificationAccount}
           className={`bg-primary text-white w-full p-3 mt-4 rounded-md ${
-            !isFormValid && "opacity-50 cursor-not-allowed"
+            !isFormValid ? "opacity-20 cursor-not-allowed" : ""
           }`}
           disabled={!isFormValid || isLoading}
         >
           {isLoading ? (
-            <div className="flex gap-3 justify-center items-center">
-              <div className="animate-spin rounded-full h-5 w-5 border-b-4 border-white"></div>
+            <div className='flex gap-3 justify-center items-center'>
+              <div className='animate-spin rounded-full h-5 w-5 border-b-4 border-white'></div>
               Loading...
             </div>
           ) : (
@@ -66,4 +76,12 @@ const VerificationForm = () => {
   );
 };
 
-export default VerificationForm;
+const VerificationFormWithSuspense = () => {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <VerificationForm />
+    </Suspense>
+  );
+};
+
+export default VerificationFormWithSuspense;

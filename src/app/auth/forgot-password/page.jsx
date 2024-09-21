@@ -6,78 +6,106 @@ import { Button } from "@/components/ui/Button";
 import Image from "next/image";
 import Link from "next/link";
 
+const labelStyle = "text-sm mb-2 font-normal text-[#151515]";
+const inputStyle =
+  "pt-2 h-[57px] placeholder:text-[#00054C] placeholder:opacity-40  focus:outline-none text-sm rounded-md block w-full p-3.5 border border-gray-300";
+
 const FPForm = () => {
-  const navigate = useRouter();
+  const router = useRouter();
   const [email, setEmail] = useState("");
   const [isLoading, setLoading] = useState(false);
+  const [emailError, setEmailError] = useState(null);
 
   // ============================== SIGN IN
 
-  const fogotPasswordAccount = async () => {};
+  const fogotPasswordAccount = async () => {
+    try {
+      setLoading(true);
+      router.push(`/auth/verification?email=${email}`);
+    } catch (error) {
+      setLoading(false);
+    }
+  };
 
-  const isFormValid = email;
+  const validateEmail = (mail) => {
+    // Regular expression for a simple email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const isValidEmail = emailRegex.test(mail);
+
+    // Set emailError based on validation result
+    setEmailError(isValidEmail ? null : "Invalid email address");
+  };
+
+  const handleEmailChange = (e) => {
+    validateEmail(e.target.value); // Validate email on each change
+    setEmail(e.target.value);
+  };
+
+  const isFormValid = email && !emailError;
 
   return (
-    <div className="flex text-center h-[80%] md:h-[50%] w-[90%] md:w-[80%] mx-3 p-3 justify-center items-center py-5 flex-col -translate-y-1 shadow-[0_4px_4px] shadow-black/25 rounded-[14px]">
-      <h2 className="text-[30px] text-black font-bold pt-5 sm:pt-1">
-        Forgot Password
-      </h2>
-      <p className="md:w-[90%] text-[#676767] md:base-regular mt-2">
-        Enter your email address to reset your passsword
-      </p>
-
-      <div className="flex flex-col text-left gap-5 w-full mt-4">
-        <div>
-          <label>
-            Email<span className="text-star">*</span>
-          </label>
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            placeholder="Enter your email"
-            className="bg-gray-30 h-[45px] text-sm rounded-md block w-full p-3.5 border border-gray-300 outline-primary"
-            required
-          />
-        </div>
-
-        <Button
-          type="submit"
-          onClick={fogotPasswordAccount}
-          className={`bg-primary text-white p-3 mt-10 rounded-md ${
-            !isFormValid && "bg-[#FDCED1] cursor-not-allowed"
-          }`}
-          disabled={!isFormValid || isLoading}
-        >
-          {isLoading ? (
-            <div className="flex gap-3 justify-center items-center">
-              <div className="animate-spin rounded-full h-5 w-5 border-b-4 border-white"></div>
-              Loading...
-            </div>
-          ) : (
-            "Submit"
-          )}
-        </Button>
+    <div className='flex text-center relative  h-[65vh]  w-[90%] md:w-[80%] px-[40px] justify-start items-center py-[32px] flex-col shadow-[0_4px_4px] shadow-black/5 rounded-[12px]'>
+      {/* Header */}
+      <div className='flex mb-6 items-center flex-col'>
+        <h4 className='font-bold text-[28px] lg:text-[40px] mb-4 leading-normal text-appBlack'>
+          Forgot Password
+        </h4>
+        <p className=' text-xs lg:text-sm text-[#475569]'>
+          Enter your email address to reset your passsword
+        </p>
       </div>
 
-      <div className="flex w-full mt-8 justify-between">
-        <Link
-          href={"/auth/login"}
-          className="flex items-center justify-center"
-        >
-          <Image
-            src={"/assets/icons/back-square.svg"}
-            width={24}
-            height={24}
-            alt="logo"
-            className="relative"
-          />
-          <h3 className="w-[120px] text-center text-[#8f060e] text-base font-normal underline leading-snug">
-            Back to Sign in
-          </h3>
-        </Link>
-        <div></div>
+      {/* Email */}
+      <div className='flex w-full flex-col items-start'>
+        <label className={labelStyle}>Email</label>
+        <input
+          type='email'
+          value={email}
+          onChange={handleEmailChange}
+          placeholder='Enter your email'
+          className={inputStyle}
+          required
+        />
+        {emailError && (
+          <p className='text-red-500 mt-1 light text-xs'>{emailError}</p>
+        )}
       </div>
+
+      <Button
+        type='submit'
+        onClick={fogotPasswordAccount}
+        className={`w-[95%] self-center text-white p-3 mt-10 rounded-md ${
+          !isFormValid || isLoading
+            ? "bg-[#FDCED1] cursor-not-allowed"
+            : "bg-primary"
+        }`}
+        disabled={!isFormValid || isLoading}
+      >
+        {isLoading ? (
+          <div className='flex gap-3 justify-center items-center'>
+            <div className='animate-spin rounded-full h-5 w-5 border-b-4 border-white'></div>
+            Loading...
+          </div>
+        ) : (
+          "Continue"
+        )}
+      </Button>
+
+      <Link
+        href={"/auth/login"}
+        className='flex w-max absolute bottom-[26px] gap-[14px] left-[30px] items-center justify-center'
+      >
+        <Image
+          src={"/assets/icons/back-square.svg"}
+          width={24}
+          height={24}
+          alt='logo'
+          className='relative'
+        />
+        <h3 className='w-[120px] text-center text-[#8f060e] text-base font-normal underline leading-snug'>
+          Back to Sign in
+        </h3>
+      </Link>
     </div>
   );
 };
