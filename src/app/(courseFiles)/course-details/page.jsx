@@ -29,7 +29,7 @@ function CourseDetails() {
   return (
     <>
       <div className='flex flex-col my-14'>
-        <div className='flex flex-col w-full h-[365px] px-3 md:px-[6vh] bg-rose-200 justify-center items-start'>
+        <div className='flex flex-col w-full h-[365px] px-3 md:px-[6vh] bg-[#F7D0D2] justify-center items-start'>
           <div className='flex flex-col justify-start items-start gap-2'>
             <h1 className='text-red-800 mb-4 text-3xl md:text-6xl font-extrabold'>
               {course.title}

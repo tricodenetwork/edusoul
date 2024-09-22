@@ -72,9 +72,9 @@ export default function RootLayout({ children }) {
         </div>
       </div>
 
-      <div className='w-full md:w-[85%] pt-[11vh]  overflow-y-scroll h-full'>
+      <div className='w-full flex flex-col md:w-[85%] pt-[11vh]  overflow-y-scroll h-full'>
         {/* Top Section */}
-        <div className='w-full px-3 sm:px-[20px] fixed top-0 z-50  lg:px-[40px] border-b  bg-white border-appAsh2 flex items-center justify-between py-[16px]  '>
+        <div className='w-full md:w-[85%] px-3 sm:px-[20px] fixed top-0 z-50  lg:px-[40px] border-b  bg-white border-appAsh2 flex items-center justify-between py-[16px]  '>
           <div className='px-[16px] h-[51px] flex items-center justify-between relative w-[45%] rounded-[8px]  shadow-[0px_2px_8px] shadow-black/10'>
             <input
               style={nunito.style}

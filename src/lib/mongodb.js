@@ -16,13 +16,17 @@ if (process.env.NODE_ENV === "development") {
   // is preserved across module reloads caused by HMR (Hot Module Replacement).
   if (!global._mongoClientPromise) {
     client = new MongoClient(uri, options);
-    global._mongoClientPromise = client.connect();
+    global._mongoClientPromise = await client.connect().catch(function (error) {
+      console.log(`Unable to connect to the Mongo db  ${error} `);
+    });
   }
   clientPromise = global._mongoClientPromise;
 } else {
   // In production mode, it's best to not use a global variable.
   client = new MongoClient(uri, options);
-  clientPromise = client.connect();
+  clientPromise = await client.connect().catch(function (error) {
+    console.log(`Unable to connect to the Mongo db  ${error} `);
+  });
 }
 
 // Export a module-scoped MongoClient promise. By doing this in a

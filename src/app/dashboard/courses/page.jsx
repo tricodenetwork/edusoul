@@ -68,8 +68,8 @@ const Index = () => {
         </div>
         <p className=' text-primary'>1/10 Completed</p>
       </div>
-
-      <div className='w-full p-6 mt-8 rounded-lg border border-stone-300 flex-col justify-start items-start gap-6 inline-flex'>
+      {/* Notifications */}
+      {/* <div className='w-full p-6 mt-8 rounded-lg border border-stone-300 flex-col justify-start items-start gap-6 inline-flex'>
         <div className='w-full justify-between items-center inline-flex'>
           <div className='text-slate-900 text-base font-bold'>
             Notifications
@@ -104,8 +104,7 @@ const Index = () => {
             ))}
           </tbody>
         </table>
-      </div>
-
+      </div> */}
       {courses.map((item, index) => (
         <div
           key={index + 1}

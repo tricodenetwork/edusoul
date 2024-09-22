@@ -1,5 +1,5 @@
 // pages/api/auth/[...nextauth].js
-import NextAuth from "next-auth";
+import NextAuth, { getServerSession } from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 import FaceBookProvider from "next-auth/providers/facebook";
 import LinkedInProvider from "next-auth/providers/linkedin";
@@ -8,7 +8,7 @@ import clientPromise from "@/lib/mongodb";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { baseUrl } from "@/config/config";
 
-const authOptions = {
+export const authOptions = {
   adapter: MongoDBAdapter(clientPromise),
   providers: [
     CredentialsProvider({
@@ -80,5 +80,6 @@ const authOptions = {
   },
 };
 const handler = NextAuth(authOptions);
+export const getServerAuthSession = () => getServerSession(authOptions);
 
 export { handler as GET, handler as POST };

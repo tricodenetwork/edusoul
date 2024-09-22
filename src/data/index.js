@@ -80,6 +80,53 @@ export const coursesData = [
       "The curriculum covers a wide range of topics, including the opportunity to observe and participate in real classroom settings, putting learning into practice in a hands-on way. By completing this programme, participants will be equipped to transit to our Diploma in Christian Education course, if so desired.",
       "If you are interested in enrolling in our Advance Classroom Assistant Course, we encourage you to contact us for more information. Together, we can help inspire and empower the next generation of Christian educators.",
     ],
+    modules: [
+      {
+        title: "EDSD MODULE 1.1 - HEART FOUNDATION",
+        lessons: [
+          "The Heart and Vision of Christian Educator Part 1",
+          "Calling and Character of a Christian Teacher",
+          "How Research is Done",
+        ],
+      },
+      {
+        title: "EDSD MODULE 1.2 - Aims of Christian Education",
+        lessons: [
+          "Aims of Christian Education",
+          "Foundation for Christian Education Part 1",
+          "Christian Worldview",
+        ],
+        assignment: "Assignment and Mini Research Project",
+      },
+      {
+        title: "EDSD MODULE 1.3 - Christ-Centred Curriculum and Standards",
+        lessons: [
+          "Christ-Centred Curriculum and Delivery 1",
+          "Role of Holy Spirit in Teaching and Learning Process 1",
+          "Holistic Culture",
+        ],
+        assignment: "Assignment",
+      },
+      {
+        title: "EDSD MODULE 1.4 - Acts of Education",
+        lessons: [
+          "Learning Theory for Christian Teacher Part 1",
+          "Stimulating Learning Environment and Displays",
+          "Standards and Good Practice 1",
+          "Play and Learn",
+        ],
+        assignment: "Assignment",
+      },
+      {
+        title: "EDSD MODULE 1.5",
+        lessons: [
+          "Learning Theory for Christian Teacher Part 1",
+          "Mindsets in the Classroom",
+          "Behavioural Management",
+        ],
+        assignment: "Assignment and Mini Project",
+      },
+    ],
   },
   {
     id: 2,
@@ -88,15 +135,79 @@ export const coursesData = [
     price: "40.00",
     price2: "85.00",
     snippet:
-      "Our Diploma in Christian Education provides students with the knowledge and skills needed to effectively teach and lead within a Christian, world-view context. ",
+      "Our Diploma in Christian Education provides students with the knowledge and skills needed to effectively teach and lead within a Christian, world-view context.",
     intro: [
       "If you have a passion for teaching and a desire to make a positive impact in the lives of others, then our diploma programme in Christian Education may be the perfect fit for you.",
       "Our Diploma in Christian Education provides students with the knowledge and skills needed to effectively teach and lead within a Christian, world-view context.",
       "One of the key benefits of this diploma programme is the opportunity to deepen your understanding of the Bible and its application in a Christ-centred curriculum (all subjects and topics), showing the centrality of the Godhead.",
       "Additionally, the programme of studies includes: Educational psychology, Curriculum Development, teaching methods and methodologies, practical skills for effective teaching, classroom management, learning styles, and use of teaching aids/resources for effective curriculum delivery. Students also learn how to be proactive in creating engaging and stimulating lessons that meet the needs of diverse learners.",
-      "This diploma programme includes a practicum component, allowing students to gain hands-on experience in a real-world educational setting; a valuable experience which enhances participants' skills and help facilitate the development of newer practical skills, and confidence as 21st century educators. Moreover, it provides opportunities for mentorship and networking within the Christian education community. This programme will further prepare students to make a meaningful impact in both academic and ministry settings.  To successfully complete this programme, students will be expected to complete given research topics for every module.",
+      "This diploma programme includes a practicum component, allowing students to gain hands-on experience in a real-world educational setting; a valuable experience which enhances participants' skills and helps facilitate the development of newer practical skills, and confidence as 21st century educators. Moreover, it provides opportunities for mentorship and networking within the Christian education community. This programme will further prepare students to make a meaningful impact in both academic and ministry settings.  To successfully complete this programme, students will be expected to complete given research topics for every module.",
       "If you are interested in enrolling in our Diploma Programme in Christian Education, we encourage you to contact us for more information. Together, we can help inspire and empower the next generation of Christian educators.",
     ],
+    modules: [
+      {
+        title: "EDSD MODULE 2.1 - HEART FOUNDATION",
+        lessons: [
+          "The Heart and Vision of Christian Educator Part 1 & 2",
+          "Christian in Secular Worldview",
+          "Calling of a Christian Teacher",
+          "Aims of Christian Education",
+          "Holy Spirit in Teaching and Learning Process (Holistic Culture) 1",
+          "Foundation for Christian Education Part 1 & 2",
+        ],
+        assignment: "Assignment",
+      },
+      {
+        title:
+          "EDSD MODULE 2.2 - Christ-Centred Curriculum and Effective Standards",
+        lessons: [
+          "Christ-Centred Curriculum and Delivery 1 & 2",
+          "Acts of Gifted Teaching (Mixed Ability) Resources & Methodologies",
+          "Teaching and Learning Styles",
+          "Stimulating Learning Environment and Displays",
+          "Learning Theory for Christian Teacher Part 2",
+          "Cross-Curricular Planning & Teaching 1",
+          "Assess: Types and Purposes 1",
+        ],
+        assignment: "Assignment and Research Project",
+      },
+      {
+        title:
+          "EDSD MODULE 2.3 - Child Psychologists / Physiology: Every Child Matters 1",
+        lessons: [
+          "Child and Brain Development 1",
+          "Behavioural Management (Discipline)",
+          "Exploring Child Psychology",
+          "Applied Psychology in Christian Education 1",
+          "Fixed in Growth Mindsets in the Classroom",
+          "Undulating Mindset",
+        ],
+      },
+      {
+        title: "EDSD MODULE 2.4 - Every Child Matters Part 2",
+        lessons: [
+          "Police and Practice",
+          "Safeguarding / Health Matters (Child and School Environment)",
+        ],
+        assignment: "Assignment",
+      },
+      {
+        title:
+          "EDSD MODULE 2.5 - Character of a Christian Teacher and Role Model",
+        lessons: [
+          "The Reflective Teacher 1",
+          "The Empathetic Teacher 1",
+          "Competent in Incompetent Teacher 1",
+          "Creative Worship and Decoding Spiritual Gifts",
+        ],
+        assignment: "Assignment",
+      },
+    ],
+    finalProject: {
+      title: "EDUSOUL Final Project: Personal Professional Profile",
+      description:
+        "Creating a Personal Development Plan as an Edusoul AD. Reflection on key learnings from the course to compile a 3,000-word Professional Development Profile for equipping yourself as a servant leader in Christian education. The project focuses on the Trinity, holistic kingdom culture, Christian worldview, and the role of the Holy Spirit in the classroom to showcase your abilities as a Christ-centred educator.",
+    },
   },
   {
     id: 3,
@@ -111,11 +222,90 @@ export const coursesData = [
       "Are you a teacher or educator looking to deepen your knowledge and teaching skills through a Christ-centered learning programme? Our Enhanced professional development certificate programme in teaching and education may be the perfect fit for you.",
       "This programme is designed for educators who are seeking to synergise Christ-centred curriculum into their teaching practices, thereby creating a more meaningful and impactful learning experience for their students. Through a combination of online courses, workshops, and research projects, participants explore how to infuse their teaching with Christian principles and values.",
       "The curriculum covers a wide range of topics, including biblical integration in the classroom, creating a culture of faith and respect, and incorporating prayer and worship into daily lessons.",
-      "Participants also learn strategies for fostering a sense of community and collaboration among students, stakeholders, as well as how to address challenging issues from a Christian perspective.",
-      "One of the key benefits of this programme is the opportunity to connect with other like-minded educators who share your passion for Christ-centered teaching. Through group discussions, peer feedbacks, and collaborative projects, participants have the chance to learn from others and expand their professional network.",
+      "Participants also learn strategies for fostering a sense of community and collaboration among students and stakeholders, as well as how to address challenging issues from a Christian perspective.",
+      "One of the key benefits of this programme is the opportunity to connect with other like-minded educators who share your passion for Christ-centered teaching. Through group discussions, peer feedback, and collaborative projects, participants have the chance to learn from others and expand their professional network.",
       "Upon successful completion of the programme, participants receive a certificate that demonstrates their commitment to integrating faith into teaching practice. This credential can help you stand out in the competitive field of education and open up new career opportunities.",
       "If you are ready to take your teaching to the next level and make a lasting impact on your students, consider enrolling in our Enhanced professional development certificate programme in teaching and education. Let us help you grow professionally and spiritually as you strive to create a more Christ-centered classroom.",
     ],
+    modules: [
+      {
+        title: "EDSD MODULE 3.1 - HEART FOUNDATION",
+        units: [
+          "The Heart and Vision of Christian Educator Part 1 & 2",
+          "Christian in Secular Worldview",
+          "Leadership (Calling of a Christian Teacher)",
+          "Aims of Christian Education",
+          "Foundation for Christian Education Part 1 & 2",
+          "Holy Spirit in Teaching and Learning Process (Holistic Culture) 1",
+        ],
+        assignment: "Assignment",
+      },
+      {
+        title:
+          "EDSD MODULE 3.2 - Christ-Centred Curriculum and Effective Standards",
+        units: [
+          "Christ-Centred Curriculum and Delivery 1 & 2",
+          "Teaching Methods and Methodologies",
+          "Acts of Gifted Teaching (Mixed Ability) / Effective Use of Resources",
+          "Cross-Curricular Approach: Planning and Teaching 1 & 2",
+          "Learning Process and Styles",
+          "Stimulating Learning Environment and Displays",
+        ],
+        assignment: "Assignment",
+      },
+      {
+        title: "EDSD MODULE 3.3 - Every Child Matters",
+        units: [
+          "Police and Practice 1 & 2",
+          "Safeguarding / Health Matters (Child and School Environment) 1 & 2",
+          "Effective Communication",
+        ],
+        assignment: "Assignment and Research Project",
+      },
+      {
+        title: "EDSD MODULE 3.4 - Educational Physiology",
+        units: [
+          "Child and Brain Development 1 & 2",
+          "Behavioural Management & Discipline (What Discipline Is & Not)",
+          "Bespoke Curriculum Development 1",
+          "Assessment and Types of Assessment 1",
+        ],
+        assignment: "Assignment",
+      },
+      {
+        title: "EDSD MODULE 3.5 - Child Psychologists",
+        units: [
+          "Exploring Child Psychology 1 & 2",
+          "Applied Psychology in Christian Education 1 & 2",
+          "Teaching Physical Education 1",
+        ],
+        assignment: "Assignment",
+      },
+      {
+        title: "EDSD MODULE 3.6 - Kingdom Mindsets in the Classroom",
+        units: [
+          "Fixed Mindset (Teacher / Student)",
+          "Undulating Mindset (Teacher & Student)",
+          "Growth Mindset (Teacher & Student)",
+        ],
+        assignment: "Assignment",
+      },
+      {
+        title: "EDSD MODULE 3.7 - Character of a Christian Teacher",
+        units: [
+          "The Reflective Teacher 1",
+          "The Empathetic Teacher 1",
+          "The Competent Teacher 1",
+          "Creative Worship and Decoding Spiritual Gifts",
+        ],
+        assignment: "Assignment and Research Project",
+      },
+    ],
+    finalProject: {
+      title: "EDUSOUL Final Project: Personal Professional Profile",
+      description:
+        "Creating a Personal Development Plan as an Edusoul AD. Reflection on key learnings taken away from the course to compile a 5,000-word Professional Development Profile for equipping yourself as a servant leader in Christian education. The project focuses on the Trinity, holistic kingdom culture, Christian worldview, and the role of the Holy Spirit in the classroom to showcase proactiveness as an aspiring 21st-century Christian educator.",
+    },
   },
   {
     id: 4,
@@ -127,16 +317,84 @@ export const coursesData = [
       "A specialised programme designed for individuals seeking to deepen their understanding of Christian teachings and principles, as well as enhancing their skills in teaching and ministry.",
     intro: [
       "Our post graduate certificate in Christian education is a specialised programme designed for individuals seeking to deepen their understanding of Christian teachings and principles, as well as enhancing their skills in teaching and ministry.",
-      "This programme is ideal for those who are already working in a school, church or Christian organisation and want to further their education in order to better serve their community.",
+      "This programme is ideal for those who are already working in a school, church, or Christian organisation and want to further their education in order to better serve their community.",
       "The syllabus of our post graduate certificate in Christian education is pivoted in a Christ-centred programme of studies typically covering a range of topics, including biblical studies and application, Christian ethics, holistic nurturing, and principles of teaching and leadership.",
-      "Students explore the foundations of Christ-centred curriculum and faith, learn how to effectively communicate and develop the necessary skills to lead and manage educational programmes within an inclusive Christian setting. To successfully complete this programme, students are expected to complete given research topics for every module.",
+      "Students explore the foundations of Christ-centred curriculum and faith, learn how to effectively communicate, and develop the necessary skills to lead and manage educational programmes within an inclusive Christian setting. To successfully complete this programme, students are expected to complete given research topics for every module.",
       "If you are interested in enrolling in our Post Graduate Certificate in Christian Education Programme, we encourage you to contact us for more information.",
       "Together, we can help inspire and empower the next generation of contemporary Christian educators.",
     ],
+    modules: [
+      {
+        title: "EDSD MODULE 4.1 - HEART FOUNDATION 2 & 3",
+        units: [
+          "The Heart and Vision of Christian Educator Parts 2 & 3",
+          "Christian in Secular Worldview",
+          "Leadership (Calling of a Christian Teacher) 2 & 3",
+          "Foundation for / Aims of Christian Education 3 & 4",
+          "Holy Spirit in Teaching and Learning Process (Holistic Culture) 1 & 2",
+        ],
+        assignment: "Assignment",
+      },
+      {
+        title:
+          "EDSD MODULE 4.2 - Christ-Centred Curriculum and Effective Standards",
+        units: [
+          "Christ-Centred Curriculum and Delivery 1 & 2",
+          "Learning Process and Styles",
+          "Stimulating Learning Environment and Displays",
+          "Assessment and Types of Assessment 1 & 2",
+          "Education Fit for Purpose (Tool for Social Transformation)",
+          "Learning Theory for Christian Teacher Part 2",
+        ],
+        assignment: "Assignment",
+      },
+      {
+        title:
+          "EDSD MODULE 4.3 - Educational Physiology / Psychology - Every Child Matters",
+        units: [
+          "Police and Practice 1 & 2",
+          "Safeguarding / Health Matters (Child and School Environment) 1 & 2",
+          "Effective Communication",
+          "Child and Brain Development 1 & 2",
+          "Behavioural Management & Discipline (What Discipline Is & Not)",
+          "Special Educational Needs",
+        ],
+        assignment: "Assignment",
+      },
+      {
+        title:
+          "EDSD MODULE 4.4 - Futuristic (Christ-Centred) Curriculum and Effective Standards",
+        units: [
+          "The 21st Century Teacher",
+          "Teaching Methods and Methodologies (Maths, Literacy, Science...)",
+          "Acts of Gifted Teaching (Mixed Ability) / Effective Use of Resources / Developing Resources",
+          "Cross-Curricular Approach: Planning and Teaching 2 & 3",
+          "Learning Process and Styles",
+          "Role of Technology in Teaching and Learning",
+          "Classroom of the Future: Stimulating Learning Environment",
+        ],
+        assignment: "Assignment",
+      },
+      {
+        title: "EDSD MODULE 4.5 - Character of a Christian Teacher",
+        units: [
+          "The Reflective Teacher 1 & 2",
+          "The Empathetic Teacher 1 & 2",
+          "The Competent Teacher 1 & 2",
+          "Nurturing Worshippers and Decoding Spiritual Gifts",
+        ],
+        assignment: "Assignment",
+      },
+    ],
+    finalProject: {
+      title: "EDUSOUL Final Project: Personal Professional Profile",
+      description:
+        "Creating a Personal Development Plan as an Edusoul AD. Reflection on key learnings taken away from the course to compile a 6,000-word Professional Development Profile for equipping yourself as a servant leader in Christian education. The project focuses on the Trinity modules, holistic kingdom culture, Christian worldview, and the role of the Holy Spirit in the classroom to showcase proactive-centre Christian educator.",
+    },
   },
   {
     id: 5,
-    title: "S.E.N.D (SPECIAL EDUCATIONAL NEEDS AND DISABIITIES)",
+    title: "S.E.N.D (Special Educational Needs and Disabilities)",
     imgURL: "/leadership.png",
     price: "259.00",
     price2: "350.00",
@@ -148,6 +406,88 @@ export const coursesData = [
       "Our programme facilitates the understanding and recognition of the unique challenges faced by students with disabilities; how to create inclusive and supportive learning environments, accessibility to curriculum and the proficiency required.",
       "To successfully complete this programme, students are expected to complete given research topics for every module.",
       "If you are interested in enrolling in our S.E.N.D Course, we encourage you to contact us for more information. Together, we can help inspire and empower the next generation of Christian educators.",
+    ],
+    modules: [
+      {
+        title: "EDSD MODULE 5.1 - HEART FOUNDATION",
+        units: [
+          "The Heart and Vision of Christian Educator / Special Education Leader Part 1-3",
+          "Leadership (Calling of a Special Education Christian Educator/Leader)",
+          "Role of a Special Education Needs Christian Educator/Leader",
+          "Exploring Historical Perspective on Special Education Needs",
+          "Christian in Circular Worldview on Special Education and Disability Needs",
+          "Christ-Centred Curriculum and Effective Standards",
+        ],
+        assignment: "Assignment",
+      },
+      {
+        title: "EDSD MODULE 5.2 - Types of Disabilities",
+        units: [
+          "Classification of Disabilities",
+          "Physical Disabilities",
+          "Cognitive Disabilities",
+          "Sensory Disabilities",
+          "Mental Health Disabilities",
+          "Chronic Health Conditions",
+        ],
+        assignment: "Assignment",
+      },
+      {
+        title: "EDSD MODULE 5.3 - Curriculum and Standards Part 1 & 2",
+        parts: [
+          {
+            part: "Part 1",
+            units: [
+              "Bespoke Christ-Centred Curriculum Development",
+              "Accessing / Delivery of Curriculum",
+              "Exploring Teaching Methods and Methodologies",
+              "Acts of Gifted Teaching / Effective Use of Resources",
+              "Cross Curricular Approach: Planning and Teaching",
+            ],
+          },
+          {
+            part: "Part 2",
+            units: [
+              "Didactic Learning Process and Styles",
+              "Stimulating Learning Environment and Displays",
+              "Direct / Indirect Assessments",
+              "Holy Spirit in Teaching / Learning - Holistic Culture",
+            ],
+          },
+        ],
+        assignment: "Assignment and Research Project",
+      },
+      {
+        title:
+          "EDSD MODULE 5.4 - Every Child Matters / Every Child is Unique / Every Child Can Achieve",
+        units: [
+          "Exploring Universal / National Policies and Practices 1 & 2",
+          "Safeguarding / Health Matters (Child and School Environment) 1 & 2",
+          "Effective Communication",
+          "Exploring Behavioural Management (Group Exercises)",
+        ],
+      },
+      {
+        title: "EDSD MODULE 5.5 - Character of a Christian Teacher",
+        units: [
+          "The Reflective Teacher 1",
+          "The Empathetic Teacher 1",
+          "The Competent Teacher 1",
+          "Creative Worship and Decoding Spiritual Gifts",
+        ],
+        assignment: "Assignment",
+      },
+      {
+        title: "EDSD MODULE 5.6 - Educational Physiology & Child Psychologists",
+        units: [
+          "Child and Brain Development 1",
+          "Child and Brain Development 2",
+          "Learning Through Sports",
+          "Exploring Child Psychology 1 & 2",
+          "Applied Psychology in Christian Education 1 & 2",
+        ],
+        assignment: "Assignment and Research",
+      },
     ],
   },
   {
@@ -169,7 +509,7 @@ export const coursesData = [
   },
   {
     id: 7,
-    title: "CHRISTIAN SCHOOL PROPRIETORSHIP ",
+    title: "Christian School Proprietorship",
     imgURL: "/leadership.png",
     price: "40.00",
     price2: "85.00",
@@ -183,6 +523,45 @@ export const coursesData = [
       "In addition to learning from experienced professionals, our Christian school proprietorship course also provides participants with the opportunity to network with other proprietors who are passionate about education and share a commitment to Christian values. This networking can lead to valuable connections and collaborations that can help course participants grow their schools and make positive impacts in their communities.",
       "If you are interested in enrolling in our Christian School Proprietorship Course, we encourage you to contact us for more information. Together, we can help inspire and empower the next generation of Christian school proprietors/leaders.",
     ],
+    modules: [
+      {
+        title: "EDSD PART A - Whole School Development Plan",
+        units: [
+          "Heart Foundation Module (Units 1 - 6)",
+          "Whole School Grading Standard Framework",
+          "Curriculum Evaluation and Monitoring Standards Framework",
+          "Headship",
+        ],
+        assignment: "Assignment",
+      },
+      {
+        title: "EDUSOUL MODULE PART B",
+        units: [
+          "Christ-Centred Curriculum Development",
+          "Transformational Leadership in Education",
+          "Quality Performance Management Audit - QPMA",
+          "Holy Spirit in Teaching and Learning Process (Holistic Culture and Practice)",
+          "21st Century Distinctive Educator",
+        ],
+        assignment: "Assignment",
+      },
+      {
+        title: "EDUSOUL MODULE PART C",
+        units: [
+          "Whole School Policies and Practices (1 - 4)",
+          "Safeguarding / Health and Safety (Children and School Environment)",
+          "Effective School Administration and Communication System Networking and Inspectorate Framework",
+        ],
+      },
+      {
+        title: "EDUSOUL PART D",
+        units: [
+          "School Management Structure",
+          "Market Research and Development Plan",
+          "Legal Framework and Regulatory Authorities",
+        ],
+      },
+    ],
   },
   {
     id: 8,
@@ -193,11 +572,50 @@ export const coursesData = [
     snippet:
       "Throughout the course, students explore topics such as: visionary leadership, intersection of faith, work ethics, effective communication, conflict resolution, team building, strategic planning, policies and practice.",
     intro: [
-      "As a Christian school senior/middle management student, the course prepares you to take on a significant leadership role within your school community. This course is designed to equip its participants with the tools and knowledge rooted in Christ-centred curriculum, needed to excel in this position while upholding the values and principles of the Christian faith.",
+      "As a Christian school senior/middle management student, the course prepares you to take on a significant leadership role within your school community. This course is designed to equip its participants with the tools and knowledge rooted in a Christ-centred curriculum, needed to excel in this position while upholding the values and principles of the Christian faith.",
       "Throughout the course, students explore topics such as: visionary leadership, intersection of faith, work ethics, effective communication, conflict resolution, team building, strategic planning, policies and practice. These skills are essential for leading a team of educators and staff members in a way that fosters a positive and productive work environment. Participants learn that by applying these principles within the context of Christian values, they will be able to lead with integrity and compassion.",
       "The opportunity to reflect on biblical principles and how they inform decision-making and approach to leadership is an integral part of the course. By grounding leadership practices in the teachings of Christ, participants are empowered to lead with humility, servant-heartedness, and a focus on the well-being of others – altruistic leadership.",
       "As participants progress through this course, they have the opportunity to engage with peers and instructors in meaningful discussions and activities that deepen understanding of altruistic/effective leadership within a Christian context. By the end of this course, successful participants will be well-equipped to take on the challenges and responsibilities of a senior/middle management role in a contemporary Christian school setting.",
       "If you are interested in enrolling in our Senior/Middle Management Course, we encourage you to contact us for more information. Together, we can help inspire and empower the next generation of altruistic Christian educators.",
+    ],
+    modules: [
+      {
+        title: "EDSD PART A - Whole School Development Plan",
+        units: [
+          "Heart Foundation Module (Units 1 - 6)",
+          "Whole School Grading Standard Framework",
+          "Curriculum Evaluation and Monitoring Standards Framework",
+          "Headship",
+        ],
+        assignment: "Assignment",
+      },
+      {
+        title: "EDUSOUL MODULE PART B",
+        units: [
+          "Christ-Centred Curriculum Development",
+          "Transformational Leadership in Education",
+          "Quality Performance Management Audit - QPMA",
+          "Holy Spirit in Teaching and Learning Process (Holistic Culture and Practice)",
+          "21st Century Distinctive Educator",
+        ],
+        assignment: "Assignment",
+      },
+      {
+        title: "EDUSOUL MODULE PART C",
+        units: [
+          "Whole School Policies and Practices (1 - 4)",
+          "Safeguarding / Health and Safety (Children and School Environment)",
+          "Effective School Administration and Communication System Networking and Inspectorate Framework",
+        ],
+      },
+      {
+        title: "EDUSOUL PART D",
+        units: [
+          "School Management Structure",
+          "Market Research and Development Plan",
+          "Legal Framework and Regulatory Authorities",
+        ],
+      },
     ],
   },
   {
@@ -207,12 +625,27 @@ export const coursesData = [
     price: "15.00",
     price2: "45.00",
     snippet:
-      "This training covers a variety of topics, including, holistic teaching, (bespoke) curriculum development, teaching (traditional/Montessori) methods, learning styles, assessment methods, and legal requirements for homeschooling",
+      "This training covers a variety of topics, including holistic teaching, bespoke curriculum development, teaching (traditional/Montessori) methods, learning styles, assessment methods, and legal requirements for homeschooling.",
     intro: [
       "Homeschooling has become an increasingly popular choice for families seeking a more personalised and flexible education for their children. This programme is designed to train its participants in homeschooling methods and practices.",
       "Our homeschooling programme ensures that its participants have the skills and knowledge necessary to effectively support homeschooled students. This training covers a variety of topics, including holistic teaching, bespoke curriculum development, teaching (traditional/Montessori) methods, learning styles, assessment methods, and legal requirements for homeschooling. Participants must have an acceptable educational standard of competency in order to deliver the curriculum.",
       "To successfully complete this programme, students will be expected to complete given research topics in every module.",
       "If you are interested in enrolling in our Homeschooling Startup Course, we encourage you to contact us for more information. Together, we can help inspire and empower the next generation of Christian educators.",
+    ],
+    modules: [
+      {
+        title: "HOMESCHOOLING STARTUPS MODULE",
+        units: [
+          "Heart Foundation Module (Units 1 - 6)",
+          "EDSD Module 5.3 Christ-Centred Curriculum and Effective Delivery 1 & 2",
+          "Holy Spirit in Teaching and Learning Process",
+          "EDSD Module 5.7 - Educational Physiology",
+          "Applied Psychology in Christian Education 1",
+          "Creative Worship and Decoding Spiritual Gifts",
+          "Role of Technology in Modern Teaching",
+          "Assessment and Types of Assessment 1 & 2",
+        ],
+      },
     ],
   },
   {
@@ -347,39 +780,29 @@ export const coreStudents = [
 export const NotificationData = [
   {
     notificationId: "67890",
-    senderId: "instructor456",
-    recipientId: "student789",
     title: "Upcoming Live Class",
     message:
       "Join the live class on 'Introduction to Programming' tomorrow at 10 AM.",
     createdAt: "2024-09-17T15:30:22Z",
     isRead: false,
-    notificationType: "LIVE_CLASS",
-    classId: "123",
-    startTime: "2024-09-19T10:00:00Z",
+    category: "LIVE_CLASS",
   },
   {
     notificationId: "12345",
-    senderId: "admin123",
-    recipientId: "all_students",
     title: "Important Announcement",
     message: "New course materials have been added to the platform.",
     createdAt: "2024-09-18T18:26:53Z",
     isRead: false,
-    notificationType: "ADMIN",
+    category: "ADMIN",
   },
 
   {
     notificationId: "111222",
-    senderId: "system",
-    recipientId: "student789",
     title: "Assignment Reminder",
     message:
       "Don't forget to submit your 'Data Structures' assignment by Friday.",
     createdAt: "2024-09-16T12:00:00Z",
     isRead: false,
-    notificationType: "ASSIGNMENT",
-    assignmentId: "456",
-    dueDate: "2024-09-20T23:59:59Z",
+    category: "ASSIGNMENT",
   },
 ];

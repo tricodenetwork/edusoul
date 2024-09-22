@@ -42,10 +42,10 @@ const login = async (req) => {
     const { password, ...userData } = existingUser;
     return Response.json(userData, { status: 200 });
   } catch (error) {
-    console.error("API Error:", error);
+    console.error("API Error:", error.cause);
 
-    Response.json(
-      { error: "An error occurred while processing the request" },
+    return Response.json(
+      { error: `An error occurred while processing the request:` },
       { status: 500 }
     );
   }
