@@ -45,7 +45,7 @@ const AuthComponent = () => {
       <div
         onClick={() =>
           signIn("google", {
-            callbackUrl: `${baseUrl}/dashboard`,
+            callbackUrl: `${baseUrl}dashboard`,
           })
         }
         className={ellipseStyle}
