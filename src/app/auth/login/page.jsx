@@ -59,7 +59,6 @@ const SigninForm = () => {
         setErr("Login Successful");
         toast.success("Login successfull");
         router.push("/dashboard");
-        console.log(result);
       }
     }
   };

@@ -13,6 +13,7 @@ import { upload } from "@vercel/blob/client";
 import { useSession } from "next-auth/react";
 import toast from "react-hot-toast";
 import { baseUrl } from "../../../../config/config";
+import { revalidatePath } from "next/cache";
 
 const Index = () => {
   // --------------------------------------------VARIABLES
@@ -30,7 +31,7 @@ const Index = () => {
     try {
       const newBlob = await upload(file.name, file, {
         access: "public",
-        handleUploadUrl: `/api/upload?email=${session?.user?.email}`,
+        handleUploadUrl: `${baseUrl}api/upload?email=${session?.user?.email}`,
       });
 
       setBlob(newBlob);
@@ -40,6 +41,7 @@ const Index = () => {
       } else {
         toast.error("Error updating file.", { id: toastId });
       }
+      revalidatePath("/");
     } catch (error) {
       setIsUploading(false);
       alert("Error uploading");

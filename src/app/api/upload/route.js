@@ -7,13 +7,13 @@ const add = async (req) => {
     // Extract body from the request
     const body = await req.json();
     console.log("Request Body:", body);
+    console.log("Request:", req);
     const params = req.nextUrl.searchParams;
     const email = params.get("email");
-    console.log("token", process.env.BLOB_READ_WRITE_TOKEN);
 
     const jsonResponse = await handleUpload({
       body,
-      req,
+      request: req,
       onBeforeGenerateToken: async (pathname /*, clientPayload */) => {
         // Generate a client token for the browser to upload the file
         // ⚠️ Authenticate and authorize users before generating the token.

@@ -9,6 +9,12 @@ const nextConfig = {
         port: "",
         pathname: "/**",
       },
+      {
+        protocol: "https",
+        hostname: "afxkeiua4oauvagy.public.blob.vercel-storage.com",
+        port: "",
+        pathname: "/**",
+      },
     ],
   },
   async headers() {
