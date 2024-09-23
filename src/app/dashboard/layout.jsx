@@ -21,7 +21,7 @@ export default function RootLayout({ children }) {
   const path = usePathname();
   const [sideNav, setSideNav] = useState(false);
   const router = useRouter();
-  const { status } = useSession({
+  const { data: session, status } = useSession({
     required: true,
     onUnauthenticated() {
       // The user is not authenticated, handle it here.
@@ -129,7 +129,7 @@ export default function RootLayout({ children }) {
               className='px-[16px] py-[9px] flex items-center justify-center rounded-full shadow-[0px_2px_8px] shadow-black/10'
             >
               <Image
-                src={"/assets/images/pro.svg"}
+                src={session?.user?.image ?? "/assets/images/pro.svg"}
                 width={40}
                 height={40}
                 className='rounded-full mr-[12px]'

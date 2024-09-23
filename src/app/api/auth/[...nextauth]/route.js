@@ -73,6 +73,7 @@ export const authOptions = {
       // console.log("user", user);
       if (user) {
         session.user.role = user.role;
+        session.user.image = user.image;
       }
 
       return session;
