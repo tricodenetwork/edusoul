@@ -4,23 +4,7 @@ import clientPromise from "@/lib/mongodb";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import { getServerAuthSession } from "../api/auth/[...nextauth]/route";
-import AppButton from "@/components/ui/AppButton";
-
-const getUser = async (email) => {
-  try {
-    const session = await getServerAuthSession();
-    const client = await clientPromise;
-    const db = client.db("Edusoul");
-
-    const existingUser = await db
-      .collection("users")
-      .findOne({ email: session?.user?.email });
-    return existingUser;
-  } catch (error) {
-    throw error;
-  }
-};
+import { getUser } from "@/lib/actions";
 
 const Index = async () => {
   const user = await getUser();
@@ -31,7 +15,7 @@ const Index = async () => {
         {/* Welcome Card */}
         <div className='bg-primary relative w-full overflow-hidden flex flex-col items-start px-[5%] justify-center space-y-6 rounded-[12px] h-[222px]'>
           <h3 className='text-2xl text-white font-semibold'>
-            {`Welcome Back, ${user.name}`}
+            {`Welcome Back, ${user?.name?.split(" ").at(0)}`}
           </h3>
           <p className='text-white z-50 max-w-[454px] text-xs'>
             You are making progress course journey. Keep going to achieve your
@@ -69,9 +53,9 @@ const Index = async () => {
             </Link>
           </div>
           <div className='flex   flex-col sm:flex-row w-full mt-[16px] justify-between gap-3 lg:px-[16px] items-center'>
-            {user?.courses?.map((item) => (
+            {user?.courses?.map((item, index) => (
               <div
-                key={item.toString()}
+                key={index.toString()}
                 className='flex  items-center  mb-6 md:mb-0 md:items-start w-full lg:w-max  md:flex-col'
               >
                 <div>
@@ -124,7 +108,7 @@ const Index = async () => {
             )) ??
               coursesData.slice(0, 3).map((item) => (
                 <div
-                  key={item.toString()}
+                  key={item.id.toString()}
                   className='flex  items-center mb-6 md:mb-0 md:items-start w-full lg:w-max md:flex-col'
                 >
                   <div className='w-full'>
@@ -189,9 +173,12 @@ const Index = async () => {
               Notifications
             </div>
           </div>
-          {[1, 2].map((item) => {
+          {[1, 2].map((item, index) => {
             return (
-              <div className='border border-appAsh2 grid h-[58px] items-center grid-cols-[1.5fr,3.5fr] lg:mx-[16px]'>
+              <div
+                key={index.toString()}
+                className='border border-appAsh2 grid h-[58px] items-center grid-cols-[1.5fr,3.5fr] lg:mx-[16px]'
+              >
                 <div className='text-[10px] px-2  lg:px-[24px]  py-[8px] h-full flex items-center border-r border-appAsh2 font-medium text-appBlack'>
                   Course Progress
                 </div>
@@ -227,6 +214,7 @@ const Index = async () => {
             src={"/assets/images/scroll.png"}
             width={242}
             height={162}
+            alt='scroll'
             className='absolute bottom-3 object-cover right-0'
           />
         </div>
@@ -250,8 +238,11 @@ const Index = async () => {
             </div>
 
             <div>
-              {user?.courses?.map((item) => (
-                <div className='flex items-center py-[8px] border-b border-appAsh2 mb-[24px] justify-between'>
+              {user?.courses?.map((item, index) => (
+                <div
+                  key={index.toString()}
+                  className='flex items-center py-[8px] border-b border-appAsh2 mb-[24px] justify-between'
+                >
                   <div className=''>
                     <p className='font-medium text-[12px] text-appBlack'>
                       Biblical Studies
@@ -308,9 +299,9 @@ const Index = async () => {
               </p>
             </div>
             <div>
-              {user?.courses?.map((item) => {
+              {user?.courses?.map((item, index) => {
                 return (
-                  <div className=' mb-4'>
+                  <div key={index.toString()} className=' mb-4'>
                     <div className='flex mb-[8px] items-center justify-normal space-x-2'>
                       <div className='w-[6px] h-[6px] rounded-full bg-primary'></div>
                       <p className='text-appBlack text-[12px]'>

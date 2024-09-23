@@ -6,7 +6,7 @@ import LinkedInProvider from "next-auth/providers/linkedin";
 import { MongoDBAdapter } from "@next-auth/mongodb-adapter";
 import clientPromise from "@/lib/mongodb";
 import CredentialsProvider from "next-auth/providers/credentials";
-import { baseUrl } from "@/config/config";
+import { baseUrl } from "../../../../../config/config";
 
 export const authOptions = {
   adapter: MongoDBAdapter(clientPromise),

@@ -1,12 +1,14 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Nunito } from "next/font/google";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import SegmentIcon from "@mui/icons-material/Segment";
 import { IoCloseSharp } from "react-icons/io5";
+import { useRouter } from "next/navigation";
+import { useSession } from "next-auth/react";
 
 const nunito = Nunito({ subsets: ["latin"] });
 const links = [
@@ -18,6 +20,16 @@ const links = [
 export default function RootLayout({ children }) {
   const path = usePathname();
   const [sideNav, setSideNav] = useState(false);
+  const router = useRouter();
+  const { status } = useSession({
+    required: true,
+    onUnauthenticated() {
+      // The user is not authenticated, handle it here.
+      if (status !== "loading") {
+        router.push("/auth/login");
+      }
+    },
+  });
 
   return (
     <div className='flex w-full h-screen items-center justify-center bg-appPink'>

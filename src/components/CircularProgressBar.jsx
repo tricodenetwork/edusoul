@@ -5,7 +5,7 @@ const CircularProgressBar = ({ percentage, diameter = 74, radius = 30 }) => {
   return (
     <div
       style={{ width: diameter, height: diameter }}
-      className='flex justify-center mx-auto items-center'
+      className='flex justify-center sj mx-auto items-center'
     >
       <svg className='' width={diameter} height={diameter}>
         <circle

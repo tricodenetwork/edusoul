@@ -7,7 +7,6 @@ import { Button } from "@/components/ui/Button";
 import AuthComponent from "@/components/shared/AuthComponent";
 import ShowHidePassword from "@/components/ui/ShowHidePassword";
 import { IoCheckmarkDoneCircle } from "react-icons/io5";
-import { useAuth } from "@/context/AuthContext";
 import { Montserrat } from "next/font/google";
 import Image from "next/image";
 import bcrypt from "bcryptjs";

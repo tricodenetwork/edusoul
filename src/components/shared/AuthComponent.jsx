@@ -3,7 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import { signIn } from "next-auth/react";
-import { baseUrl } from "@/config/config";
+import { baseUrl } from "../../../config/config";
 
 const AuthComponent = () => {
   const ellipseStyle =
@@ -45,7 +45,7 @@ const AuthComponent = () => {
       <div
         onClick={() =>
           signIn("google", {
-            callbackUrl: `${baseUrl}`,
+            callbackUrl: `${baseUrl}/dashboard`,
           })
         }
         className={ellipseStyle}

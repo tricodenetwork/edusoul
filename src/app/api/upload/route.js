@@ -1,15 +1,19 @@
+import clientPromise from "@/lib/mongodb";
 import { handleUpload } from "@vercel/blob/client";
+import { NextResponse } from "next/server";
 
 const add = async (req) => {
   try {
     // Extract body from the request
     const body = await req.json();
     console.log("Request Body:", body);
+    const params = req.nextUrl.searchParams;
+    const email = params.get("email");
+    console.log("token", process.env.BLOB_READ_WRITE_TOKEN);
 
     const jsonResponse = await handleUpload({
       body,
-      request,
-      token: process.env.BLOB_READ_WRITE_TOKEN,
+      req,
       onBeforeGenerateToken: async (pathname /*, clientPayload */) => {
         // Generate a client token for the browser to upload the file
         // ⚠️ Authenticate and authorize users before generating the token.
@@ -35,26 +39,22 @@ const add = async (req) => {
           // const { userId } = JSON.parse(tokenPayload);
           // await db.update({ avatar: blob.url, userId });
           const client = await clientPromise;
-          const db = client.db("Tricode");
-          const newFile = {
-            user: request?.query?.company,
-            name: blob.pathname,
-            url: blob.downloadUrl,
-          };
+          const db = client.db("Edusoul");
 
-          if (!request?.query?.image) {
-            // Insert the new user into the database
-            await db.collection("Files").insertOne(newFile);
-          } else {
-            await db.collection("users").updateOne(
-              { email: request?.query?.company },
-              {
-                $set: {
-                  image: blob.url,
-                },
-              }
-            );
-          }
+          // const newFile = {
+          //   user: email,
+          //   name: blob.pathname,
+          //   url: blob.downloadUrl,
+          // };
+
+          await db.collection("users").updateOne(
+            { email: email },
+            {
+              $set: {
+                image: blob.url,
+              },
+            }
+          );
         } catch (error) {
           throw new Error("Could not update file ");
         }
@@ -62,12 +62,12 @@ const add = async (req) => {
     });
 
     // Return a successful response
-    return new Response.json({ message: "Fine" }, { status: 200 });
+    return NextResponse.json(jsonResponse, { status: 200 });
   } catch (error) {
     console.error("Error:", error);
 
     // Return an error response
-    return new Response.json(
+    return NextResponse.json(
       { error: "Something went wrong" },
       {
         status: 500,

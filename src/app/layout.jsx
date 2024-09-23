@@ -1,9 +1,11 @@
 import { Roboto } from "next/font/google";
 import "./globals.css";
-import AuthContextProvider from "../context/AuthContext";
+// import AuthContextProvider from "../context/AuthContext";
 import Navbar from "@/components/shared/NavBar/nav";
 import Footer from "@/components/shared/Footer";
 import { Toaster } from "react-hot-toast";
+import NextAuthSessionProvider from "@/context/SessionProvider";
+import AuthContextProvider from "@/context/AuthContext";
 
 const inter = Roboto({
   subsets: ["cyrillic", "cyrillic-ext", "latin", "latin-ext"],
@@ -19,17 +21,19 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang='en'>
-      <AuthContextProvider>
-        <body
-          style={inter.style}
-          className={`${inter.className} flex w-full h-full overflow-y-scroll flex-col`}
-        >
-          <Toaster position='top-center' />
-          <Navbar />
-          {children}
-          <Footer />
-        </body>
-      </AuthContextProvider>
+      <body
+        style={inter.style}
+        className={`${inter.className} flex w-full h-full overflow-y-scroll flex-col`}
+      >
+        <NextAuthSessionProvider>
+          <AuthContextProvider>
+            <Toaster position='top-center' />
+            <Navbar />
+            {children}
+            <Footer />
+          </AuthContextProvider>
+        </NextAuthSessionProvider>
+      </body>
     </html>
   );
 }

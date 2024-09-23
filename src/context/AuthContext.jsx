@@ -60,9 +60,7 @@ const AuthContextProvider = ({ children }) => {
     <AuthContext.Provider
       value={{
         password,
-        passwordError,
         handlePasswordChange,
-        responsive,
       }}
     >
       {children}

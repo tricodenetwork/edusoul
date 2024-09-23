@@ -9,13 +9,13 @@ import ShowHidePassword from "@/components/ui/ShowHidePassword";
 import { useAuth } from "@/context/AuthContext";
 import Image from "next/image";
 import axios from "axios";
-import { baseUrl } from "@/config/config";
 import { signIn } from "next-auth/react";
 import toast from "react-hot-toast";
+import { baseUrl } from "../../../../config/config";
 
 const SigninForm = () => {
   const router = useRouter();
-  const { password, passwordError, handlePasswordChange } = useAuth();
+  const { password, handlePasswordChange } = useAuth();
   const [email, setEmail] = useState("");
   const [isLoading, setLoading] = useState(false);
   const [showPasswordToggle, setShowPasswordToggle] = useState(false);
