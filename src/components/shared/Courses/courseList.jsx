@@ -81,9 +81,9 @@ export default function CourseList({ course }) {
 
         <div className='flex px-4  absolute bottom-4 w-full   left-0  justify-between items-center gap-5'>
           <div className='flex gap-3 relative items-center'>
-            <p className='text-app_dark_green text-base font-extrabold'>
+            {/* <p className='text-app_dark_green text-base font-extrabold'>
               {`$ ${course.price}`}
-            </p>
+            </p> */}
             {/* <del className="text-stone-900 text-[14.83px] opacity-50 font-normal font-['Inter'] leading-snug">
               $ 500
             </del> */}

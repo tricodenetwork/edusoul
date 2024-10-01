@@ -68,7 +68,7 @@ const Index = async () => {
                   />
                   <div className='w-full'>
                     <h5 className='font-medium text-appBlack text-[10px] '>
-                      Introducton to the New Testament
+                      {item.title}
                     </h5>
                     <p className='font-medium mt-[2px] text-appBlack text-[10px] '>
                       Module 1
@@ -245,7 +245,7 @@ const Index = async () => {
                 >
                   <div className=''>
                     <p className='font-medium text-[12px] text-appBlack'>
-                      Biblical Studies
+                      {item.title}
                     </p>
                     <p className='font-medium text-[10px] text-appBlack'>
                       <strong>Exam Date:</strong> July 15, 2024
@@ -304,9 +304,7 @@ const Index = async () => {
                   <div key={index.toString()} className=' mb-4'>
                     <div className='flex mb-[8px] items-center justify-normal space-x-2'>
                       <div className='w-[6px] h-[6px] rounded-full bg-primary'></div>
-                      <p className='text-appBlack text-[12px]'>
-                        Biblical Studies
-                      </p>
+                      <p className='text-appBlack text-[12px]'>{item.title}</p>
                     </div>
                     <div className='flex items-center justify-between w-full'>
                       <p className='text-[10px] text-appBlack'>Assignment 1</p>

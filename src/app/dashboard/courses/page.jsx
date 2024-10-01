@@ -8,6 +8,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { baseUrl } from "../../../../config/config";
+import { useSession } from "next-auth/react";
 
 const state = ["In progress", "Completed", "Recommended"];
 const courses = [
@@ -66,6 +67,7 @@ const Index = () => {
   const [isOpen, setIsOpen] = useState(null);
   const [user, setUser] = useState(null);
   const [activeCourseList, setActiveCourseList] = useState(coursesData);
+  const { data: session, status } = useSession();
 
   useEffect(() => {
     switch (active) {
@@ -76,7 +78,7 @@ const Index = () => {
         setActiveCourseList(user?.courses);
         break;
       case "Completed":
-        setActiveCourseList(user?.courses);
+        setActiveCourseList(null);
         break;
       default:
         return;
@@ -86,15 +88,17 @@ const Index = () => {
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        const res = await axios.post(`${baseUrl}api/user`);
+        const res = await axios.post(`${baseUrl}api/user`, {
+          email: session?.user?.email,
+        });
         setUser(res.data);
         console.log(res.data);
       } catch (error) {
-        console.error(error);
+        console.error(error.response);
       }
     };
     fetchUser();
-  }, []);
+  }, [session]);
 
   return (
     <div className='p-[44px] bg-white h-full'>
@@ -108,8 +112,8 @@ const Index = () => {
               onClick={() => setActive(item)}
               key={index.toString()}
               className={`font-medium ${
-                item === active && "border-b-2 border-primary"
-              } text-appBlack  `}
+                item === active ? " border-primary" : "border-transparent"
+              } text-appBlack duration-200 border-b-2 w-[150px]`}
             >
               {item}
             </button>
@@ -187,7 +191,7 @@ const Index = () => {
             </div>
 
             <Link
-              href={`/dashboard/lessons/?module=${index + 1}`}
+              href={`/dashboard/lessons/?course=${item.title}`}
               className='bg-primary hover:-translate-y-1 duration-200 text-white font-bold w-[180px] h-[52px] flex items-center justify-center rounded hover:bg-red-800'
             >
               {active == "Recommended" ? `Enroll` : `Continue Course`}

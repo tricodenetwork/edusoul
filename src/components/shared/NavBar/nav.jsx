@@ -11,6 +11,7 @@ import { motion } from "framer-motion";
 import { navdata } from "@/data";
 import useFunctions from "@/hooks/useFunctions";
 import SideNavMobile from "./sidenavmobile";
+import { useSession } from "next-auth/react";
 
 const url = [
   "auth/login",
@@ -24,6 +25,7 @@ const Navbar = () => {
   const [sideNav, setSideNav] = useState(false);
   const [sticky, setSticky] = useState(false);
   const { imageLoader } = useFunctions();
+  const { data: session, status } = useSession();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -97,12 +99,12 @@ const Navbar = () => {
         className='md:flex w-[15em] md:w-[20%] justify-end hidden items-center'
       >
         <Link
-          href={"/auth/login"}
+          href={session?.user ? "/dashboard" : "/auth/login"}
           className={`font-bold w-[150px] bg-primary text-white duration-300 hover:bg-gray-100 hover:text-primary ${
             pathname === `/auth/login` || `/${url}` ? "" : "block"
           } py-3 text-center w-full md:w-[150px] rounded-md`}
         >
-          Get Started
+          {session?.user ? "Dashboard" : "Get Started"}
         </Link>
       </motion.div>
 

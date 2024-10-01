@@ -9,13 +9,20 @@ import { useSession } from "next-auth/react";
 import toast from "react-hot-toast";
 import { baseUrl } from "../../../../config/config";
 import { useRouter } from "next/navigation";
+import { useUser } from "@/context/UserContext";
 
 const Index = () => {
   // --------------------------------------------VARIABLES
-
-  const [user, setUser] = useState(null);
   const { data: session, status } = useSession();
   const router = useRouter();
+  const { user } = useUser();
+
+  // State for form fields
+  const [name, setName] = useState(user?.name.split(" ")[0] || "");
+  const [surname, setSurnName] = useState(
+    user?.surname || user?.name.split(" ")[1] || ""
+  );
+  const [bio, setBio] = useState(user?.bio || "");
 
   //-----------------------------------------------------------FUNCTIONS
   const handleUpload = async (event) => {
@@ -25,7 +32,7 @@ const Index = () => {
     try {
       const newBlob = await upload(file.name, file, {
         access: "public",
-        handleUploadUrl: `${baseUrl}api/upload?email=${session?.user?.email}`,
+        handleUploadUrl: `${baseUrl}api/upload?email=${user?.email}`,
       });
 
       if (newBlob) {
@@ -39,24 +46,31 @@ const Index = () => {
       console.error("There was an error uploading the file.", error.response);
     }
   };
-  //------------------------------------------------------------------USE EFFECTS
 
-  useEffect(() => {
-    const fetchUser = async () => {
-      try {
-        const res = await axios.post(`${baseUrl}api/user`, {
-          email: session.user?.email,
-        });
-        setUser(res.data);
-        console.log(res.data);
-      } catch (error) {
-        console.error(error);
+  const handleProfileUpdate = async () => {
+    const toastId = toast.loading("Updating...");
+
+    try {
+      const response = await axios.post(`${baseUrl}api/update/profile`, {
+        email: user?.email,
+        name,
+        surname,
+        bio,
+      });
+
+      if (response.status === 200) {
+        toast.success("Profile updated successfully!", { id: toastId });
+        router.refresh(); // Optional: refresh the page to reflect the changes
+      } else {
+        toast.error("Error updating profile.", { id: toastId });
       }
-    };
-    if (session?.user?.email) {
-      fetchUser();
+    } catch (error) {
+      toast.error("Error updating profile.", { id: toastId });
+      console.error("There was an error updating the profile.", error.response);
     }
-  }, [session]);
+  };
+
+  //------------------------------------------------------------------USE EFFECTS
 
   if (status == "unauthenticated") {
     return (
@@ -99,14 +113,14 @@ const Index = () => {
             />
           </div>
         </div>
-        <div className=' flex flex-col px-[5%]'>
+        <div className='flex flex-col px-[5%]'>
           <div className='flex justify-between mt-[112px]  items-center'>
             <div className='flex flex-col w-[45%] mt-[0px] '>
               <p className='text-sm text-appBlack px-1 mb-[6px]'>First Name</p>
               <input
                 type='text'
-                placeholder='Jane'
-                defaultValue={user?.name.split(" ").at(0)}
+                value={name}
+                onChange={(e) => setName(e.target.value)}
                 className='bg-white rounded-[8px] border-[#D0D5DD] text-sm border-2  focus:outline-appAsh py-3 px-[14px] text-appBlack placeholder:text-[#717171]'
               />
             </div>
@@ -114,8 +128,8 @@ const Index = () => {
               <p className='text-sm text-appBlack px-1 mb-[6px]'>Last Name</p>
               <input
                 type='text'
-                placeholder='Doe'
-                defaultValue={user?.surname ?? user?.name.split(" ").at("1")}
+                value={surname}
+                onChange={(e) => setSurnName(e.target.value)}
                 className='bg-white rounded-[8px] border-[#D0D5DD] text-sm border-2  focus:outline-appAsh py-3 px-[14px] text-appBlack placeholder:text-[#717171]'
               />
             </div>
@@ -123,15 +137,16 @@ const Index = () => {
           <div className='flex flex-col mt-[82px] '>
             <p className='text-sm text-appBlack px-1 mb-[6px]'>Bio</p>
             <textarea
-              type='text'
+              value={bio}
               placeholder='Write a short Bio about yourself.'
+              onChange={(e) => setBio(e.target.value)}
               className='bg-white rounded-[8px] border-[#D0D5DD] h-[164px] text-sm border-2  focus:outline-appAsh py-3 px-[14px] text-appBlack placeholder:text-[#717171]'
             />
           </div>
           <AppButton
             style={{ marginTop: 60, alignSelf: "flex-end" }}
             title={"Update Profile"}
-            action={() => console.log("hello")}
+            action={handleProfileUpdate}
           />
         </div>
       </div>

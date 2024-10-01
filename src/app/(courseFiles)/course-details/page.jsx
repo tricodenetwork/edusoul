@@ -3,21 +3,49 @@
 import React, { useState, useEffect, Suspense } from "react";
 import Image from "next/image";
 import { coursesData } from "@/data";
-import { useSearchParams, usePathname } from "next/navigation";
+import { useSearchParams, usePathname, useRouter } from "next/navigation";
 import Link from "next/link";
 import Courses from "@/components/shared/Courses";
 import CheckIcon from "@mui/icons-material/Check";
 import AppButton from "@/components/ui/AppButton";
+import { useSession } from "next-auth/react";
+import axios from "axios";
+import { baseUrl } from "../../../../config/config";
+import toast from "react-hot-toast";
 
 function CourseDetails() {
   const searchParams = useSearchParams();
   const CourseId = searchParams.get("id");
+  const id = parseInt(CourseId, 10);
+
   const pathname = usePathname(); // Get the current path
+  const { data: session, status } = useSession();
+  const router = useRouter();
 
   const [course, setCourse] = useState(null);
 
+  const buyCourse = async () => {
+    if (!session?.user) {
+      toast.error("Not Authenticated");
+      return;
+    }
+    const toastId = toast.loading("Purchasing...");
+    try {
+      const res = await axios.post(`${baseUrl}api/buy-course`, {
+        id,
+        email: session?.user?.email,
+      });
+
+      toast.success(res.data.message, { id: toastId });
+
+      router.push("/dashboard/courses");
+    } catch (error) {
+      console.error(error);
+      toast.error("Problem Purchasing", { id: toastId });
+    }
+  };
+
   useEffect(() => {
-    const id = parseInt(CourseId, 10);
     const fetchedCourse = coursesData.find((course) => course.id === id);
     setCourse(fetchedCourse);
   }, [CourseId]);
@@ -65,10 +93,7 @@ function CourseDetails() {
                   ${course.price}
                 </h5>
               </div>
-              <AppButton
-                title={"Buy Course"}
-                href={`/add-to-cart/?id=${course.id}`}
-              />
+              <AppButton title={"Buy Course"} action={buyCourse} />
             </div>
           </div>
 

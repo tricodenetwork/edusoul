@@ -33,6 +33,7 @@ const login = async (req) => {
       body.password,
       existingUser.password
     );
+    console.log("PassMatch:", passwordMatch);
 
     if (!passwordMatch) {
       return Response.json({ error: "Invalid password" }, { status: 400 });

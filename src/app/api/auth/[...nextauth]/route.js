@@ -30,6 +30,7 @@ export const authOptions = {
         console.log(user);
         // If authentication is successful, return user data
         if (res.ok && user) {
+          console.log("Okay");
           return user;
         }
 

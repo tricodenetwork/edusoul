@@ -19,7 +19,7 @@ const SelectComponent = ({ items, placeholder, style, onChange }) => {
         onClick={() => {
           setOpen(!open);
         }}
-        className={`flex cursor-pointer ${style} items-center z-10   w-full relative`}
+        className={`flex cursor-pointer ${style} items-center z-10   relative`}
       >
         <AnimatePresence mode='wait'>
           {open && (
@@ -38,7 +38,7 @@ const SelectComponent = ({ items, placeholder, style, onChange }) => {
                   key={i.toString()}
                   style={{ fontSize: 14 }}
                   onClick={() => {
-                    //   onChange(item);
+                    onChange(item);
                     setVal(item);
                     setOpen(false);
                   }}

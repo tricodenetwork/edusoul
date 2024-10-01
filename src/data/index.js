@@ -83,7 +83,7 @@ export const coursesData = [
     modules: [
       {
         title: "EDSD MODULE 1.1 - HEART FOUNDATION",
-        lessons: [
+        units: [
           "The Heart and Vision of Christian Educator Part 1",
           "Calling and Character of a Christian Teacher",
           "How Research is Done",
@@ -91,7 +91,7 @@ export const coursesData = [
       },
       {
         title: "EDSD MODULE 1.2 - Aims of Christian Education",
-        lessons: [
+        units: [
           "Aims of Christian Education",
           "Foundation for Christian Education Part 1",
           "Christian Worldview",
@@ -100,7 +100,7 @@ export const coursesData = [
       },
       {
         title: "EDSD MODULE 1.3 - Christ-Centred Curriculum and Standards",
-        lessons: [
+        units: [
           "Christ-Centred Curriculum and Delivery 1",
           "Role of Holy Spirit in Teaching and Learning Process 1",
           "Holistic Culture",
@@ -109,7 +109,7 @@ export const coursesData = [
       },
       {
         title: "EDSD MODULE 1.4 - Acts of Education",
-        lessons: [
+        units: [
           "Learning Theory for Christian Teacher Part 1",
           "Stimulating Learning Environment and Displays",
           "Standards and Good Practice 1",
@@ -119,7 +119,7 @@ export const coursesData = [
       },
       {
         title: "EDSD MODULE 1.5",
-        lessons: [
+        units: [
           "Learning Theory for Christian Teacher Part 1",
           "Mindsets in the Classroom",
           "Behavioural Management",
@@ -140,14 +140,14 @@ export const coursesData = [
       "If you have a passion for teaching and a desire to make a positive impact in the lives of others, then our diploma programme in Christian Education may be the perfect fit for you.",
       "Our Diploma in Christian Education provides students with the knowledge and skills needed to effectively teach and lead within a Christian, world-view context.",
       "One of the key benefits of this diploma programme is the opportunity to deepen your understanding of the Bible and its application in a Christ-centred curriculum (all subjects and topics), showing the centrality of the Godhead.",
-      "Additionally, the programme of studies includes: Educational psychology, Curriculum Development, teaching methods and methodologies, practical skills for effective teaching, classroom management, learning styles, and use of teaching aids/resources for effective curriculum delivery. Students also learn how to be proactive in creating engaging and stimulating lessons that meet the needs of diverse learners.",
+      "Additionally, the programme of studies includes: Educational psychology, Curriculum Development, teaching methods and methodologies, practical skills for effective teaching, classroom management, learning styles, and use of teaching aids/resources for effective curriculum delivery. Students also learn how to be proactive in creating engaging and stimulating units that meet the needs of diverse learners.",
       "This diploma programme includes a practicum component, allowing students to gain hands-on experience in a real-world educational setting; a valuable experience which enhances participants' skills and helps facilitate the development of newer practical skills, and confidence as 21st century educators. Moreover, it provides opportunities for mentorship and networking within the Christian education community. This programme will further prepare students to make a meaningful impact in both academic and ministry settings.  To successfully complete this programme, students will be expected to complete given research topics for every module.",
       "If you are interested in enrolling in our Diploma Programme in Christian Education, we encourage you to contact us for more information. Together, we can help inspire and empower the next generation of Christian educators.",
     ],
     modules: [
       {
         title: "EDSD MODULE 2.1 - HEART FOUNDATION",
-        lessons: [
+        units: [
           "The Heart and Vision of Christian Educator Part 1 & 2",
           "Christian in Secular Worldview",
           "Calling of a Christian Teacher",
@@ -160,7 +160,7 @@ export const coursesData = [
       {
         title:
           "EDSD MODULE 2.2 - Christ-Centred Curriculum and Effective Standards",
-        lessons: [
+        units: [
           "Christ-Centred Curriculum and Delivery 1 & 2",
           "Acts of Gifted Teaching (Mixed Ability) Resources & Methodologies",
           "Teaching and Learning Styles",
@@ -174,7 +174,7 @@ export const coursesData = [
       {
         title:
           "EDSD MODULE 2.3 - Child Psychologists / Physiology: Every Child Matters 1",
-        lessons: [
+        units: [
           "Child and Brain Development 1",
           "Behavioural Management (Discipline)",
           "Exploring Child Psychology",
@@ -185,7 +185,7 @@ export const coursesData = [
       },
       {
         title: "EDSD MODULE 2.4 - Every Child Matters Part 2",
-        lessons: [
+        units: [
           "Police and Practice",
           "Safeguarding / Health Matters (Child and School Environment)",
         ],
@@ -194,7 +194,7 @@ export const coursesData = [
       {
         title:
           "EDSD MODULE 2.5 - Character of a Christian Teacher and Role Model",
-        lessons: [
+        units: [
           "The Reflective Teacher 1",
           "The Empathetic Teacher 1",
           "Competent in Incompetent Teacher 1",
@@ -221,7 +221,7 @@ export const coursesData = [
     intro: [
       "Are you a teacher or educator looking to deepen your knowledge and teaching skills through a Christ-centered learning programme? Our Enhanced professional development certificate programme in teaching and education may be the perfect fit for you.",
       "This programme is designed for educators who are seeking to synergise Christ-centred curriculum into their teaching practices, thereby creating a more meaningful and impactful learning experience for their students. Through a combination of online courses, workshops, and research projects, participants explore how to infuse their teaching with Christian principles and values.",
-      "The curriculum covers a wide range of topics, including biblical integration in the classroom, creating a culture of faith and respect, and incorporating prayer and worship into daily lessons.",
+      "The curriculum covers a wide range of topics, including biblical integration in the classroom, creating a culture of faith and respect, and incorporating prayer and worship into daily units.",
       "Participants also learn strategies for fostering a sense of community and collaboration among students and stakeholders, as well as how to address challenging issues from a Christian perspective.",
       "One of the key benefits of this programme is the opportunity to connect with other like-minded educators who share your passion for Christ-centered teaching. Through group discussions, peer feedback, and collaborative projects, participants have the chance to learn from others and expand their professional network.",
       "Upon successful completion of the programme, participants receive a certificate that demonstrates their commitment to integrating faith into teaching practice. This credential can help you stand out in the competitive field of education and open up new career opportunities.",
@@ -757,14 +757,14 @@ export const coreStudents = [
       {
         moduleId: 1,
         name: "Module 1",
-        lessons: [
+        units: [
           {
             lessonId: 1,
             name: "Lesson 1",
             content: "Lesson content",
             completionStatus: "completed", // or "in progress", "not started"
           },
-          // ... other lessons
+          // ... other units
         ],
       },
       // ... other modules
