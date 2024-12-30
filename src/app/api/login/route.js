@@ -26,7 +26,6 @@ const login = async (req) => {
     if (!existingUser) {
       return Response.json({ error: "User not found" }, { status: 400 });
     }
-    const hashedPassword = await bcrypt.hash(body.password, 10);
 
     // Verify the password using bcrypt
     const passwordMatch = await bcrypt.compare(

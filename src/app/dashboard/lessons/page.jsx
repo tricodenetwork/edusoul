@@ -9,6 +9,9 @@ import Link from "next/link";
 import SelectComponent from "@/components/ui/Select";
 import { useUser } from "@/context/UserContext";
 import { useAuth } from "@/context/AuthContext";
+import ChristianEducation from "@/components/modules/heart-foundation/Unit1";
+import ChristianEducationUnit2 from "@/components/modules/heart-foundation/Unit2";
+import { coursesData } from "@/data";
 
 const state2 = ["Note", "Resources", "Assignments"];
 const lessons = [
@@ -35,7 +38,7 @@ const Index = () => {
   const [module, setModule] = useState("Module 1");
   const [active2, setActive2] = useState("Note");
   const { user } = useUser();
-  const modules = user?.courses?.find((item) => item.title === course)?.modules;
+  const modules = coursesData.find((item) => item.title === course)?.modules;
   const moduleNames = modules?.map((item, index) => `Module ${index + 1}`);
   const activeMod = modules?.find(
     (item, index) => index == module.split("Module")[1] - 1
@@ -101,10 +104,10 @@ const Index = () => {
               {`Unit ${active.number + 1}:`}
             </span>
             <span className='text-slate-900 ml-1 text-3xl font-normal'>
-              {active.unit}
+              {active.unit.title}
             </span>
           </div>
-          <div className='h-10 text-slate-900 justify-center items-center gap-2 inline-flex'>
+          {/* <div className='h-10 text-slate-900 justify-center items-center gap-2 inline-flex'>
             <Image
               src='/assets/images/profile.png'
               width={45}
@@ -116,7 +119,7 @@ const Index = () => {
               <div className='text-base font-bold'>Silviaa Smith</div>
               <div className='text-sm font-normal'>Instructor</div>
             </div>
-          </div>
+          </div>*/}
         </div>
       )}
 
@@ -148,6 +151,16 @@ const Index = () => {
                 Downloadlinkwillbehere.mp4
               </p>
             </button>
+          </div>
+        )}
+        {active2 === "Assignments" && (
+          <div className='w-full h-28 mt-3 flex-col justify-start items-start gap-4 inline-flex'>
+            <p className=''>{active.unit.assignment}</p>
+          </div>
+        )}
+        {active2 === "Note" && (
+          <div className='w-auto h-auto mt-3 flex-col justify-start items-start gap-4 inline-flex'>
+            {active.unit.content}
           </div>
         )}
       </div>

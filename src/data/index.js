@@ -2,6 +2,12 @@ import { Home } from "@mui/icons-material";
 import WifiTetheringIcon from "@mui/icons-material/WifiTethering";
 import AutoStoriesIcon from "@mui/icons-material/AutoStories";
 import LocalLibraryIcon from "@mui/icons-material/LocalLibrary";
+import ChristianEducationUnit2 from "@/components/modules/heart-foundation/Unit2";
+import ChristianEducation from "@/components/modules/heart-foundation/Unit1";
+import Unit1 from "@/components/modules/aims-of-christain-education/Unit1";
+import Unit2 from "@/components/modules/aims-of-christain-education/Unit2";
+import ChristCenteredUnit1 from "@/components/modules/christ-centered/Unit1";
+import ChristCenteredUnit2 from "@/components/modules/christ-centered/Unit2";
 
 export const navdata = [
   {
@@ -84,26 +90,65 @@ export const coursesData = [
       {
         title: "EDSD MODULE 1.1 - HEART FOUNDATION",
         units: [
-          "The Heart and Vision of Christian Educator Part 1",
-          "Calling and Character of a Christian Teacher",
-          "How Research is Done",
+          {
+            title: "The Heart and Vision of Christian Educator Part 1",
+            content: <ChristianEducation />,
+            assignment:
+              "How has Christian Education realigned humanity to God’s original intention? Highlight key major impacts of Christian Education on society, focusing on family, morality, judiciary and  governance. 200 words",
+          },
+          {
+            title: "Calling and Character of a Christian Teacher",
+            content: <ChristianEducationUnit2 />,
+            assignment:
+              "Discuss God&apos;s agentry for transformation and reconciliation in relation to Great Mandate and Great Commission 150 words. What are the major key personal Characteristics of a Christian teacher? Discuss how each can influence students to be responsible and responsive to the Great Commission. 150 words",
+          },
         ],
       },
       {
         title: "EDSD MODULE 1.2 - Aims of Christian Education",
         units: [
-          "Aims of Christian Education",
-          "Foundation for Christian Education Part 1",
-          "Christian Worldview",
+          {
+            title: "Aims of Christian Education",
+            content: <Unit1 />,
+            assignment:
+              "How has Christian Education realigned humanity to God’s original intention? Highlight key major impacts of Christian Education on society, focusing on family, morality, judiciary and  governance. 200 words",
+          },
+          {
+            title: "Christian Worldview",
+            content: <Unit2 />,
+            assignment:
+              "As Christian teacher and school, you owe this nurturing to the students to fulfil the Great Mandate and Great Commission in their generation. Discuss. 200 words",
+          },
         ],
-        assignment: "Assignment and Mini Research Project",
+        // units: [
+        //   "Aims of Christian Education",
+        //   "Foundation for Christian Education Part 1",
+        //   "Christian Worldview",
+        // ],
+        assignment:
+          "As Christian teacher and school, you owe this nurturing to the students to fulfil the Great Mandate and Great Commission in their generation. Discuss. 200 words",
       },
       {
         title: "EDSD MODULE 1.3 - Christ-Centred Curriculum and Standards",
         units: [
-          "Christ-Centred Curriculum and Delivery 1",
-          "Role of Holy Spirit in Teaching and Learning Process 1",
-          "Holistic Culture",
+          {
+            title: "Christ-Centred Curriculum and Delivery 1",
+            content: <ChristCenteredUnit1 />,
+            assignment:
+              "How has Christian Education realigned humanity to God’s original intention? Highlight key major impacts of Christian Education on society, focusing on family, morality, judiciary and  governance. 200 words",
+          },
+          {
+            title: "Role of Holy Spirit in Teaching and Learning Process 1",
+            content: <ChristCenteredUnit2 />,
+            assignment:
+              "As Christian teacher and school, you owe this nurturing to the students to fulfil the Great Mandate and Great Commission in their generation. Discuss. 200 words",
+          },
+          {
+            title: "Holistic Culture",
+            content: <Unit2 />,
+            assignment:
+              "As Christian teacher and school, you owe this nurturing to the students to fulfil the Great Mandate and Great Commission in their generation. Discuss. 200 words",
+          },
         ],
         assignment: "Assignment",
       },

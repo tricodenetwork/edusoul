@@ -191,3 +191,16 @@ input[type="number"]::-webkit-inner-spin-button {
 .drag-over {
   border-color: #4caf50;
 }
+
+.title {
+  font-size: 1.5rem;
+  line-height: 2rem;
+  text-transform: uppercase;
+}
+
+.lesson-section {
+  margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}

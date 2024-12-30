@@ -1,17 +1,16 @@
 "use client";
 
-import React, { Suspense, useState } from "react";
-import Link from "next/link";
-import { useRouter, useSearchParams } from "next/navigation";
-import { Button } from "@/components/ui/Button";
 import AuthComponent from "@/components/shared/AuthComponent";
+import { Button } from "@/components/ui/Button";
 import ShowHidePassword from "@/components/ui/ShowHidePassword";
-import { IoCheckmarkDoneCircle } from "react-icons/io5";
+import axios from "axios";
+import bcrypt from "bcryptjs";
 import { Montserrat } from "next/font/google";
 import Image from "next/image";
-import bcrypt from "bcryptjs";
+import Link from "next/link";
+import { useRouter, useSearchParams } from "next/navigation";
+import { Suspense, useState } from "react";
 import toast from "react-hot-toast";
-import axios from "axios";
 
 const mont = Montserrat({
   subsets: ["cyrillic", "cyrillic-ext", "latin", "latin-ext", "vietnamese"],
