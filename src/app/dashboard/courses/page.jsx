@@ -191,7 +191,13 @@ const Index = () => {
             </div>
 
             <Link
-              href={`/dashboard/lessons/?course=${item.title}`}
+              href={
+                active == "In progress"
+                  ? `/dashboard/lessons/?course=${item.title}`
+                  : active == "Recommended"
+                  ? `/course-details?id=${item.id}`
+                  : ""
+              }
               className='bg-primary hover:-translate-y-1 duration-200 text-white font-bold w-[180px] h-[52px] flex items-center justify-center rounded hover:bg-red-800'
             >
               {active == "Recommended" ? `Enroll` : `Continue Course`}

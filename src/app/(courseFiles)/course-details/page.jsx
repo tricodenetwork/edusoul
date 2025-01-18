@@ -12,7 +12,15 @@ import { useSession } from "next-auth/react";
 import axios from "axios";
 import { baseUrl } from "../../../../config/config";
 import toast from "react-hot-toast";
+import { Elements } from "@stripe/react-stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
+import { useUser } from "@/context/UserContext";
 
+// if (process.env.NEXT_PUBLIC_STRIPE_KEY === undefined) {
+//   throw new Error("NEXT_PUBLIC_STRIPE_KEY is not defined");
+// }
+
+// const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_KEY);
 function CourseDetails() {
   const searchParams = useSearchParams();
   const CourseId = searchParams.get("id");
@@ -21,6 +29,9 @@ function CourseDetails() {
   const pathname = usePathname(); // Get the current path
   const { data: session, status } = useSession();
   const router = useRouter();
+  const { user } = useUser();
+  console.log("user", user);
+  const userHasCourse = user.courses.some((item) => item.id == CourseId);
 
   const [course, setCourse] = useState(null);
 
@@ -93,7 +104,15 @@ function CourseDetails() {
                   ${course.price}
                 </h5>
               </div>
-              <AppButton title={"Buy Course"} action={buyCourse} />
+              <AppButton
+                styles={
+                  userHasCourse
+                    ? "bg-green-500 cursor-not-allowed opacity-50 text-black"
+                    : ""
+                }
+                title={userHasCourse ? "Purchased" : "Buy Course"}
+                action={buyCourse}
+              />
             </div>
           </div>
 
@@ -111,7 +130,11 @@ function CourseDetails() {
               <div className='self-stretch flex-col justify-start items-start gap-6 flex'>
                 <div className='pt-4 justify-center items-center gap-2 inline-flex'>
                   <div className='w-[13.33px] relative h-[13.33px]  p-1 rounded-full text-[5px]  justify-center items-center flex'>
-                    <Image src={"/assets/icons/icon-success.svg"} fill />
+                    <Image
+                      alt='success'
+                      src={"/assets/icons/icon-success.svg"}
+                      fill
+                    />
                   </div>
                   <h2 className='text-zinc-800 text-sm font-normal'>
                     This course is included in plans
@@ -124,7 +147,7 @@ function CourseDetails() {
 
                 <button className='w-full py-3.5 bg-white border border-red-800 justify-center items-center inline-flex'>
                   <div className='w-48 h-5 text-center text-red-800 text-base font-bold'>
-                    Try For free
+                    {userHasCourse ? "Purchased" : "Try for free"}
                   </div>
                 </button>
               </div>

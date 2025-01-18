@@ -52,7 +52,7 @@ const Index = async () => {
               {!user?.courses ? "View All" : `View All `}
             </Link>
           </div>
-          <div className='flex   flex-col sm:flex-row w-full mt-[16px] justify-between gap-3 lg:px-[16px] items-center'>
+          <div className='flex   flex-col sm:flex-row w-full mt-[16px] justify-start gap-4 lg:px-[16px] items-center'>
             {user?.courses?.map((item, index) => (
               <div
                 key={index.toString()}

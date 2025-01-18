@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, Suspense } from "react";
+import { useState, Suspense, useEffect } from "react";
 import AppButton from "@/components/ui/AppButton";
 import MoreOptions from "@/components/ui/MoreOptions";
 import Image from "next/image";
@@ -12,6 +12,8 @@ import { useAuth } from "@/context/AuthContext";
 import ChristianEducation from "@/components/modules/heart-foundation/Unit1";
 import ChristianEducationUnit2 from "@/components/modules/heart-foundation/Unit2";
 import { coursesData } from "@/data";
+import { IconChevronRight } from "@tabler/icons-react";
+import toast from "react-hot-toast";
 
 const state2 = ["Note", "Resources", "Assignments"];
 const lessons = [
@@ -48,11 +50,18 @@ const Index = () => {
     number: 0,
   });
 
+  useEffect(() => {
+    setActive({
+      unit: activeMod.units[0],
+      number: 0,
+    });
+  }, [module]);
+
   return (
     <div className='flex flex-col p-[44px] bg-appPink'>
       <Link
         href={"/dashboard/courses"}
-        className='font-medium flex items-center gap-5  mb-8'
+        className='font-medium flex items-center gap-2  mb-8'
       >
         <Image
           src={"/assets/icons/back.svg"}
@@ -137,7 +146,7 @@ const Index = () => {
         ))}
       </div>
 
-      <div className='h-[40vh]'>
+      <div className='h-[60vh] py-[3vh] overflow-y-scroll'>
         {active2 === "Resources" && (
           <div className='w-52 h-28 mt-3 flex-col justify-start items-start gap-4 inline-flex'>
             <button className='self-stretch p-1 justify-start items-center gap-2.5 inline-flex'>
@@ -164,6 +173,31 @@ const Index = () => {
           </div>
         )}
       </div>
+
+      <button
+        onClick={() => {
+          if (active.number < activeMod.units.length - 1) {
+            // Navigate to the next unit
+            setActive({
+              unit: activeMod.units[active.number + 1],
+              number: active.number + 1,
+            });
+
+            // Scroll to the top smoothly
+            window.scrollTo({
+              top: 0,
+              behavior: "smooth",
+            });
+          } else {
+            toast.success("You have reached the last unit of this module.");
+          }
+        }}
+        disabled={active.number >= activeMod.units.length - 1}
+        className='text-primary disabled:opacity-50 border-b-2 font-medium text-sm items-center border-primary py-1 w-max flex gap-[2px]'
+      >
+        <p>Next Lesson</p>
+        <IconChevronRight size={18} stroke={2} />
+      </button>
     </div>
   );
 };

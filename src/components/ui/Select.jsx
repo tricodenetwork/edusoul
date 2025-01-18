@@ -29,7 +29,7 @@ const SelectComponent = ({ items, placeholder, style, onChange }) => {
                 opacity: 100,
                 translateY: "105%",
               }}
-              exit={{ opacity: 100, translateY: "10%" }}
+              exit={{ opacity: 100, translateY: "105%", height: 0 }}
               transition={{ duration: 0.3, type: "tween" }}
               className='w-full h-max z-10 absolute bottom-0 py-1  border scrollbar-hide bg-white overflow-y-scroll'
             >
