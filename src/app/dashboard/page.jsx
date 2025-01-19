@@ -56,7 +56,7 @@ const Index = async () => {
             {user?.courses?.map((item, index) => (
               <div
                 key={index.toString()}
-                className='flex  items-center  mb-6 md:mb-0 md:items-start w-full lg:w-max  md:flex-col'
+                className='flex  items-center  mb-6 md:mb-0 md:items-start w-full lg:w-[200px]  md:flex-col'
               >
                 <div>
                   <Image
@@ -68,7 +68,9 @@ const Index = async () => {
                   />
                   <div className='w-full'>
                     <h5 className='font-medium text-appBlack text-[10px] '>
-                      {item.title}
+                      {item.title.length > 30
+                        ? item.title.slice(0, 30).concat("...")
+                        : item.title}
                     </h5>
                     <p className='font-medium mt-[2px] text-appBlack text-[10px] '>
                       Module 1

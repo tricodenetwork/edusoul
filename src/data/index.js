@@ -2,12 +2,12 @@ import { Home } from "@mui/icons-material";
 import WifiTetheringIcon from "@mui/icons-material/WifiTethering";
 import AutoStoriesIcon from "@mui/icons-material/AutoStories";
 import LocalLibraryIcon from "@mui/icons-material/LocalLibrary";
-import ChristianEducationUnit2 from "@/components/modules/heart-foundation/Unit2";
-import ChristianEducation from "@/components/modules/heart-foundation/Unit1";
-import Unit1 from "@/components/modules/aims-of-christain-education/Unit1";
-import Unit2 from "@/components/modules/aims-of-christain-education/Unit2";
-import ChristCenteredUnit1 from "@/components/modules/christ-centered/Unit1";
-import ChristCenteredUnit2 from "@/components/modules/christ-centered/Unit2";
+import ChristianEducationUnit2 from "@/components/courses/advanced-classroom-assistant/heart-foundation/Unit2";
+import ChristianEducation from "@/components/courses/advanced-classroom-assistant/heart-foundation/Unit1";
+import Unit1 from "@/components/courses/advanced-classroom-assistant/aims-of-christain-education/Unit1";
+import Unit2 from "@/components/courses/advanced-classroom-assistant/aims-of-christain-education/Unit2";
+import ChristCenteredUnit1 from "@/components/courses/advanced-classroom-assistant/christ-centered/Unit1";
+import ChristCenteredUnit2 from "@/components/courses/advanced-classroom-assistant/christ-centered/Unit2";
 
 export const navdata = [
   {
