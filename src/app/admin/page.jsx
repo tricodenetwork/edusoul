@@ -63,7 +63,7 @@ const Index = () => {
                 className='flex w-[32%] flex-col h-[160px] px-[23px] py-[18px] border-[#99B2C6] border rounded-[8px]  justify-between'
               >
                 <div className=''>
-                  <Image width={35} height={35} src={item.img} />
+                  <Image width={35} height={35} src={item.img} alt='pic' />
                   <h5 className='capitalize mt-1 text-dark_B'>{item.name}</h5>
                 </div>
                 <div className=''>

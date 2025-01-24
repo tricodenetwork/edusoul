@@ -2,9 +2,10 @@
 import AppButton from "@/components/ui/AppButton";
 import { coursesData } from "@/data";
 import Image from "next/image";
-import React from "react";
+import React, { use } from "react";
 
-const Index = ({ params }) => {
+const Index = props => {
+  const params = use(props.params);
   const course = coursesData.find((item) => item.id == params.id);
   return (
     <div className='w-full mt-[60px] lg:mt-[80px] bg-appPink min-h-screen h-max'>

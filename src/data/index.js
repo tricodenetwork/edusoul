@@ -88,34 +88,37 @@ export const coursesData = [
     ],
     modules: [
       {
+        id: 1,
         title: "EDSD MODULE 1.1 - HEART FOUNDATION",
         units: [
           {
             title: "The Heart and Vision of Christian Educator Part 1",
-            content: <ChristianEducation />,
+            content: "",
             assignment:
               "How has Christian Education realigned humanity to God’s original intention? Highlight key major impacts of Christian Education on society, focusing on family, morality, judiciary and  governance. 200 words",
           },
           {
             title: "Calling and Character of a Christian Teacher",
-            content: <ChristianEducationUnit2 />,
+            content: "",
             assignment:
               "Discuss God&apos;s agentry for transformation and reconciliation in relation to Great Mandate and Great Commission 150 words. What are the major key personal Characteristics of a Christian teacher? Discuss how each can influence students to be responsible and responsive to the Great Commission. 150 words",
           },
         ],
       },
       {
+        id: 2,
+
         title: "EDSD MODULE 1.2 - Aims of Christian Education",
         units: [
           {
             title: "Aims of Christian Education",
-            content: <Unit1 />,
+            content: "",
             assignment:
               "How has Christian Education realigned humanity to God’s original intention? Highlight key major impacts of Christian Education on society, focusing on family, morality, judiciary and  governance. 200 words",
           },
           {
             title: "Christian Worldview",
-            content: <Unit2 />,
+            content: "",
             assignment:
               "As Christian teacher and school, you owe this nurturing to the students to fulfil the Great Mandate and Great Commission in their generation. Discuss. 200 words",
           },
@@ -129,23 +132,24 @@ export const coursesData = [
           "As Christian teacher and school, you owe this nurturing to the students to fulfil the Great Mandate and Great Commission in their generation. Discuss. 200 words",
       },
       {
+        id: 3,
         title: "EDSD MODULE 1.3 - Christ-Centred Curriculum and Standards",
         units: [
           {
             title: "Christ-Centred Curriculum and Delivery 1",
-            content: <ChristCenteredUnit1 />,
+            content: "",
             assignment:
               "How has Christian Education realigned humanity to God’s original intention? Highlight key major impacts of Christian Education on society, focusing on family, morality, judiciary and  governance. 200 words",
           },
           {
             title: "Role of Holy Spirit in Teaching and Learning Process 1",
-            content: <ChristCenteredUnit2 />,
+            content: "",
             assignment:
               "As Christian teacher and school, you owe this nurturing to the students to fulfil the Great Mandate and Great Commission in their generation. Discuss. 200 words",
           },
           {
             title: "Holistic Culture",
-            content: <Unit2 />,
+            content: "",
             assignment:
               "As Christian teacher and school, you owe this nurturing to the students to fulfil the Great Mandate and Great Commission in their generation. Discuss. 200 words",
           },
@@ -153,6 +157,8 @@ export const coursesData = [
         assignment: "Assignment",
       },
       {
+        id: 4,
+
         title: "EDSD MODULE 1.4 - Acts of Education",
         units: [
           "Learning Theory for Christian Teacher Part 1",
@@ -163,6 +169,8 @@ export const coursesData = [
         assignment: "Assignment",
       },
       {
+        id: 5,
+
         title: "EDSD MODULE 1.5",
         units: [
           "Learning Theory for Christian Teacher Part 1",
@@ -191,59 +199,173 @@ export const coursesData = [
     ],
     modules: [
       {
+        id: 1,
+
         title: "EDSD MODULE 2.1 - HEART FOUNDATION",
         units: [
-          "The Heart and Vision of Christian Educator Part 1 & 2",
-          "Christian in Secular Worldview",
-          "Calling of a Christian Teacher",
-          "Aims of Christian Education",
-          "Holy Spirit in Teaching and Learning Process (Holistic Culture) 1",
-          "Foundation for Christian Education Part 1 & 2",
+          {
+            title: "The Heart and Vision of Christian Educator Part 1 & 2",
+            content: "",
+            assignment: "Assignment",
+          },
+          {
+            title: "Christian in Secular Worldview",
+            content: "",
+            assignment: "Assignment",
+          },
+          {
+            title: "Calling of a Christian Teacher",
+            content: "",
+            assignment: "Assignment",
+          },
+          {
+            title: "Aims of Christian Education",
+            content: "",
+            assignment: "Assignment",
+          },
+          {
+            title:
+              "Holy Spirit in Teaching and Learning Process (Holistic Culture) 1",
+            content: "",
+            assignment: "Assignment",
+          },
+          {
+            title: "Foundation for Christian Education Part 1 & 2",
+            content: "",
+            assignment: "Assignment",
+          },
         ],
         assignment: "Assignment",
       },
       {
+        id: 2,
+
         title:
           "EDSD MODULE 2.2 - Christ-Centred Curriculum and Effective Standards",
         units: [
-          "Christ-Centred Curriculum and Delivery 1 & 2",
-          "Acts of Gifted Teaching (Mixed Ability) Resources & Methodologies",
-          "Teaching and Learning Styles",
-          "Stimulating Learning Environment and Displays",
-          "Learning Theory for Christian Teacher Part 2",
-          "Cross-Curricular Planning & Teaching 1",
-          "Assess: Types and Purposes 1",
+          {
+            title: "Christ-Centred Curriculum and Delivery 1 & 2",
+            content: "",
+            assignment: "Assignment",
+          },
+          {
+            title:
+              "Acts of Gifted Teaching (Mixed Ability) Resources & Methodologies",
+            content: "",
+            assignment: "Assignment",
+          },
+          {
+            title: "Teaching and Learning Styles",
+            content: "",
+            assignment: "Assignment",
+          },
+          {
+            title: "Stimulating Learning Environment and Displays",
+            content: "",
+            assignment: "Assignment",
+          },
+          {
+            title: "Learning Theory for Christian Teacher Part 2",
+            content: "",
+            assignment: "Assignment",
+          },
+          {
+            title: "Cross-Curricular Planning & Teaching 1",
+            content: "",
+            assignment: "Assignment",
+          },
+          {
+            title: "Assess: Types and Purposes 1",
+            content: "",
+            assignment: "Assignment",
+          },
         ],
         assignment: "Assignment and Research Project",
       },
       {
+        id: 3,
+
         title:
           "EDSD MODULE 2.3 - Child Psychologists / Physiology: Every Child Matters 1",
         units: [
-          "Child and Brain Development 1",
-          "Behavioural Management (Discipline)",
-          "Exploring Child Psychology",
-          "Applied Psychology in Christian Education 1",
-          "Fixed in Growth Mindsets in the Classroom",
-          "Undulating Mindset",
-        ],
-      },
-      {
-        title: "EDSD MODULE 2.4 - Every Child Matters Part 2",
-        units: [
-          "Police and Practice",
-          "Safeguarding / Health Matters (Child and School Environment)",
+          {
+            title: "Child and Brain Development 1",
+            content: "",
+            assignment: "Assignment",
+          },
+          {
+            title: "Behavioural Management (Discipline)",
+            content: "",
+            assignment: "Assignment",
+          },
+          {
+            title: "Exploring Child Psychology",
+            content: "",
+            assignment: "Assignment",
+          },
+          {
+            title: "Applied Psychology in Christian Education 1",
+            content: "",
+            assignment: "Assignment",
+          },
+          {
+            title: "Fixed in Growth Mindsets in the Classroom",
+            content: "",
+            assignment: "Assignment",
+          },
+          {
+            title: "Undulating Mindset",
+            content: "",
+            assignment: "Assignment",
+          },
         ],
         assignment: "Assignment",
       },
       {
+        id: 4,
+
+        title: "EDSD MODULE 2.4 - Every Child Matters Part 2",
+        units: [
+          {
+            title: "Police and Practice",
+            content: "",
+            assignment: "Assignment",
+          },
+          {
+            title:
+              "Safeguarding / Health Matters (Child and School Environment)",
+            content: "",
+            assignment: "Assignment",
+          },
+        ],
+        assignment: "Assignment",
+      },
+      {
+        id: 5,
+
         title:
           "EDSD MODULE 2.5 - Character of a Christian Teacher and Role Model",
         units: [
-          "The Reflective Teacher 1",
-          "The Empathetic Teacher 1",
-          "Competent in Incompetent Teacher 1",
-          "Creative Worship and Decoding Spiritual Gifts",
+          {
+            title: "The Reflective Teacher 1",
+            content: "",
+            assignment: "Assignment",
+          },
+          {
+            title: "The Empathetic Teacher 1",
+            content: "",
+            assignment: "Assignment",
+          },
+          {
+            title: "Competent in Incompetent Teacher 1",
+            content: "",
+            assignment: "Assignment",
+          },
+          {
+            title: "Creative Worship and Decoding Spiritual Gifts",
+            content: "",
+            assignment: "Assignment",
+          },
         ],
         assignment: "Assignment",
       },
@@ -274,76 +396,175 @@ export const coursesData = [
     ],
     modules: [
       {
-        title: "EDSD MODULE 3.1 - HEART FOUNDATION",
+        id: 1,
+
+        title: "EDSD MODULE 2.1 - HEART FOUNDATION",
         units: [
-          "The Heart and Vision of Christian Educator Part 1 & 2",
-          "Christian in Secular Worldview",
-          "Leadership (Calling of a Christian Teacher)",
-          "Aims of Christian Education",
-          "Foundation for Christian Education Part 1 & 2",
-          "Holy Spirit in Teaching and Learning Process (Holistic Culture) 1",
+          {
+            title: "The Heart and Vision of Christian Educator Part 1 & 2",
+            content: "",
+            assignment: "",
+          },
+          {
+            title: "Christian in Secular Worldview",
+            content: "",
+            assignment: "",
+          },
+          {
+            title: "Calling of a Christian Teacher",
+            content: "",
+            assignment: "",
+          },
+          {
+            title: "Aims of Christian Education",
+            content: "",
+            assignment: "",
+          },
+          {
+            title:
+              "Holy Spirit in Teaching and Learning Process (Holistic Culture) 1",
+            content: "",
+            assignment: "",
+          },
+          {
+            title: "Foundation for Christian Education Part 1 & 2",
+            content: "",
+            assignment: "",
+          },
         ],
-        assignment: "Assignment",
+        assignment: "",
       },
       {
+        id: 2,
+
         title:
-          "EDSD MODULE 3.2 - Christ-Centred Curriculum and Effective Standards",
+          "EDSD MODULE 2.2 - Christ-Centred Curriculum and Effective Standards",
         units: [
-          "Christ-Centred Curriculum and Delivery 1 & 2",
-          "Teaching Methods and Methodologies",
-          "Acts of Gifted Teaching (Mixed Ability) / Effective Use of Resources",
-          "Cross-Curricular Approach: Planning and Teaching 1 & 2",
-          "Learning Process and Styles",
-          "Stimulating Learning Environment and Displays",
+          {
+            title: "Christ-Centred Curriculum and Delivery 1 & 2",
+            content: "",
+            assignment: "",
+          },
+          {
+            title:
+              "Acts of Gifted Teaching (Mixed Ability) Resources & Methodologies",
+            content: "",
+            assignment: "",
+          },
+          {
+            title: "Teaching and Learning Styles",
+            content: "",
+            assignment: "",
+          },
+          {
+            title: "Stimulating Learning Environment and Displays",
+            content: "",
+            assignment: "",
+          },
+          {
+            title: "Learning Theory for Christian Teacher Part 2",
+            content: "",
+            assignment: "",
+          },
+          {
+            title: "Cross-Curricular Planning & Teaching 1",
+            content: "",
+            assignment: "",
+          },
+          {
+            title: "Assess: Types and Purposes 1",
+            content: "",
+            assignment: "",
+          },
         ],
-        assignment: "Assignment",
+        assignment: "",
       },
       {
-        title: "EDSD MODULE 3.3 - Every Child Matters",
+        id: 3,
+
+        title:
+          "EDSD MODULE 2.3 - Child Psychologists / Physiology: Every Child Matters 1",
         units: [
-          "Police and Practice 1 & 2",
-          "Safeguarding / Health Matters (Child and School Environment) 1 & 2",
-          "Effective Communication",
+          {
+            title: "Child and Brain Development 1",
+            content: "",
+            assignment: "",
+          },
+          {
+            title: "Behavioural Management (Discipline)",
+            content: "",
+            assignment: "",
+          },
+          {
+            title: "Exploring Child Psychology",
+            content: "",
+            assignment: "",
+          },
+          {
+            title: "Applied Psychology in Christian Education 1",
+            content: "",
+            assignment: "",
+          },
+          {
+            title: "Fixed in Growth Mindsets in the Classroom",
+            content: "",
+            assignment: "",
+          },
+          {
+            title: "Undulating Mindset",
+            content: "",
+            assignment: "",
+          },
         ],
-        assignment: "Assignment and Research Project",
+        assignment: "",
       },
       {
-        title: "EDSD MODULE 3.4 - Educational Physiology",
+        id: 4,
+
+        title: "EDSD MODULE 2.4 - Every Child Matters Part 2",
         units: [
-          "Child and Brain Development 1 & 2",
-          "Behavioural Management & Discipline (What Discipline Is & Not)",
-          "Bespoke Curriculum Development 1",
-          "Assessment and Types of Assessment 1",
+          {
+            title: "Police and Practice",
+            content: "",
+            assignment: "",
+          },
+          {
+            title:
+              "Safeguarding / Health Matters (Child and School Environment)",
+            content: "",
+            assignment: "",
+          },
         ],
-        assignment: "Assignment",
+        assignment: "",
       },
       {
-        title: "EDSD MODULE 3.5 - Child Psychologists",
+        id: 5,
+
+        title:
+          "EDSD MODULE 2.5 - Character of a Christian Teacher and Role Model",
         units: [
-          "Exploring Child Psychology 1 & 2",
-          "Applied Psychology in Christian Education 1 & 2",
-          "Teaching Physical Education 1",
+          {
+            title: "The Reflective Teacher 1",
+            content: "",
+            assignment: "",
+          },
+          {
+            title: "The Empathetic Teacher 1",
+            content: "",
+            assignment: "",
+          },
+          {
+            title: "Competent in Incompetent Teacher 1",
+            content: "",
+            assignment: "",
+          },
+          {
+            title: "Creative Worship and Decoding Spiritual Gifts",
+            content: "",
+            assignment: "",
+          },
         ],
-        assignment: "Assignment",
-      },
-      {
-        title: "EDSD MODULE 3.6 - Kingdom Mindsets in the Classroom",
-        units: [
-          "Fixed Mindset (Teacher / Student)",
-          "Undulating Mindset (Teacher & Student)",
-          "Growth Mindset (Teacher & Student)",
-        ],
-        assignment: "Assignment",
-      },
-      {
-        title: "EDSD MODULE 3.7 - Character of a Christian Teacher",
-        units: [
-          "The Reflective Teacher 1",
-          "The Empathetic Teacher 1",
-          "The Competent Teacher 1",
-          "Creative Worship and Decoding Spiritual Gifts",
-        ],
-        assignment: "Assignment and Research Project",
+        assignment: "",
       },
     ],
     finalProject: {
@@ -370,65 +591,175 @@ export const coursesData = [
     ],
     modules: [
       {
-        title: "EDSD MODULE 4.1 - HEART FOUNDATION 2 & 3",
+        id: 1,
+
+        title: "EDSD MODULE 2.1 - HEART FOUNDATION",
         units: [
-          "The Heart and Vision of Christian Educator Parts 2 & 3",
-          "Christian in Secular Worldview",
-          "Leadership (Calling of a Christian Teacher) 2 & 3",
-          "Foundation for / Aims of Christian Education 3 & 4",
-          "Holy Spirit in Teaching and Learning Process (Holistic Culture) 1 & 2",
+          {
+            title: "The Heart and Vision of Christian Educator Part 1 & 2",
+            content: "",
+            assignment: "",
+          },
+          {
+            title: "Christian in Secular Worldview",
+            content: "",
+            assignment: "",
+          },
+          {
+            title: "Calling of a Christian Teacher",
+            content: "",
+            assignment: "",
+          },
+          {
+            title: "Aims of Christian Education",
+            content: "",
+            assignment: "",
+          },
+          {
+            title:
+              "Holy Spirit in Teaching and Learning Process (Holistic Culture) 1",
+            content: "",
+            assignment: "",
+          },
+          {
+            title: "Foundation for Christian Education Part 1 & 2",
+            content: "",
+            assignment: "",
+          },
         ],
-        assignment: "Assignment",
+        assignment: "",
       },
       {
+        id: 2,
+
         title:
-          "EDSD MODULE 4.2 - Christ-Centred Curriculum and Effective Standards",
+          "EDSD MODULE 2.2 - Christ-Centred Curriculum and Effective Standards",
         units: [
-          "Christ-Centred Curriculum and Delivery 1 & 2",
-          "Learning Process and Styles",
-          "Stimulating Learning Environment and Displays",
-          "Assessment and Types of Assessment 1 & 2",
-          "Education Fit for Purpose (Tool for Social Transformation)",
-          "Learning Theory for Christian Teacher Part 2",
+          {
+            title: "Christ-Centred Curriculum and Delivery 1 & 2",
+            content: "",
+            assignment: "",
+          },
+          {
+            title:
+              "Acts of Gifted Teaching (Mixed Ability) Resources & Methodologies",
+            content: "",
+            assignment: "",
+          },
+          {
+            title: "Teaching and Learning Styles",
+            content: "",
+            assignment: "",
+          },
+          {
+            title: "Stimulating Learning Environment and Displays",
+            content: "",
+            assignment: "",
+          },
+          {
+            title: "Learning Theory for Christian Teacher Part 2",
+            content: "",
+            assignment: "",
+          },
+          {
+            title: "Cross-Curricular Planning & Teaching 1",
+            content: "",
+            assignment: "",
+          },
+          {
+            title: "Assess: Types and Purposes 1",
+            content: "",
+            assignment: "",
+          },
         ],
-        assignment: "Assignment",
+        assignment: "",
       },
       {
+        id: 3,
+
         title:
-          "EDSD MODULE 4.3 - Educational Physiology / Psychology - Every Child Matters",
+          "EDSD MODULE 2.3 - Child Psychologists / Physiology: Every Child Matters 1",
         units: [
-          "Police and Practice 1 & 2",
-          "Safeguarding / Health Matters (Child and School Environment) 1 & 2",
-          "Effective Communication",
-          "Child and Brain Development 1 & 2",
-          "Behavioural Management & Discipline (What Discipline Is & Not)",
-          "Special Educational Needs",
+          {
+            title: "Child and Brain Development 1",
+            content: "",
+            assignment: "",
+          },
+          {
+            title: "Behavioural Management (Discipline)",
+            content: "",
+            assignment: "",
+          },
+          {
+            title: "Exploring Child Psychology",
+            content: "",
+            assignment: "",
+          },
+          {
+            title: "Applied Psychology in Christian Education 1",
+            content: "",
+            assignment: "",
+          },
+          {
+            title: "Fixed in Growth Mindsets in the Classroom",
+            content: "",
+            assignment: "",
+          },
+          {
+            title: "Undulating Mindset",
+            content: "",
+            assignment: "",
+          },
         ],
-        assignment: "Assignment",
+        assignment: "",
       },
       {
+        id: 4,
+
+        title: "EDSD MODULE 2.4 - Every Child Matters Part 2",
+        units: [
+          {
+            title: "Police and Practice",
+            content: "",
+            assignment: "",
+          },
+          {
+            title:
+              "Safeguarding / Health Matters (Child and School Environment)",
+            content: "",
+            assignment: "",
+          },
+        ],
+        assignment: "",
+      },
+      {
+        id: 5,
+
         title:
-          "EDSD MODULE 4.4 - Futuristic (Christ-Centred) Curriculum and Effective Standards",
+          "EDSD MODULE 2.5 - Character of a Christian Teacher and Role Model",
         units: [
-          "The 21st Century Teacher",
-          "Teaching Methods and Methodologies (Maths, Literacy, Science...)",
-          "Acts of Gifted Teaching (Mixed Ability) / Effective Use of Resources / Developing Resources",
-          "Cross-Curricular Approach: Planning and Teaching 2 & 3",
-          "Learning Process and Styles",
-          "Role of Technology in Teaching and Learning",
-          "Classroom of the Future: Stimulating Learning Environment",
+          {
+            title: "The Reflective Teacher 1",
+            content: "",
+            assignment: "",
+          },
+          {
+            title: "The Empathetic Teacher 1",
+            content: "",
+            assignment: "",
+          },
+          {
+            title: "Competent in Incompetent Teacher 1",
+            content: "",
+            assignment: "",
+          },
+          {
+            title: "Creative Worship and Decoding Spiritual Gifts",
+            content: "",
+            assignment: "",
+          },
         ],
-        assignment: "Assignment",
-      },
-      {
-        title: "EDSD MODULE 4.5 - Character of a Christian Teacher",
-        units: [
-          "The Reflective Teacher 1 & 2",
-          "The Empathetic Teacher 1 & 2",
-          "The Competent Teacher 1 & 2",
-          "Nurturing Worshippers and Decoding Spiritual Gifts",
-        ],
-        assignment: "Assignment",
+        assignment: "",
       },
     ],
     finalProject: {
@@ -454,6 +785,8 @@ export const coursesData = [
     ],
     modules: [
       {
+        id: 1,
+
         title: "EDSD MODULE 5.1 - HEART FOUNDATION",
         units: [
           "The Heart and Vision of Christian Educator / Special Education Leader Part 1-3",
@@ -466,6 +799,8 @@ export const coursesData = [
         assignment: "Assignment",
       },
       {
+        id: 2,
+
         title: "EDSD MODULE 5.2 - Types of Disabilities",
         units: [
           "Classification of Disabilities",
@@ -478,6 +813,8 @@ export const coursesData = [
         assignment: "Assignment",
       },
       {
+        id: 3,
+
         title: "EDSD MODULE 5.3 - Curriculum and Standards Part 1 & 2",
         parts: [
           {
@@ -503,6 +840,8 @@ export const coursesData = [
         assignment: "Assignment and Research Project",
       },
       {
+        id: 4,
+
         title:
           "EDSD MODULE 5.4 - Every Child Matters / Every Child is Unique / Every Child Can Achieve",
         units: [
@@ -513,6 +852,8 @@ export const coursesData = [
         ],
       },
       {
+        id: 5,
+
         title: "EDSD MODULE 5.5 - Character of a Christian Teacher",
         units: [
           "The Reflective Teacher 1",
@@ -523,6 +864,8 @@ export const coursesData = [
         assignment: "Assignment",
       },
       {
+        id: 6,
+
         title: "EDSD MODULE 5.6 - Educational Physiology & Child Psychologists",
         units: [
           "Child and Brain Development 1",

@@ -2,7 +2,7 @@ import clientPromise from "../../../lib/mongodb";
 
 const add = async (req) => {
   try {
-    // Extract URL params from the request",
+    // Extract URL params from the request
     const params = req.nextUrl.searchParams;
     const course = params.get("course");
     console.log("course", course);
@@ -13,6 +13,7 @@ const add = async (req) => {
         { status: 404 }
       );
     }
+
     // Extract body from the request
     const body = await req.json();
     if (!body) {
@@ -24,7 +25,7 @@ const add = async (req) => {
     console.log("Request Body:", body);
 
     // Check if any required field is missing
-    const requiredFields = ["name"];
+    const requiredFields = ["title"];
     for (const field of requiredFields) {
       if (!body[field]) {
         return Response.json(
@@ -37,39 +38,45 @@ const add = async (req) => {
     const client = await clientPromise;
     const db = client.db("Edusoul");
 
-    // check if course already exists
+    // Check if course exists
     const course_found = await db
       .collection("courses")
-      .findOne({ name: course });
+      .findOne({ title: course });
     console.log(course_found);
 
     if (course_found) {
       // Check if the module already exists in the course
-      const moduleExists = course_found.modules?.some(
-        (module) => module.name === body.name
+      const moduleIndex = course_found.modules?.findIndex(
+        (module) => module.id == body.id
       );
 
-      if (moduleExists) {
+      if (moduleIndex !== -1) {
+        // Update the module title
+        await db
+          .collection("courses")
+          .updateOne(
+            { title: course, "modules.id": body.id },
+            { $set: { "modules.$.title": body.title } }
+          );
+
         return Response.json(
-          { message: "This module name already exists in the course" },
-          { status: 409 }
+          { message: "Module title updated successfully" },
+          { status: 200 }
+        );
+      } else {
+        // Add the new module
+        await db
+          .collection("courses")
+          .updateOne(
+            { title: course },
+            { $push: { modules: { id: body.newId, title: body.title } } }
+          );
+
+        return Response.json(
+          { message: "Module added successfully" },
+          { status: 200 }
         );
       }
-      const res = await db.collection("courses").updateOne(
-        { name: course },
-        {
-          $push: { modules: body },
-        }
-      );
-
-      // Return a successful response
-      return Response.json(
-        {
-          message: "module added successfully!!",
-          id: res?.insertedId?.toString(),
-        },
-        { status: 200 }
-      );
     } else {
       return Response.json(
         { message: "This course does not exist" },
@@ -89,4 +96,4 @@ const add = async (req) => {
   }
 };
 
-export { add as POST };
+export { add as POST, add as PUT };

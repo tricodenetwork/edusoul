@@ -17,23 +17,23 @@ const Index = () => {
   return (
     <div style={poppins.style} className='h-max pl-[5%] pr-[20%]  pt-[2.5%]'>
       <Link
-        href={"courses"}
-        className='font-medium flex items-center gap-5  mb-[40px]'
+        href={"/admin/courses"}
+        className='font-medium flex items-center gap-2  mb-4'
       >
         <Image
           src={"/assets/icons/back.svg"}
-          width={24}
-          height={24}
+          width={16}
+          height={16}
           alt='back'
         />
         <p className='text-xs text-[#1A1818]'>Back</p>
       </Link>
       <div className='flex w-full justify-between'>
         <TopNav
-          first={"Courses"}
-          second={"Add Course"}
-          secondLink={""}
-          firstLink={"/admin/courses"}
+          main='Courses'
+          homeLink='/admin/courses'
+          first={"Add Course"}
+          firstLink={""}
         />
       </div>
       <div className='border border-[#99B2C6] w-full h-max pl-[5%] pr-[12%] pt-[40px] pb-[120px] my-4 bg-white rounded-[8px]'>

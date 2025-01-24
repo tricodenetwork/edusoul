@@ -2,11 +2,18 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
-const TopNav = ({ homeLink = "/", first, firstLink, second, secondLink }) => {
+const TopNav = ({
+  homeLink = "/",
+  main = "Home",
+  first,
+  firstLink,
+  second,
+  secondLink,
+}) => {
   return (
     <div className='flex items-center gap-3'>
-      <Link href={homeLink} className='text-sm text-appAsh'>
-        Home
+      <Link href={homeLink} className='text-xs text-appAsh'>
+        {main}
       </Link>
       {first && (
         <Image
@@ -18,11 +25,10 @@ const TopNav = ({ homeLink = "/", first, firstLink, second, secondLink }) => {
       )}
       {first && (
         <Link
-          cn
           href={firstLink}
           className={`${
             second ? "text-appAsh" : "text-primary font-medium"
-          } text-sm capitalize`}
+          } text-xs capitalize`}
         >
           {first}
         </Link>
@@ -37,9 +43,8 @@ const TopNav = ({ homeLink = "/", first, firstLink, second, secondLink }) => {
       )}
       {second && (
         <Link
-          cn
           href={secondLink}
-          className={`${"text-primary font-medium"} capitalize text-sm`}
+          className={`${"text-primary font-medium"} capitalize text-xs`}
         >
           {second}
         </Link>

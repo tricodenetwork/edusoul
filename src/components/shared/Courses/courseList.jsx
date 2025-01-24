@@ -91,7 +91,11 @@ export default function CourseList({ course }) {
 
           <div className='px-5 py-2.5 bg-white rounded-[5px] border border-[#8F060E] justify-start items-start gap-2.5 flex hover:bg-primary transition-all duration-300 group shadow- shadow-[#000000]/20'>
             <Link
-              href={`/course-details/?id=${course.id}`}
+              href={
+                path.includes("/admin")
+                  ? `/admin/courses/${course.id}/modules`
+                  : `/course-details/?id=${course.id}`
+              }
               // href={`/course/${course.id}`}
               className='text-[#8F060E] text-xs font-medium  capitalize group-hover:text-white'
             >

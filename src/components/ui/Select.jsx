@@ -1,3 +1,4 @@
+"use client";
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import OutsideClickHandler from "react-outside-click-handler";
@@ -7,7 +8,7 @@ import InputLine from "./InputLine";
 import Image from "next/image";
 const SelectComponent = ({ items, placeholder, style, onChange }) => {
   const [open, setOpen] = useState(false);
-  const [value, setVal] = useState("");
+  const [value, setVal] = useState("Module 1");
   return (
     <OutsideClickHandler
       display='flex'

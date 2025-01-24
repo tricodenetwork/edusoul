@@ -3,11 +3,18 @@ import AppButton from "@/components/ui/AppButton";
 import SelectComponent from "@/components/ui/Select";
 import Image from "next/image";
 import React, { useEffect, useRef, useState } from "react";
+import toast from "react-hot-toast";
+import { useSelector } from "react-redux";
 
 const Index = () => {
   const [isDragging, setIsDragging] = useState(false);
   const [file, setFile] = useState(null);
-
+  const { module, course } = useSelector((state) => state.module);
+  const activeModule = course?.modules?.find(
+    (_, index) => index == module.split("Module")[1] - 1
+  );
+  const [title, setTitle] = useState(activeModule?.title);
+  console.log("activeModule", activeModule);
   const inputFileRef = useRef(null);
   const handleButtonClick = () => {
     inputFileRef.current.click();
@@ -41,9 +48,45 @@ const Index = () => {
     setFile(e.target.files[0]);
   };
 
+  const handleUpdateModuleTitle = async () => {
+    try {
+      if (!title) {
+        alert("Module title cannot be empty!");
+        return;
+      }
+      const loader = toast.loading("Loadin");
+      const response = await fetch(`/api/add-module?course=${course.title}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          id: activeModule.id,
+          title: title,
+          newId: course?.modules.length + 1,
+        }),
+      });
+
+      if (response.ok) {
+        const result = await response.json();
+        toast.success("Module updated successfully!", { id: loader });
+        console.log("Update Result:", result);
+      } else {
+        const error = await response.json();
+        console.error("Error:", error);
+        toast.error(error.message || "Failed to update module title.", {
+          id: loader,
+        });
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      toast.error("An unexpected error occurred.", { id: loader });
+    }
+  };
+
   useEffect(() => {
-    console.log(isDragging);
-  }, [isDragging]);
+    setTitle(activeModule?.title);
+  }, [activeModule]);
 
   return (
     <div className='border border-[#99B2C6] w-full h-max pl-[5%] pr-[12%] mt-4 pt-[40px] pb-[40px] my-4 bg-white rounded-[8px]'>
@@ -58,7 +101,9 @@ const Index = () => {
         <p className='text-sm text-appBlack px-1 mb-[6px]'>Module</p>
         <input
           type='text'
+          value={title}
           placeholder='Enter module name'
+          onChange={(e) => setTitle(e.target.value)}
           className='bg-white rounded-[8px] border-[#D0D5DD] text-sm border-2  focus:outline-appAsh py-3 px-[14px] text-appBlack placeholder:text-[#717171]'
         />
       </div>
@@ -125,7 +170,7 @@ const Index = () => {
       <AppButton
         style={{ marginTop: 60 }}
         title={"Save"}
-        action={() => console.log("hello")}
+        action={handleUpdateModuleTitle}
       />
     </div>
   );

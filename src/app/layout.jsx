@@ -7,6 +7,7 @@ import { Toaster } from "react-hot-toast";
 import NextAuthSessionProvider from "@/context/SessionProvider";
 import AuthContextProvider from "@/context/AuthContext";
 import UserContextProvider from "@/context/UserContext";
+import StoreProvider from "@/components/StoreProvider";
 
 const inter = Roboto({
   subsets: ["latin"],
@@ -29,10 +30,12 @@ export default function RootLayout({ children }) {
         <NextAuthSessionProvider>
           <AuthContextProvider>
             <UserContextProvider>
-              <Toaster position='top-center' />
-              <Navbar />
-              {children}
-              <Footer />
+              <StoreProvider>
+                <Toaster position='top-center' />
+                <Navbar />
+                {children}
+                <Footer />
+              </StoreProvider>
             </UserContextProvider>
           </AuthContextProvider>
         </NextAuthSessionProvider>

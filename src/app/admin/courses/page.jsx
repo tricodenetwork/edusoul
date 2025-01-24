@@ -33,8 +33,8 @@ const Index = () => {
       <h4 className='font-medium text-xl text-appBlack mb-[23px]'>
         Your Courses
       </h4>
-      <div className='flex w-full justify-between'>
-        <TopNav first={"Courses"} firstLink={"/admin/courses"} />
+      <div className='flex w-full justify-end'>
+        {/* <TopNav first={"Courses"} firstLink={"/admin/courses"} /> */}
         <AppButton href={"courses/add"} title={"Add Course"} />
       </div>
 
