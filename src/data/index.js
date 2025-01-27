@@ -8,6 +8,18 @@ import Unit1 from "@/components/courses/advanced-classroom-assistant/aims-of-chr
 import Unit2 from "@/components/courses/advanced-classroom-assistant/aims-of-christain-education/Unit2";
 import ChristCenteredUnit1 from "@/components/courses/advanced-classroom-assistant/christ-centered/Unit1";
 import ChristCenteredUnit2 from "@/components/courses/advanced-classroom-assistant/christ-centered/Unit2";
+import EducationAndStandardsUnit1 from "@/components/courses/diploma-in-christian-education/acts-of-education-and-standards/Unit1";
+import AimsOfChristianEducation1 from "@/components/courses/diploma-in-christian-education/aims-of-christian-education/Unit1";
+import AimsOfChristianEducation2 from "@/components/courses/diploma-in-christian-education/aims-of-christian-education/Unit2";
+import DiplomaInChristCenteredUnit1 from "@/components/courses/diploma-in-christian-education/christ-centered-education/Unit1";
+import DiplomaInChristCenteredUnit2 from "@/components/courses/diploma-in-christian-education/christ-centered-education/Unit2";
+import DiplomaInChristCenteredUnit3 from "@/components/courses/diploma-in-christian-education/christ-centered-education/Unit3";
+import DiplomaInChristianEducationUnit1 from "@/components/courses/diploma-in-christian-education/heart-foundation/Unit1";
+import DiplomaInChristianEducationUnit2 from "@/components/courses/diploma-in-christian-education/heart-foundation/Unit2";
+import DiplomaInChristianEducationUnit3 from "@/components/courses/diploma-in-christian-education/heart-foundation/Unit3";
+import DiplomaInChristianEducationUnit4 from "@/components/courses/diploma-in-christian-education/heart-foundation/Unit4";
+import DiplomaInChristianEducationUnit5 from "@/components/courses/diploma-in-christian-education/heart-foundation/Unit5";
+
 
 export const navdata = [
   {
@@ -193,29 +205,96 @@ export const coursesData = [
       {
         title: "EDSD MODULE 2.1 - HEART FOUNDATION",
         units: [
-          "The Heart and Vision of Christian Educator Part 1 & 2",
-          "Christian in Secular Worldview",
-          "Calling of a Christian Teacher",
-          "Aims of Christian Education",
-          "Holy Spirit in Teaching and Learning Process (Holistic Culture) 1",
-          "Foundation for Christian Education Part 1 & 2",
+          {
+            title: "The Heart and Vision of Christian Educator Part 1",
+            content: <DiplomaInChristianEducationUnit1 />,
+            assignment: "Assignment",
+            // "Christian in Secular Worldview",
+            // "Calling of a Christian Teacher",
+            // "Aims of Christian Education",
+            // "Holy Spirit in Teaching and Learning Process (Holistic Culture) 1",
+          },
+
+          {
+            title: "THE ESTEEM OF CHRISTIAN EDUCATION",
+            content: <DiplomaInChristianEducationUnit2 />,
+            assignment: "Assignment",
+          },
+
+          {
+            title: "CALLING OF A CHRISTIAN TEACHER",
+            content: <DiplomaInChristianEducationUnit3 />,
+            assignment: "Assignment",
+          },
+
+          {
+            title: "CHRISTIAN V SECULAR WORLDVIEW",
+            content: <DiplomaInChristianEducationUnit4 />,
+            assignment: "Assignment",
+          },
+          {
+            title: "LABOURER OF GOD’S HARVEST IN CHRISTIAN EDUCATION",
+            content: <DiplomaInChristianEducationUnit5 />,
+            assignment: "Assignment",
+          },
         ],
-        assignment: "Assignment",
       },
       {
-        title:
-          "EDSD MODULE 2.2 - Christ-Centred Curriculum and Effective Standards",
+        title: "EDSD MODULE 2.1 - Aim of Christian Education",
         units: [
-          "Christ-Centred Curriculum and Delivery 1 & 2",
-          "Acts of Gifted Teaching (Mixed Ability) Resources & Methodologies",
-          "Teaching and Learning Styles",
-          "Stimulating Learning Environment and Displays",
-          "Learning Theory for Christian Teacher Part 2",
-          "Cross-Curricular Planning & Teaching 1",
-          "Assess: Types and Purposes 1",
+          {
+            title: "Understanding the aim of Chrisian Education",
+            content: <AimsOfChristianEducation1 />,
+            assignment: "Assignment and Research Project",
+          },
+          {
+            title: "THE OVERALL AIM OF CHRISTIAN EDUCATION",
+            content: <AimsOfChristianEducation2 />,
+            assignment: "Assignment and Research Project",
+          },
         ],
-        assignment: "Assignment and Research Project",
       },
+
+
+      {
+        title:
+          "EDSD MODULE 3.2 - Christ-Centred Curriculum and Effective Standards",
+        units: [
+          {
+            title: "Christ-Centred Curriculum and Delivery 1 & 2",
+            content: <DiplomaInChristCenteredUnit1 />,
+              // "Acts of Gifted Teaching (Mixed Ability) Resources & Methodologies",
+              // "Teaching and Learning Styles",
+              // "Stimulating Learning Environment and Displays",
+              // "Learning Theory for Christian Teacher Part 2",
+              // "Cross-Curricular Planning & Teaching 1",
+              // "Assess: Types and Purposes 1",
+            assignment: "Investigate if there are such pioneering Christ - centred schools in your region and draw your conclusion on how they reflect the concept of Christ - Centred education. Using the Trinity Module. 150 words What is the trinity module and demonstrate the functionality to achieve the Father’s heart concept? 200 words",
+          },
+          {
+            title: "ROLE OF HOLY SPIRIT IN TEACHING AND LEARNING IN WHOLE SCHOOL",
+            content: <DiplomaInChristCenteredUnit2 />,
+            assignment: "Assignment and Research Project",
+          },
+          {
+            title: "- HOLY SPIRIT ROLE IN CHRISTIAN EDUCATION",
+            content: <DiplomaInChristCenteredUnit3 />,
+            assignment: "Assignment and Research Project",
+          },
+        ],
+      },
+
+      {
+        title: "EDSD MODULE 4.2 - Acts of Christian Education and Standards",
+        units: [
+          {
+            title: "THE STANDARD OF ACADEMIC CONCEPT",
+            content: <EducationAndStandardsUnit1 />,
+            assignment: "Assignment and Research Project",
+          },
+        ],
+      },
+    
       {
         title:
           "EDSD MODULE 2.3 - Child Psychologists / Physiology: Every Child Matters 1",
@@ -247,6 +326,7 @@ export const coursesData = [
         ],
         assignment: "Assignment",
       },
+
     ],
     finalProject: {
       title: "EDUSOUL Final Project: Personal Professional Profile",
