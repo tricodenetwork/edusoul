@@ -1,20 +1,24 @@
 "use client";
 import AppButton from "@/components/ui/AppButton";
 import SelectComponent from "@/components/ui/Select";
+import { setActiveModule } from "@/redux/slices/moduleSlice";
+import { fetchCourses } from "@/redux/slices/networkSlice";
+import axios from "axios";
 import Image from "next/image";
 import React, { useEffect, useRef, useState } from "react";
 import toast from "react-hot-toast";
+import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 
 const Index = () => {
   const [isDragging, setIsDragging] = useState(false);
   const [file, setFile] = useState(null);
-  const { module, course } = useSelector((state) => state.module);
-  const activeModule = course?.modules?.find(
-    (_, index) => index == module.split("Module")[1] - 1
-  );
-  const [title, setTitle] = useState(activeModule?.title);
-  console.log("activeModule", activeModule);
+  const { module } = useSelector((state) => state.module);
+  const { course } = useSelector((state) => state.network);
+  const dispatch = useDispatch();
+  const activeModule = course?.modules?.find((_, index) => index == module - 1);
+  const [title, setTitle] = useState(activeModule?.title ?? "");
+  console.log("activeModule", course);
   const inputFileRef = useRef(null);
   const handleButtonClick = () => {
     inputFileRef.current.click();
@@ -49,27 +53,27 @@ const Index = () => {
   };
 
   const handleUpdateModuleTitle = async () => {
+    const loader = toast.loading("Loading...");
     try {
       if (!title) {
         alert("Module title cannot be empty!");
         return;
       }
-      const loader = toast.loading("Loadin");
-      const response = await fetch(`/api/add-module?course=${course.title}`, {
-        method: "PUT",
+      const response = await fetch(`/api/add-module?course=${course?.id}`, {
+        method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          id: activeModule.id,
+          id: activeModule?.id ?? course?.modules.length + 1,
           title: title,
-          newId: course?.modules.length + 1,
         }),
       });
 
       if (response.ok) {
         const result = await response.json();
         toast.success("Module updated successfully!", { id: loader });
+        dispatch(fetchCourses(course?.id));
         console.log("Update Result:", result);
       } else {
         const error = await response.json();
@@ -84,8 +88,24 @@ const Index = () => {
     }
   };
 
+  const handleDeleteModule = async (id) => {
+    const loading = toast.loading("Deleting...");
+    try {
+      const response = await axios.delete(
+        `/api/delete-module?course=${course.id}&module=${module}`
+      );
+      console.log("Module deleted successfully", response.data);
+      dispatch(fetchCourses(course.id));
+      toast.success("Module deleted successfully", { id: loading });
+    } catch (error) {
+      console.error("Error deleting module", error);
+      toast.error(error.response.data.message, { id: loading });
+    }
+  };
+
   useEffect(() => {
     setTitle(activeModule?.title);
+    // dispatch(setActiveModule(course?.modules.length > 0 ? "Module 1" : ""));
   }, [activeModule]);
 
   return (
@@ -98,7 +118,7 @@ const Index = () => {
         />
       </div> */}
       <div className='flex flex-col mt-[0px] '>
-        <p className='text-sm text-appBlack px-1 mb-[6px]'>Module</p>
+        <p className='text-sm text-appBlack px-1 mb-[6px]'>Module Title</p>
         <input
           type='text'
           value={title}
@@ -107,7 +127,7 @@ const Index = () => {
           className='bg-white rounded-[8px] border-[#D0D5DD] text-sm border-2  focus:outline-appAsh py-3 px-[14px] text-appBlack placeholder:text-[#717171]'
         />
       </div>
-      <div className='flex flex-col mt-[30px] '>
+      {/* <div className='flex flex-col mt-[30px] '>
         <p className='text-sm text-appBlack px-1 mb-[6px]'>Module Objectives</p>
         <textarea
           type='text'
@@ -166,12 +186,19 @@ const Index = () => {
             click to upload or drag and drop
           </p>
         </div>
+      </div> */}
+      <div className='flex w-full items-center justify-between'>
+        <AppButton
+          style={{ marginTop: 60 }}
+          title={"Save"}
+          action={handleUpdateModuleTitle}
+        />
+        <AppButton
+          style={{ marginTop: 60 }}
+          title={"Delete"}
+          action={handleDeleteModule}
+        />
       </div>
-      <AppButton
-        style={{ marginTop: 60 }}
-        title={"Save"}
-        action={handleUpdateModuleTitle}
-      />
     </div>
   );
 };

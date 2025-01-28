@@ -73,6 +73,7 @@ export const modulesData = [
 export const coursesData = [
   {
     id: 1,
+    price_id: "price_1Ql9EjJ59YmI2KgEcL6UKh46",
     title: "Advanced Classroom Assistant",
     imgURL: "/hat.png",
     price: "15.00",
@@ -107,7 +108,6 @@ export const coursesData = [
       },
       {
         id: 2,
-
         title: "EDSD MODULE 1.2 - Aims of Christian Education",
         units: [
           {
@@ -158,7 +158,6 @@ export const coursesData = [
       },
       {
         id: 4,
-
         title: "EDSD MODULE 1.4 - Acts of Education",
         units: [
           "Learning Theory for Christian Teacher Part 1",
@@ -170,7 +169,6 @@ export const coursesData = [
       },
       {
         id: 5,
-
         title: "EDSD MODULE 1.5",
         units: [
           "Learning Theory for Christian Teacher Part 1",

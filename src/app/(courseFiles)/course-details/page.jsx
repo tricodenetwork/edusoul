@@ -1,26 +1,24 @@
 "use client";
 
-import React, { useState, useEffect, Suspense } from "react";
-import Image from "next/image";
-import { coursesData } from "@/data";
-import { useSearchParams, usePathname, useRouter } from "next/navigation";
-import Link from "next/link";
 import Courses from "@/components/shared/Courses";
-import CheckIcon from "@mui/icons-material/Check";
 import AppButton from "@/components/ui/AppButton";
-import { useSession } from "next-auth/react";
-import axios from "axios";
-import { baseUrl } from "../../../../config/config";
-import toast from "react-hot-toast";
-import { Elements } from "@stripe/react-stripe-js";
-import { loadStripe } from "@stripe/stripe-js";
 import { useUser } from "@/context/UserContext";
+import { coursesData } from "@/data";
+import { loadStripe } from "@stripe/stripe-js";
+import axios from "axios";
+import { useSession } from "next-auth/react";
+import Image from "next/image";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import React, { Suspense, useEffect, useState } from "react";
+import toast from "react-hot-toast";
+import { baseUrl } from "../../../../config/config";
+import { addCourseToUser } from "@/lib/actions";
 
-// if (process.env.NEXT_PUBLIC_STRIPE_KEY === undefined) {
-//   throw new Error("NEXT_PUBLIC_STRIPE_KEY is not defined");
-// }
+if (process.env.NEXT_PUBLIC_STRIPE_KEY === undefined) {
+  throw new Error("NEXT_PUBLIC_STRIPE_KEY is not defined");
+}
 
-// const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_KEY);
+loadStripe(process.env.NEXT_PUBLIC_STRIPE_KEY);
 function CourseDetails() {
   const searchParams = useSearchParams();
   const CourseId = searchParams.get("id");
@@ -30,8 +28,8 @@ function CourseDetails() {
   const { data: session, status } = useSession();
   const router = useRouter();
   const { user } = useUser();
-  console.log("user", user);
-  const userHasCourse = user.courses.some((item) => item.id == CourseId);
+  // console.log("user", user);
+  const userHasCourse = user?.courses.some((item) => item.id == CourseId);
 
   const [course, setCourse] = useState(null);
 
@@ -40,18 +38,19 @@ function CourseDetails() {
       toast.error("Not Authenticated");
       return;
     }
-    const toastId = toast.loading("Purchasing...");
+    const toastId = toast.loading("Redirecting...");
     try {
       const res = await axios.post(`${baseUrl}api/buy-course`, {
         id,
+        price_id: course.price_id,
         email: session?.user?.email,
       });
 
-      toast.success(res.data.message, { id: toastId });
+      // toast.success(res.data.message, { id: toastId });
 
-      router.push("/dashboard/courses");
+      router.replace(res.data.url);
     } catch (error) {
-      console.error(error);
+      console.error("This is the error", error);
       toast.error("Problem Purchasing", { id: toastId });
     }
   };
@@ -61,6 +60,26 @@ function CourseDetails() {
     setCourse(fetchedCourse);
   }, [CourseId]);
 
+  useEffect(() => {
+    // Check to see if this is a redirect back from Checkout
+    const query = new URLSearchParams(window.location.search);
+    if (query.get("success")) {
+      const res = addCourseToUser();
+      if (res.ok) {
+        toast.success("Purchase Successfull!!, Redirecting to dashboard.");
+        router.push("/dashboard");
+      } else {
+        toast.error(res.message);
+      }
+    }
+
+    if (query.get("canceled")) {
+      toast.error(
+        "Order canceled -- continue to shop around and checkout when you’re ready."
+      );
+    }
+  }, []);
+
   if (!course) {
     return <div className='text-black mt-14'>Loading...</div>; // Show loading indicator
   }
@@ -68,13 +87,11 @@ function CourseDetails() {
   return (
     <>
       <div className='flex flex-col my-14'>
-        <div className='flex flex-col w-full h-[365px] px-3 md:px-[6vh] bg-[#F7D0D2] justify-center items-start'>
-          <div className='flex flex-col justify-start items-start gap-2'>
-            <h1 className='text-red-800 mb-4 text-3xl md:text-6xl font-extrabold'>
-              {course.title}
-            </h1>
-          </div>
-          <p className='self-stretch text-slate-900 text-lg font-normal'>
+        <div className='flex flex-col w-full h-[365px] px-3 md:px-[80px] bg-[#F7D0D2] justify-center items-start'>
+          <h1 className='text-red-800 mb-4 text-3xl md:text-6xl font-extrabold'>
+            {course.title}
+          </h1>
+          <p className='self-stretch text-slate-900  font-normal'>
             {course.snippet}
           </p>
         </div>
@@ -86,14 +103,17 @@ function CourseDetails() {
             </h1>
 
             {course.intro.map((item, index) => (
-              <div className='justify-start  items-center gap-6 inline-flex'>
+              <div
+                key={index.toString()}
+                className='justify-start  items-center gap-6 inline-flex'
+              >
                 <Image
                   src={"/assets/icons/tick.svg"}
                   width={11.73}
                   height={8.94}
                   alt='Tick'
                 />
-                <div className='w-[90%] opacity-70 text-appBlack text-lg font-normal  leading-7'>
+                <div className='w-[90%] opacity-70 text-appBlack text-base font-normal '>
                   {item}
                 </div>
               </div>

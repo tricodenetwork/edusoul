@@ -22,7 +22,7 @@
 
 body {
   overflow-x: hidden;
-  /* background-color: #000925; */
+  display: none;
   width: 100%;
 }
 

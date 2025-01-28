@@ -1,73 +1,21 @@
 "use client";
 
-import AppButton from "@/components/ui/AppButton";
 import MoreOptions from "@/components/ui/MoreOptions";
 import { coursesData } from "@/data";
-import axios from "axios";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { baseUrl } from "../../../../config/config";
-import { useSession } from "next-auth/react";
+import NoCoursesDisplayHolder from "@/components/shared/NoCoursesDisplayHolder";
+import { useUser } from "@/context/UserContext";
+import { BarLoader } from "react-spinners";
 
 const state = ["In progress", "Completed", "Recommended"];
-const courses = [
-  {
-    name: "Introduction to the Old Testament",
-    dueDate: "15/07/24",
-    Instructor: "John Smith",
-  },
-  {
-    name: "Introduction to the New Testament",
-    dueDate: "15/07/24",
-    Instructor: "John Smith",
-  },
-  {
-    name: "New Testament",
-    dueDate: "15/07/24",
-    Instructor: "John Smith",
-  },
-  {
-    name: "Introduction to the Old Testament",
-    dueDate: "15/07/24",
-    Instructor: "John Smith",
-  },
-  {
-    name: "Introduction to the New Testament",
-    dueDate: "15/07/24",
-    Instructor: "John Smith",
-  },
-  {
-    name: "New Testament",
-    dueDate: "15/07/24",
-    Instructor: "John Smith",
-  },
-];
-
-const notifications = [
-  {
-    category: "Course Progress",
-    text: "You're 15% done with 'Introduction to Biblical Studies'. Keep going!",
-    text2: "Great job! You've completed 50% of 'Christian Theology 101'.",
-  },
-  {
-    category: "Assignment Reminders",
-    text: "Assignment due in 3 days: 'The Parables of Jesus'.",
-    text2: "You have an upcoming quiz on 'The Book of Genesis'. Prepare well!",
-  },
-  {
-    category: "Assignment Reminders",
-    text: "Assignment due in 3 days: 'The Parables of Jesus'.",
-    text2: "You have an upcoming quiz on 'The Book of Genesis'. Prepare well!",
-  },
-];
 
 const Index = () => {
-  const [active, setActive] = useState("Recommended");
+  const [active, setActive] = useState("In progress");
   const [isOpen, setIsOpen] = useState(null);
-  const [user, setUser] = useState(null);
+  const { user } = useUser();
   const [activeCourseList, setActiveCourseList] = useState(coursesData);
-  const { data: session, status } = useSession();
 
   useEffect(() => {
     switch (active) {
@@ -75,7 +23,11 @@ const Index = () => {
         setActiveCourseList(coursesData);
         break;
       case "In progress":
-        setActiveCourseList(user?.courses);
+        setActiveCourseList(
+          coursesData.filter((item) =>
+            user?.courses?.map((item) => item.id).includes(item.id)
+          )
+        );
         break;
       case "Completed":
         setActiveCourseList(null);
@@ -83,22 +35,7 @@ const Index = () => {
       default:
         return;
     }
-  }, [active]);
-
-  useEffect(() => {
-    const fetchUser = async () => {
-      try {
-        const res = await axios.post(`${baseUrl}api/user`, {
-          email: session?.user?.email,
-        });
-        setUser(res.data);
-        console.log(res.data);
-      } catch (error) {
-        console.error(error.response);
-      }
-    };
-    fetchUser();
-  }, [session]);
+  }, [active, user]);
 
   return (
     <div className='p-[44px] bg-white h-full'>
@@ -158,71 +95,81 @@ const Index = () => {
           </tbody>
         </table>
       </div> */}
-      <div className='h-[90%] my-2 w-full overflow-y-scroll'>
-        {activeCourseList?.map((item, index) => (
-          <div
-            key={index + 1}
-            className='flex relative items-center justify-between bg-white my-4  rounded-[8px] py-4 pl-4 pr-[55px]'
-          >
-            <div className='h-[85%] absolute right-[25%] bg-appAsh2 w-[1px]'></div>
-            <Image
-              // src='/assets/images/course.png'
-              src={`/assets/images${item.imgURL}`}
-              width={250}
-              height={120}
-              alt='course'
-              className='mr-[24px]'
-            />
-            <div className='w-[50%]'>
-              <h5 className='font-medium text-primary text-xl '>
-                {item.title}
-              </h5>
-              <p className='mt-[8px] text-appBlack'>{`Modules: ${
-                item?.modules?.length ?? "0"
-              }`}</p>
-              <div className='mt-[16px] flex items-center justify-between w-max space-x-3'>
-                {/* <p className='text-appBlack text-sm'>
+      <div className='h-[90%] my-2 w-full relative overflow-y-scroll'>
+        {!user ? (
+          <BarLoader
+            loading={true}
+            width={500}
+            height={10}
+            color='#90050f'
+            className='absolute mx-auto top-1/2 -translate-y-1/2 text-primary'
+          />
+        ) : (
+          activeCourseList?.map((item, index) => (
+            <div
+              key={index + 1}
+              className='flex relative items-center justify-between bg-white my-4  rounded-[8px] py-4 pl-4 pr-[55px]'
+            >
+              <div className='h-[85%] absolute right-[25%] bg-appAsh2 w-[1px]'></div>
+              <Image
+                // src='/assets/images/course.png'
+                src={`/assets/images${item.imgURL}`}
+                width={250}
+                height={120}
+                alt='course'
+                className='mr-[24px]'
+              />
+              <div className='w-[50%]'>
+                <h5 className='font-medium text-primary text-xl '>
+                  {item.title}
+                </h5>
+                <p className='mt-[8px] text-appBlack'>{`Modules: ${
+                  item?.modules?.length ?? "0"
+                }`}</p>
+                <div className='mt-[16px] flex items-center justify-between w-max space-x-3'>
+                  {/* <p className='text-appBlack text-sm'>
                 <strong>Instructor:</strong> John Smith
               </p> */}
-                <p className='text-appBlack text-sm'>
-                  <strong>Due Date:</strong> 15/07/2024
-                </p>
+                  <p className='text-appBlack text-sm'>
+                    <strong>Due Date:</strong> 15/07/2024
+                  </p>
+                </div>
+              </div>
+
+              <Link
+                href={
+                  active == "In progress"
+                    ? `/dashboard/lessons/?course=${item.id}`
+                    : active == "Recommended"
+                    ? `/course-details?id=${item.id}`
+                    : ""
+                }
+                className='bg-primary hover:-translate-y-1 duration-200 text-white font-bold w-[180px] h-[52px] flex items-center justify-center rounded hover:bg-red-800'
+              >
+                {active == "Recommended" ? `Enroll` : `Continue Course`}
+              </Link>
+
+              <div className=''>
+                <Image
+                  onClick={() => setIsOpen(isOpen === index ? null : index)}
+                  src='/assets/icons/more.svg'
+                  width={15}
+                  height={15}
+                  alt='more'
+                  className='absolute top-4 right-4 cursor-pointer'
+                />
+                {isOpen === index && (
+                  <div className='w-32 h-30 bg-white rounded absolute right-4 shadow z-50 flex-col justify-start items-start inline-flex'>
+                    <MoreOptions flex={"col"} />
+                  </div>
+                )}
               </div>
             </div>
-
-            <Link
-              href={
-                active == "In progress"
-                  ? `/dashboard/lessons/?course=${item.title}`
-                  : active == "Recommended"
-                  ? `/course-details?id=${item.id}`
-                  : ""
-              }
-              className='bg-primary hover:-translate-y-1 duration-200 text-white font-bold w-[180px] h-[52px] flex items-center justify-center rounded hover:bg-red-800'
-            >
-              {active == "Recommended" ? `Enroll` : `Continue Course`}
-            </Link>
-
-            <div className=''>
-              <Image
-                onClick={() => setIsOpen(isOpen === index ? null : index)}
-                src='/assets/icons/more.svg'
-                width={15}
-                height={15}
-                alt='more'
-                className='absolute top-4 right-4 cursor-pointer'
-              />
-              {isOpen === index && (
-                <div className='w-32 h-30 bg-white rounded absolute right-4 shadow z-50 flex-col justify-start items-start inline-flex'>
-                  <MoreOptions flex={"col"} />
-                </div>
-              )}
+          )) ?? (
+            <div className='flex relative  items-center  bg-white my-4  rounded-[8px] py-4 pl-4 pr-[55px]'>
+              <NoCoursesDisplayHolder state={active} setState={setActive} />
             </div>
-          </div>
-        )) ?? (
-          <h5 className='font-medium text-primary text-3xl lg:text-6xl w-full h-full flex items-center justify-center '>
-            {"None Yet"}
-          </h5>
+          )
         )}
       </div>
     </div>

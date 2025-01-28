@@ -1,19 +1,17 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import { signOutOfApp } from "@/lib/session";
+import Courses from "@/components/icons/Courses";
+import Home from "@/components/icons/Home";
+import Settings from "@/components/icons/Settings";
+import SegmentIcon from "@mui/icons-material/Segment";
+import { useSession } from "next-auth/react";
 import { Nunito } from "next/font/google";
 import Image from "next/image";
 import Link from "next/link";
-import Home from "@/components/icons/Home";
-import Settings from "@/components/icons/Settings";
-import Courses from "@/components/icons/Courses";
-import { usePathname } from "next/navigation";
-import SegmentIcon from "@mui/icons-material/Segment";
+import { usePathname, useRouter } from "next/navigation";
+import React, { useState } from "react";
 import { IoCloseSharp } from "react-icons/io5";
-import { useRouter } from "next/navigation";
-import { useSession } from "next-auth/react";
-import { signOut } from "next-auth/react";
-import UserContextProvider from "@/context/UserContext";
 
 const nunito = Nunito({ subsets: ["latin"] });
 const links = [
@@ -65,7 +63,7 @@ export default function RootLayout({ children }) {
             {links.map((item) => {
               const isActive = path === item.href || path === item.href2;
               return (
-                <span>
+                <span key={item.href}>
                   {React.cloneElement(item.component, {
                     active: isActive,
                   })}
@@ -89,7 +87,7 @@ export default function RootLayout({ children }) {
           </ul>
         </div>
         <button
-          onClick={() => signOut({ callbackUrl: "/auth/login" })}
+          onClick={() => signOutOfApp()}
           className='flex absolute self-center hover:translate-x-1 duration-150 bottom-[3%]  gap-[16px] items-center '
         >
           <Image

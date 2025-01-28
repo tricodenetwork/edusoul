@@ -42,10 +42,10 @@ function Aboutus() {
           <iframe
             src='https://www.youtube.com/embed/viHILXVY_eU?si=mQqGAGXU1NhUBfQf'
             title='YouTube video player'
-            frameborder='0'
+            frameBorder='0'
             allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
-            referrerpolicy='strict-origin-when-cross-origin'
-            allowfullscreen
+            referrerPolicy='strict-origin-when-cross-origin'
+            allowFullScreen
             className='mx-auto lg:w-[915px] lg:h-[415px] rounded-2xl'
           />
         </div>
@@ -86,7 +86,6 @@ function Aboutus() {
         </div>
         <Center />
       </section>
-      <Footer />
       {/* <!-- ===== About us End ===== --> */}
     </>
   );

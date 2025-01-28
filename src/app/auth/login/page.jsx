@@ -1,17 +1,14 @@
 "use client";
 
-import { useState } from "react";
-import Link from "next/link";
-import { Router, useRouter } from "next/navigation";
-import { Button } from "@/components/ui/Button";
+import { SignInWithCredentials } from "@/lib/session";
 import AuthComponent from "@/components/shared/AuthComponent";
+import { Button } from "@/components/ui/Button";
 import ShowHidePassword from "@/components/ui/ShowHidePassword";
 import { useAuth } from "@/context/AuthContext";
-import Image from "next/image";
-import axios from "axios";
-import { signIn } from "next-auth/react";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
 import toast from "react-hot-toast";
-import { baseUrl } from "../../../../config/config";
 
 const SigninForm = () => {
   const router = useRouter();
@@ -39,13 +36,7 @@ const SigninForm = () => {
       // return;
 
       // Use NextAuth signIn function to trigger authentication
-      const result = await signIn("credentials", {
-        redirect: false,
-        email,
-        password,
-        callbackUrl: `${baseUrl}dashboard`,
-      });
-
+      const result = await SignInWithCredentials({ email, password });
       // Handle the result (e.g., redirect on success, show error on failure)
       if (result?.error) {
         // router.push("?success=false");

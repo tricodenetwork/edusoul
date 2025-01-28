@@ -2,32 +2,72 @@
 
 import { useDispatch } from "react-redux";
 import SelectComponent from "../ui/Select";
-import { setActiveCourse, setActiveModule } from "@/redux/slices/moduleSlice";
+import { setActiveModule } from "@/redux/slices/moduleSlice";
 import AppButton from "../ui/AppButton";
 import { useEffect } from "react";
-import { coursesData } from "@/data";
+import axios from "axios";
+import toast from "react-hot-toast";
+import { useSelector } from "react-redux";
+import { fetchCourses } from "@/redux/slices/networkSlice";
 
-const LayoutTopSection = ({ items, courseId }) => {
-  const course = coursesData.find((item) => item.id == courseId);
+const LayoutTopSection = ({ courseId }) => {
+  // const course = coursesData.find((item) => item.id == courseId);
+  const { module } = useSelector((state) => state.module);
+  const { courses, items, course } = useSelector((state) => state.network);
+  const activeModule = course?.modules?.find((item) => item.id == module);
 
+  console.log("course", course);
   const dispatch = useDispatch();
   const set = (item) => {
     dispatch(setActiveModule(item));
   };
 
+  const fetchAllCourses = async () => {
+    try {
+      dispatch(fetchCourses(courseId));
+    } catch (error) {
+      console.error("Error fetching courses", error.message);
+    }
+  };
+
+  const AddNewModule = async () => {
+    const loader = toast.loading("Loading...");
+    try {
+      const res = await axios.post(`/api/add-module?course=${course?.id}`, {
+        id: course?.modules?.length + 1,
+        title: `Module ${course?.modules?.length + 1}`,
+        units: [],
+      });
+      fetchAllCourses();
+      toast.success("New Module created!", { id: loader });
+    } catch (error) {
+      console.error("Error:", error);
+      toast.error(
+        error.response.data.message || "Failed to update module title.",
+        {
+          id: loader,
+        }
+      );
+    }
+  };
+
   useEffect(() => {
-    dispatch(setActiveCourse(course));
+    fetchAllCourses();
   }, [courseId]);
   return (
     <div className='flex w-full  justify-between'>
       {/* <TopNav first={"Module"} firstLink={"modules"} /> */}
       <SelectComponent
+        modules={course?.modules}
         onChange={set}
         items={items}
         style={"w-[7.5vw]"}
-        placeholder={"Module 1"}
+        placeholder={course?.modules?.length > 0 ? "Module 1" : ""}
       />
-      <AppButton title={"Add Module"} href={"/"} />
+      <h3 className='font-semibold text-2xl flex-1 text-start flex items-center px-[2%] text-appBlack'>
+        {activeModule?.title ?? ""}
+      </h3>
+      <AppButton title={"New Module"} action={AddNewModule} />
     </div>
   );
 };

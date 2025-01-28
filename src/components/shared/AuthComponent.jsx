@@ -1,9 +1,8 @@
 "use client";
 
-import React from "react";
+import { SignInWithGoogle } from "@/lib/session";
 import Image from "next/image";
-import { signIn } from "next-auth/react";
-import { baseUrl } from "../../../config/config";
+import React from "react";
 
 const AuthComponent = () => {
   const ellipseStyle =
@@ -42,14 +41,7 @@ const AuthComponent = () => {
           alt='github'
         />
       </div> */}
-      <div
-        onClick={() =>
-          signIn("google", {
-            callbackUrl: `${baseUrl}dashboard`,
-          })
-        }
-        className={ellipseStyle}
-      >
+      <button onClick={() => SignInWithGoogle()} className={ellipseStyle}>
         <Image
           className='auth_image '
           width={25}
@@ -57,7 +49,7 @@ const AuthComponent = () => {
           src={"/assets/icons/google.svg"}
           alt='slack'
         />
-      </div>
+      </button>
     </div>
   );
 };

@@ -10,7 +10,9 @@ const getCourse = async (req) => {
     const client = await clientPromise;
     const db = client.db("Edusoul");
 
-    const course = await db.collection("courses").findOne({ id: parseInt(id) });
+    const course = await db
+      .collection("courses")
+      .findOne({ id: parseInt(idhatsapp) });
     console.log(course);
     // Return a successful response
     return Response.json({ course }, { status: 200 });

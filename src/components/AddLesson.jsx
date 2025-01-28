@@ -1,21 +1,26 @@
 "use client";
 import AppButton from "@/components/ui/AppButton";
-import SelectComponent from "@/components/ui/Select";
 import Image from "next/image";
 import React, { useRef, useState } from "react";
-import { useEditor, EditorContent } from "@tiptap/react";
-import StarterKit from "@tiptap/starter-kit";
+
 import axios from "axios";
+import { useSelector } from "react-redux";
+import ContentBox from "./editor/ContentBox";
+import toast from "react-hot-toast";
+import { modulesData } from "@/data";
+import { useDispatch } from "react-redux";
+import { fetchCourses } from "@/redux/slices/networkSlice";
 
 const AddLesson = ({ setAdd }) => {
   const [isDragging, setIsDragging] = useState(false);
   const [file, setFile] = useState(null);
-  const [title, setTitle] = useState("");
-  const [objectives, setObjectives] = useState("");
-  const editor = useEditor({
-    extensions: [StarterKit],
-    content: "<p>Enter lesson note here...</p>",
-  });
+  const { lesson, module } = useSelector((state) => state.module);
+  const { course } = useSelector((state) => state.network);
+  const [title, setTitle] = useState(lesson?.title);
+  const [note, setNote] = useState(lesson?.note);
+  const [link, setLink] = useState(lesson?.link);
+  const dispatch = useDispatch();
+  const activeModule = course?.modules?.find((_, index) => index == module - 1);
 
   const inputFileRef = useRef(null);
   const handleButtonClick = () => {
@@ -50,20 +55,26 @@ const AddLesson = ({ setAdd }) => {
   const handleFileChange = (e) => {
     setFile(e.target.files[0]);
   };
-
   const handleSubmit = async () => {
-    const noteContent = editor.getHTML();
+    const loading = toast.loading("Adding...");
     try {
-      const response = await axios.post("/api/lessons", {
-        title,
-        objectives,
-        note: noteContent,
-        file: file ? file.name : null,
-      });
+      const response = await axios.post(
+        `/api/add-lesson?course=${course.id}&module=${module}`,
+        {
+          id: lesson?.id ?? activeModule?.units?.length ?? 0 + 1 ?? 1,
+          title,
+          link,
+          note: note,
+          file: file ? file.name : null,
+        }
+      );
       console.log("Lesson added successfully", response.data);
+      dispatch(fetchCourses(course.id));
+      toast.success("Lesson added successfully", { id: loading });
       setAdd(false);
     } catch (error) {
       console.error("Error adding lesson", error);
+      toast.error(error.response.data.message, { id: loading });
     }
   };
 
@@ -79,27 +90,26 @@ const AddLesson = ({ setAdd }) => {
           className='bg-white rounded-[8px] border-[#D0D5DD] text-sm border-2  focus:outline-appAsh py-3 px-[14px] text-appBlack placeholder:text-[#717171]'
         />
       </div>
-      <div className='flex flex-col mt-[30px] '>
-        <p className='text-sm text-appBlack px-1 mb-[6px]'>Lesson objectives</p>
+      {/* <div className='flex flex-col mt-[30px] '>
+        <p className='text-sm text-appBlack px-1 mb-[6px]'>Lesson note</p>
         <textarea
           type='text'
-          value={objectives}
+          value={note}
           onChange={(e) => setObjectives(e.target.value)}
-          placeholder='Enter lesson objectives'
+          placeholder='Enter lesson note'
           className='bg-white rounded-[8px] border-[#D0D5DD] h-[164px] text-sm border-2  focus:outline-appAsh py-3 px-[14px] text-appBlack placeholder:text-[#717171]'
         />
-      </div>
-      <div className='flex flex-col mt-[30px] '>
+      </div> */}
+      <div className='flex flex-col w-full mt-[30px] '>
         <p className='text-sm text-appBlack px-1 mb-[6px]'>Lesson note</p>
-        <EditorContent
-          editor={editor}
-          className='bg-white rounded-[8px] border-[#D0D5DD] h-[164px] text-sm border-2 focus:outline-appAsh py-3 px-[14px] text-appBlack placeholder:text-[#717171]'
-        />
+        <ContentBox content={note} setContent={setNote} />
       </div>
       <div className='flex flex-col mt-[30px] '>
         <p className='text-sm text-appBlack px-1 mb-[6px]'>Class link</p>
         <input
           type='text'
+          value={link}
+          onChange={(e) => setLink(e.target.value)}
           placeholder='Enter class link'
           className='bg-white rounded-[8px] border-[#D0D5DD] text-sm border-2  focus:outline-appAsh py-3 px-[14px] text-appBlack placeholder:text-[#717171]'
         />

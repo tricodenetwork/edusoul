@@ -1,14 +1,29 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import OutsideClickHandler from "react-outside-click-handler";
 import { AnimatePresence } from "framer-motion";
 
 import InputLine from "./InputLine";
 import Image from "next/image";
-const SelectComponent = ({ items, placeholder, style, onChange }) => {
+import { useSelector } from "react-redux";
+import { usePathname } from "next/navigation";
+const SelectComponent = ({ items, placeholder, style, onChange, modules }) => {
   const [open, setOpen] = useState(false);
-  const [value, setVal] = useState("Module 1");
+  const { module } = useSelector((state) => state.module);
+  const [value, setVal] = useState(modules?.length > 0 ? "Module 1" : "None");
+  const path = usePathname();
+
+  useEffect(() => {
+    if (items.length > 0) {
+      onChange(path.includes("admin") ? items.length : 1);
+    }
+    setVal(
+      items?.length > 0
+        ? `Module ${path.includes("admin") ? items.length : 1}`
+        : "None"
+    );
+  }, [items.length]);
   return (
     <OutsideClickHandler
       display='flex'
@@ -40,24 +55,14 @@ const SelectComponent = ({ items, placeholder, style, onChange }) => {
                   style={{ fontSize: 14 }}
                   onClick={() => {
                     onChange(item);
-                    setVal(item);
+                    setVal(`Module ${item}`);
                     setOpen(false);
                   }}
-                  className={`regular cursor-pointer border-b hover:bg-slate-300/30 py-2 mb-2 px-2 text-binance_ash medium ${
-                    item == "Completed"
-                      ? "text-binance_green"
-                      : item == "Paused"
-                      ? "text-[#d9d9d9]"
-                      : item == "Awaiting your review"
-                      ? "text-purple-800"
-                      : item == "Started"
-                      ? "text-cyan-400"
-                      : item == "Ongoing"
-                      ? "text-amber-400"
-                      : "text-gray-800"
-                  }`}
+                  className={`regular cursor-pointer ${
+                    module == item ? "bg-purple-300/30" : ""
+                  } border-b hover:bg-slate-300/30 py-2 mb-2 px-2 text-binance_ash medium `}
                 >
-                  {item}
+                  Module {item}
                 </p>
               ))}
             </motion.div>
@@ -68,23 +73,16 @@ const SelectComponent = ({ items, placeholder, style, onChange }) => {
           styles={`bg-white `}
           placeholder={placeholder}
           value={value}
+          type={"text"}
         />
         <div
           onClick={() => {
             setOpen(!open);
           }}
-          className={`absolute ${
-            open ? "rotate-180 z-20" : "rotate-0"
-          } duration-200 right-[14px] p-1 cursor-pointer self-center`}
+          className={`absolute  flex justify-end w-full right-[14px] p-1 cursor-pointer self-center`}
         >
-          {/* <KeyboardArrowDownOutlinedIcon
-            sx={{
-              fontSize: 24,
-              cursor: "pointer",
-              color: "#aab2c8",
-            }}
-          /> */}
           <Image
+            className={`duration-200 ${open ? "rotate-180 z-20" : "rotate-0"}`}
             src={"/assets/icons/down.svg"}
             width={12}
             height={12}

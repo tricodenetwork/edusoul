@@ -5,11 +5,11 @@ const add = async (req) => {
     // Extract URL params from the request
     const params = req.nextUrl.searchParams;
     const courseId = parseInt(params.get("course"));
-    console.log("courseId", courseId);
+    const moduleId = parseInt(params.get("module"));
 
-    if (!courseId) {
+    if (!courseId || !moduleId) {
       return Response.json(
-        { message: "No course id  in the request" },
+        { message: "No course id or module id  in the request" },
         { status: 404 }
       );
     }
@@ -25,7 +25,7 @@ const add = async (req) => {
     console.log("Request Body:", body);
 
     // Check if any required field is missing
-    const requiredFields = ["id", "title"];
+    const requiredFields = ["assignment"];
     for (const field of requiredFields) {
       if (!body[field]) {
         return Response.json(
@@ -42,12 +42,11 @@ const add = async (req) => {
     const course_found = await db
       .collection("courses")
       .findOne({ id: courseId });
-    console.log(course_found);
 
     if (course_found) {
       // Check if the module already exists in the course
       const moduleIndex = course_found.modules?.findIndex(
-        (module) => module.id == body.id
+        (module) => module.id == moduleId
       );
 
       if (moduleIndex !== -1) {
@@ -55,23 +54,18 @@ const add = async (req) => {
         await db
           .collection("courses")
           .updateOne(
-            { id: courseId, "modules.id": body.id },
-            { $set: { "modules.$.title": body.title, "modules.$.units": [] } }
+            { id: courseId, "modules.id": moduleId },
+            { $set: { "modules.$.assignment": body.assignment } }
           );
 
         return Response.json(
-          { message: "Module title updated successfully" },
+          { message: "Assignment updated successfully" },
           { status: 200 }
         );
       } else {
-        // Add the new module
-        await db
-          .collection("courses")
-          .updateOne({ id: courseId }, { $push: { modules: body } });
-
         return Response.json(
-          { message: "Module added successfully" },
-          { status: 200 }
+          { message: "This module does not exist" },
+          { status: 404 }
         );
       }
     } else {
@@ -85,7 +79,7 @@ const add = async (req) => {
 
     // Return an error response
     return new Response.json(
-      { error: "Something went wrong" },
+      { message: "Something went wrong with the server" },
       {
         status: 500,
       }

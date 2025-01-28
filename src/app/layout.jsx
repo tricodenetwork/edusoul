@@ -1,6 +1,5 @@
 import { Roboto } from "next/font/google";
 import "./globals.css";
-// import AuthContextProvider from "../context/AuthContext";
 import Navbar from "@/components/shared/NavBar/nav";
 import Footer from "@/components/shared/Footer";
 import { Toaster } from "react-hot-toast";

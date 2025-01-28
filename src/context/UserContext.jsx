@@ -20,14 +20,13 @@ const UserContextProvider = ({ children }) => {
             email: session.user.email,
           });
           setUser(res.data);
-          console.log(res.data);
         } catch (error) {
-          console.error("Error fetching user:", error.response);
+          console.error("Error fetchingsss user:", error);
         }
       };
       fetchUser();
     }
-  }, [session, status]);
+  }, [status]);
 
   return (
     <UserContext.Provider value={{ user }}>{children}</UserContext.Provider>

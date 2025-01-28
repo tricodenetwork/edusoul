@@ -36,7 +36,7 @@ function Center() {
               </div>
             </div>
 
-            <div className='lg:w-[50%] text-gray-400 leading-relaxed p-10'>
+            <div className='lg:w-[50%] text-gray-100 leading-relaxed p-10'>
               <li className=''>
                 Professional career development is critical for innovative
                 educators to effect moral and spiritual transformation in

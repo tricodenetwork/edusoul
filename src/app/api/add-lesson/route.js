@@ -4,12 +4,12 @@ const addLesson = async (req) => {
   try {
     // Extract URL params from the request
     const params = req.nextUrl.searchParams;
-    const courseName = params.get("course");
-    const moduleName = params.get("module");
+    const courseId = parseInt(params.get("course"));
+    const moduleId = parseInt(params.get("module"));
 
-    if (!courseName || !moduleName) {
+    if (!courseId || !moduleId) {
       return Response.json(
-        { message: "Course name and module name are required" },
+        { message: "Course id and module id are required" },
         { status: 404 }
       );
     }
@@ -25,11 +25,11 @@ const addLesson = async (req) => {
     console.log("Request Body:", body);
 
     // Check if the lesson name is provided
-    const requiredFields = ["name"];
+    const requiredFields = ["title", "id"];
     for (const field of requiredFields) {
       if (!body[field]) {
         return Response.json(
-          { error: `${field} is required` },
+          { message: `${field} is required` },
           { status: 404 }
         );
       }
@@ -39,7 +39,7 @@ const addLesson = async (req) => {
     const db = client.db("Edusoul");
 
     // Find the course by name
-    const course = await db.collection("courses").findOne({ name: courseName });
+    const course = await db.collection("courses").findOne({ id: courseId });
 
     if (!course) {
       return Response.json(
@@ -49,7 +49,7 @@ const addLesson = async (req) => {
     }
 
     // Find the module within the course
-    const module = course.modules.find((mod) => mod.name === moduleName);
+    const module = course.modules.find((mod) => mod.id == moduleId);
 
     if (!module) {
       return Response.json(
@@ -58,23 +58,46 @@ const addLesson = async (req) => {
       );
     }
 
-    // Check if the lesson already exists in the module
-    const lessonExists = module.lessons?.some(
-      (lesson) => lesson.name === body.name
-    );
+    // if (module?.units.length == 0) {
+    //   await db.collection("courses").updateOne(
+    //     { id: courseId, "modules.id": moduleId },
+    //     {
+    //       $set: { "modules.$.units": [] },
+    //     },
+    //     { upsert: true }
+    //   );
+    // }
 
-    if (lessonExists) {
+    // Check if the lesson already exists in the module
+    const lessonIndex = module?.units?.findIndex(
+      (lesson) => lesson.id === body.id
+    );
+    // console.log(lessonIndex !== undefined, "module units");
+    // return Response.json("Sussess");
+
+    if (lessonIndex ?? -1 !== -1) {
+      // Update the existing lesson
+      const updateQuery = {
+        $set: {
+          [`modules.$.units.${lessonIndex}`]: body,
+        },
+      };
+
+      await db
+        .collection("courses")
+        .updateOne({ id: courseId, "modules.id": moduleId }, updateQuery);
+
       return Response.json(
-        { message: "This lesson name already exists in the module" },
-        { status: 409 }
+        { message: "Lesson updated successfully!" },
+        { status: 200 }
       );
     }
 
     // Add the new lesson to the module's lessons array
     const res = await db.collection("courses").updateOne(
-      { name: courseName, "modules.name": moduleName },
+      { id: courseId, "modules.id": moduleId },
       {
-        $push: { "modules.$.lessons": body },
+        $push: { "modules.$.units": body },
       }
     );
 
