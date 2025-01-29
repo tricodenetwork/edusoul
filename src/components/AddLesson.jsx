@@ -10,6 +10,7 @@ import toast from "react-hot-toast";
 import { modulesData } from "@/data";
 import { useDispatch } from "react-redux";
 import { fetchCourses } from "@/redux/slices/networkSlice";
+import { setActiveLesson } from "@/redux/slices/moduleSlice";
 
 const AddLesson = ({ setAdd }) => {
   const [isDragging, setIsDragging] = useState(false);
@@ -20,7 +21,7 @@ const AddLesson = ({ setAdd }) => {
   const [note, setNote] = useState(lesson?.note);
   const [link, setLink] = useState(lesson?.link);
   const dispatch = useDispatch();
-  const activeModule = course?.modules?.find((_, index) => index == module - 1);
+  const activeModule = course?.modules?.find((item) => item.id == module);
 
   const inputFileRef = useRef(null);
   const handleButtonClick = () => {
@@ -57,19 +58,22 @@ const AddLesson = ({ setAdd }) => {
   };
   const handleSubmit = async () => {
     const loading = toast.loading("Adding...");
+    console.log(lesson?.id ?? activeModule?.units?.length + 1, "knlsnsl");
     try {
       const response = await axios.post(
         `/api/add-lesson?course=${course.id}&module=${module}`,
         {
-          id: lesson?.id ?? activeModule?.units?.length ?? 0 + 1 ?? 1,
+          id: lesson?.id ?? activeModule?.units?.length + 1,
           title,
           link,
           note: note,
           file: file ? file.name : null,
         }
       );
+
       console.log("Lesson added successfully", response.data);
       dispatch(fetchCourses(course.id));
+      dispatch(setActiveLesson({}));
       toast.success("Lesson added successfully", { id: loading });
       setAdd(false);
     } catch (error) {

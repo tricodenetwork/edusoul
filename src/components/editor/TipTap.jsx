@@ -12,7 +12,7 @@ const Tiptap = ({ onChange, content }) => {
   };
   const editor = useEditor({
     extensions: [StarterKit, Underline],
-    content: "<p>Enter lesson note here...</p>",
+    content: content ?? "<p>Enter lesson note here...</p>",
     editorProps: {
       attributes: {
         class: `h-full ${proseFormatting}  text-appBlack w-full text-[16px] break-words outline-none`,

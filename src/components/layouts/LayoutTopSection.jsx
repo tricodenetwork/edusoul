@@ -9,14 +9,16 @@ import axios from "axios";
 import toast from "react-hot-toast";
 import { useSelector } from "react-redux";
 import { fetchCourses } from "@/redux/slices/networkSlice";
+import { BarLoader } from "react-spinners";
 
 const LayoutTopSection = ({ courseId }) => {
   // const course = coursesData.find((item) => item.id == courseId);
   const { module } = useSelector((state) => state.module);
-  const { courses, items, course } = useSelector((state) => state.network);
+  const { courses, items, course, loading } = useSelector(
+    (state) => state.network
+  );
   const activeModule = course?.modules?.find((item) => item.id == module);
 
-  console.log("course", course);
   const dispatch = useDispatch();
   const set = (item) => {
     dispatch(setActiveModule(item));
@@ -54,9 +56,22 @@ const LayoutTopSection = ({ courseId }) => {
   useEffect(() => {
     fetchAllCourses();
   }, [courseId]);
+
   return (
     <div className='flex w-full  justify-between'>
       {/* <TopNav first={"Module"} firstLink={"modules"} /> */}
+
+      {loading && (
+        <div className='w-[78%] h-[70vh] z-50 absolute bg-[#FFF5F6] flex items-center justify-center'>
+          <BarLoader
+            loading={true}
+            width={500}
+            height={10}
+            color='#90050f'
+            className=''
+          />
+        </div>
+      )}
       <SelectComponent
         modules={course?.modules}
         onChange={set}

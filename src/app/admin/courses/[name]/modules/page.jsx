@@ -9,16 +9,17 @@ import React, { useEffect, useRef, useState } from "react";
 import toast from "react-hot-toast";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
+import { BarLoader } from "react-spinners";
 
 const Index = () => {
   const [isDragging, setIsDragging] = useState(false);
   const [file, setFile] = useState(null);
   const { module } = useSelector((state) => state.module);
-  const { course } = useSelector((state) => state.network);
+  const { course, loading } = useSelector((state) => state.network);
   const dispatch = useDispatch();
-  const activeModule = course?.modules?.find((_, index) => index == module - 1);
+  const activeModule = course?.modules?.find((item) => item.id == module);
   const [title, setTitle] = useState(activeModule?.title ?? "");
-  console.log("activeModule", course);
+  console.log("activeModule", module, course);
   const inputFileRef = useRef(null);
   const handleButtonClick = () => {
     inputFileRef.current.click();
@@ -105,29 +106,35 @@ const Index = () => {
 
   useEffect(() => {
     setTitle(activeModule?.title);
-    // dispatch(setActiveModule(course?.modules.length > 0 ? "Module 1" : ""));
+    // dispatch(setActiveModule(items?.length ?? 1));
   }, [activeModule]);
 
-  return (
-    <div className='border border-[#99B2C6] w-full h-max pl-[5%] pr-[12%] mt-4 pt-[40px] pb-[40px] my-4 bg-white rounded-[8px]'>
-      {/* <div className='flex flex-col '>
-        <p className='text-sm text-appBlack px-1 mb-[6px]'>Select Course</p>
-        <SelectComponent
-          items={["Course 1", "Course 2", "Course 3", "Course 4"]}
-          placeholder={"Choose course"}
-        />
-      </div> */}
-      <div className='flex flex-col mt-[0px] '>
-        <p className='text-sm text-appBlack px-1 mb-[6px]'>Module Title</p>
-        <input
-          type='text'
-          value={title}
-          placeholder='Enter module name'
-          onChange={(e) => setTitle(e.target.value)}
-          className='bg-white rounded-[8px] border-[#D0D5DD] text-sm border-2  focus:outline-appAsh py-3 px-[14px] text-appBlack placeholder:text-[#717171]'
+  if (loading) {
+    return (
+      <div className='w-full h-full flex items-center justify-center'>
+        <BarLoader
+          loading={true}
+          width={500}
+          height={10}
+          color='#90050f'
+          className=''
         />
       </div>
-      {/* <div className='flex flex-col mt-[30px] '>
+    );
+  } else {
+    return (
+      <div className='border border-[#99B2C6] w-full h-max pl-[5%] pr-[12%] mt-4 pt-[40px] pb-[40px] my-4 bg-white rounded-[8px]'>
+        <div className='flex flex-col mt-[0px] '>
+          <p className='text-sm text-appBlack px-1 mb-[6px]'>Module Title</p>
+          <input
+            type='text'
+            value={title}
+            placeholder='Enter module name'
+            onChange={(e) => setTitle(e.target.value)}
+            className='bg-white rounded-[8px] border-[#D0D5DD] text-sm border-2  focus:outline-appAsh py-3 px-[14px] text-appBlack placeholder:text-[#717171]'
+          />
+        </div>
+        {/* <div className='flex flex-col mt-[30px] '>
         <p className='text-sm text-appBlack px-1 mb-[6px]'>Module Objectives</p>
         <textarea
           type='text'
@@ -187,20 +194,21 @@ const Index = () => {
           </p>
         </div>
       </div> */}
-      <div className='flex w-full items-center justify-between'>
-        <AppButton
-          style={{ marginTop: 60 }}
-          title={"Save"}
-          action={handleUpdateModuleTitle}
-        />
-        <AppButton
-          style={{ marginTop: 60 }}
-          title={"Delete"}
-          action={handleDeleteModule}
-        />
+        <div className='flex w-full items-center justify-between'>
+          <AppButton
+            style={{ marginTop: 60 }}
+            title={"Save"}
+            action={handleUpdateModuleTitle}
+          />
+          <AppButton
+            style={{ marginTop: 60 }}
+            title={"Delete"}
+            action={handleDeleteModule}
+          />
+        </div>
       </div>
-    </div>
-  );
+    );
+  }
 };
 
 export default Index;

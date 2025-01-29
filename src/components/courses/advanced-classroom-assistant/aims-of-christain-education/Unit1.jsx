@@ -1,6 +1,5 @@
 const Unit1 = () => {
-  return (
-    <div className='content-container'>
+  return `<div className='content-container'>
       <section className='lesson-section'>
         <blockquote>
           <p className='mb-1'>
@@ -110,8 +109,7 @@ const Unit1 = () => {
           media and music industry.
         </p>
       </section>
-    </div>
-  );
+    </div>`;
 };
 
 export default Unit1;

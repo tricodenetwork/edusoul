@@ -14,7 +14,7 @@ import toast from "react-hot-toast";
 import { baseUrl } from "../../../../config/config";
 import { addCourseToUser } from "@/lib/actions";
 
-if (process.env.NEXT_PUBLIC_STRIPE_KEY === undefined) {
+if (process.env.NEXT_PUBLIC_STRIPE_KEY_TEST === undefined) {
   throw new Error("NEXT_PUBLIC_STRIPE_KEY is not defined");
 }
 
@@ -69,7 +69,7 @@ function CourseDetails() {
         toast.success("Purchase Successfull!!, Redirecting to dashboard.");
         router.push("/dashboard");
       } else {
-        toast.error(res.message);
+        toast.error(res.message ?? "Problem adding course to user");
       }
     }
 

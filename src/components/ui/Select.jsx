@@ -11,19 +11,21 @@ import { usePathname } from "next/navigation";
 const SelectComponent = ({ items, placeholder, style, onChange, modules }) => {
   const [open, setOpen] = useState(false);
   const { module } = useSelector((state) => state.module);
-  const [value, setVal] = useState(modules?.length > 0 ? "Module 1" : "None");
+  const [value, setVal] = useState(
+    modules?.length > 0 ? `Module ${module}` : "None"
+  );
   const path = usePathname();
 
   useEffect(() => {
-    if (items.length > 0) {
-      onChange(path.includes("admin") ? items.length : 1);
+    if (items?.length > 0) {
+      onChange && onChange(path.includes("admin") ? items?.length : 1);
     }
     setVal(
       items?.length > 0
-        ? `Module ${path.includes("admin") ? items.length : 1}`
+        ? `Module ${path.includes("admin") ? items?.length : 1}`
         : "None"
     );
-  }, [items.length]);
+  }, [items?.length]);
   return (
     <OutsideClickHandler
       display='flex'

@@ -47,14 +47,16 @@ const add = async (req) => {
           //   url: blob.downloadUrl,
           // };
 
-          await db.collection("users").updateOne(
-            { email: email },
-            {
-              $set: {
-                image: blob.url,
-              },
-            }
-          );
+          if (email) {
+            await db.collection("users").updateOne(
+              { email: email },
+              {
+                $set: {
+                  image: blob.url,
+                },
+              }
+            );
+          }
         } catch (error) {
           throw new Error("Could not update file ");
         }

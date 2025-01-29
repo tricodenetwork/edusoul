@@ -55,12 +55,12 @@ const Index = () => {
           </div>
         </div>
         {/* Analytics */}
-        <section className='    w-full flex justify-between border-b border-appAsh2 py-6'>
+        <section className=' flex-row w-full flex justify-between border-b border-appAsh2 py-6'>
           {analytics.map((item, ind) => {
             return (
               <div
                 key={ind.toString()}
-                className='flex w-[32%] flex-col h-[160px] px-[23px] py-[18px] border-[#99B2C6] border rounded-[8px]  justify-between'
+                className='flex  w-[32%] flex-col h-[160px] px-[23px] py-[18px] border-[#99B2C6] border rounded-[8px]  justify-between'
               >
                 <div className=''>
                   <Image width={35} height={35} src={item.img} alt='pic' />

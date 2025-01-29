@@ -21,5 +21,5 @@ export const SignInWithGoogle = async () => {
 };
 
 export const signOutOfApp = async () => {
-  signOut({ callbackUrl: "/auth/login" });
+  await signOut({ redirect: true, redirectTo: "/auth/login" });
 };

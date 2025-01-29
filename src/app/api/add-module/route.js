@@ -42,7 +42,6 @@ const add = async (req) => {
     const course_found = await db
       .collection("courses")
       .findOne({ id: courseId });
-    console.log(course_found);
 
     if (course_found) {
       // Check if the module already exists in the course
@@ -56,7 +55,7 @@ const add = async (req) => {
           .collection("courses")
           .updateOne(
             { id: courseId, "modules.id": body.id },
-            { $set: { "modules.$.title": body.title, "modules.$.units": [] } }
+            { $set: { "modules.$.title": body.title } }
           );
 
         return Response.json(

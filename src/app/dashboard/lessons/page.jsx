@@ -177,7 +177,7 @@ const Index = () => {
           {active2 === "Note" && (
             <div
               dangerouslySetInnerHTML={{ __html: active?.unit?.note }}
-              className={`w-auto prose-h1:text-3xl h-auto ${proseFormatting} mt-3 flex-col justify-start items-start gap-4 inline-flex`}
+              className={`w-auto  h-auto ${proseFormatting} mt-3 flex-col justify-start items-start gap-4 inline-flex`}
             ></div>
           )}
         </div>

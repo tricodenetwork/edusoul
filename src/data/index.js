@@ -8,6 +8,17 @@ import Unit1 from "@/components/courses/advanced-classroom-assistant/aims-of-chr
 import Unit2 from "@/components/courses/advanced-classroom-assistant/aims-of-christain-education/Unit2";
 import ChristCenteredUnit1 from "@/components/courses/advanced-classroom-assistant/christ-centered/Unit1";
 import ChristCenteredUnit2 from "@/components/courses/advanced-classroom-assistant/christ-centered/Unit2";
+import EducationAndStandardsUnit1 from "@/components/courses/diploma-in-christian-education/acts-of-education-and-standards/Unit1";
+import AimsOfChristianEducation1 from "@/components/courses/diploma-in-christian-education/aims-of-christian-education/Unit1";
+import AimsOfChristianEducation2 from "@/components/courses/diploma-in-christian-education/aims-of-christian-education/Unit2";
+import DiplomaInChristCenteredUnit1 from "@/components/courses/diploma-in-christian-education/christ-centered-education/Unit1";
+import DiplomaInChristCenteredUnit2 from "@/components/courses/diploma-in-christian-education/christ-centered-education/Unit2";
+import DiplomaInChristCenteredUnit3 from "@/components/courses/diploma-in-christian-education/christ-centered-education/Unit3";
+import DiplomaInChristianEducationUnit1 from "@/components/courses/diploma-in-christian-education/heart-foundation/Unit1";
+import DiplomaInChristianEducationUnit2 from "@/components/courses/diploma-in-christian-education/heart-foundation/Unit2";
+import DiplomaInChristianEducationUnit3 from "@/components/courses/diploma-in-christian-education/heart-foundation/Unit3";
+import DiplomaInChristianEducationUnit4 from "@/components/courses/diploma-in-christian-education/heart-foundation/Unit4";
+import DiplomaInChristianEducationUnit5 from "@/components/courses/diploma-in-christian-education/heart-foundation/Unit5";
 
 export const navdata = [
   {
@@ -73,7 +84,7 @@ export const modulesData = [
 export const coursesData = [
   {
     id: 1,
-    price_id: "price_1Ql9EjJ59YmI2KgEcL6UKh46",
+    price_id: "price_1QmDbVJ59YmI2KgE8aJSmrf3",
     title: "Advanced Classroom Assistant",
     imgURL: "/hat.png",
     price: "15.00",
@@ -93,14 +104,244 @@ export const coursesData = [
         title: "EDSD MODULE 1.1 - HEART FOUNDATION",
         units: [
           {
+            id: 1,
             title: "The Heart and Vision of Christian Educator Part 1",
-            content: "",
+            note: `<div className='content-container'>
+      <section className='lesson-section'>
+        <h2 className='title'>Foundation for Christian Education</h2>
+        <p className='uppercase text'>
+          <strong className='capitalize text-sm'>Mark 9:37, 10:4</strong> -
+          Jesus, Children, and the Kingdom of God
+        </p>
+        <blockquote>
+          <p className='mb-1'>
+            Our Lord was speaking specifically about how a person enters the
+            kingdom of God, and in looking at children, it was not their
+            subjective characteristics, but their objective position in society
+            which made them models for discipleship. He meant that just as
+            children occupied a socially weak position, dependent on others, and
+            at the call of others, so also the followers must live as dependent
+            in the kingdom. To enter the kingdom of God means to renounce self
+            and self-seeking ambition but to take a status of no consequence.
+          </p>
+          <strong className='text-xs'>- William Strange, 1996, p. 51</strong>
+        </blockquote>
+      </section>
+
+      <section className='lesson-section'>
+        <h2 className='title'>Christian Education</h2>
+        <p>
+          Christian education means more than the pursuit of a certain course of
+          study. It is educating the whole being—the harmonious development of
+          the spirit, soul, and body, and the intentional preparation of
+          students for the joy of service to humanity and the higher joy of
+          service to God.
+        </p>
+        <p>
+          The source of Christian education is brought to view in the words of
+          the Holy Scriptures, pointing to the infinite Lord -{" "}
+          <strong className='text-xs'>(Col. 2:3) </strong> , and allowing the
+          knowledge of the Lord to cover the earth as the water covers the seas{" "}
+          <strong className='text-xs'>(Hab. 2:14) </strong>.
+        </p>
+        <p>
+          Out of God&apos;s mouth comes knowledge and understanding{" "}
+          <strong className='text-xs'>(Prov. 2:6) </strong>. The mind of man is
+          brought into communion with the mind of divinity (God), the finite in
+          commune with the infinite one. The concept of such communion is beyond
+          natural perspective.
+        </p>
+      </section>
+
+      <section className='lesson-section'>
+        <h2 className='title'>The Creation, The Fall, and Redemption</h2>
+        <p>
+          Christian education is the highest form of education, where being the
+          teacher again is like the original scene of God instructing and giving
+          Adam and Eve power for their family and community{" "}
+          <strong className='text-xs'>(Gen. 3)</strong>.
+        </p>
+        <p>
+          In order to understand what is comprehended in the work of Christian
+          education, we need to consider:
+        </p>
+        <ul className='list-disc'>
+          <li>
+            The nature of man and the purpose of God in creating man and woman{" "}
+            <strong className='text-xs'>(Gen. 1:26-27)</strong>
+          </li>
+          <li>
+            The change in man&apos;s condition through the coming of the
+            knowledge of good and evil{" "}
+            <strong className='text-xs'>(Gen. 3:1-9)</strong>
+          </li>
+          <li>How man lost his power, spiritual vision, and dominion</li>
+          <li>
+            God&apos;s redemptive plan for fulfilling His glorious purpose in
+            the education of the human race{" "}
+            <strong className='text-xs'>(Gen. 3:15)</strong>
+          </li>
+        </ul>
+      </section>
+
+      <section className='lesson-section'>
+        <h2 className='title'>The Kingdom of God</h2>
+        <p>
+          The most important agency of Christian education is the family, the
+          basic building block of society. God first of all directs injunctions
+          to parents in{" "}
+          <strong className='text-xs'>Deut. 6:6-7; 11:18-21.</strong> And these
+          words, which I command thee this day, shall be in thine heart: and
+          thou shalt teach them diligently unto thy children, and shalt talk of
+          them when thou sittest in thine house... Paul adds that parents must
+          bring up children “in the training and instruction of the Lord”
+          <strong className='text-xs'>(Eph.6:4)</strong>.
+          <br />
+          Today, society has become so complex that few homes and no regular
+          church education program can provide adequate general education,
+          besides society provides few meaningful full - time roles for youths.
+          Indeed, with widespread family breakdown and low church attendance,
+          schools are sometimes forced to take on some roles that used to belong
+          to the family or church.
+        </p>
+        <p>
+          It is now more apparent that today&apos;s society distinctly Christian
+          schools are desirable. Students must thoroughly develop “Christian
+          minds” if they are to be ambassadors of Christ in a secular society.
+        </p>
+        <p>
+          We shortchange students&apos; nurture in the Lord if their education
+          does not openly proclaim{" "}
+          <strong className='text-xs'>John 17:1-2; 14:6</strong>. <br />
+          The vision of the Kingdom of God points Christians not only to the
+          redemption of God&apos;s people but also to the realization of
+          God&apos;s intents and promises for His whole creation. The whole of
+          life and reality are to be transformed by God&apos;s grace and the
+          power of Christ's resurrection.
+        </p>
+        <p>
+          The fulfillment of the Kingdom of God began with the death and
+          resurrection of Jesus Christ. Its final significance will be revealed
+          with Christ&apos;s return. <br /> The great gift of God is that,
+          despite our shortcomings and sinfulness, the seed of the Kingdom is
+          already here. <br />
+          Christian teachers and educators may therefore challenge and prepare
+          students to be and become citizens of the Kingdom of God. On the one
+          hand, Christ has already established the Kingdom. On the other hand,
+          it will not find its ultimate fulfillment in this present life.{" "}
+          <strong className='text-xs'> Lk 4:18-21; 17:21; Rev 21:22</strong>.
+        </p>
+      </section>
+
+      <section className='lesson-section'>
+        <h2 className='title'>The Great Command of Love</h2>
+        <p>
+          God&apos;s plan of redemption to restore man&apos;s glory through
+          Christ—this becomes the object of true Christian education{" "}
+          <strong className='text-xs'>
+            John 17:1-2, John 3:16, John 16:13-15
+          </strong>
+          .
+        </p>
+        <p>
+          It should be clear that love should be the basis of Christian
+          education; as love is the basis of Creation and redemption.{" "}
+          <strong className='text-xs'>LUKE 10:27</strong>. ref. the love of God
+          in the classroom, book on Christ - centred schools in the UK.
+        </p>
+        <p>
+          Christian education is the highest development of human mind and
+          spirit which forms one of the aims Christian schools carry for the
+          restoration of the image and likeness of God in humanity. <br /> Like
+          the first, is the second commandment{" "}
+          <strong className='text-xs'> - Matt.28v39.</strong> The law of love
+          calls for the devotion of body, soul and spirit to the service and
+          love of God and our fellow men.
+        </p>
+      </section>
+
+      <section className='lesson-section'>
+        <h2 className='title'>Goals of Christian Education</h2>
+        <p>
+          The Christian Education goal is godliness and godlikeness in His
+          creation, which is the very heart of Christ charged to His disciples
+          in <strong className='text-xs'>Matt. 28:18-19.</strong> The word
+          teaches (educating) the mind to deny ungodliness, selfish desire,
+          pride, lust of money, and world ambition. Holy scriptures are the
+          perfect standard of truth and as such should be given the highest
+          place in education.
+        </p>
+        <p>
+          Teachers and Christian educators are tasked with appreciating the
+          moral education of children—acquainting them with virtues such as
+          honesty, kindness, courage, patience, love, and forgiveness. The
+          foundation for virtue is taught by teachers who are committed to
+          truth, integrity, justice, and to influencing the next generation into
+          the Kingdom of God.
+        </p>
+        <footer>
+          <strong className='text-xs'>- David Carr, 1995, p. 269</strong>
+        </footer>
+      </section>
+    </div>`,
             assignment:
               "How has Christian Education realigned humanity to God’s original intention? Highlight key major impacts of Christian Education on society, focusing on family, morality, judiciary and  governance. 200 words",
           },
           {
+            id: 2,
             title: "Calling and Character of a Christian Teacher",
-            content: "",
+            note: `<div className='content-container'>
+      <section className='lesson-section'>
+        <p>
+          A Christian Worldview takes as its starting point that the Bible is
+          God&apos;s authoritative word for life. Holy scripture is God”s
+          inspired self disclosure that calls for obedience and response{" "}
+          <strong className='text-xs'>( 2 Tim.3v16)</strong> Christian educators
+          should emphasise an experience for students to focus learning both the
+          unity and diversity of God&apos;s marvellous creation and to see its
+          values and relevance to love God and neighbour ( Great Commandment )
+          We must uphold Christian values by using their gifts to serve our
+          community (School family) and society - at - large. ( Great Community)
+        </p>
+      </section>
+      <section className='lesson-section'>
+        <p>
+          A Christian Worldview is shaped by God&apos;s revelation in His word;
+        </p>
+        <ul className='list-disc'>
+          <li>His word in creation</li>
+          <li>His word in the Holy Scriptures</li>
+          <li>His word incarnate, Jesus Christ</li>
+        </ul>
+        <p>
+          God created, upholds, guides, and rules His world. He sustains the law
+          of nature. He also provides us with the norms for human culture and
+          society. God&apos;s norms for human life include love, faithfulness,
+          compassion, righteousness, justice, integrity, responsible stewardship
+          and peace.
+        </p>
+        <p>
+          Our students need to be imbued with a sense of God calling them to be
+          royal custodians as they play and discover and work in His world. The
+          Christ - centred education takes the great mandate seriously values
+          the students daily contributions in being steward cultivators of the
+          God-given gifts within and around them.
+        </p>
+        <p>
+          Father&apos;s heart concept is expanded to students by allowing the
+          students to learn about and apply and value mathematical and physical
+          and biological objects and theories and laws. Moreover, they
+          experience how God-given norms can promote compassion, integrity, and
+          justice in communication, economics, social interaction, the arts,
+          government and law, and family living. Such a classroom curriculum
+          enables students to exercise the Father&apos;s concept with levels of
+          responsibility appropriate to their levels of maturity. The
+          Father&apos;s heart fulfilment encourages the students to be
+          responsive and become committed to Kingdom service and to act
+          accordingly.
+        </p>
+      </section>
+    </div>`,
             assignment:
               "Discuss God&apos;s agentry for transformation and reconciliation in relation to Great Mandate and Great Commission 150 words. What are the major key personal Characteristics of a Christian teacher? Discuss how each can influence students to be responsible and responsive to the Great Commission. 150 words",
           },
@@ -111,23 +352,21 @@ export const coursesData = [
         title: "EDSD MODULE 1.2 - Aims of Christian Education",
         units: [
           {
+            id: 1,
             title: "Aims of Christian Education",
-            content: "",
+            note: "",
             assignment:
               "How has Christian Education realigned humanity to God’s original intention? Highlight key major impacts of Christian Education on society, focusing on family, morality, judiciary and  governance. 200 words",
           },
           {
+            id: 2,
             title: "Christian Worldview",
-            content: "",
+            note: "",
             assignment:
               "As Christian teacher and school, you owe this nurturing to the students to fulfil the Great Mandate and Great Commission in their generation. Discuss. 200 words",
           },
         ],
-        // units: [
-        //   "Aims of Christian Education",
-        //   "Foundation for Christian Education Part 1",
-        //   "Christian Worldview",
-        // ],
+
         assignment:
           "As Christian teacher and school, you owe this nurturing to the students to fulfil the Great Mandate and Great Commission in their generation. Discuss. 200 words",
       },
@@ -136,20 +375,23 @@ export const coursesData = [
         title: "EDSD MODULE 1.3 - Christ-Centred Curriculum and Standards",
         units: [
           {
+            id: 1,
             title: "Christ-Centred Curriculum and Delivery 1",
-            content: "",
+            note: "",
             assignment:
               "How has Christian Education realigned humanity to God’s original intention? Highlight key major impacts of Christian Education on society, focusing on family, morality, judiciary and  governance. 200 words",
           },
           {
+            id: 2,
             title: "Role of Holy Spirit in Teaching and Learning Process 1",
-            content: "",
+            note: "",
             assignment:
               "As Christian teacher and school, you owe this nurturing to the students to fulfil the Great Mandate and Great Commission in their generation. Discuss. 200 words",
           },
           {
+            id: 3,
             title: "Holistic Culture",
-            content: "",
+            note: "",
             assignment:
               "As Christian teacher and school, you owe this nurturing to the students to fulfil the Great Mandate and Great Commission in their generation. Discuss. 200 words",
           },
@@ -159,22 +401,13 @@ export const coursesData = [
       {
         id: 4,
         title: "EDSD MODULE 1.4 - Acts of Education",
-        units: [
-          "Learning Theory for Christian Teacher Part 1",
-          "Stimulating Learning Environment and Displays",
-          "Standards and Good Practice 1",
-          "Play and Learn",
-        ],
+        units: [],
         assignment: "Assignment",
       },
       {
         id: 5,
         title: "EDSD MODULE 1.5",
-        units: [
-          "Learning Theory for Christian Teacher Part 1",
-          "Mindsets in the Classroom",
-          "Behavioural Management",
-        ],
+        units: [],
         assignment: "Assignment and Mini Project",
       },
     ],
@@ -202,166 +435,180 @@ export const coursesData = [
         title: "EDSD MODULE 2.1 - HEART FOUNDATION",
         units: [
           {
-            title: "The Heart and Vision of Christian Educator Part 1 & 2",
-            content: "",
+            id: 1,
+            title: "The Heart and Vision of Christian Educator Part 1",
+            note: <DiplomaInChristianEducationUnit1 />,
+            assignment: "Assignment",
+          },
+
+          {
+            id: 2,
+            title: "THE ESTEEM OF CHRISTIAN EDUCATION",
+            note: <DiplomaInChristianEducationUnit2 />,
+            assignment: "Assignment",
+          },
+
+          {
+            id: 3,
+            title: "CALLING OF A CHRISTIAN TEACHER",
+            note: <DiplomaInChristianEducationUnit3 />,
+            assignment: "Assignment",
+          },
+
+          {
+            id: 4,
+            title: "CHRISTIAN V SECULAR WORLDVIEW",
+            note: <DiplomaInChristianEducationUnit4 />,
             assignment: "Assignment",
           },
           {
-            title: "Christian in Secular Worldview",
-            content: "",
-            assignment: "Assignment",
-          },
-          {
-            title: "Calling of a Christian Teacher",
-            content: "",
-            assignment: "Assignment",
-          },
-          {
-            title: "Aims of Christian Education",
-            content: "",
-            assignment: "Assignment",
-          },
-          {
-            title:
-              "Holy Spirit in Teaching and Learning Process (Holistic Culture) 1",
-            content: "",
-            assignment: "Assignment",
-          },
-          {
-            title: "Foundation for Christian Education Part 1 & 2",
-            content: "",
+            id: 5,
+            title: "LABOURER OF GOD’S HARVEST IN CHRISTIAN EDUCATION",
+            note: <DiplomaInChristianEducationUnit5 />,
             assignment: "Assignment",
           },
         ],
-        assignment: "Assignment",
       },
       {
         id: 2,
-
-        title:
-          "EDSD MODULE 2.2 - Christ-Centred Curriculum and Effective Standards",
+        title: "EDSD MODULE 2.2 - Aim of Christian Education",
         units: [
           {
-            title: "Christ-Centred Curriculum and Delivery 1 & 2",
-            content: "",
-            assignment: "Assignment",
+            id: 1,
+            title: "Understanding the aim of Chrisian Education",
+            note: <AimsOfChristianEducation1 />,
+            assignment: "Assignment and Research Project",
           },
           {
-            title:
-              "Acts of Gifted Teaching (Mixed Ability) Resources & Methodologies",
-            content: "",
-            assignment: "Assignment",
-          },
-          {
-            title: "Teaching and Learning Styles",
-            content: "",
-            assignment: "Assignment",
-          },
-          {
-            title: "Stimulating Learning Environment and Displays",
-            content: "",
-            assignment: "Assignment",
-          },
-          {
-            title: "Learning Theory for Christian Teacher Part 2",
-            content: "",
-            assignment: "Assignment",
-          },
-          {
-            title: "Cross-Curricular Planning & Teaching 1",
-            content: "",
-            assignment: "Assignment",
-          },
-          {
-            title: "Assess: Types and Purposes 1",
-            content: "",
-            assignment: "Assignment",
+            id: 2,
+            title: "THE OVERALL AIM OF CHRISTIAN EDUCATION",
+            note: <AimsOfChristianEducation2 />,
+            assignment: "Assignment and Research Project",
           },
         ],
-        assignment: "Assignment and Research Project",
       },
       {
         id: 3,
+        title:
+          "EDSD MODULE 2.3 - Christ-Centred Curriculum and Effective Standards",
+        units: [
+          {
+            id: 1,
+            title: "Christ-Centred Curriculum and Delivery 1 & 2",
+            note: <DiplomaInChristCenteredUnit1 />,
+
+            assignment:
+              "Investigate if there are such pioneering Christ - centred schools in your region and draw your conclusion on how they reflect the concept of Christ - Centred education. Using the Trinity Module. 150 words What is the trinity module and demonstrate the functionality to achieve the Father’s heart concept? 200 words",
+          },
+          {
+            id: 2,
+            title:
+              "ROLE OF HOLY SPIRIT IN TEACHING AND LEARNING IN WHOLE SCHOOL",
+            note: <DiplomaInChristCenteredUnit2 />,
+            assignment: "Assignment and Research Project",
+          },
+          {
+            id: 3,
+            title: "HOLY SPIRIT ROLE IN CHRISTIAN EDUCATION",
+            note: <DiplomaInChristCenteredUnit3 />,
+            assignment: "Assignment and Research Project",
+          },
+        ],
+      },
+      {
+        id: 4,
+        title: "EDSD MODULE 2.4 - Acts of Christian Education and Standards",
+        units: [
+          {
+            title: "THE STANDARD OF ACADEMIC CONCEPT",
+            note: <EducationAndStandardsUnit1 />,
+            assignment: "Assignment and Research Project",
+          },
+        ],
+      },
+
+      {
+        id: 5,
 
         title:
-          "EDSD MODULE 2.3 - Child Psychologists / Physiology: Every Child Matters 1",
+          "EDSD MODULE 2.5 - Child Psychologists / Physiology: Every Child Matters 1",
         units: [
           {
             title: "Child and Brain Development 1",
-            content: "",
+            note: "",
             assignment: "Assignment",
           },
           {
             title: "Behavioural Management (Discipline)",
-            content: "",
+            note: "",
             assignment: "Assignment",
           },
           {
             title: "Exploring Child Psychology",
-            content: "",
+            note: "",
             assignment: "Assignment",
           },
           {
             title: "Applied Psychology in Christian Education 1",
-            content: "",
+            note: "",
             assignment: "Assignment",
           },
           {
             title: "Fixed in Growth Mindsets in the Classroom",
-            content: "",
+            note: "",
             assignment: "Assignment",
           },
           {
             title: "Undulating Mindset",
-            content: "",
+            note: "",
             assignment: "Assignment",
           },
         ],
         assignment: "Assignment",
       },
       {
-        id: 4,
+        id: 6,
 
-        title: "EDSD MODULE 2.4 - Every Child Matters Part 2",
+        title: "EDSD MODULE 2.6 - Every Child Matters Part 2",
         units: [
           {
             title: "Police and Practice",
-            content: "",
+            note: "",
             assignment: "Assignment",
           },
           {
             title:
               "Safeguarding / Health Matters (Child and School Environment)",
-            content: "",
+            note: "",
             assignment: "Assignment",
           },
         ],
         assignment: "Assignment",
       },
       {
-        id: 5,
+        id: 7,
 
         title:
-          "EDSD MODULE 2.5 - Character of a Christian Teacher and Role Model",
+          "EDSD MODULE 2.7 - Character of a Christian Teacher and Role Model",
         units: [
           {
             title: "The Reflective Teacher 1",
-            content: "",
+            note: "",
             assignment: "Assignment",
           },
           {
             title: "The Empathetic Teacher 1",
-            content: "",
+            note: "",
             assignment: "Assignment",
           },
           {
             title: "Competent in Incompetent Teacher 1",
-            content: "",
+            note: "",
             assignment: "Assignment",
           },
           {
             title: "Creative Worship and Decoding Spiritual Gifts",
-            content: "",
+            note: "",
             assignment: "Assignment",
           },
         ],
@@ -400,33 +647,33 @@ export const coursesData = [
         units: [
           {
             title: "The Heart and Vision of Christian Educator Part 1 & 2",
-            content: "",
+            note: "",
             assignment: "",
           },
           {
             title: "Christian in Secular Worldview",
-            content: "",
+            note: "",
             assignment: "",
           },
           {
             title: "Calling of a Christian Teacher",
-            content: "",
+            note: "",
             assignment: "",
           },
           {
             title: "Aims of Christian Education",
-            content: "",
+            note: "",
             assignment: "",
           },
           {
             title:
               "Holy Spirit in Teaching and Learning Process (Holistic Culture) 1",
-            content: "",
+            note: "",
             assignment: "",
           },
           {
             title: "Foundation for Christian Education Part 1 & 2",
-            content: "",
+            note: "",
             assignment: "",
           },
         ],
@@ -440,38 +687,38 @@ export const coursesData = [
         units: [
           {
             title: "Christ-Centred Curriculum and Delivery 1 & 2",
-            content: "",
+            note: "",
             assignment: "",
           },
           {
             title:
               "Acts of Gifted Teaching (Mixed Ability) Resources & Methodologies",
-            content: "",
+            note: "",
             assignment: "",
           },
           {
             title: "Teaching and Learning Styles",
-            content: "",
+            note: "",
             assignment: "",
           },
           {
             title: "Stimulating Learning Environment and Displays",
-            content: "",
+            note: "",
             assignment: "",
           },
           {
             title: "Learning Theory for Christian Teacher Part 2",
-            content: "",
+            note: "",
             assignment: "",
           },
           {
             title: "Cross-Curricular Planning & Teaching 1",
-            content: "",
+            note: "",
             assignment: "",
           },
           {
             title: "Assess: Types and Purposes 1",
-            content: "",
+            note: "",
             assignment: "",
           },
         ],
@@ -485,32 +732,32 @@ export const coursesData = [
         units: [
           {
             title: "Child and Brain Development 1",
-            content: "",
+            note: "",
             assignment: "",
           },
           {
             title: "Behavioural Management (Discipline)",
-            content: "",
+            note: "",
             assignment: "",
           },
           {
             title: "Exploring Child Psychology",
-            content: "",
+            note: "",
             assignment: "",
           },
           {
             title: "Applied Psychology in Christian Education 1",
-            content: "",
+            note: "",
             assignment: "",
           },
           {
             title: "Fixed in Growth Mindsets in the Classroom",
-            content: "",
+            note: "",
             assignment: "",
           },
           {
             title: "Undulating Mindset",
-            content: "",
+            note: "",
             assignment: "",
           },
         ],
@@ -523,13 +770,13 @@ export const coursesData = [
         units: [
           {
             title: "Police and Practice",
-            content: "",
+            note: "",
             assignment: "",
           },
           {
             title:
               "Safeguarding / Health Matters (Child and School Environment)",
-            content: "",
+            note: "",
             assignment: "",
           },
         ],
@@ -543,22 +790,22 @@ export const coursesData = [
         units: [
           {
             title: "The Reflective Teacher 1",
-            content: "",
+            note: "",
             assignment: "",
           },
           {
             title: "The Empathetic Teacher 1",
-            content: "",
+            note: "",
             assignment: "",
           },
           {
             title: "Competent in Incompetent Teacher 1",
-            content: "",
+            note: "",
             assignment: "",
           },
           {
             title: "Creative Worship and Decoding Spiritual Gifts",
-            content: "",
+            note: "",
             assignment: "",
           },
         ],
@@ -595,33 +842,33 @@ export const coursesData = [
         units: [
           {
             title: "The Heart and Vision of Christian Educator Part 1 & 2",
-            content: "",
+            note: "",
             assignment: "",
           },
           {
             title: "Christian in Secular Worldview",
-            content: "",
+            note: "",
             assignment: "",
           },
           {
             title: "Calling of a Christian Teacher",
-            content: "",
+            note: "",
             assignment: "",
           },
           {
             title: "Aims of Christian Education",
-            content: "",
+            note: "",
             assignment: "",
           },
           {
             title:
               "Holy Spirit in Teaching and Learning Process (Holistic Culture) 1",
-            content: "",
+            note: "",
             assignment: "",
           },
           {
             title: "Foundation for Christian Education Part 1 & 2",
-            content: "",
+            note: "",
             assignment: "",
           },
         ],
@@ -635,38 +882,38 @@ export const coursesData = [
         units: [
           {
             title: "Christ-Centred Curriculum and Delivery 1 & 2",
-            content: "",
+            note: "",
             assignment: "",
           },
           {
             title:
               "Acts of Gifted Teaching (Mixed Ability) Resources & Methodologies",
-            content: "",
+            note: "",
             assignment: "",
           },
           {
             title: "Teaching and Learning Styles",
-            content: "",
+            note: "",
             assignment: "",
           },
           {
             title: "Stimulating Learning Environment and Displays",
-            content: "",
+            note: "",
             assignment: "",
           },
           {
             title: "Learning Theory for Christian Teacher Part 2",
-            content: "",
+            note: "",
             assignment: "",
           },
           {
             title: "Cross-Curricular Planning & Teaching 1",
-            content: "",
+            note: "",
             assignment: "",
           },
           {
             title: "Assess: Types and Purposes 1",
-            content: "",
+            note: "",
             assignment: "",
           },
         ],
@@ -680,32 +927,32 @@ export const coursesData = [
         units: [
           {
             title: "Child and Brain Development 1",
-            content: "",
+            note: "",
             assignment: "",
           },
           {
             title: "Behavioural Management (Discipline)",
-            content: "",
+            note: "",
             assignment: "",
           },
           {
             title: "Exploring Child Psychology",
-            content: "",
+            note: "",
             assignment: "",
           },
           {
             title: "Applied Psychology in Christian Education 1",
-            content: "",
+            note: "",
             assignment: "",
           },
           {
             title: "Fixed in Growth Mindsets in the Classroom",
-            content: "",
+            note: "",
             assignment: "",
           },
           {
             title: "Undulating Mindset",
-            content: "",
+            note: "",
             assignment: "",
           },
         ],
@@ -718,13 +965,13 @@ export const coursesData = [
         units: [
           {
             title: "Police and Practice",
-            content: "",
+            note: "",
             assignment: "",
           },
           {
             title:
               "Safeguarding / Health Matters (Child and School Environment)",
-            content: "",
+            note: "",
             assignment: "",
           },
         ],
@@ -738,22 +985,22 @@ export const coursesData = [
         units: [
           {
             title: "The Reflective Teacher 1",
-            content: "",
+            note: "",
             assignment: "",
           },
           {
             title: "The Empathetic Teacher 1",
-            content: "",
+            note: "",
             assignment: "",
           },
           {
             title: "Competent in Incompetent Teacher 1",
-            content: "",
+            note: "",
             assignment: "",
           },
           {
             title: "Creative Worship and Decoding Spiritual Gifts",
-            content: "",
+            note: "",
             assignment: "",
           },
         ],
@@ -1147,7 +1394,7 @@ export const coreStudents = [
           {
             lessonId: 1,
             name: "Lesson 1",
-            content: "Lesson content",
+            note: "Lesson note",
             completionStatus: "completed", // or "in progress", "not started"
           },
           // ... other units

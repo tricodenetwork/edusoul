@@ -1,12 +1,41 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Image from "next/image";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import Link from "next/link";
+import toast from "react-hot-toast";
+import axios from "axios";
+import { baseUrl } from "../../../../config/config";
+import { setActiveCourse } from "@/redux/slices/moduleSlice";
+import { useDispatch } from "react-redux";
+import { fetchCourses } from "@/redux/slices/networkSlice";
 
 export default function CourseList({ course }) {
   const path = usePathname();
+  const [confirmed, setConfirmed] = useState(false);
+  const router = useRouter();
+  const dispatch = useDispatch();
+
+  const deleteCourse = async () => {
+    if (!confirmed) {
+      toast.error("Are you sure!! Click again to delete");
+      setConfirmed(true);
+      return;
+    }
+    try {
+      const loader = toast.loading("Deleting");
+      const res = await axios.delete(
+        `${baseUrl}api/delete-course?id=${course._id}`
+      );
+      toast.success(`Deleted Successfully!!`, { id: loader });
+      dispatch(fetchCourses(1));
+      setConfirmed(false);
+    } catch (error) {
+      toast.error(error.response.data.message ?? "Error deleting course");
+      setConfirmed(false);
+    }
+  };
   return (
     <div className='bg-white text-left w-full md:w-[296px] lg:w-[100%] h-[450px] relative cursor-pointer transition duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-[0_4px_4px] hover:shadow-black/25 rounded-[14px] shadow-[0_10px_60px] shadow-appBlue/10 '>
       <div className='relative w-full h-[179px]'>
@@ -79,16 +108,40 @@ export default function CourseList({ course }) {
           <div className='w-[264.27px] h-[16.17px]' />
         </div>
 
-        <div className='flex px-4  absolute bottom-4 w-full   left-0  justify-between items-center gap-5'>
-          <div className='flex gap-3 relative items-center'>
-            {/* <p className='text-app_dark_green text-base font-extrabold'>
-              {`$ ${course.price}`}
-            </p> */}
-            {/* <del className="text-stone-900 text-[14.83px] opacity-50 font-normal font-['Inter'] leading-snug">
-              $ 500
-            </del> */}
-          </div>
-
+        <div className='flex absolute bottom-4 items-center justify-between w-[90%]'>
+          {path.includes("admin") && (
+            <div className='flex items-center gap-4'>
+              <button
+                className='hover:scale-95 duration-150 active:scale-100'
+                onClick={() => {
+                  dispatch(setActiveCourse(course));
+                  router.push("/admin/courses/add");
+                }}
+              >
+                <Image
+                  src={"/assets/icons/edit2.svg"}
+                  alt='ham'
+                  width={20}
+                  height={20}
+                  className='mr-3'
+                />
+              </button>
+              <button
+                className='hover:scale-95 duration-150 active:scale-100'
+                onClick={() => {
+                  deleteCourse();
+                }}
+              >
+                <Image
+                  src={"/assets/icons/trash.svg"}
+                  alt='ham'
+                  width={20}
+                  height={20}
+                  className='mr-3'
+                />
+              </button>
+            </div>
+          )}
           <div className='px-5 py-2.5 bg-white rounded-[5px] border border-[#8F060E] justify-start items-start gap-2.5 flex hover:bg-primary transition-all duration-300 group shadow- shadow-[#000000]/20'>
             <Link
               href={

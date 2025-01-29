@@ -45,7 +45,7 @@ const Index = () => {
     );
   } else {
     return (
-      <div className='border border-[#99B2C6] w-full h-max pl-[5%] pr-[5%] mt-4 pt-[40px] pb-[40px] my-4 bg-white rounded-[8px]'>
+      <div className='border border-[#99B2C6]  w-full h-max pl-[5%] pr-[5%] mt-4 pt-[40px] pb-[40px] my-4 bg-white rounded-[8px]'>
         <div className='flex flex-col gap-1'>
           {activeModule?.units?.map((item, index) => (
             <div

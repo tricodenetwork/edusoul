@@ -1,43 +1,47 @@
 "use client";
 
-import { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Nunito } from "next/font/google";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { MdOutlineMenu } from "react-icons/md";
 import SegmentIcon from "@mui/icons-material/Segment";
 import { IoCloseSharp } from "react-icons/io5";
+import Home from "@/components/icons/Home";
+import Courses from "@/components/icons/Courses";
+import Events from "@/components/icons/Events";
+import Settings from "@/components/icons/Settings";
+import { useDispatch } from "react-redux";
+import { fetchCourses } from "@/redux/slices/networkSlice";
 
 const nunito = Nunito({ subsets: ["latin"] });
 const links = [
-  { href: "/admin", label: "Home", src: "/assets/icons/home.svg" },
+  { href: "/admin", label: "Home", component: <Home /> },
   {
     href: "/admin/courses",
     label: "Courses",
-    src: "/assets/icons/courses.svg",
+    component: <Courses />,
   },
-  // {
-  //   href: "/admin/modules",
-  //   label: "Module",
-  //   src: "/assets/icons/module.svg",
-  // },
-  // {
-  //   href: "/admin/assignment",
-  //   label: "Assignment",
-  //   src: "/assets/icons/assignment.svg",
-  // },
-  { href: "/admin/events", label: "Events", src: "/assets/icons/events.svg" },
+  {
+    href: "/admin/events",
+    label: "Events",
+    component: <Events />,
+  },
   {
     href: "/admin/settings",
     label: "Settings",
-    src: "/assets/icons/settings.svg",
+    component: <Settings />,
   },
 ];
 
 export default function RootLayout({ children }) {
   const path = usePathname();
   const [sideNav, setSideNav] = useState(false);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchCourses(1));
+  }, []);
 
   return (
     <div className='flex w-full h-screen items-center justify-center'>
@@ -53,16 +57,16 @@ export default function RootLayout({ children }) {
 
         <div className='h-[60%] w-full flex py-[10px] mt-[30%] items-center'>
           <div className='w-[30%] flex flex-col justify-center space-y-10 items-center rounded-r-[88px] h-full  bg-white py-[50px]'>
-            {links.map((item, ind) => {
+            {links.map((item) => {
+              const isActive =
+                item.href === path ||
+                (path.includes(item.href) && item.label !== "Home");
               return (
-                <Image
-                  key={ind.toString()}
-                  className=''
-                  src={item.src}
-                  width={24}
-                  height={24}
-                  alt={item.label.toLowerCase()}
-                />
+                <span key={item.href}>
+                  {React.cloneElement(item.component, {
+                    active: isActive,
+                  })}
+                </span>
               );
             })}
           </div>
@@ -71,7 +75,9 @@ export default function RootLayout({ children }) {
               <li
                 key={index.toString()}
                 className={`cursor-pointer ${
-                  link.label === "Home"
+                  path === "/admin" && link.label == "Home"
+                    ? "text-primary hover:text-appAsh font-semibold"
+                    : link.label === "Home"
                     ? "text-appAsh hover:text-primary"
                     : path.includes(link.href)
                     ? "text-primary hover:text-appAsh font-semibold"
@@ -85,7 +91,7 @@ export default function RootLayout({ children }) {
         </div>
       </div>
 
-      <div className='w-full md:w-[85%] bg-appPink  h-full'>
+      <div className='w-full md:w-[85%] bg-appPink flex flex-col  h-full'>
         {/* Top Section */}
         <div className='w-full px-3 mb-1 bg-appPink     sm:px-[20px] lg:px-[40px] border-b border-appAsh2 flex items-center justify-between py-[16px]  '>
           <div className='px-[16px] bg-white h-[51px] flex items-center justify-between relative w-[45%] rounded-[8px]  shadow-[0px_2px_8px] shadow-black/10'>
@@ -155,7 +161,7 @@ export default function RootLayout({ children }) {
             </button>
           </div>
         </div>
-        <div className='w-full  bg-appPink  pb-[100px]   overflow-y-scroll h-full'>
+        <div className='w-full  bg-appPink  pb-[100px]  overflow-y-scroll flex-1'>
           {children}
         </div>
       </div>

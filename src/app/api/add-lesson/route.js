@@ -75,7 +75,7 @@ const addLesson = async (req) => {
     // console.log(lessonIndex !== undefined, "module units");
     // return Response.json("Sussess");
 
-    if (lessonIndex ?? -1 !== -1) {
+    if ((lessonIndex ?? -1) !== -1) {
       // Update the existing lesson
       const updateQuery = {
         $set: {
@@ -114,7 +114,7 @@ const addLesson = async (req) => {
 
     // Return an error response
     return Response.json(
-      { error: "Something went wrong" },
+      { message: "Server Error" },
       {
         status: 500,
       }
