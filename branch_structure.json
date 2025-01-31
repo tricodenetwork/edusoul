@@ -1,0 +1,21 @@
+{
+  "default_branch": "main",
+  "branches": [
+    "adachukwu",
+    "main",
+    "origin",
+    "updated_about_us"
+  ],
+  "parent": {
+    "adachukwu": "main",
+    "main": null,
+    "origin": "main",
+    "updated_about_us": "main"
+  },
+  "order": [
+    "main",
+    "adachukwu",
+    "origin",
+    "updated_about_us"
+  ]
+}
