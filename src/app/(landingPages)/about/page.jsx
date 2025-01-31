@@ -39,15 +39,27 @@ function Aboutus() {
         <HeroSection />
 
         <div className='h-max bg-[#170E13]  bg-opacity-5 relative md:bottom-[6.5vh]  lg:p-20 px-10 py-20'>
-          <iframe
-            src='https://www.youtube.com/embed/viHILXVY_eU?si=mQqGAGXU1NhUBfQf'
+          {/* <iframe
+            src='EDUSOUL INTRODUCTORY VIDEO ONE.mp4'
             title='YouTube video player'
             frameborder='0'
             allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
             referrerpolicy='strict-origin-when-cross-origin'
             allowfullscreen
             className='mx-auto lg:w-[915px] lg:h-[415px] rounded-2xl'
-          />
+          /> */}
+
+          <video
+            src='/assets/videos/edusoul_introductory_video_one.mp4'
+            title='YouTube video player'
+            frameborder='0'
+            allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
+            referrerpolicy='strict-origin-when-cross-origin'
+            allowfullscreen
+            className='mx-auto lg:w-[915px] lg:h-[415px] rounded-2xl'
+            controls
+            >
+          </video>
         </div>
 
         <div className='h-max'>
