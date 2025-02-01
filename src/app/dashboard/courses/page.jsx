@@ -7,7 +7,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import NoCoursesDisplayHolder from "@/components/shared/NoCoursesDisplayHolder";
 import { useUser } from "@/context/UserContext";
-import { BarLoader } from "react-spinners";
+import { ClockLoader } from "react-spinners";
 
 const state = ["In progress", "Completed", "Recommended"];
 
@@ -97,10 +97,10 @@ const Index = () => {
       </div> */}
       <div className='h-[90%] my-2 w-full relative overflow-y-scroll'>
         {!user ? (
-          <BarLoader
+          <ClockLoader
             loading={true}
             width={500}
-            height={10}
+            height={500}
             color='#90050f'
             className='absolute mx-auto top-1/2 -translate-y-1/2 text-primary'
           />

@@ -3,7 +3,7 @@ import CourseInfoNav from "@/components/ui/CourseInfoNav";
 import TopNav from "@/components/ui/TopNav";
 import { coursesData } from "@/data";
 
-const state = ["Module Information", "Lessons", "Assignments", "Resources"];
+const state = ["Module Information", "Units", "Assignments", "Resources"];
 
 const Index = async ({ children, params }) => {
   const { name } = await params;

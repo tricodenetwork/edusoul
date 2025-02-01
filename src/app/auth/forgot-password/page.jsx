@@ -1,10 +1,13 @@
 "use client";
 
-import { useState, useEffect, useContext } from "react";
-import { Router, useRouter } from "next/navigation";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/Button";
 import Image from "next/image";
 import Link from "next/link";
+import toast from "react-hot-toast";
+import { useDispatch } from "react-redux";
+import { setUserEmail } from "@/redux/slices/userSlice";
 
 const labelStyle = "text-sm mb-2 font-normal text-[#151515]";
 const inputStyle =
@@ -15,14 +18,33 @@ const FPForm = () => {
   const [email, setEmail] = useState("");
   const [isLoading, setLoading] = useState(false);
   const [emailError, setEmailError] = useState(null);
+  const dispatch = useDispatch();
 
   // ============================== SIGN IN
 
   const fogotPasswordAccount = async () => {
     try {
       setLoading(true);
-      router.push(`/auth/verification?email=${email}`);
+
+      const response = await fetch("/api/forgot-password", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email }),
+      });
+
+      const data = await response.json();
+      if (response.ok) {
+        toast.success(data.message ?? "sent successfully!");
+        router.push(`/auth/verification?email=${email}`);
+        dispatch(setUserEmail(email));
+        setLoading(false);
+      } else {
+        toast.error(data.message || "Failed to send OTP");
+        setLoading(false);
+      }
     } catch (error) {
+      console.error(error);
+      toast.error("Something went wrong");
       setLoading(false);
     }
   };

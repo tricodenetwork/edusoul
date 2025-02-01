@@ -16,7 +16,8 @@ export const SignInWithCredentials = async ({ email, password }) => {
 
 export const SignInWithGoogle = async () => {
   await signIn("google", {
-    callbackUrl: `${baseUrl}dashboard`,
+    redirectTo: `${baseUrl}dashboard`,
+    redirect: true,
   });
 };
 

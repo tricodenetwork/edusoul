@@ -9,7 +9,7 @@ import React, { useEffect, useRef, useState } from "react";
 import toast from "react-hot-toast";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
-import { BarLoader } from "react-spinners";
+import { ClockLoader } from "react-spinners";
 
 const Index = () => {
   const [isDragging, setIsDragging] = useState(false);
@@ -112,10 +112,10 @@ const Index = () => {
   if (loading) {
     return (
       <div className='w-full h-full flex items-center justify-center'>
-        <BarLoader
+        <ClockLoader
           loading={true}
           width={500}
-          height={10}
+          height={500}
           color='#90050f'
           className=''
         />

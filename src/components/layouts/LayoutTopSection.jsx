@@ -9,7 +9,7 @@ import axios from "axios";
 import toast from "react-hot-toast";
 import { useSelector } from "react-redux";
 import { fetchCourses } from "@/redux/slices/networkSlice";
-import { BarLoader } from "react-spinners";
+import { ClockLoader } from "react-spinners";
 
 const LayoutTopSection = ({ courseId }) => {
   // const course = coursesData.find((item) => item.id == courseId);
@@ -63,10 +63,10 @@ const LayoutTopSection = ({ courseId }) => {
 
       {loading && (
         <div className='w-[78%] h-[70vh] z-50 absolute bg-[#FFF5F6] flex items-center justify-center'>
-          <BarLoader
+          <ClockLoader
             loading={true}
             width={500}
-            height={10}
+            height={500}
             color='#90050f'
             className=''
           />
@@ -76,8 +76,7 @@ const LayoutTopSection = ({ courseId }) => {
         modules={course?.modules}
         onChange={set}
         items={items}
-        style={"w-[7.5vw]"}
-        placeholder={course?.modules?.length > 0 ? "Module 1" : ""}
+        style={"w-[7.5vw] z-50"}
       />
       <h3 className='font-semibold text-2xl flex-1 text-start flex items-center px-[2%] text-appBlack'>
         {activeModule?.title ?? ""}

@@ -68,6 +68,7 @@ const AddLesson = ({ setAdd }) => {
           link,
           note: note,
           file: file ? file.name : null,
+          assignment: lesson.assignment,
         }
       );
 

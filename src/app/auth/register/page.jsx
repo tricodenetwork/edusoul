@@ -104,8 +104,8 @@ const SignupForm = () => {
         password: hashedPassword,
       });
 
-      //   router.push("/dashboard");
       toast.success("Registered successfully!!");
+      router.push("/dashboard");
 
       setLoading(false);
 

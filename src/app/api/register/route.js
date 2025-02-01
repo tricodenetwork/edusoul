@@ -29,7 +29,7 @@ const register = async (req, res) => {
     // If the user does not exist by email or name, create a new user object with the provided data
     const newUser = {
       name: body.name,
-      surname: body.name,
+      surname: body.surname,
       password: body.password,
       email: body.email,
     };

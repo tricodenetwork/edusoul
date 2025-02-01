@@ -5,6 +5,9 @@ import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { Button } from "@/components/ui/Button";
 import OTPInput from "@/components/ui/OTPInput";
+import axios from "axios";
+import toast from "react-hot-toast";
+import { sendOtp } from "@/lib/actions";
 
 const VerificationForm = () => {
   const router = useRouter();
@@ -18,9 +21,44 @@ const VerificationForm = () => {
   };
 
   const VerificationAccount = async () => {
+    setLoading(true);
     const fullOTP = otp.join(""); // Join OTP array into a single string
+    try {
+      const res = await axios.post(`/api/verify-otp`, { email, otp: fullOTP });
+      toast.success(res.data.message);
+      router.push("/auth/reset-password");
+      setLoading(false);
+    } catch (error) {
+      console.error(error);
+      toast.error(error.response.data.message ?? "An error occured");
+      setLoading(false);
+    }
 
     // Handle verification logic here
+  };
+
+  const fogotPasswordAccount = async () => {
+    try {
+      setLoading(true);
+      const response = await fetch("/api/forgot-password", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email }),
+      });
+
+      const data = await response.json();
+      if (response.ok) {
+        toast.success(data.message ?? "sent successfully!");
+        setLoading(false);
+      } else {
+        toast.error(data.message || "Failed to send OTP");
+        setLoading(false);
+      }
+    } catch (error) {
+      console.error(error);
+      toast.error("Something went wrong");
+      setLoading(false);
+    }
   };
 
   // Check if the form is valid by ensuring all 6 digits of OTP are filled
@@ -45,20 +83,22 @@ const VerificationForm = () => {
         {/* Resend Link */}
         <div className='w-full justify-center text-sm text-[#171818] items-center mt-9 gap-1 inline-flex'>
           Didn’t get the code?
-          <Link
-            href='/'
+          <button
+            onClick={fogotPasswordAccount}
             className='text-center text-primary text-sm hover:underline'
           >
             Click here to resend
-          </Link>
+          </button>
         </div>
 
         {/* Verify Button */}
         <Button
           type='submit'
           onClick={VerificationAccount}
-          className={`bg-primary text-white w-full p-3 mt-4 rounded-md ${
-            !isFormValid ? "opacity-20 cursor-not-allowed" : ""
+          className={` text-white w-full p-3 mt-4 rounded-md ${
+            !isFormValid || isLoading
+              ? "bg-[#FDCED1] cursor-not-allowed"
+              : "bg-primary"
           }`}
           disabled={!isFormValid || isLoading}
         >

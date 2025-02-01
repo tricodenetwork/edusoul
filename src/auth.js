@@ -45,7 +45,7 @@ export const { auth, handlers, signIn, signOut } = NextAuth({
     GoogleProvider({
       clientId: process.env.GOOGLE_ID,
       clientSecret: process.env.GOOGLE_SECRET,
-      checks: "both",
+      // checks: "both",
     }),
     LinkedInProvider({
       clientId: process.env.LINKED_IN_ID,
@@ -63,17 +63,17 @@ export const { auth, handlers, signIn, signOut } = NextAuth({
     async jwt({ token, user }) {
       // Persist the OAuth access_token and or the user id to the token right after signin
 
-      // console.log("jwt-user", user);
       if (user) {
         token.id = user.id;
+        token.admin = user.admin;
+        token.image = user.image;
       }
       return token;
     },
-    async session({ session, token, user }) {
-      // console.log("user", user);
-      if (user) {
-        session.user.role = user.role;
-        session.user.image = user.image;
+    async session({ session, token }) {
+      if (token) {
+        session.user.admin = token.admin;
+        session.user.image = token.image;
       }
 
       return session;

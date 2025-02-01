@@ -29,7 +29,7 @@ function CourseDetails() {
   const router = useRouter();
   const { user } = useUser();
   // console.log("user", user);
-  const userHasCourse = user?.courses.some((item) => item.id == CourseId);
+  const userHasCourse = user?.courses?.some((item) => item.id == CourseId);
 
   const [course, setCourse] = useState(null);
 
@@ -64,13 +64,16 @@ function CourseDetails() {
     // Check to see if this is a redirect back from Checkout
     const query = new URLSearchParams(window.location.search);
     if (query.get("success")) {
-      const res = addCourseToUser();
-      if (res.ok) {
-        toast.success("Purchase Successfull!!, Redirecting to dashboard.");
-        router.push("/dashboard");
-      } else {
-        toast.error(res.message ?? "Problem adding course to user");
-      }
+      const registerCourse = async () => {
+        const res = await addCourseToUser(CourseId);
+        if (res.ok) {
+          toast.success("Purchase Successfull!!, Redirecting to dashboard.");
+          router.push("/dashboard");
+        } else {
+          toast.error(res.message ?? "Problem adding course to user");
+        }
+      };
+      registerCourse();
     }
 
     if (query.get("canceled")) {

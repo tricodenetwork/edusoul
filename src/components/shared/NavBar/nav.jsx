@@ -36,13 +36,13 @@ const Navbar = () => {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, []);
+  }, [session]);
 
   return (
     <nav
       className={`${sideNav ? "bg-white" : "bg-white"} ${
         (pathname.includes("auth") ||
-          pathname.includes("admin") ||
+          pathname.includes("admi") ||
           pathname.includes("dashboard")) &&
         "hidden"
       } fixed border-b w-full h-[60px] sm:h-[80px] px-3 md:px-10 lg:px-6 xl:px-14 shadow-lg z-50 flex flex-row justify-between items-center`}

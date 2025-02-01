@@ -11,8 +11,10 @@ import { useSelector } from "react-redux";
 import { fetchCourses } from "@/redux/slices/networkSlice";
 import { useDispatch } from "react-redux";
 import { setActiveModule } from "@/redux/slices/moduleSlice";
-import { BarLoader } from "react-spinners";
+import { ClockLoader } from "react-spinners";
 import { proseFormatting } from "@/lib/helper";
+import AppButton from "@/components/ui/AppButton";
+import Assignment from "@/components/Assignment";
 
 const state2 = ["Note", "Resources", "Assignments"];
 
@@ -25,7 +27,7 @@ const Index = () => {
   const { module } = useSelector((state) => state.module);
   const { items, course, loading } = useSelector((state) => state.network);
   const activeModule = course?.modules?.find((item) => item.id == module);
-  // console.log(course, "activemodule");
+  const [assignmentPage, setAssignmentPage] = useState(false);
 
   const [active, setActive] = useState(null);
 
@@ -49,10 +51,10 @@ const Index = () => {
   if (loading) {
     return (
       <div className='w-full h-full flex items-center justify-center'>
-        <BarLoader
+        <ClockLoader
           loading={true}
           width={500}
-          height={10}
+          height={500}
           color='#90050f'
           className=''
         />
@@ -88,7 +90,6 @@ const Index = () => {
         </div>
         <div className='flex   mt-8 gap-[101px] items-center'>
           {activeModule?.units?.map((item, index) => {
-            console.log(item, active?.unit, "lkklskls");
             return (
               <button
                 onClick={() => setActive({ unit: item, number: index })}
@@ -153,7 +154,7 @@ const Index = () => {
           ))}
         </div>
 
-        <div className='h-[60vh] py-[3vh] overflow-y-scroll'>
+        <div className='h-[60vh] py-[3vh] flex flex-col overflow-y-scroll'>
           {active2 === "Resources" && (
             <div className='w-52 h-28 mt-3 flex-col justify-start items-start gap-4 inline-flex'>
               <button className='self-stretch p-1 justify-start items-center gap-2.5 inline-flex'>
@@ -170,8 +171,33 @@ const Index = () => {
             </div>
           )}
           {active2 === "Assignments" && (
-            <div className='w-full h-28 mt-3 flex-col justify-start items-start gap-4 inline-flex'>
-              <p className=''>{active?.unit?.assignment}</p>
+            <div className='relative flex-1'>
+              {assignmentPage ? (
+                <Assignment cancel={setAssignmentPage} />
+              ) : (
+                <div className='w-full h-28 mt-3 flex-col justify-start items-start gap-4 inline-flex'>
+                  <p className=''>{active?.unit?.assignment}</p>
+                  <div className='flex absolute flex-col w-full bottom-8 items-start justify-between'>
+                    {active?.unit?.assignment && (
+                      <AppButton
+                        title={"Start Assignment"}
+                        styles={"w-[200px] mt-8"}
+                        action={() => setAssignmentPage(true)}
+                      />
+                    )}
+                    <div className='flex items-center w-full justify-between mt-8'>
+                      <p>
+                        <span className='font-medium'>NOTE: </span>
+                        To pass you need to score at least 75% or higher grade
+                      </p>
+                      <p>
+                        Your Grade:
+                        <span className='font-semibold text-2xl'> 900%</span>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              )}
             </div>
           )}
           {active2 === "Note" && (

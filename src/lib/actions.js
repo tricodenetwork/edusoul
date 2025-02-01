@@ -21,7 +21,7 @@ export const getUser = async () => {
   }
 };
 
-export const handleUpload = async (event) => {
+export const handleUpload = async (event, toast) => {
   const file = event.target.files[0];
 
   const toastId = toast.loading("Uploading...");
@@ -42,32 +42,70 @@ export const handleUpload = async (event) => {
   }
 };
 
-export const addCourseToUser = async (id) => {
+export const addCourseToUser = async (courseId) => {
   const session = await auth();
 
   if (!session?.user) {
     return { ok: false, message: "Not authenticated" };
   }
+
   try {
     const client = await clientPromise;
     const db = client.db("Edusoul");
-    // const course = await db.collection("courses").findOne({ id: id });
+
+    // Fetch the course from the database
+    const course = await db
+      .collection("courses")
+      .findOne({ id: parseInt(courseId) });
+
+    if (!course) {
+      return { ok: false, message: "Course not found" };
+    }
+
+    // Destructure and exclude 'intro' and module notes
+    const { id, modules, ...rest } = course;
+    const sanitizedModules = modules?.map(({ units, ...module }) => ({
+      ...module,
+      units: units.map(({ note, assignment, ...unit }) => ({
+        ...unit,
+        assignment: { question: assignment, answer: "", grade: "" },
+      })), // Exclude 'note' from units
+    }));
+
     const user = await db
       .collection("users")
       .findOne({ email: session?.user?.email });
 
-    if (!user || !id) {
-      return { ok: false, message: "User | course does not exist" };
+    if (!user) {
+      return { ok: false, message: "User not found" };
     }
-    await db
-      .collection("users")
-      .updateOne(
-        { email: session?.user?.email },
-        { $push: { courses: { id: id } } }
-      );
+
+    await db.collection("users").updateOne(
+      { email: session?.user?.email },
+      {
+        $push: {
+          courses: { id, modules: sanitizedModules },
+        },
+      }
+    );
 
     return { ok: true, message: "Course added to user list successfully!!" };
   } catch (error) {
+    console.error("Error", error);
     return { ok: false, message: error.message };
+  }
+};
+
+export const sendOtp = async (email) => {
+  try {
+    const response = await fetch("/api/forgot-password", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email }),
+    });
+    console.log(response.ok, response);
+    return response;
+  } catch (error) {
+    console.error(error);
   }
 };

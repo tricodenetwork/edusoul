@@ -51,7 +51,7 @@ const Sidebar = ({ Header, Message }) => {
       </div>
 
       <p className='flex text-appBlack xl:text-2xl h-[100px] items-center  w-[80%] text-center'>
-        Join us as we take your Christ-Centered education to the next level
+        {"Join us as we take your Christ-Centered education to the next level"}
       </p>
     </div>
   );

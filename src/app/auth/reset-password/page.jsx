@@ -6,6 +6,10 @@ import ShowHidePassword, {
   ConfirmPassword,
 } from "@/components/ui/ShowHidePassword";
 import { IoCheckmarkDoneCircle } from "react-icons/io5";
+import { useSelector } from "react-redux";
+import axios from "axios";
+import toast from "react-hot-toast";
+import { useRouter } from "next/navigation";
 
 const ResetPasswordForm = () => {
   const [isLoading, setLoading] = useState(false);
@@ -16,6 +20,8 @@ const ResetPasswordForm = () => {
   const [passwordError, setPasswordError] = useState(false);
   const [confirmPasswordError, setConfirmPasswordError] = useState("");
   const [passwordStrength, setPasswordStrength] = useState("Weak");
+  const { email } = useSelector((state) => state.user);
+  const router = useRouter();
 
   const showPassword = () => setShowPasswordToggle(!showPasswordToggle);
   const confirm_Password = () =>
@@ -53,44 +59,54 @@ const ResetPasswordForm = () => {
   };
 
   const ResetPasswordAccount = async () => {
+    setLoading(true);
     if (password !== confirmPassword) {
       setConfirmPasswordError("Passwords do not match");
-    } else {
+      return;
+    }
+
+    try {
+      const res = await axios.post("/api/reset-password", { email, password });
+      toast.success(res.data.message ?? " Password reset successfull!!");
+      router.push("/auth/login");
+    } catch (error) {
+      console.error(error);
+      toast.error(error.response.data.message ?? "An error occured");
     }
   };
 
   const isFormValid = password && confirmPassword;
 
   return (
-    <div className="flex text-center h-full w-[68%] p-3 justify-center items-center py-5 flex-col">
-      <h2 className="text-[30px] text-black font-bold pt-5 sm:pt-1">
+    <div className='flex text-center h-full w-[68%] p-3 justify-center items-center py-5 flex-col'>
+      <h2 className='text-[30px] text-black font-bold pt-5 sm:pt-1'>
         Create New Password
       </h2>
-      <p className="md:w-[80%] small-medium md:base-regular mt-2">
+      <p className='md:w-[80%] small-medium md:base-regular mt-2'>
         Create a new password to sign into the app
       </p>
 
-      <div className="flex flex-col text-left gap-5 w-full mt-4">
+      <div className='flex flex-col text-left gap-5 w-full mt-4'>
         <div>
           <label>
-            New Password <span className="text-star">*</span>
+            New Password <span className='text-star'>*</span>
           </label>
 
-          <form className="flex h-[45px] px-3.5 rounded-md border flex-row justify-center items-center gap-2 focus-within:ring-2 ring-primary">
+          <form className='flex h-[45px] px-3.5 mt-2 rounded-md border flex-row justify-center items-center gap-2 focus-within:ring ring-primary'>
             <input
-              className="w-full bg-transparent outline-none border-none"
+              className='w-full bg-transparent outline-none border-none'
               type={showPasswordToggle ? "text" : "password"}
-              placeholder="********"
+              placeholder='********'
               onChange={handlePasswordChange}
               value={password}
             />
-            <p className="cursor-pointer text-primary" onClick={showPassword}>
+            <p className='cursor-pointer text-primary' onClick={showPassword}>
               <ShowHidePassword showPasswordToggle={showPasswordToggle} />
             </p>
           </form>
 
           {/* Password strength indicator */}
-          <div className="mt-2 flex items-center gap-2">
+          <div className='mt-2 flex items-center gap-2'>
             <div
               className={`w-full h-2 rounded ${
                 passwordStrength === "Weak" ? "bg-red-500" : "bg-red-500"
@@ -109,11 +125,11 @@ const ResetPasswordForm = () => {
               }`}
             ></div>
 
-            <p className="text-sm text-gray-600">{passwordStrength}</p>
+            <p className='text-sm text-gray-600'>{passwordStrength}</p>
           </div>
 
           {/* Password criteria */}
-          <ul className="flex flex-col gap-3 text-gray-600 text-sm mt-6">
+          <ul className='flex flex-col gap-3 text-gray-600 text-sm mt-6'>
             <li className={``}>Strong password. Must contain at least;</li>
             <li
               className={`flex gap-1 items-center ${
@@ -152,19 +168,19 @@ const ResetPasswordForm = () => {
 
         <div>
           <label>
-            Confirm Password <span className="text-star">*</span>
+            Confirm Password <span className='text-star'>*</span>
           </label>
 
-          <div className="flex h-[45px] px-3.5 rounded-md border flex-row justify-center items-center gap-2 focus-within:ring-2 ring-primary">
+          <div className='flex h-[45px] mt-2 px-3.5 rounded-md border flex-row justify-center items-center gap-2 focus-within:ring ring-primary'>
             <input
-              className="w-full bg-transparent outline-none border-none"
+              className='w-full bg-transparent outline-none border-none'
               type={confirmPasswordToggle ? "text" : "password"}
-              placeholder="********"
+              placeholder='********'
               onChange={(e) => setConfirmPassword(e.target.value)}
               value={confirmPassword}
             />
             <p
-              className="cursor-pointer text-primary"
+              className='cursor-pointer text-primary'
               onClick={confirm_Password}
             >
               <ConfirmPassword confirmPasswordToggle={confirmPasswordToggle} />
@@ -172,21 +188,25 @@ const ResetPasswordForm = () => {
           </div>
 
           {confirmPasswordError && (
-            <div className="text-red-500 mt-3">{confirmPasswordError}</div>
+            <div className='text-red-500 text-xs mt-3'>
+              {confirmPasswordError}
+            </div>
           )}
         </div>
 
         <Button
-          type="submit"
+          type='submit'
           onClick={ResetPasswordAccount}
-          className={`bg-primary text-white p-3 mt-6 rounded-md ${
-            !isFormValid && "bg-[#FDCED1] cursor-not-allowed"
+          className={` text-white p-3 mt-6 rounded-md ${
+            !isFormValid || isLoading
+              ? "bg-[#FDCED1] cursor-not-allowed"
+              : "bg-primary"
           }`}
           disabled={!isFormValid || isLoading}
         >
           {isLoading ? (
-            <div className="flex gap-3 justify-center items-center">
-              <div className="animate-spin rounded-full h-5 w-5 border-b-4 border-white"></div>
+            <div className='flex gap-3 justify-center items-center'>
+              <div className='animate-spin rounded-full h-5 w-5 border-b-4 border-white'></div>
               Loading...
             </div>
           ) : (

@@ -1,32 +1,11 @@
-import CircularProgressBar from "@/components/CircularProgressBar";
 import CourseList from "@/components/shared/Courses/courseList";
+import StatsCard from "@/components/ui/StatsCard";
 import { coursesData } from "@/data";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
-const analytics = [
-  {
-    name: "Courses",
-    img: "/assets/icons/courses_2.svg",
-    desc: "Total number of Courses",
-    num: 200,
-  },
-  {
-    name: "Teachers",
-    img: "/assets/icons/teachers.svg",
-    desc: "Total number of Teachers",
-    num: 50,
-  },
-  {
-    name: "Students",
-    img: "/assets/icons/students.svg",
-    desc: "Total number of Students",
-    num: 1500,
-  },
-];
-
-const Index = () => {
+const Index = async () => {
   return (
     <div className='w-full flex-col  pl-[7%] pr-[9%] md:flex-row flex justify-between pt-[24px]'>
       {/* First Section */}
@@ -55,27 +34,7 @@ const Index = () => {
           </div>
         </div>
         {/* Analytics */}
-        <section className=' flex-row w-full flex justify-between border-b border-appAsh2 py-6'>
-          {analytics.map((item, ind) => {
-            return (
-              <div
-                key={ind.toString()}
-                className='flex  w-[32%] flex-col h-[160px] px-[23px] py-[18px] border-[#99B2C6] border rounded-[8px]  justify-between'
-              >
-                <div className=''>
-                  <Image width={35} height={35} src={item.img} alt='pic' />
-                  <h5 className='capitalize mt-1 text-dark_B'>{item.name}</h5>
-                </div>
-                <div className=''>
-                  <h4 className=' text-dark_B font-bold text-[28px] leading-tight'>
-                    {item.num}
-                  </h4>
-                  <p className='text-dark_B text-[10px]'>{item.desc}</p>
-                </div>
-              </div>
-            );
-          })}
-        </section>
+        <StatsCard />
 
         {/* Courses */}
         <div className='rounded-[8px] mb-10  mt-[24px] w-full h-max flex flex-col border border-appAsh2 p-3 lg:p-6'>
@@ -95,8 +54,6 @@ const Index = () => {
           </div>
         </div>
       </section>
-
-      {/* Second Section */}
     </div>
   );
 };

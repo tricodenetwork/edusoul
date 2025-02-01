@@ -33,23 +33,28 @@ const SigninForm = () => {
     e.preventDefault();
     if (!emailError) {
       setLoading(true);
-      // return;
 
       // Use NextAuth signIn function to trigger authentication
-      const result = await SignInWithCredentials({ email, password });
-      // Handle the result (e.g., redirect on success, show error on failure)
-      if (result?.error) {
-        // router.push("?success=false");
-        console.error("Auth failed:", result);
+      try {
+        const result = await SignInWithCredentials({ email, password });
+        // Handle the result (e.g., redirect on success, show error on failure)
+        if (result?.error) {
+          // router.push("?success=false");
+          console.error("Auth failed:", result);
+          toast.error("Invalid Details");
+          setErr("Invalid Details");
+
+          setLoading(false);
+        } else {
+          setErr("Login Successful");
+          toast.success("Login successfull");
+          router.push("/dashboard");
+        }
+      } catch (error) {
+        console.error("Auth failed:", error);
         toast.error("Invalid Details");
         setErr("Invalid Details");
-
         setLoading(false);
-      } else {
-        setLoading(false);
-        setErr("Login Successful");
-        toast.success("Login successfull");
-        router.push("/dashboard");
       }
     }
   };

@@ -54,7 +54,7 @@ const Index = () => {
             >
               <Image
                 src={"/assets/icons/ham.svg"}
-                alt='ham'
+                alt='drag-and drop'
                 width={20}
                 height={20}
                 className='mr-3'

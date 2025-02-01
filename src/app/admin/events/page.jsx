@@ -43,10 +43,7 @@ const Index = () => {
       <div className='rounded-[8px] mb-10  bg-white mt-[43px] w-full h-max flex flex-col border border-appAsh2 p-3 lg:p-6'>
         <p className='text-appBlack'>Courses</p>
 
-        <SelectComponent
-          items={["Course 1", "Course 2", "Course 3", "Course 4"]}
-          placeholder={"Live Events"}
-        />
+        <SelectComponent items={[""]} placeholder={"Live Events"} />
 
         <div className=' border-[#99B2C6] border rounded-[8px] mt-[42px]'>
           <div className='grid border-[#99b2c6] bg-[#f6f6f6] h-[40px] rounded-t-[8px] place-content-center px-[25px] grid-cols-[3fr,1fr,1fr]'>
