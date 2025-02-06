@@ -1,15 +1,9 @@
 "use client";
 
-import CourseList from "@/components/shared/Courses/courseList";
-import AppButton from "@/components/ui/AppButton";
-import SelectComponent from "@/components/ui/Select";
 import TopNav from "@/components/ui/TopNav";
-import { coursesData } from "@/data";
 import { Poppins } from "next/font/google";
-import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
 
 const poppins = Poppins({
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
@@ -24,10 +18,9 @@ const Index = ({ children }) => {
     <div className='h- px-[5%]   pt-[2.5%] pb-[2%]'>
       <div className='flex w-full justify-between'>
         <TopNav
+          homeLink='/admin'
           first={"settings"}
           firstLink={"/admin/settings"}
-          second={currentPath}
-          secondLink={"/admin/settings/profile"}
         />
       </div>
       <div className='w-[65%]  flex mt-8 pr-[0%] justify-between items-center'>

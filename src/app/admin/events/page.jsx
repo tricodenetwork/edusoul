@@ -35,15 +35,22 @@ const Index = () => {
         Your Events
       </h4>
       <div className='flex w-full justify-between'>
-        <TopNav first={"Events"} firstLink={"/admin/events"} />
+        <TopNav
+          homeLink='/admin'
+          first={"Events"}
+          firstLink={"/admin/events"}
+        />
         <AppButton href={"events/add"} title={"Add Event"} />
       </div>
 
       {/* Courses */}
       <div className='rounded-[8px] mb-10  bg-white mt-[43px] w-full h-max flex flex-col border border-appAsh2 p-3 lg:p-6'>
-        <p className='text-appBlack'>Courses</p>
+        <p className='text-appBlack mb-2'>Courses</p>
 
-        <SelectComponent items={[""]} placeholder={"Live Events"} />
+        <SelectComponent
+          items={["Live Events", "Past Events", "Upcoming Events"]}
+          placeholder={"Live Events"}
+        />
 
         <div className=' border-[#99B2C6] border rounded-[8px] mt-[42px]'>
           <div className='grid border-[#99b2c6] bg-[#f6f6f6] h-[40px] rounded-t-[8px] place-content-center px-[25px] grid-cols-[3fr,1fr,1fr]'>

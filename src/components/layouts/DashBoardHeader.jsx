@@ -69,7 +69,7 @@ const DashboardHeader = () => {
         />
       </div>
       <div className='flex items-center'>
-        <Link
+        {/* <Link
           href={"/"}
           className='w-[48px] h-[48px] mr-[16px] hidden sm:flex items-center justify-center rounded-full shadow-[0px_2px_8px] shadow-black/10'
         >
@@ -90,9 +90,9 @@ const DashboardHeader = () => {
             height={24}
             alt='bell'
           />
-        </Link>
+        </Link> */}
         <Link
-          href={"/"}
+          href={""}
           className='px-[16px] py-[9px] flex items-center justify-center rounded-full shadow-[0px_2px_8px] shadow-black/10'
         >
           <Image
@@ -102,12 +102,12 @@ const DashboardHeader = () => {
             className='rounded-full mr-[12px]'
             alt='profile'
           />
-          <Image
+          {/* <Image
             src={"/assets/icons/down.svg"}
             width={12}
             height={6}
             alt='bell'
-          />
+          /> */}
         </Link>
         <button
           onClick={() => setSideNav(!sideNav)}

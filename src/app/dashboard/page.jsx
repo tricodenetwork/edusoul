@@ -10,7 +10,7 @@ const Index = async () => {
   const user = await getUser();
   if (user) {
     return (
-      <div className='w-full flex-col min-h-[89vh]  md:flex-row flex  justify-between px-3 sm:px-[20px] lg:px-[40px] py-6'>
+      <div className='w-full flex-col bg-white h-max md:flex-row flex  justify-between px-3 sm:px-[20px] lg:px-[40px] py-6'>
         {/* First Section */}
         <section
           className={`w-full ${

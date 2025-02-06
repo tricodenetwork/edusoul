@@ -23,7 +23,7 @@ const Index = () => {
   const { courses } = useSelector((state) => state.network);
   const [courseTitle, setCourseTitle] = useState(course?.title ?? "");
   const [price, setPrice] = useState(course?.price ?? "");
-  const [description, setDescription] = useState("");
+  const [description, setDescription] = useState(course?.snippet ?? "");
   const [file, setFile] = useState(null);
   const [isDragging, setIsDragging] = useState(false);
   const inputFileRef = useRef(null);
@@ -87,14 +87,14 @@ const Index = () => {
 
       if (response.ok) {
         const result = await response.json();
-        toast.success("Course added successfully!", { id: loader });
+        toast.success(result.message, { id: loader });
         dispatch(fetchCourses(1));
         // Reset form fields
         setCourseTitle("");
         setPrice("");
         setDescription("");
         setFile(null);
-        router.push("admin/courses");
+        router.push("/admin/courses");
       } else {
         const error = await response.json();
         console.error("Error:", error);
@@ -207,7 +207,8 @@ const Index = () => {
         </div>
         <AppButton
           style={{ marginTop: 60 }}
-          title={"Add Course"}
+          title={course?.title ? "Edit Course" : "Add Course"}
+          styles={"w-max"}
           action={handleAddCourse}
         />
       </div>

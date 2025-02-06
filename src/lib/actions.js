@@ -84,7 +84,7 @@ export const addCourseToUser = async (courseId) => {
       { email: session?.user?.email },
       {
         $push: {
-          courses: { id, modules: sanitizedModules },
+          courses: { id, modules: sanitizedModules, ...rest },
         },
       }
     );

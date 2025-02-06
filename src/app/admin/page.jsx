@@ -7,7 +7,7 @@ import React from "react";
 
 const Index = async () => {
   return (
-    <div className='w-full flex-col  pl-[7%] pr-[9%] md:flex-row flex justify-between pt-[24px]'>
+    <div className='w-full flex-col  bg-white pl-[7%] pr-[9%] md:flex-row flex justify-between pt-[24px]'>
       {/* First Section */}
       <section className='w-full  h-full'>
         {/* Welcome Card */}
@@ -16,9 +16,8 @@ const Index = async () => {
             Welcome Back, Admin
           </h3>
           <p className='text-white z-50 max-w-[454px] text-xs'>
-            You are making progress course journey. Keep going to achieve your
-            educational goals! Click on the Continue button to proceed with your
-            enrollment.
+            Here is a brief on the courses, teachers and students on the edusoul
+            platform.
           </p>
           <button className='bg-white text-xs font-semibold w-[147px] py-[12px] text-primary rounded-[4px]'>
             Continue Course

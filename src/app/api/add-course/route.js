@@ -9,7 +9,8 @@ export const POST = async (req) => {
     const price = formData.get("price");
     const description = formData.get("description");
     const image = formData.get("image");
-    const courseId = formData.get("id"); // Optional: For editing
+    const courseId = parseInt(formData.get("id")); // Optional: For editing
+    console.log(courseId, "courseId");
 
     // Validate required fields
     if (!title) {
@@ -33,7 +34,7 @@ export const POST = async (req) => {
       const updateData = {
         title,
         price,
-        description,
+        snippet: description,
       };
 
       const result = await db
@@ -41,10 +42,7 @@ export const POST = async (req) => {
         .updateOne({ id: courseId }, { $set: updateData });
 
       if (result.modifiedCount === 0) {
-        return Response.json(
-          { message: "Course not found or no changes made" },
-          { status: 404 }
-        );
+        return Response.json({ message: "No changes made" }, { status: 404 });
       }
 
       return Response.json(
@@ -58,7 +56,7 @@ export const POST = async (req) => {
       id: courseId,
       title,
       price,
-      description,
+      snippet: description,
       modules: [], // Initialize with an empty array of modules
       createdAt: new Date(),
       updatedAt: new Date(),

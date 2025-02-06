@@ -4,9 +4,9 @@ const update = async (req) => {
   try {
     const { email, name, surname, bio } = await req.json();
 
-    if (!email || !name || !surname || !bio) {
+    if (!email || !name || !surname) {
       return Response.json(
-        { message: "All fields (email, name, surname, bio) are required." },
+        { message: "All fields (email, name, surname) are required." },
         { status: 400 }
       );
     }

@@ -70,7 +70,7 @@ export const adminNavData = [
     component: <Events />,
   },
   {
-    href: "/admin/settings",
+    href: "/admin/settings/profile",
     label: "Settings",
     component: <Settings />,
   },

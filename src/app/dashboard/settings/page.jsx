@@ -146,6 +146,7 @@ const Index = () => {
           <AppButton
             style={{ marginTop: 60, alignSelf: "flex-end" }}
             title={"Update Profile"}
+            styles={"w-max"}
             action={handleProfileUpdate}
           />
         </div>

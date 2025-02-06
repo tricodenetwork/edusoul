@@ -78,10 +78,9 @@ const Index = () => {
         <div className='flex w-full  flex-col items-center relative  justify-center'>
           <div className='self-start '>
             <SelectComponent
-              style={"w-[120px]"}
+              style={"w-[120px] z-50"}
               items={items}
               onChange={set}
-              placeholder={"Module 1"}
             />
           </div>
           <h4 className='text-2xl underline underline-offset-4 absolute w-full text-center text-appBlack font-medium capitalize'>

@@ -79,6 +79,7 @@ const Index = () => {
         <AppButton
           style={{ marginTop: 60, alignSelf: "flex-start" }}
           title={"Reset Password"}
+          styles={"w-max"}
           action={handlePasswordReset}
         />
       </div>

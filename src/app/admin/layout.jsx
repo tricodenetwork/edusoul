@@ -17,7 +17,7 @@ export default async function RootLayout({ children }) {
       <DashboardSidebar />
       <div className='w-full md:w-[85%] bg-appPink pt-[11vh]  overflow-y-scroll  flex flex-col  h-full'>
         <DashboardHeader />
-        <div className='w-full  bg-appPink  pb-[100px]  overflow-y-scroll flex-1'>
+        <div className='w-full  bg-appPink   overflow-y-scroll flex-1'>
           {children}
         </div>
       </div>
