@@ -1,11 +1,13 @@
+"use client";
 import CourseList from "@/components/shared/Courses/courseList";
 import StatsCard from "@/components/ui/StatsCard";
-import { coursesData } from "@/data";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import { useSelector } from "react-redux";
 
-const Index = async () => {
+const Index = () => {
+  const { courses } = useSelector((state) => state.network);
   return (
     <div className='w-full flex-col  bg-white pl-[7%] pr-[9%] md:flex-row flex justify-between pt-[24px]'>
       {/* First Section */}
@@ -47,7 +49,7 @@ const Index = async () => {
             </Link>
           </div>
           <div className=' w-full grid  place-items-center  grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xxxl:grid-cols-4 gap-x-6 gap-y-6  mt-6'>
-            {coursesData.slice(0, 4).map((course) => (
+            {courses.slice(0, 4).map((course) => (
               <CourseList key={course.id} course={course} />
             ))}
           </div>

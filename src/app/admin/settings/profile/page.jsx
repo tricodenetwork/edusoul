@@ -78,13 +78,13 @@ const Index = () => {
     setBio(user?.bio ?? "");
   }, [user]);
 
-  if (status == "unauthenticated") {
-    return (
-      <div className='w-full h-full flex items-center justify-center text-6xl font-semibold text-primary'>
-        Not Authenticated
-      </div>
-    );
-  }
+  // if (status == "unauthenticated") {
+  //   return (
+  //     <div className='w-full h-full flex items-center justify-center text-6xl font-semibold text-primary'>
+  //       Not Authenticated
+  //     </div>
+  //   );
+  // }
 
   if (status !== "loading") {
     return (

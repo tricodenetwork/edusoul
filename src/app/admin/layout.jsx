@@ -8,9 +8,10 @@ export default async function RootLayout({ children }) {
 
   if (!user) {
     redirect("/auth/login");
-  }
-  if (!user.admin) {
-    redirect("/dashboard");
+  } else {
+    if (!user.admin) {
+      redirect("/dashboard");
+    }
   }
   return (
     <div className='flex w-full h-screen items-center justify-center'>

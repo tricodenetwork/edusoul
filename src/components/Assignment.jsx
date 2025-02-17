@@ -7,7 +7,7 @@ import axios from "axios";
 import toast from "react-hot-toast";
 import { useSelector } from "react-redux";
 
-const Assignment = ({ cancel, lessonId }) => {
+const Assignment = ({ question, cancel, lessonId }) => {
   const [assignment, setAssignment] = useState("");
   const { module } = useSelector((state) => state.module);
   const { course } = useSelector((state) => state.network);
@@ -18,6 +18,7 @@ const Assignment = ({ cancel, lessonId }) => {
       const res = axios.post(
         `/api/submit-assignment?course=${course.id}&module=${module}&unit=${lessonId}`,
         {
+          question: question,
           answer: assignment,
         }
       );

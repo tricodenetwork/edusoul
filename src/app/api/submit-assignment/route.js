@@ -24,7 +24,7 @@ export const submitAssignment = async (req) => {
 
     // Extract request body (assignment submission)
     const body = await req.json();
-    const { answer } = body;
+    const { answer, question } = body;
 
     if (!answer) {
       return Response.json({ message: "Answer is required" }, { status: 400 });
@@ -36,18 +36,19 @@ export const submitAssignment = async (req) => {
     const assignmentObj = {
       module: moduleId,
       course: courseId,
-      unit: unitId,
+      // unit: unitId,
+      question,
       answer,
       comment: "",
       grade: "",
-      user: session.user.email,
+      user: session?.user?.email,
     };
 
     // Update the assignment if it exists; otherwise, insert a new document.
     // We use the filter { user, course, module } to locate the assignment.
     const result = await db.collection("assignments").updateOne(
       {
-        user: session.user.email,
+        user: session?.user?.email,
         course: courseId,
         module: moduleId,
         unit: unitId,

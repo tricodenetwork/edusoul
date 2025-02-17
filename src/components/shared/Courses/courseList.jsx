@@ -98,7 +98,7 @@ export default function CourseList({ course }) {
           <p className="text-slate-500 text-[10px] font-normal font-['Raleway'] leading-[15px]">
             1 - 28 July 2022
           </p>
-          <div className='text-primary text-base font-extrabold truncate'>
+          <div className='text-primary text-base capitalize font-extrabold truncate'>
             {course.title}
             {/* {course.name} */}
           </div>

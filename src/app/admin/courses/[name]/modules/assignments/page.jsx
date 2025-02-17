@@ -1,4 +1,5 @@
 "use client";
+import ContentBox from "@/components/editor/ContentBox";
 import AppButton from "@/components/ui/AppButton";
 import Submissions from "@/components/ui/Submissions";
 import { fetchCourses } from "@/redux/slices/networkSlice";
@@ -11,8 +12,8 @@ import { useSelector } from "react-redux";
 const Index = () => {
   const { module } = useSelector((state) => state.module);
   const { course } = useSelector((state) => state.network);
-  const [viewSubmissions, setViewSubmissions] = useState(true);
   const activeModule = course?.modules?.find((_, index) => index == module - 1);
+  const [viewSubmissions, setViewSubmissions] = useState(false);
 
   const dispatch = useDispatch();
   const [assignment, setAssignment] = useState(activeModule?.assignment ?? "");
@@ -46,15 +47,17 @@ const Index = () => {
       <div className='border border-[#99B2C6] w-full h-max pl-[5%] pr-[5%] mt-4 pt-[40px] pb-[40px] my-4 bg-white rounded-[8px]'>
         <div className='flex flex-col mt-[0px]'>
           <p className='text-sm text-appBlack px-1 mb-[6px]'>
-            Module assignments
+            Module Assignments
           </p>
-          <textarea
+          <ContentBox content={assignment} setContent={setAssignment} />
+
+          {/* <textarea
             type='text'
             value={assignment}
             onChange={(e) => setAssignment(e.target.value)}
             placeholder='Enter module assignment'
             className='bg-white rounded-[8px] border-[#D0D5DD] h-[164px] text-sm border-2  focus:outline-appAsh py-3 px-[14px] text-appBlack placeholder:text-[#717171]'
-          />
+          /> */}
         </div>
         <div className='flex mt-14 justify-between items-center'>
           <AppButton

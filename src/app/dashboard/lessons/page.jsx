@@ -15,6 +15,7 @@ import { ClockLoader } from "react-spinners";
 import { proseFormatting } from "@/lib/helper";
 import AppButton from "@/components/ui/AppButton";
 import Assignment from "@/components/Assignment";
+import TopNav from "@/components/ui/TopNav";
 
 const state2 = ["Note", "Resources", "Assignments"];
 
@@ -63,27 +64,22 @@ const Index = () => {
   } else {
     return (
       <div className='flex flex-col p-[44px] bg-appPink'>
-        <Link
-          href={"/dashboard/courses"}
-          className='font-medium flex items-center gap-2  mb-8'
-        >
-          <Image
-            src={"/assets/icons/back.svg"}
-            width={16}
-            height={16}
-            alt='back'
-          />
-          <p className='text-xs text-[#1A1818]'>Back</p>
-        </Link>
-        <div className='flex w-full  flex-col items-center relative  justify-center'>
+        <TopNav
+          main='Courses'
+          homeLink='/dashboard/courses'
+          first={course?.title}
+          firstLink={""}
+        />
+        <div className='flex w-full mt-8 flex-col items-center relative  justify-center'>
           <div className='self-start '>
             <SelectComponent
               style={"w-[120px] z-50"}
               items={items}
               onChange={set}
+              modules={course.modules}
             />
           </div>
-          <h4 className='text-2xl underline underline-offset-4 absolute w-full text-center text-appBlack font-medium capitalize'>
+          <h4 className='text-2xl underlin underline-offset-4 absolute w-full text-center text-appBlack font-medium capitalize'>
             {activeModule?.title}
           </h4>
         </div>
@@ -156,28 +152,47 @@ const Index = () => {
         <div className='h-[60vh] py-[3vh] flex flex-col overflow-y-scroll'>
           {active2 === "Resources" && (
             <div className='w-52 h-28 mt-3 flex-col justify-start items-start gap-4 inline-flex'>
-              <button className='self-stretch p-1 justify-start items-center gap-2.5 inline-flex'>
-                <Image
-                  src={"/assets/icons/download_red.svg"}
-                  width={12}
-                  height={12}
-                  alt='donwload'
-                />
-                <p className='text-primary text-xs font-normal leading-none'>
-                  Downloadlinkwillbehere.mp4
-                </p>
-              </button>
+              {activeModule?.resources?.map((item) => {
+                console.log(item);
+                return (
+                  <Link
+                    target='_blank'
+                    key={item.url}
+                    href={item.url ?? ""}
+                    className='self-stretch p-1 justify-start items-center gap-2.5 inline-flex'
+                  >
+                    <Image
+                      src={"/assets/icons/download_red.svg"}
+                      width={12}
+                      height={12}
+                      alt='donwload'
+                    />
+                    <p className='text-primary text-xs font-normal leading-none'>
+                      {item?.pathname}
+                    </p>
+                  </Link>
+                );
+              })}
             </div>
           )}
           {active2 === "Assignments" && (
             <div className='relative flex-1'>
               {assignmentPage ? (
-                <Assignment cancel={setAssignmentPage} />
+                <Assignment
+                  lessonId={active?.unit?.id}
+                  question={activeModule.assignment}
+                  cancel={setAssignmentPage}
+                />
               ) : (
                 <div className='w-full h-28 mt-3 flex-col justify-start items-start gap-4 inline-flex'>
-                  <p className=''>{active?.unit?.assignment}</p>
+                  <p
+                    className={`w-auto  h-auto ${proseFormatting} mt-3 flex-col justify-start items-start gap-4 inline-flex`}
+                    dangerouslySetInnerHTML={{
+                      __html: activeModule.assignment,
+                    }}
+                  ></p>
                   <div className='flex absolute flex-col w-full bottom-8 items-start justify-between'>
-                    {active?.unit?.assignment && (
+                    {activeModule?.assignment && (
                       <AppButton
                         title={"Start Assignment"}
                         styles={"w-[200px] mt-8"}

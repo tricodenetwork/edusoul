@@ -3,9 +3,11 @@
 import React from "react";
 import CourseList from "./courseList";
 import Link from "next/link";
-import { coursesData } from "@/data";
+import { useSelector } from "react-redux";
 
 export default function Courses() {
+  const { courses } = useSelector((state) => state.network);
+
   return (
     <section
       className='pb-[80px]  w-full  pt-[2rem] box-border justify-center items-center'
@@ -20,7 +22,7 @@ export default function Courses() {
         </div>
 
         <div className=' w-full grid  place-items-center  grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4  gap-[25px] mt-6'>
-          {coursesData.slice(0, 4).map((course) => (
+          {courses.slice(0, 4).map((course) => (
             <CourseList key={course.id} course={course} />
           ))}
         </div>

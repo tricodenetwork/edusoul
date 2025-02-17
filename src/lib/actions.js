@@ -64,13 +64,6 @@ export const addCourseToUser = async (courseId) => {
 
     // Destructure and exclude 'intro' and module notes
     const { id, modules, ...rest } = course;
-    const sanitizedModules = modules?.map(({ units, ...module }) => ({
-      ...module,
-      units: units.map(({ note, assignment, ...unit }) => ({
-        ...unit,
-        assignment: { question: assignment, answer: "", grade: "" },
-      })), // Exclude 'note' from units
-    }));
 
     const user = await db
       .collection("users")
@@ -80,11 +73,15 @@ export const addCourseToUser = async (courseId) => {
       return { ok: false, message: "User not found" };
     }
 
+    if (user?.courses?.some((c) => c.id === course.id)) {
+      return { ok: false, message: "Already registered" };
+    }
+
     await db.collection("users").updateOne(
       { email: session?.user?.email },
       {
         $push: {
-          courses: { id, modules: sanitizedModules, ...rest },
+          courses: { id },
         },
       }
     );

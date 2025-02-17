@@ -10,6 +10,7 @@ import toast from "react-hot-toast";
 import { useSelector } from "react-redux";
 import { fetchCourses } from "@/redux/slices/networkSlice";
 import { ClockLoader } from "react-spinners";
+import TopNav from "../ui/TopNav";
 
 const LayoutTopSection = ({ courseId }) => {
   // const course = coursesData.find((item) => item.id == courseId);
@@ -58,31 +59,39 @@ const LayoutTopSection = ({ courseId }) => {
   }, [courseId]);
 
   return (
-    <div className='flex w-full  justify-between'>
-      {/* <TopNav first={"Module"} firstLink={"modules"} /> */}
-
-      {loading && (
-        <div className='w-[78%] h-[70vh] z-50 absolute bg-[#FFF5F6] flex items-center justify-center'>
-          <ClockLoader
-            loading={true}
-            width={500}
-            height={500}
-            color='#90050f'
-            className=''
-          />
-        </div>
-      )}
-      <SelectComponent
-        modules={course?.modules}
-        onChange={set}
-        items={items}
-        style={"w-[7.5vw] z-50"}
-      />
-      <h3 className='font-semibold text-2xl flex-1 text-start flex items-center px-[2%] text-appBlack'>
-        {activeModule?.title ?? ""}
-      </h3>
-      <AppButton title={"New Module"} action={AddNewModule} />
-    </div>
+    <>
+      <div className='mb-8'>
+        <TopNav
+          main='Courses'
+          homeLink='/admin/courses'
+          first={course?.title}
+          firstLink={""}
+        />
+      </div>
+      <div className='flex w-full  justify-between'>
+        {loading && (
+          <div className='w-[78%] h-[79vh]  z-50 absolute bg-[#FFF5F6] flex items-center justify-center'>
+            <ClockLoader
+              loading={true}
+              width={500}
+              height={500}
+              color='#90050f'
+              className=''
+            />
+          </div>
+        )}
+        <SelectComponent
+          modules={course?.modules}
+          onChange={set}
+          items={items}
+          style={"w-[7.5vw] z-50"}
+        />
+        <h3 className='font-semibold text-2xl flex-1 text-start flex items-center px-[2%] text-appBlack'>
+          {activeModule?.title ?? ""}
+        </h3>
+        <AppButton title={"New Module"} action={AddNewModule} />
+      </div>
+    </>
   );
 };
 

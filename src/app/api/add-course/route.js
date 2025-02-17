@@ -7,6 +7,7 @@ export const POST = async (req) => {
     // Extract fields from FormData
     const title = formData.get("title");
     const price = formData.get("price");
+    const priceId = formData.get("priceId");
     const description = formData.get("description");
     const image = formData.get("image");
     const courseId = parseInt(formData.get("id")); // Optional: For editing
@@ -34,6 +35,7 @@ export const POST = async (req) => {
       const updateData = {
         title,
         price,
+        priceId,
         snippet: description,
       };
 
@@ -56,6 +58,7 @@ export const POST = async (req) => {
       id: courseId,
       title,
       price,
+      priceId,
       snippet: description,
       modules: [], // Initialize with an empty array of modules
       createdAt: new Date(),

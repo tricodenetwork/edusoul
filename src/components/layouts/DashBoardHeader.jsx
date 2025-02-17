@@ -6,18 +6,18 @@ import Link from "next/link";
 import { IoCloseSharp } from "react-icons/io5";
 import SegmentIcon from "@mui/icons-material/Segment";
 import { useEffect, useState } from "react";
-import { ClockLoader } from "react-spinners";
 import { useDispatch } from "react-redux";
-import { usePathname, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
 import { fetchCourses, fetchUsers } from "@/redux/slices/networkSlice";
+import { useUser } from "@/context/UserContext";
 
 const DashboardHeader = () => {
   // --------------------------------------------VARIABLES
   const [sideNav, setSideNav] = useState(false);
   const dispatch = useDispatch();
   const router = useRouter();
-  const path = usePathname();
+  const { user } = useUser();
 
   const { nunito } = useFonts();
   const { data: session, status } = useSession({
@@ -92,11 +92,11 @@ const DashboardHeader = () => {
           />
         </Link> */}
         <Link
-          href={""}
+          href={"/"}
           className='px-[16px] py-[9px] flex items-center justify-center rounded-full shadow-[0px_2px_8px] shadow-black/10'
         >
           <Image
-            src={session?.user?.image ?? "/assets/images/pro.svg"}
+            src={user?.image ?? "/assets/images/pro.svg"}
             width={40}
             height={40}
             className='rounded-full mr-[12px]'

@@ -26,7 +26,7 @@ const UserContextProvider = ({ children }) => {
       };
       fetchUser();
     }
-  }, [status]);
+  }, [session?.user, status]);
 
   return (
     <UserContext.Provider value={{ user }}>{children}</UserContext.Provider>

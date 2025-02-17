@@ -6,8 +6,8 @@ const add = async (req) => {
   try {
     // Extract body from the request
     const body = await req.json();
-    console.log("Request Body:", body);
-    console.log("Request:", req);
+    // console.log("Request Body:", body);
+    // console.log("Request:", req);
     const params = req.nextUrl.searchParams;
     const email = params.get("email");
 

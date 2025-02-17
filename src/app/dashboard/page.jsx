@@ -1,13 +1,20 @@
+"use client";
 import CircularProgressBar from "@/components/CircularProgressBar";
-import { coursesData } from "@/data";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { getUser } from "@/lib/actions";
 import NoCoursesDisplayHolder from "@/components/shared/NoCoursesDisplayHolder";
+import { useUser } from "@/context/UserContext";
+import { useSelector } from "react-redux";
 
-const Index = async () => {
-  const user = await getUser();
+const Index = () => {
+  const { user } = useUser();
+  const { courses } = useSelector((state) => state.network);
+  const userCourses = courses.filter((item) =>
+    user?.courses?.map((item) => item.id).includes(item.id)
+  );
+
   if (user) {
     return (
       <div className='w-full flex-col bg-white h-max md:flex-row flex  justify-between px-3 sm:px-[20px] lg:px-[40px] py-6'>
@@ -74,67 +81,63 @@ const Index = async () => {
                   </Link>
                 </div>
                 <div className='flex   flex-col sm:grid sm:grid-cols-3 lg:place-items-center w-full mt-[16px] justify-start  gap-4 lg:px-[16px] items-center'>
-                  {coursesData
-                    .filter((item) =>
-                      user?.courses?.map((item) => item.id).includes(item.id)
-                    )
-                    .map((item, index) => (
-                      <div
-                        key={index.toString()}
-                        className='flex  items-center  mb-6 md:mb-0 md:items-start w-full lg:w-[200px]  md:flex-col'
-                      >
-                        <div>
-                          <Image
-                            src={"/assets/images/course.png"}
-                            width={200}
-                            height={81}
-                            alt='course'
-                            className=' mb-2 lg:mb-5'
-                          />
-                          <div className='w-full'>
-                            <h5 className='font-medium text-appBlack text-[10px] '>
-                              {item?.title?.length > 30
-                                ? item?.title?.slice(0, 30).concat("...")
-                                : item?.title}
-                            </h5>
-                            <p className='font-medium mt-[2px] text-appBlack text-[10px] '>
-                              Module 1
-                            </p>
-                            <div className='mt-[8px] w-full'>
-                              <div className='w-full bg-appAsh rounded-[2px] h-[4px]'>
-                                <div className='w-[50%] bg-primary rounded-[2px] h-full'></div>
-                              </div>
-                              <div className='flex items-center mt-1 justify-between'>
-                                <p className='text-appBlack text-[10px]'>
-                                  Progress
-                                </p>
-                                <p className='text-appBlack text-[10px]'>
-                                  50% Completed
-                                </p>
-                              </div>
+                  {userCourses.map((item, index) => (
+                    <div
+                      key={index.toString()}
+                      className='flex  items-center  mb-6 md:mb-0 md:items-start w-full lg:w-[200px]  md:flex-col'
+                    >
+                      <div>
+                        <Image
+                          src={"/assets/images/course.png"}
+                          width={200}
+                          height={81}
+                          alt='course'
+                          className=' mb-2 lg:mb-5'
+                        />
+                        <div className='w-full'>
+                          <h5 className='font-medium text-appBlack text-[10px] '>
+                            {item?.title?.length > 30
+                              ? item?.title?.slice(0, 30).concat("...")
+                              : item?.title}
+                          </h5>
+                          <p className='font-medium mt-[2px] text-appBlack text-[10px] '>
+                            Module 1
+                          </p>
+                          <div className='mt-[8px] w-full'>
+                            <div className='w-full bg-appAsh rounded-[2px] h-[4px]'>
+                              <div className='w-[50%] bg-primary rounded-[2px] h-full'></div>
                             </div>
-                            <div className='mt-[8px] flex items-center justify-between w-full'>
-                              {/* <p className='text-appBlack text-[10px]'>
-                        <strong>Instructor:</strong>John Smith
-                      </p> */}
+                            <div className='flex items-center mt-1 justify-between'>
                               <p className='text-appBlack text-[10px]'>
-                                <strong>Due Date:</strong> 15/07/2024
+                                Progress
+                              </p>
+                              <p className='text-appBlack text-[10px]'>
+                                50% Completed
                               </p>
                             </div>
                           </div>
+                          <div className='mt-[8px] flex items-center justify-between w-full'>
+                            {/* <p className='text-appBlack text-[10px]'>
+                        <strong>Instructor:</strong>John Smith
+                      </p> */}
+                            <p className='text-appBlack text-[10px]'>
+                              <strong>Due Date:</strong> 15/07/2024
+                            </p>
+                          </div>
                         </div>
-
-                        <Link
-                          href={`/dashboard/lessons?course=${item.id}`}
-                          className='bg-primary hover:-translate-y-1 duration-200 rounded-[4px] hidden md:flex justify-center w-full py-[8px] text-white mt-[24px] text-[10px] font-semibold'
-                        >
-                          Continue Course
-                        </Link>
-                        <button className='bg-primary mx-auto rounded-[8px] flex md:hidden w-max h-max px-4 py-[8px] text-white mt-[24px] text-[10px] font-semibold'>
-                          Continue
-                        </button>
                       </div>
-                    ))}
+
+                      <Link
+                        href={`/dashboard/lessons?course=${item.id}`}
+                        className='bg-primary hover:-translate-y-1 duration-200 rounded-[4px] hidden md:flex justify-center w-full py-[8px] text-white mt-[24px] text-[10px] font-semibold'
+                      >
+                        Continue Course
+                      </Link>
+                      <button className='bg-primary mx-auto rounded-[8px] flex md:hidden w-max h-max px-4 py-[8px] text-white mt-[24px] text-[10px] font-semibold'>
+                        Continue
+                      </button>
+                    </div>
+                  ))}
                 </div>
               </div>
 
@@ -222,7 +225,7 @@ const Index = async () => {
                 </div>
 
                 <div>
-                  {user?.courses?.map((item, index) => (
+                  {userCourses?.slice(0, 5).map((item, index) => (
                     <div
                       key={index.toString()}
                       className='flex items-center py-[8px] border-b border-appAsh2 mb-[24px] justify-between'
@@ -253,7 +256,7 @@ const Index = async () => {
                 </p>
                 <div className='flex justify-between items-center'>
                   <div className=''>
-                    {user?.courses?.slice(0, 5).map((item, i) => (
+                    {userCourses?.slice(0, 5).map((item, i) => (
                       <div
                         key={i.toString()}
                         className='flex mb-[8px] items-center justify-normal space-x-2'
@@ -271,9 +274,12 @@ const Index = async () => {
               </div> */}
                   <CircularProgressBar percentage={user?.courses ? 50 : 0} />
                 </div>
-                <button className='rounded-[4px] py-[8px] bg-primary w-full text-[12px] font-semibold text-white mt-[32px] '>
+                <Link
+                  href={"/courses"}
+                  className='rounded-[4px] flex items-center justify-center py-[8px] bg-primary w-full text-[12px] font-semibold text-white mt-[32px] '
+                >
                   Register More Courses
-                </button>
+                </Link>
               </div>
               <div className='bg-white mt-[24px] rounded-[8px] p-4'>
                 <div className='flex items-center mb-[12px] justify-between'>

@@ -31,7 +31,8 @@ const DashboardSidebar = () => {
           {links.map((item) => {
             const isActive =
               item.href === path ||
-              (path.includes(item.href) && item.label !== "Home");
+              (path.includes(item.href) && item.label !== "Home") ||
+              (path.includes(item.href2) && item.label !== "Home");
             return (
               <span key={item.href}>
                 {React.cloneElement(item.component, {
@@ -52,7 +53,7 @@ const DashboardSidebar = () => {
                   ? "text-primary hover:text-appAsh font-semibold"
                   : link.label === "Home"
                   ? "text-appAsh hover:text-primary"
-                  : path.includes(link.href)
+                  : path.includes(link.href) || path.includes(link.href2)
                   ? "text-primary hover:text-appAsh font-semibold"
                   : "text-appAsh hover:text-primary"
               }`}

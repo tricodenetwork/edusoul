@@ -23,6 +23,7 @@ const Index = () => {
   const { courses } = useSelector((state) => state.network);
   const [courseTitle, setCourseTitle] = useState(course?.title ?? "");
   const [price, setPrice] = useState(course?.price ?? "");
+  const [priceId, setPriceId] = useState(course?.priceId ?? "");
   const [description, setDescription] = useState(course?.snippet ?? "");
   const [file, setFile] = useState(null);
   const [isDragging, setIsDragging] = useState(false);
@@ -75,6 +76,7 @@ const Index = () => {
       formData.append("title", courseTitle);
       formData.append("id", course.id ?? courses.length + 1);
       formData.append("price", price);
+      formData.append("priceId", priceId);
       formData.append("description", description);
       if (file) {
         formData.append("image", file);
@@ -92,6 +94,7 @@ const Index = () => {
         // Reset form fields
         setCourseTitle("");
         setPrice("");
+        setPriceId("");
         setDescription("");
         setFile(null);
         router.push("/admin/courses");
@@ -148,6 +151,16 @@ const Index = () => {
             placeholder='Enter course amount'
             value={price}
             onChange={(e) => setPrice(e.target.value)}
+            className='bg-white rounded-[8px] border-[#D0D5DD] text-sm border-2  focus:outline-appAsh py-3 px-[14px] text-appBlack placeholder:text-[#717171]'
+          />
+        </div>
+        <div className='flex flex-col mt-[30px] '>
+          <p className='text-sm text-appBlack px-1 mb-[6px]'>Price Id</p>
+          <input
+            type='text'
+            placeholder='Enter price id'
+            value={priceId}
+            onChange={(e) => setPriceId(e.target.value)}
             className='bg-white rounded-[8px] border-[#D0D5DD] text-sm border-2  focus:outline-appAsh py-3 px-[14px] text-appBlack placeholder:text-[#717171]'
           />
         </div>

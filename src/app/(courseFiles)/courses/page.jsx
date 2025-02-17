@@ -5,6 +5,9 @@ import CourseList from "@/components/shared/Courses/courseList";
 import { coursesData } from "@/data";
 import Footer from "@/components/shared/Footer";
 import Navbar from "@/components/shared/NavBar/nav";
+import { useSelector } from "react-redux";
+import { fetchCourses } from "@/redux/slices/networkSlice";
+import { useDispatch } from "react-redux";
 
 const state = [
   "All Programme",
@@ -16,6 +19,12 @@ const state = [
 
 export default function Courses() {
   const [active, setActive] = useState("All Programme");
+  const { courses, loading, error } = useSelector((state) => state.network);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchCourses(1));
+  }, []);
 
   return (
     <>
@@ -49,7 +58,7 @@ export default function Courses() {
           </div> */}
 
           <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4  gap-5 mt-6'>
-            {coursesData.map((course) => (
+            {courses.map((course) => (
               <CourseList key={course.id} id={course.id} course={course} />
             ))}
           </div>

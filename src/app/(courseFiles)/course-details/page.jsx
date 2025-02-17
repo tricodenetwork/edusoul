@@ -13,6 +13,10 @@ import React, { Suspense, useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { baseUrl } from "../../../../config/config";
 import { addCourseToUser } from "@/lib/actions";
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { fetchCourses } from "@/redux/slices/networkSlice";
+import Loader from "@/components/ui/Loader";
 
 if (process.env.NEXT_PUBLIC_STRIPE_KEY_TEST === undefined) {
   throw new Error("NEXT_PUBLIC_STRIPE_KEY is not defined");
@@ -24,14 +28,14 @@ function CourseDetails() {
   const CourseId = searchParams.get("id");
   const id = parseInt(CourseId, 10);
 
-  const pathname = usePathname(); // Get the current path
   const { data: session, status } = useSession();
   const router = useRouter();
   const { user } = useUser();
-  // console.log("user", user);
-  const userHasCourse = user?.courses?.some((item) => item.id == CourseId);
+  const { course, loading } = useSelector((state) => state.network);
+  const dispatch = useDispatch();
 
-  const [course, setCourse] = useState(null);
+  console.log("user", course);
+  const userHasCourse = user?.courses?.some((item) => item.id == CourseId);
 
   const buyCourse = async () => {
     if (!session?.user) {
@@ -42,8 +46,8 @@ function CourseDetails() {
     try {
       const res = await axios.post(`${baseUrl}api/buy-course`, {
         id,
-        price_id: course.price_id,
-        email: session?.user?.email,
+        priceId: course?.priceId,
+        email: user?.email,
       });
 
       // toast.success(res.data.message, { id: toastId });
@@ -56,8 +60,7 @@ function CourseDetails() {
   };
 
   useEffect(() => {
-    const fetchedCourse = coursesData.find((course) => course.id === id);
-    setCourse(fetchedCourse);
+    dispatch(fetchCourses(CourseId));
   }, [CourseId]);
 
   useEffect(() => {
@@ -83,19 +86,30 @@ function CourseDetails() {
     }
   }, []);
 
+  if (loading) {
+    return (
+      <div className='text-black flex-1 min-h-[88vh] mt-14'>
+        <Loader />
+      </div>
+    ); // Show loading indicator
+  }
   if (!course) {
-    return <div className='text-black mt-14'>Loading...</div>; // Show loading indicator
+    return (
+      <div className='text-black flex-1 min-h-[88vh] mt-14'>
+        <Loader />
+      </div>
+    ); // Show loading indicator
   }
 
   return (
     <>
       <div className='flex flex-col my-14'>
         <div className='flex flex-col w-full h-[365px] px-3 md:px-[80px] bg-[#F7D0D2] justify-center items-start'>
-          <h1 className='text-red-800 mb-4 text-3xl md:text-6xl font-extrabold'>
-            {course.title}
+          <h1 className='text-red-800 mb-4 text-3xl md:text-5xl font-extrabold'>
+            {course?.title}
           </h1>
           <p className='self-stretch text-slate-900  font-normal'>
-            {course.snippet}
+            {course?.snippet}
           </p>
         </div>
 
@@ -105,7 +119,7 @@ function CourseDetails() {
               What you will learn
             </h1>
 
-            {course.intro.map((item, index) => (
+            {course?.intro?.map((item, index) => (
               <div
                 key={index.toString()}
                 className='justify-start  items-center gap-6 inline-flex'
@@ -124,7 +138,7 @@ function CourseDetails() {
             <div className='flex-col justify-start items-start gap-3 flex'>
               <div className='h-8 flex-col  justify-start  gap-3 flex'>
                 <h5 className='self-stretch h-8 text-zinc-800 text-2xl font-bold leading-normal'>
-                  ${course.price}
+                  {course.price}
                 </h5>
               </div>
               <AppButton
@@ -176,7 +190,7 @@ function CourseDetails() {
               </div>
               <div className='h-10 flex-col justify-start items-center gap-2.5 flex'>
                 <div className='self-stretch h-3.5 text-center text-neutral-500 text-xs font-normal'>
-                  Starting at ${course.price} per month after trial
+                  Starting at {course.price} per month after trial
                 </div>
                 <div className='self-stretch h-4 text-center text-neutral-500 text-xs font-normal'>
                   Cancel anytime

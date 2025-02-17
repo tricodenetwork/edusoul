@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 import NoCoursesDisplayHolder from "@/components/shared/NoCoursesDisplayHolder";
 import { useUser } from "@/context/UserContext";
 import { ClockLoader } from "react-spinners";
+import { useSelector } from "react-redux";
 
 const state = ["In progress", "Completed", "Recommended"];
 
@@ -15,16 +16,21 @@ const Index = () => {
   const [active, setActive] = useState("In progress");
   const [isOpen, setIsOpen] = useState(null);
   const { user } = useUser();
+  const { courses } = useSelector((state) => state.network);
   const [activeCourseList, setActiveCourseList] = useState(coursesData);
 
   useEffect(() => {
     switch (active) {
       case "Recommended":
-        setActiveCourseList(coursesData);
+        setActiveCourseList(
+          courses.filter(
+            (item) => !user?.courses?.map((item) => item.id).includes(item.id)
+          )
+        );
         break;
       case "In progress":
         setActiveCourseList(
-          coursesData.filter((item) =>
+          courses.filter((item) =>
             user?.courses?.map((item) => item.id).includes(item.id)
           )
         );
@@ -120,7 +126,7 @@ const Index = () => {
                 className='mr-[24px]'
               />
               <div className='w-[50%]'>
-                <h5 className='font-medium text-primary text-xl '>
+                <h5 className='font-medium text-primary text-lg '>
                   {item.title}
                 </h5>
                 <p className='mt-[8px] text-appBlack'>{`Modules: ${
@@ -149,7 +155,7 @@ const Index = () => {
                 {active == "Recommended" ? `Enroll` : `Continue Course`}
               </Link>
 
-              <div className=''>
+              {/* <div className=''>
                 <Image
                   onClick={() => setIsOpen(isOpen === index ? null : index)}
                   src='/assets/icons/more.svg'
@@ -163,7 +169,7 @@ const Index = () => {
                     <MoreOptions flex={"col"} />
                   </div>
                 )}
-              </div>
+              </div> */}
             </div>
           )) ?? (
             <div className='flex relative  items-center  bg-white my-4  rounded-[8px] py-4 pl-4 pr-[55px]'>

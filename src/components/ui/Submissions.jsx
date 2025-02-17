@@ -14,9 +14,9 @@ const Submissions = ({ close }) => {
   const items = activeModule?.units?.map((unit) => unit.id);
 
   //-----------------------------------------------------------FUNCTIONS
-  const set = (item) => {
-    set;
-  };
+  // const set = (item) => {
+  //   set;
+  // };
 
   //------------------------------------------------------------------USE EFFECTS
 
