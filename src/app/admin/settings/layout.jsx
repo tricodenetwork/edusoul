@@ -1,19 +1,21 @@
 "use client";
 
 import TopNav from "@/components/ui/TopNav";
-import { Poppins } from "next/font/google";
+import { fetchUsers } from "@/redux/slices/networkSlice";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
 
-const poppins = Poppins({
-  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
-  subsets: ["latin", "latin-ext"],
-});
 const state = ["Profile", "Students", "Password"];
 
 const Index = ({ children }) => {
   const path = usePathname();
   const currentPath = path.split("/").pop();
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(fetchUsers());
+  }, []);
   return (
     <div className='h- px-[5%]   pt-[2.5%] pb-[2%]'>
       <div className='flex w-full justify-between'>
