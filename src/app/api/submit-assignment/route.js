@@ -13,11 +13,10 @@ export const submitAssignment = async (req) => {
     const params = req.nextUrl.searchParams;
     const courseId = parseInt(params.get("course"));
     const moduleId = parseInt(params.get("module"));
-    const unitId = parseInt(params.get("unit"));
 
-    if (!courseId || !moduleId || !unitId) {
+    if (!courseId || !moduleId) {
       return Response.json(
-        { message: "Course ,module  and unit id's are required" },
+        { message: "Course, module, and unit IDs are required" },
         { status: 400 }
       );
     }
@@ -36,31 +35,38 @@ export const submitAssignment = async (req) => {
     const assignmentObj = {
       module: moduleId,
       course: courseId,
-      // unit: unitId,
       question,
       answer,
       comment: "",
       grade: "",
       user: session?.user?.email,
+      name: session?.user?.name,
     };
 
-    // Update the assignment if it exists; otherwise, insert a new document.
-    // We use the filter { user, course, module } to locate the assignment.
-    const result = await db.collection("assignments").updateOne(
-      {
-        user: session?.user?.email,
-        course: courseId,
-        module: moduleId,
-        unit: unitId,
-      },
-      {
-        // If an assignment document already exists, update the answer.
-        $set: { answer },
-        // If the document is inserted for the first time, add the remaining fields.
-        $setOnInsert: assignmentObj,
-      },
-      { upsert: true }
-    );
+    // Check if the assignment already exists
+    const existingAssignment = await db.collection("assignments").findOne({
+      user: session?.user?.email,
+      course: courseId,
+      module: moduleId,
+    });
+
+    let result;
+    if (existingAssignment) {
+      // Update the existing assignment
+      result = await db.collection("assignments").updateOne(
+        {
+          user: session?.user?.email,
+          course: courseId,
+          module: moduleId,
+        },
+        {
+          $set: { answer },
+        }
+      );
+    } else {
+      // Insert a new assignment
+      result = await db.collection("assignments").insertOne(assignmentObj);
+    }
 
     return Response.json(
       { message: "Assignment submitted successfully!" },

@@ -16,12 +16,12 @@ const StatsCard = () => {
       desc: "Total number of Courses",
       num: courses.length,
     },
-    {
-      name: "Teachers",
-      img: "/assets/icons/teachers.svg",
-      desc: "Total number of Teachers",
-      num: 2,
-    },
+    // {
+    //   name: "Teachers",
+    //   img: "/assets/icons/teachers.svg",
+    //   desc: "Total number of Teachers",
+    //   num: 2,
+    // },
     {
       name: "Students",
       img: "/assets/icons/students.svg",
@@ -35,18 +35,18 @@ const StatsCard = () => {
   //------------------------------------------------------------------USE EFFECTS
 
   return (
-    <section className=' flex-row w-full flex justify-between border-b border-appAsh2 py-6'>
+    <section className=" flex-row w-full flex justify-between border-b border-appAsh2 py-6">
       {analytics.map((item, ind) => {
         return (
           <div
             key={ind.toString()}
-            className='flex  w-[32%] flex-col h-[160px] px-[23px] py-[18px] border-[#99B2C6] border rounded-[8px]  justify-between'
+            className="flex  w-[48%] flex-col h-[160px] px-[23px] py-[18px] border-[#99B2C6] border rounded-[8px]  justify-between"
           >
-            <div className=''>
-              <Image width={35} height={35} src={item.img} alt='pic' />
-              <h5 className='capitalize mt-1 text-dark_B'>{item.name}</h5>
+            <div className="">
+              <Image width={35} height={35} src={item.img} alt="pic" />
+              <h5 className="capitalize mt-1 text-dark_B">{item.name}</h5>
             </div>
-            <div className=''>
+            <div className="">
               <h4
                 className={` text-dark_B ${
                   (loading || error) &&
@@ -55,7 +55,7 @@ const StatsCard = () => {
               >
                 {item.num}
               </h4>
-              <p className='text-dark_B text-[10px]'>{item.desc}</p>
+              <p className="text-dark_B text-[10px]">{item.desc}</p>
             </div>
           </div>
         );

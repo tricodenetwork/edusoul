@@ -16,6 +16,7 @@ const SelectComponent = ({
   onChange,
   modules,
   error,
+  dropDownStyles,
 }) => {
   // --------------------------------------------VARIABLES
   const [open, setOpen] = useState(false);
@@ -25,7 +26,7 @@ const SelectComponent = ({
       ? `Unit ${1}`
       : modules?.length > 0
       ? `Module ${module}`
-      : "None"
+      : ""
   );
   const [focusedIndex, setFocusedIndex] = useState(-1);
   const selectRef = useRef(null);
@@ -83,7 +84,7 @@ const SelectComponent = ({
         ? `Unit ${1}`
         : modules?.length > 0
         ? `Module ${path.includes("admin") ? items?.length : 1}`
-        : "None"
+        : ""
     );
   }, [items?.length]);
 
@@ -93,11 +94,11 @@ const SelectComponent = ({
 
   return (
     <OutsideClickHandler
-      display='contents'
+      display="contents"
       onOutsideClick={() => setOpen(false)}
     >
       {label && (
-        <label className='block text-sm font-medium text-header_black mb-[10px]'>
+        <label className="block text-sm font-medium text-header_black mb-[10px]">
           {label}
         </label>
       )}
@@ -113,14 +114,16 @@ const SelectComponent = ({
         } items-center relative`}
       >
         {/* Dropdown Options */}
-        <AnimatePresence mode='wait'>
+        <AnimatePresence mode="wait">
           {open && (
             <motion.div
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.2, type: "tween" }}
-              className='w-full shadow-lg absolute top-full mt-1 border border-[#D0D5DD] bg-white rounded-md z-10'
+              className={`w-full shadow-lg absolute ${dropDownStyles} overflow-y-scroll ${
+                !dropDownStyles ? "top-full" : ""
+              } mt-1 border border-[#D0D5DD] bg-white rounded-md z-10`}
             >
               {items?.map((item, i) => (
                 <button
@@ -144,8 +147,8 @@ const SelectComponent = ({
         </AnimatePresence>
 
         {/* Selected Value */}
-        <p className={`px-4 ${placeholder && "text-ash2"}`}>
-          {placeholder || value}
+        <p className={`px-4 ${placeholder && !value && "text-ash2"}`}>
+          {value || placeholder}
         </p>
 
         {/* Dropdown Icon */}
@@ -154,14 +157,14 @@ const SelectComponent = ({
             e.stopPropagation();
             setOpen(!open);
           }}
-          className='absolute right-4 cursor-pointer'
+          className="absolute right-4 cursor-pointer"
         >
           <Image
             className={`duration-200 ${open ? "rotate-180" : "rotate-0"}`}
             src={"/assets/icons/down.svg"}
             width={12}
             height={12}
-            alt='down'
+            alt="down"
           />
         </div>
       </div>

@@ -29,7 +29,7 @@ function HeroSection() {
   }, []);
 
   return (
-    <div className='w-full mx-auto mt-[60px] md:mt-[80px] flex px-5 md:px-[60px] bg-primary bg-opacity-[0.03] pt-[16vh] md:pt-[126px] flex-col items-start justify-start relative h-screen md:h-[120vh]'>
+    <div className='w-full mx-auto mt-[60px] md:mt-[80px] flex px-5 md:px-[60px] bg-primary bg-opacity-[0.03] pt-[16vh] md:pt-[126px] flex-col items-start justify-start relative h-screen md:h-[100vh]'>
       {carousel.map((item, index) => (
         <AnimatePresence key={index.toString()}>
           {activeIndex === index && (
@@ -112,7 +112,7 @@ function HeroSection() {
           </div>
         </div>
       </section>
-      <section className='flex z-30 absolute  w-full px-[20px] md:px-[80px] justify-between gap-[5vw] bottom-7 md:bottom-10 self-center items-center'>
+      {/* <section className='flex z-30 absolute  w-full px-[20px] md:px-[80px] justify-between gap-[5vw] bottom-7 md:bottom-10 self-center items-center'>
         <Marquee
           direction='left'
           speed={80}
@@ -138,7 +138,7 @@ function HeroSection() {
             ))}
           </div>
         </Marquee>
-      </section>
+      </section> */}
     </div>
   );
 }

@@ -11,10 +11,12 @@ import { useSelector } from "react-redux";
 import { fetchCourses } from "@/redux/slices/networkSlice";
 import { ClockLoader } from "react-spinners";
 import TopNav from "../ui/TopNav";
+import { useRouter } from "next/navigation";
 
 const LayoutTopSection = ({ courseId }) => {
   // const course = coursesData.find((item) => item.id == courseId);
   const { module } = useSelector((state) => state.module);
+  const router = useRouter();
   const { courses, items, course, loading } = useSelector(
     (state) => state.network
   );
@@ -23,6 +25,7 @@ const LayoutTopSection = ({ courseId }) => {
   const dispatch = useDispatch();
   const set = (item) => {
     dispatch(setActiveModule(item));
+    router.push(`/admin/courses/${courseId}/modules`);
   };
 
   const fetchAllCourses = async () => {
@@ -60,23 +63,23 @@ const LayoutTopSection = ({ courseId }) => {
 
   return (
     <>
-      <div className='mb-8'>
+      <div className="mb-8">
         <TopNav
-          main='Courses'
-          homeLink='/admin/courses'
+          main="Courses"
+          homeLink="/admin/courses"
           first={course?.title}
           firstLink={""}
         />
       </div>
-      <div className='flex w-full  justify-between'>
+      <div className="flex w-full  justify-between">
         {loading && (
-          <div className='w-[78%] h-[79vh]  z-50 absolute bg-[#FFF5F6] flex items-center justify-center'>
+          <div className="w-[78%] h-[79vh]  z-50 absolute bg-[#FFF5F6] flex items-center justify-center">
             <ClockLoader
               loading={true}
               width={500}
               height={500}
-              color='#90050f'
-              className=''
+              color="#90050f"
+              className=""
             />
           </div>
         )}
@@ -86,7 +89,7 @@ const LayoutTopSection = ({ courseId }) => {
           items={items}
           style={"w-[7.5vw] z-50"}
         />
-        <h3 className='font-semibold text-2xl flex-1 text-start flex items-center px-[2%] text-appBlack'>
+        <h3 className="font-semibold text-2xl flex-1 text-start flex items-center px-[2%] text-appBlack">
           {activeModule?.title ?? ""}
         </h3>
         <AppButton title={"New Module"} action={AddNewModule} />

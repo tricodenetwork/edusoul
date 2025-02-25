@@ -6,6 +6,7 @@ const initialState = {
   course: {},
   items: [],
   users: [],
+  assignments:[],
   loading: false,
   error: null,
 };
@@ -20,12 +21,14 @@ export const fetchCourses = createAsyncThunk("api/courses", async (id) => {
 
 export const fetchUsers = createAsyncThunk("api/users", async () => {
   const res = await axios.get(`/api/users`);
-  // const userAssignments = res.data
-  //   .filter((user) => !user.admin || !user.courses)
-  //   .map((user) =>
-  //     user.courses.filter((course) => course.id).modules((module) => module.id)
-  //   );
+ 
   return res.data;
+});
+
+export const fetchAssignments = createAsyncThunk("api/assignments", async () => {
+  const res = await axios.get(`/api/assignments`);
+    return res.data;
+  
 });
 
 const networkSlice = createSlice({
@@ -59,7 +62,19 @@ const networkSlice = createSlice({
       .addCase(fetchUsers.pending, (state) => {
         state.loading = true;
         state.error = null;
-      });
+      })
+      .addCase(fetchAssignments.fulfilled, (state, action) => {
+        state.loading = false;
+        state.assignments = action.payload;
+      })
+      .addCase(fetchAssignments.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.error.message || "Failed to fetch assignments";
+      })
+      .addCase(fetchAssignments.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
   },
 });
 

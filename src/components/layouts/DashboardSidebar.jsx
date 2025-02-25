@@ -7,7 +7,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";
 
-const DashboardSidebar = () => {
+const  DashboardSidebar = () => {
   // --------------------------------------------VARIABLES
   const path = usePathname();
   const links = path.includes("admin") ? adminNavData : userNavData;

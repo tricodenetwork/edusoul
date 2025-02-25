@@ -8,7 +8,7 @@ import SelectComponent from "@/components/ui/Select";
 import { IconChevronRight } from "@tabler/icons-react";
 import toast from "react-hot-toast";
 import { useSelector } from "react-redux";
-import { fetchCourses } from "@/redux/slices/networkSlice";
+import { fetchAssignments, fetchCourses } from "@/redux/slices/networkSlice";
 import { useDispatch } from "react-redux";
 import { setActiveModule } from "@/redux/slices/moduleSlice";
 import { ClockLoader } from "react-spinners";
@@ -46,7 +46,7 @@ const Index = () => {
   useEffect(() => {
     dispatch(fetchCourses(courseId));
 
-    // dispatch(setActiveModule(1));
+    dispatch(fetchAssignments());
   }, []);
 
   if (loading) {
@@ -63,7 +63,7 @@ const Index = () => {
     );
   } else {
     return (
-      <div className='flex flex-col p-[44px] bg-appPink'>
+      <div suppressHydrationWarning className='flex flex-col p-[44px] bg-appPink'>
         <TopNav
           main='Courses'
           homeLink='/dashboard/courses'

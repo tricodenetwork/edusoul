@@ -2,7 +2,7 @@
 import AppButton from "@/components/ui/AppButton";
 import SelectComponent from "@/components/ui/Select";
 import { setActiveModule } from "@/redux/slices/moduleSlice";
-import { fetchCourses } from "@/redux/slices/networkSlice";
+import { fetchAssignments, fetchCourses } from "@/redux/slices/networkSlice";
 import axios from "axios";
 import Image from "next/image";
 import React, { useEffect, useRef, useState } from "react";
@@ -19,7 +19,6 @@ const Index = () => {
   const dispatch = useDispatch();
   const activeModule = course?.modules?.find((item) => item.id == module);
   const [title, setTitle] = useState(activeModule?.title ?? "");
-  console.log("activeModule", module, course);
   const inputFileRef = useRef(null);
   const handleButtonClick = () => {
     inputFileRef.current.click();
@@ -106,32 +105,33 @@ const Index = () => {
 
   useEffect(() => {
     setTitle(activeModule?.title);
+    dispatch(fetchAssignments());
     // dispatch(setActiveModule(items?.length ?? 1));
   }, [activeModule]);
 
   if (loading) {
     return (
-      <div className='w-full h-full flex items-center justify-center'>
+      <div className="w-full h-full flex items-center justify-center">
         <ClockLoader
           loading={true}
           width={500}
           height={500}
-          color='#90050f'
-          className=''
+          color="#90050f"
+          className=""
         />
       </div>
     );
   } else {
     return (
-      <div className='border border-[#99B2C6] w-full h-max pl-[5%] pr-[12%] mt-4 pt-[40px] pb-[40px] my-4 bg-white rounded-[8px]'>
-        <div className='flex flex-col mt-[0px] '>
-          <p className='text-sm text-appBlack px-1 mb-[6px]'>Module Title</p>
+      <div className="border border-[#99B2C6] w-full h-max pl-[5%] pr-[12%] mt-4 pt-[40px] pb-[40px] my-4 bg-white rounded-[8px]">
+        <div className="flex flex-col mt-[0px] ">
+          <p className="text-sm text-appBlack px-1 mb-[6px]">Module Title</p>
           <input
-            type='text'
+            type="text"
             value={title}
-            placeholder='Enter module name'
+            placeholder="Enter module name"
             onChange={(e) => setTitle(e.target.value)}
-            className='bg-white rounded-[8px] border-[#D0D5DD] text-sm border-2  focus:outline-appAsh py-3 px-[14px] text-appBlack placeholder:text-[#717171]'
+            className="bg-white rounded-[8px] border-[#D0D5DD] text-sm border-2  focus:outline-appAsh py-3 px-[14px] text-appBlack placeholder:text-[#717171]"
           />
         </div>
         {/* <div className='flex flex-col mt-[30px] '>
@@ -194,7 +194,7 @@ const Index = () => {
           </p>
         </div>
       </div> */}
-        <div className='flex w-full items-center justify-between'>
+        <div className="flex w-full items-center justify-between">
           <AppButton
             style={{ marginTop: 60 }}
             title={"Save"}

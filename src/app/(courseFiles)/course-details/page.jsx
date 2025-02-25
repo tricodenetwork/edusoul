@@ -17,8 +17,10 @@ import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { fetchCourses } from "@/redux/slices/networkSlice";
 import Loader from "@/components/ui/Loader";
+import TimeTable from "@/components/TimeTable";
+import Link from "next/link";
 
-if (process.env.NEXT_PUBLIC_STRIPE_KEY_TEST === undefined) {
+if (process.env.NEXT_PUBLIC_STRIPE_KEY === undefined) {
   throw new Error("NEXT_PUBLIC_STRIPE_KEY is not defined");
 }
 
@@ -88,14 +90,14 @@ function CourseDetails() {
 
   if (loading) {
     return (
-      <div className='text-black flex-1 min-h-[88vh] mt-14'>
+      <div className="text-black flex-1 min-h-[88vh] mt-14">
         <Loader />
       </div>
     ); // Show loading indicator
   }
   if (!course) {
     return (
-      <div className='text-black flex-1 min-h-[88vh] mt-14'>
+      <div className="text-black flex-1 min-h-[88vh] mt-14">
         <Loader />
       </div>
     ); // Show loading indicator
@@ -103,41 +105,41 @@ function CourseDetails() {
 
   return (
     <>
-      <div className='flex flex-col my-14'>
-        <div className='flex flex-col w-full h-[365px] px-3 md:px-[80px] bg-[#F7D0D2] justify-center items-start'>
-          <h1 className='text-red-800 mb-4 text-3xl md:text-5xl font-extrabold'>
+      <div className="flex flex-col mt-14 mb-7">
+        <div className="flex flex-col w-full h-[365px] px-3 md:px-[80px] bg-[#F7D0D2] justify-center items-start">
+          <h1 className="text-red-800 mb-4 text-xl md:text-5xl font-extrabold">
             {course?.title}
           </h1>
-          <p className='self-stretch text-slate-900  font-normal'>
+          <p className="self-stretch text-sm md:text-base text-slate-900  font-normal">
             {course?.snippet}
           </p>
         </div>
 
-        <div className='flex  p-[80px]   flex-col md:flex-row w-full  mt-16 justify-between items-start gap-16'>
-          <div className='flex-col flex-1  justify-start items-start gap-6 inline-flex'>
-            <h1 className='text-3xl md:text-[56px] leading-tight font-black'>
+        <div className="flex p-3   md:p-[80px]   flex-col md:flex-row w-full  mt-16 justify-between items-start gap-16">
+          <div className="flex-col flex-1  justify-start items-start gap-6 inline-flex">
+            <h1 className="text-xl md:text-[56px] leading-tight font-black">
               What you will learn
             </h1>
 
             {course?.intro?.map((item, index) => (
               <div
                 key={index.toString()}
-                className='justify-start  items-center gap-6 inline-flex'
+                className="justify-start  items-center gap-6 inline-flex"
               >
                 <Image
                   src={"/assets/icons/tick.svg"}
                   width={11.73}
                   height={8.94}
-                  alt='Tick'
+                  alt="Tick"
                 />
-                <div className='w-[90%] opacity-70 text-appBlack text-base font-normal '>
+                <div className="w-[90%] opacity-70 text-appBlack text-base font-normal ">
                   {item}
                 </div>
               </div>
             ))}
-            <div className='flex-col justify-start items-start gap-3 flex'>
-              <div className='h-8 flex-col  justify-start  gap-3 flex'>
-                <h5 className='self-stretch h-8 text-zinc-800 text-2xl font-bold leading-normal'>
+            <div className="flex-col justify-start items-start gap-3 flex">
+              <div className="h-8 flex-col  justify-start  gap-3 flex">
+                <h5 className=" text-zinc-800 text-base md:text-2xl font-bold leading-normal">
                   {course.price}
                 </h5>
               </div>
@@ -153,55 +155,66 @@ function CourseDetails() {
             </div>
           </div>
 
-          <div className='w-full   md:w-[340px]  relative bg-white shadow border-b border-gray-300'>
-            <div className='relative w-full h-[191.25px]'>
+          <div className="w-full   md:w-[340px]  relative bg-white shadow border-b border-gray-300">
+            <div className="relative w-full h-[191.25px]">
               <Image
-                alt='courses'
+                alt="courses"
                 fill
                 quality={100}
-                className='rounded-t-[14px] object-cover bg-primary/80'
+                className="rounded-t-[14px] object-cover bg-primary/80"
                 src={`/assets/images${course.imgURL}`}
               />
             </div>
-            <div className='p-4 flex-col justify-start  items-center gap-5 inline-flex'>
-              <div className='self-stretch flex-col justify-start items-start gap-6 flex'>
-                <div className='pt-4 justify-center items-center gap-2 inline-flex'>
-                  <div className='w-[13.33px] relative h-[13.33px]  p-1 rounded-full text-[5px]  justify-center items-center flex'>
+            <div className="p-4 flex-col justify-start  items-center gap-5 inline-flex">
+              <div className="self-stretch flex-col justify-start items-start gap-6 flex">
+                <div className="pt-4 justify-center items-center gap-2 inline-flex">
+                  <div className="w-[13.33px] relative h-[13.33px]  p-1 rounded-full text-[5px]  justify-center items-center flex">
                     <Image
-                      alt='success'
+                      alt="success"
                       src={"/assets/icons/icon-success.svg"}
                       fill
                     />
                   </div>
-                  <h2 className='text-zinc-800 text-sm font-normal'>
-                    This course is included in plans
+                  <h2 className="text-zinc-800 text-sm font-normal">
+                    Content Information
                   </h2>
                 </div>
-                <p className='text-neutral-600 text-sm font-normal'>
-                  Product Management Masterclass, you will learn with Sarah
-                  Johnson - Head of Product Customer Platform Gojek Indonesia.
+                <p className="text-neutral-600 text-sm font-normal">
+                  Download Course Prospectus for course Requirements
                 </p>
 
-                <button className='w-full py-3.5 bg-white border border-red-800 justify-center items-center inline-flex'>
-                  <div className='w-48 h-5 text-center text-red-800 text-base font-bold'>
+                <button className="w-full py-3.5 bg-white border border-red-800 justify-center items-center inline-flex">
+                  <div className="w-48 h-5 text-center text-red-800 text-base font-bold">
                     {userHasCourse ? "Purchased" : "Try for free"}
                   </div>
                 </button>
               </div>
-              <div className='h-10 flex-col justify-start items-center gap-2.5 flex'>
+              {/* <div className='h-10 flex-col justify-start items-center gap-2.5 flex'>
                 <div className='self-stretch h-3.5 text-center text-neutral-500 text-xs font-normal'>
                   Starting at {course.price} per month after trial
                 </div>
                 <div className='self-stretch h-4 text-center text-neutral-500 text-xs font-normal'>
                   Cancel anytime
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
       </div>
+      <div className="px-[5vw]">
+        <p>Click on the link below to apply for a scholarship</p>
+        <Link
+          className="text-blue-300"
+          href={
+            "https://docs.google.com/forms/d/e/1FAIpQLSdf-vJK77PPLR-ZOOlhN9fXRhI1crItqMHIa0Zm5Pxp3Hg47g/viewform?usp=sharing"
+          }
+        >
+          Apply for scholarship
+        </Link>
+      </div>
+      <TimeTable />
 
-      <section className='mt-[2vh] md:mt-[9vh] w-full px-[7vw]'>
+      <section className="mt-[2vh] md:mt-[9vh] w-full px-3 md:px-[7vw]">
         <Courses />
       </section>
     </>
