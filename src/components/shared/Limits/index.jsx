@@ -64,7 +64,7 @@ export default function Limits() {
             </h3>
           </div>
           <p className="text-appBlack mt-4 text-lg lg:w-[90%]">
-            EduSoul aims to provide a Christ-centered education program that
+            EduSoul aims to provide a Christ-centred education program that
             raises distinctive educators. The goal is to equip 21st-century
             leaders with skills and methodologies for successful, life-long
             professionalism within the Christian education sector.

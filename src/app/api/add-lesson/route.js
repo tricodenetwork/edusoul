@@ -67,13 +67,14 @@ const addLesson = async (req) => {
     //     { upsert: true }
     //   );
     // }
-
+    
     // Check if the lesson already exists in the module
     const lessonIndex = module?.units?.findIndex(
       (lesson) => lesson.id === body.id
     );
     // console.log(lessonIndex !== undefined, "module units");
     // return Response.json("Sussess");
+    console.log("idddd",lessonIndex)
 
     if ((lessonIndex ?? -1) !== -1) {
       // Update the existing lesson

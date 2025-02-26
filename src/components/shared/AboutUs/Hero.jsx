@@ -4,17 +4,17 @@ import { motion } from "framer-motion";
 
 function HeroSection() {
   return (
-    <div className='h-[35rem] w-full relative  md:h-[85vh]'>
-      <div className='w-full h-[35rem]  md:h-[85vh] -z-20 '>
+    <div className="h-[35rem] w-full relative  md:h-[85vh]">
+      <div className="w-full h-[35rem]  md:h-[85vh] -z-20 ">
         <Image
-          alt='logo'
+          alt="logo"
           fill
-          className='lg:object-contain max-sm:object-cover rounded-md'
+          className="lg:object-contain max-sm:object-cover rounded-md"
           quality={100}
-          src='/assets/images/about/product-images.png'
+          src="/assets/images/about/product-images.png"
         />
       </div>
-      <section className='flex absolute top-[5rem] bottom-0 py-[5em] md:py-[4em] flex-col items-start justify-center max-sm:ml-5'>
+      <section className="flex absolute top-[5rem] bottom-0 py-[5em] md:py-[4em] flex-col items-start justify-center max-sm:ml-5">
         <motion.div
           variants={{
             hidden: {
@@ -27,35 +27,35 @@ function HeroSection() {
               x: 0,
             },
           }}
-          initial='hidden'
-          whileInView='visible'
+          initial="hidden"
+          whileInView="visible"
           transition={{ duration: 1, delay: 0.1 }}
           viewport={{ once: true }}
-          className='animate_left'
+          className="animate_left"
         >
-          <div className='flex flex-col justify-start items-start gap-4 lg:ml-20'>
-            <div className='justify-start items-start gap-2.5 inline-flex'>
+          <div className="flex flex-col justify-start items-start gap-4 lg:ml-20">
+            <div className="justify-start items-start gap-2.5 inline-flex">
               <div>
                 <Image
-                  alt='logo'
+                  alt="logo"
                   width={500}
                   height={100}
                   quality={100}
-                  src='/assets/images/about/Label.png'
+                  src="/assets/images/about/Label.png"
                 />
               </div>
             </div>
-            <div className='justify-start items-start gap-2.5 inline-flex'>
-              <div className='text-white text-[30px]  md:text-[65px] font-semibold'>
+            <div className="justify-start items-start gap-2.5 inline-flex">
+              <div className="text-white text-[30px]  md:text-[65px] font-semibold">
                 Our Vision
               </div>
             </div>
-            <div className='flex flex-col gap-3 md:w-[50vw]'>
-              <span className='text-white text-lg md:text-xl font-normal leading-7'>
+            <div className="flex flex-col gap-3 md:w-[50vw]">
+              <span className="text-white text-lg md:text-xl font-normal leading-7">
                 To provide an education program that raises distinctive
-                educators within a Christ-centered framework
+                educators within a Christ-centred framework
               </span>
-              <span className='text-white text-base md:text-xl font-normal leading-7'>
+              <span className="text-white text-base md:text-xl font-normal leading-7">
                 {"(Col.2v3. Isa.58v12)"}
               </span>
             </div>

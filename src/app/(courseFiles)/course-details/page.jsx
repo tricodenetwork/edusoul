@@ -183,11 +183,11 @@ function CourseDetails() {
                   Download Course Prospectus for course Requirements
                 </p>
 
-                <button className="w-full py-3.5 bg-white border border-red-800 justify-center items-center inline-flex">
+                {/* <button className="w-full py-3.5 bg-white border border-red-800 justify-center items-center inline-flex">
                   <div className="w-48 h-5 text-center text-red-800 text-base font-bold">
                     {userHasCourse ? "Purchased" : "Try for free"}
                   </div>
-                </button>
+                </button> */}
               </div>
               {/* <div className='h-10 flex-col justify-start items-center gap-2.5 flex'>
                 <div className='self-stretch h-3.5 text-center text-neutral-500 text-xs font-normal'>
@@ -204,7 +204,7 @@ function CourseDetails() {
       <div className="px-[5vw]">
         <p>Click on the link below to apply for a scholarship</p>
         <Link
-          className="text-blue-300"
+          className="text-blue-700 text-xl"
           href={
             "https://docs.google.com/forms/d/e/1FAIpQLSdf-vJK77PPLR-ZOOlhN9fXRhI1crItqMHIa0Zm5Pxp3Hg47g/viewform?usp=sharing"
           }

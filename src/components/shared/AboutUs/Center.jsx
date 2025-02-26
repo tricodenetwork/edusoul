@@ -8,7 +8,7 @@ function Center() {
     <>
       {/* <!-- ===== Center Start ===== --> */}
 
-      <div className='h-max bg-[#90050F] lg:p-20 max-sm:p-5'>
+      <div className="h-max bg-[#90050F] lg:p-20 max-sm:p-5">
         <motion.div
           variants={{
             hidden: {
@@ -21,28 +21,28 @@ function Center() {
               y: 0,
             },
           }}
-          initial='hidden'
-          whileInView='visible'
+          initial="hidden"
+          whileInView="visible"
           transition={{ duration: 1, delay: 0.1 }}
           viewport={{ once: true }}
-          className='animate_top'
+          className="animate_top"
         >
-          <div className='h-max lg:flex justify-evenly'>
-            <div className='lg:w-[50%]'>
-              <div className='lg:p-9 font-bold lg:text-5xl'>
-                <p className='text-white leading-relaxed max-sm:text-[30px] max-sm:m-2'>
-                  Why Christ-Centered Education?
+          <div className="h-max lg:flex justify-evenly">
+            <div className="lg:w-[50%]">
+              <div className="lg:p-9 font-bold lg:text-5xl">
+                <p className="text-white leading-relaxed max-sm:text-[30px] max-sm:m-2">
+                  Why Christ-Centred Education?
                 </p>
               </div>
             </div>
 
-            <div className='lg:w-[50%] text-gray-100 leading-relaxed p-10'>
-              <li className=''>
+            <div className="lg:w-[50%] text-gray-100 leading-relaxed p-10">
+              <li className="">
                 Professional career development is critical for innovative
                 educators to effect moral and spiritual transformation in
                 learners.
               </li>
-              <li className='lg:w-[78%]'>
+              <li className="lg:w-[78%]">
                 Empower to impact and raise Godly Global Generations (G3s).
               </li>
             </div>

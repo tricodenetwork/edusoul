@@ -43,7 +43,7 @@ export const faqdata = [
   },
   {
     id: 7,
-    question: "Is EDUSOL an accredited institution?",
+    question: "Is EDUSOUL an accredited institution?",
     answer:
       "Edusoul is an online professional development institute which awards professional enhancement certificates and advance diploma.",
   },
@@ -55,7 +55,7 @@ export const faqdata = [
   },
   {
     id: 9,
-    question: "What makes my Christ - centered awards different from others?",
+    question: "What makes my Christ - centred awards different from others?",
     answer: "See why Edusoul.",
   },
   {
