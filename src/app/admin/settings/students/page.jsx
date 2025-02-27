@@ -6,14 +6,13 @@ import React, { useState } from "react";
 import { useSelector } from "react-redux";
 
 const Index = () => {
-  const { users, courses } = useSelector((state) => state.network);
+  const { users, courses, assignments } = useSelector((state) => state.network);
   const [search, setSearch] = useState("");
   const [overview, setOverview] = useState(false);
   const [user, setUser] = useState(null);
   const userCourses = courses.filter((item) =>
     user?.courses?.map((item) => item.id).includes(item.id)
   );
-  console.log(userCourses);
 
   if (overview) {
     return (
@@ -29,7 +28,7 @@ const Index = () => {
           </div>
           <div className="flex flex-col">
             <h4 className="text-[40px] font-semibold text-white">
-              {user?.name}
+              {`${user?.name} ${user?.surname}`}
             </h4>
             <p className="text-[14px] text-white">{user?.email}</p>
           </div>
@@ -37,35 +36,49 @@ const Index = () => {
         <h4 className="text-black mt-8 font-medium text-xl">Course Overview</h4>
         <div>
           {userCourses.map((item, index) => {
+            const numerator = assignments.filter((assignment) => {
+              assignment.course == item.id &&
+                assignment.status == "completed" &&
+                item.user == user?.email;
+            });
+            const denomiator = courses.filter(
+              (course) => course.id == item.id
+            )[0].modules.length;
+            const percentageProgresss = (numerator / denomiator) * 100;
             return (
               <div
                 key={index.toString()}
                 className=" border-[#99B2C6] border rounded-[8px] mt-4"
               >
-                <div className="grid border-[#99b2c6] bg-[#f6f6f6] h-[40px] rounded-t-[8px] place-content-center px-[25px] grid-cols-[3fr,1.5fr,1.5fr,1.5fr]">
-                  <p className="text-[13px]">Course Title</p>
+                <div className="grid border-[#99b2c6] bg-[#f6f6f6] h-[40px] rounded-t-[8px] place-content-center px-[25px] grid-cols-[1fr,3.5fr,1.5fr,1fr]">
+                  <p className="text-[13px] ">Date</p>
                   <p className="text-[13px] text-center flex items-center justify-center">
-                    Registration Date
+                    Course Title
                   </p>
                   <p className="text-[13px] text-center flex items-center justify-center">
-                    Courses taken
+                    Progress
                   </p>
                   <p className="text-[13px]"></p>
                 </div>
-                <div className="grid border-[#99b2c6]  h-[80px] rounded-t-[8px] place-content-center px-[25px] grid-cols-[3fr,1.5fr,1.5fr,1.5fr]">
-                  <div className="flex items-center">
-                    <h4 className="text-[16px] font-semibold text-appBlack">
-                      {item.title}
-                    </h4>
+                <div className="grid border-[#99b2c6]  h-[80px] rounded-t-[8px] place-content-center px-[25px] grid-cols-[1fr,3.5fr,1.5fr,1fr]">
+                  <p className="text-[13px]">May,27 2024</p>
+                  <h4 className="text-[16px] text-center flex items-center justify-center font-semibold text-appBlack">
+                    {item.title}
+                  </h4>
+                  <div className="flex flex-col items-center justify-center gap-1">
+                    <div className="w-[120px] h-[6px] bg-[#c4c4c4] rounded-[4px]">
+                      <div
+                        style={{ width: `${percentageProgresss}%` }}
+                        className="bg-primary rounded-[4px] h-full"
+                      />
+                    </div>
+
+                    <p className="text-xs text-center flex items-center justify-center">
+                      {`${percentageProgresss}% completed`}
+                    </p>
                   </div>
-                  <p className="text-[13px] text-center flex items-center justify-center">
-                    May,27 2024
-                  </p>
-                  <p className="text-[13px] text-center flex items-center justify-center">
-                    {item?.courses?.length ?? 0}
-                  </p>
                   <AppButton
-                    title={"Details"}
+                    title={"Back"}
                     styles={"w-[76px] mx-auto self-center h-[28px] text-[13px]"}
                     action={() => {
                       setOverview(false);
@@ -83,16 +96,17 @@ const Index = () => {
     return (
       <div className="border border-[#99B2C6] w-full h-max px-[3%]  mt-4 pt-[40px] pb-[40px] my-4 bg-white rounded-[8px]">
         <div className="flex flex-col">
-          <h4 className="mb-4">Course</h4>
+          <h4 className="mb-4">Students</h4>
           <div className="flex justify-between ">
-            <SelectComponent
-              style={"w-[55%] z-50"}
-              items={["Course 1"]}
-              onChange={() => console.log("hello")}
-              // modules={course.modules}
-            />
+            {/* <SelectComponent
+                style={"w-[55%] z-50"}
+                items={["Course 1"]}
+                onChange={() => console.log("hello")}
+                // modules={course.modules}
+              /> */}
             <div className="w-[35%] flex items-center relative  rounded-[8px] border border-[#d9d9d9]">
               <input
+                placeholder="Search for students"
                 onChange={(e) => setSearch(e.target.value)}
                 className="h-[48px] rounded-[8px] px-4 w-full"
               />
@@ -110,15 +124,12 @@ const Index = () => {
           {users
             ?.filter((item) =>
               search !== ""
-                ? item?.name
-                    .toLowerCase()
-                    .includes(
-                      search.toLowerCase() ||
-                        item?.email
-                          ?.toLowerCase()
-                          .includes(search.toLowerCase())
-                    )
-                : true
+                ? (item?.name.toLowerCase().includes(search.toLowerCase()) ||
+                    item?.email
+                      ?.toLowerCase()
+                      .includes(search.toLowerCase())) &&
+                  !item.admin
+                : !item.admin
             )
             .map((item, index) => {
               return (
@@ -154,7 +165,13 @@ const Index = () => {
                       </div>
                     </div>
                     <p className="text-[13px] text-center flex items-center justify-center">
-                      May,27 2024
+                      {new Date(
+                        parseInt(item._id.substring(0, 8), 16) * 1000
+                      ).toLocaleDateString("en-US", {
+                        month: "short",
+                        day: "2-digit",
+                        year: "numeric",
+                      })}
                     </p>
                     <p className="text-[13px] text-center flex items-center justify-center">
                       {item?.courses?.length ?? 0}

@@ -30,7 +30,7 @@ export const gradeAssignment = async (req) => {
         module: moduleId,
       },
       {
-        $set: { comment, grade },
+        $set: { comment, grade,status: parseInt(grade) >=60 ?"completed":"retry" },
       }
     );
 

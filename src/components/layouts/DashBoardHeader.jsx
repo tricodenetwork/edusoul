@@ -53,22 +53,22 @@ const DashboardHeader = () => {
   //   );
   // } else {
   return (
-    <div className='w-full md:w-[85%] px-3 sm:px-[20px] fixed top-0 z-50  lg:px-[40px] border-b  bg-white border-appAsh2 flex items-center justify-between py-[16px]  '>
-      <div className='px-[16px] h-[51px] flex items-center justify-between relative w-[45%] rounded-[8px]  shadow-[0px_2px_8px] shadow-black/10'>
+    <div className="w-full md:w-[85%] px-3 sm:px-[20px] fixed top-0 z-50  lg:px-[40px] border-b  bg-white border-appAsh2 flex items-center justify-between py-[16px]  ">
+      <div className="px-[16px] h-[51px] flex items-center justify-between relative w-[45%] rounded-[8px]  shadow-[0px_2px_8px] shadow-black/10">
         <input
           style={nunito.style}
-          placeholder='Search'
-          className='absolute text-sm text-appAsh flex-1 px-4 focus:outline-none left-0'
+          placeholder="Search"
+          className="absolute text-sm text-appAsh flex-1 px-4 focus:outline-none left-0"
         />
         <Image
           src={"/assets/icons/search.svg"}
           width={16}
           height={16}
-          className='absolute right-[16px] '
-          alt='search'
+          className="absolute right-[16px] "
+          alt="search"
         />
       </div>
-      <div className='flex items-center'>
+      <div className="flex items-center">
         {/* <Link
           href={"/"}
           className='w-[48px] h-[48px] mr-[16px] hidden sm:flex items-center justify-center rounded-full shadow-[0px_2px_8px] shadow-black/10'
@@ -93,14 +93,14 @@ const DashboardHeader = () => {
         </Link> */}
         <Link
           href={"/"}
-          className='px-[16px] py-[9px] flex items-center justify-center rounded-full shadow-[0px_2px_8px] shadow-black/10'
+          className="px-[16px] py-[9px] flex items-center justify-center rounded-full shadow-[0px_2px_8px] shadow-black/10"
         >
           <Image
             src={user?.image ?? "/assets/images/pro.svg"}
             width={40}
             height={40}
-            className='rounded-full mr-[12px]'
-            alt='profile'
+            className="rounded-full mr-[12px]"
+            alt="profile"
           />
           {/* <Image
             src={"/assets/icons/down.svg"}
@@ -114,9 +114,9 @@ const DashboardHeader = () => {
           className={`text-primary ml-4 text-[4vh] flex md:hidden`}
         >
           {sideNav ? (
-            <IoCloseSharp className='' />
+            <IoCloseSharp className="" />
           ) : (
-            <SegmentIcon className='' />
+            <SegmentIcon className="" />
           )}
         </button>
       </div>

@@ -51,27 +51,30 @@ const Index = () => {
 
   if (loading) {
     return (
-      <div className='w-full h-full flex items-center justify-center'>
+      <div className="w-full h-full flex items-center justify-center">
         <ClockLoader
           loading={true}
           width={500}
           height={500}
-          color='#90050f'
-          className=''
+          color="#90050f"
+          className=""
         />
       </div>
     );
   } else {
     return (
-      <div suppressHydrationWarning className='flex flex-col p-[44px] bg-appPink'>
+      <div
+        suppressHydrationWarning
+        className="flex flex-col p-[44px] bg-appPink"
+      >
         <TopNav
-          main='Courses'
-          homeLink='/dashboard/courses'
+          main="Courses"
+          homeLink="/dashboard/courses"
           first={course?.title}
           firstLink={""}
         />
-        <div className='flex w-full mt-8 flex-col items-center relative  justify-center'>
-          <div className='self-start '>
+        <div className="flex w-full mt-8 flex-col items-center relative  justify-center">
+          <div className="self-start ">
             <SelectComponent
               style={"w-[120px] z-50"}
               items={items}
@@ -79,11 +82,11 @@ const Index = () => {
               modules={course.modules}
             />
           </div>
-          <h4 className='text-2xl underlin underline-offset-4 absolute w-full text-center text-appBlack font-medium capitalize'>
+          <h4 className="text-2xl underlin underline-offset-4 absolute w-full text-center text-appBlack font-medium capitalize">
             {activeModule?.title}
           </h4>
         </div>
-        <div className='flex   mt-8 gap-[101px] items-center'>
+        <div className="flex   mt-8 gap-[101px] items-center">
           {activeModule?.units?.map((item, index) => {
             return (
               <button
@@ -102,20 +105,20 @@ const Index = () => {
         </div>
 
         {active && (
-          <div className='flex flex-col justify-start items-start gap-3'>
-            <div className='relative w-full h-[470px] mt-8'>
+          <div className="flex flex-col justify-start items-start gap-3">
+            <div className="relative w-full h-[470px] mt-8">
               <Image
-                src='/assets/images/lesson.png'
+                src="/assets/images/lesson.png"
                 fill
-                alt='course'
-                className='mr-[24px]'
+                alt="course"
+                className="mr-[24px]"
               />
             </div>
-            <div className='my-4'>
-              <span className='text-slate-900 text-3xl font-normal'>
+            <div className="my-4">
+              <span className="text-slate-900 text-3xl font-normal">
                 {`Unit ${active?.number + 1}:`}
               </span>
-              <span className='text-slate-900 ml-1 text-3xl font-normal'>
+              <span className="text-slate-900 ml-1 text-3xl font-normal">
                 {active?.unit?.title}
               </span>
             </div>
@@ -135,7 +138,7 @@ const Index = () => {
           </div>
         )}
 
-        <div className='w-full flex  gap-[136px]  duration-200 mt-8  mb-4 justify-start items-center'>
+        <div className="w-full flex  gap-[136px]  duration-200 mt-8  mb-4 justify-start items-center">
           {state2.map((item, index) => (
             <button
               onClick={() => setActive2(item)}
@@ -149,25 +152,25 @@ const Index = () => {
           ))}
         </div>
 
-        <div className='h-[60vh] py-[3vh] flex flex-col overflow-y-scroll'>
+        <div className="h-[60vh] py-[3vh] flex flex-col overflow-y-scroll">
           {active2 === "Resources" && (
-            <div className='w-52 h-28 mt-3 flex-col justify-start items-start gap-4 inline-flex'>
+            <div className="w-52 h-28 mt-3 flex-col justify-start items-start gap-4 inline-flex">
               {activeModule?.resources?.map((item) => {
                 console.log(item);
                 return (
                   <Link
-                    target='_blank'
+                    target="_blank"
                     key={item.url}
                     href={item.url ?? ""}
-                    className='self-stretch p-1 justify-start items-center gap-2.5 inline-flex'
+                    className="self-stretch p-1 justify-start items-center gap-2.5 inline-flex"
                   >
                     <Image
                       src={"/assets/icons/download_red.svg"}
                       width={12}
                       height={12}
-                      alt='donwload'
+                      alt="donwload"
                     />
-                    <p className='text-primary text-xs font-normal leading-none'>
+                    <p className="text-primary text-xs font-normal leading-none">
                       {item?.pathname}
                     </p>
                   </Link>
@@ -176,7 +179,7 @@ const Index = () => {
             </div>
           )}
           {active2 === "Assignments" && (
-            <div className='relative flex-1'>
+            <div className="relative flex-1">
               {assignmentPage ? (
                 <Assignment
                   lessonId={active?.unit?.id}
@@ -184,14 +187,14 @@ const Index = () => {
                   cancel={setAssignmentPage}
                 />
               ) : (
-                <div className='w-full h-28 mt-3 flex-col justify-start items-start gap-4 inline-flex'>
+                <div className="w-full h-28 mt-3 flex-col justify-start items-start gap-4 inline-flex">
                   <p
                     className={`w-auto  h-auto ${proseFormatting} mt-3 flex-col justify-start items-start gap-4 inline-flex`}
                     dangerouslySetInnerHTML={{
                       __html: activeModule.assignment,
                     }}
                   ></p>
-                  <div className='flex absolute flex-col w-full bottom-8 items-start justify-between'>
+                  <div className="flex absolute flex-col w-full bottom-8 items-start justify-between">
                     {activeModule?.assignment && (
                       <AppButton
                         title={"Start Assignment"}
@@ -199,16 +202,6 @@ const Index = () => {
                         action={() => setAssignmentPage(true)}
                       />
                     )}
-                    <div className='flex items-center w-full justify-between mt-8'>
-                      <p>
-                        <span className='font-medium'>NOTE: </span>
-                        To pass you need to score at least 75% or higher grade
-                      </p>
-                      <p>
-                        Your Grade:
-                        <span className='font-semibold text-2xl'> 900%</span>
-                      </p>
-                    </div>
                   </div>
                 </div>
               )}
@@ -241,7 +234,7 @@ const Index = () => {
             }
           }}
           disabled={active?.number >= activeModule?.units?.length - 1}
-          className='text-primary disabled:opacity-50 border-b-2 font-medium text-sm items-center border-primary py-1 w-max flex gap-[2px]'
+          className="text-primary disabled:opacity-50 border-b-2 font-medium text-sm items-center border-primary py-1 w-max flex gap-[2px]"
         >
           <p>Next Lesson</p>
           <IconChevronRight size={18} stroke={2} />

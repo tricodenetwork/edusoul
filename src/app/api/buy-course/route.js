@@ -3,7 +3,7 @@ import { NextResponse } from "next/server";
 import Stripe from "stripe";
 import { headers } from "next/headers";
 
-if (process.env.STRIPE_SECRET_KEY === undefined) {
+if (process.env.STRIPE_SECRET_KEY_TEST === undefined) {
   throw new Error("STRIPE_SECRETE_KEY_TEST is not defined");
 }
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY_TEST);

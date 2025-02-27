@@ -1,7 +1,7 @@
 "use client";
 
 import TopNav from "@/components/ui/TopNav";
-import { fetchUsers } from "@/redux/slices/networkSlice";
+import { fetchAssignments, fetchUsers } from "@/redux/slices/networkSlice";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect } from "react";
@@ -15,17 +15,18 @@ const Index = ({ children }) => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchUsers());
+    dispatch(fetchAssignments());
   }, []);
   return (
-    <div className='h- px-[5%]   pt-[2.5%] pb-[2%]'>
-      <div className='flex w-full justify-between'>
+    <div className="h- px-[5%]   pt-[2.5%] pb-[2%]">
+      <div className="flex w-full justify-between">
         <TopNav
-          homeLink='/admin'
+          homeLink="/admin"
           first={"settings"}
           firstLink={"/admin/settings"}
         />
       </div>
-      <div className='w-[65%]  flex mt-8 pr-[0%] justify-between items-center'>
+      <div className="w-[65%]  flex mt-8 pr-[0%] justify-between items-center">
         {state.map((item, index) => (
           <Link
             href={
@@ -47,7 +48,7 @@ const Index = ({ children }) => {
           </Link>
         ))}
       </div>
-      <div className='flex-1 pr-[15%]  mt-2'>{children}</div>
+      <div className="flex-1 pr-[15%]  mt-2">{children}</div>
     </div>
   );
 };

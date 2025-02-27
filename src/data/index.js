@@ -71,6 +71,7 @@ export const adminNavData = [
   },
   {
     href: "/admin/settings/profile",
+    href2: "/admin/settings/students" || "/admin/settings/password",
     label: "Settings",
     component: <Settings />,
   },

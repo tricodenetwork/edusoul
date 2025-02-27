@@ -12,7 +12,7 @@ const initialState = {
 };
 
 export const fetchCourses = createAsyncThunk("api/courses", async (id) => {
-  console.log("id", id);
+  // console.log("id", id);
   const res = await axios.get(`/api/courses`);
   const course = res.data.find((item) => item.id == id);
   const items = course?.modules?.map((module) => module.id);

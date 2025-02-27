@@ -17,7 +17,6 @@ import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { fetchCourses } from "@/redux/slices/networkSlice";
 import Loader from "@/components/ui/Loader";
-import TimeTable from "@/components/TimeTable";
 import Link from "next/link";
 
 if (process.env.NEXT_PUBLIC_STRIPE_KEY === undefined) {
@@ -212,7 +211,6 @@ function CourseDetails() {
           Apply for scholarship
         </Link>
       </div>
-      <TimeTable />
 
       <section className="mt-[2vh] md:mt-[9vh] w-full px-3 md:px-[7vw]">
         <Courses />
