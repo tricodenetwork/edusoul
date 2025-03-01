@@ -3,7 +3,9 @@
 import CourseList from "@/components/shared/Courses/courseList";
 import AppButton from "@/components/ui/AppButton";
 import { setActiveCourse } from "@/redux/slices/moduleSlice";
+import { fetchCourses } from "@/redux/slices/networkSlice";
 import Link from "next/link";
+import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 
@@ -11,6 +13,9 @@ const Index = () => {
   const { courses } = useSelector((state) => state.network);
   const dispatch = useDispatch();
 
+  useEffect(() => {
+    dispatch(fetchCourses(1));
+  }, []);
   return (
     <div className="h-max pl-[5%] pr-[13%]  pt-[1%]">
       <h4 className="font-medium text-xl text-appBlack mb-[23px]">

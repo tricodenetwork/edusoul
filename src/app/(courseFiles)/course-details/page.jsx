@@ -18,12 +18,13 @@ import { useDispatch } from "react-redux";
 import { fetchCourses } from "@/redux/slices/networkSlice";
 import Loader from "@/components/ui/Loader";
 import Link from "next/link";
+import TimeTable from "@/components/TimeTable";
 
-if (process.env.NEXT_PUBLIC_STRIPE_KEY === undefined) {
+if (process.env.NEXT_PUBLIC_STRIPE_KEY_TEST === undefined) {
   throw new Error("NEXT_PUBLIC_STRIPE_KEY is not defined");
 }
 
-loadStripe(process.env.NEXT_PUBLIC_STRIPE_KEY);
+loadStripe(process.env.NEXT_PUBLIC_STRIPE_KEY_TEST);
 function CourseDetails() {
   const searchParams = useSearchParams();
   const CourseId = searchParams.get("id");
@@ -182,11 +183,14 @@ function CourseDetails() {
                   Download Course Prospectus for course Requirements
                 </p>
 
-                {/* <button className="w-full py-3.5 bg-white border border-red-800 justify-center items-center inline-flex">
+                <Link
+                  href={""}
+                  className="w-full py-3.5 bg-white border border-red-800 justify-center items-center inline-flex"
+                >
                   <div className="w-48 h-5 text-center text-red-800 text-base font-bold">
-                    {userHasCourse ? "Purchased" : "Try for free"}
+                    {"Download"}
                   </div>
-                </button> */}
+                </Link>
               </div>
               {/* <div className='h-10 flex-col justify-start items-center gap-2.5 flex'>
                 <div className='self-stretch h-3.5 text-center text-neutral-500 text-xs font-normal'>

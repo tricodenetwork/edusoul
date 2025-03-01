@@ -49,13 +49,14 @@ const add = async (req) => {
         (module) => module.id == body.id
       );
 
-      if (moduleIndex !== -1) {
+      if ((moduleIndex ??-1) !== -1) {
         // Update the module title
+        console.log(moduleIndex,"moduleIndex")
         await db
           .collection("courses")
           .updateOne(
             { id: courseId, "modules.id": body.id },
-            { $set: { "modules.$.title": body.title } }
+            { $set: { "modules.$.title": body.title,"modules.$.link": body.link,"modules.$.dueDate": body.dueDate } }
           );
 
         return Response.json(

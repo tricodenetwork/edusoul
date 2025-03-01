@@ -34,8 +34,28 @@ export const gradeAssignment = async (req) => {
       }
     );
 
+   
+
+    const updateNotification = await db.collection("users").updateOne(
+      { email: user },
+      {
+        $push: {
+          notifications: {
+            title: "Assignment Update",
+            message: parseInt(grade) >= 60
+              ? `Congrats 🍾, Assignment for module ${moduleId} completed proceed to next module`
+              : `Sorry 📛, Assignment for module ${moduleId} failed try again`,
+            isRead: false,
+          },
+        },
+      }
+    )
+
     if (result.modifiedCount === 0) {
       return Response.json({ message: "Assignment not found or already graded" }, { status: 404 });
+    }
+    if (updateNotification.modifiedCount === 0) {
+      return Response.json({ message: "Error updating user notification" }, { status: 404 });
     }
 
     return Response.json(

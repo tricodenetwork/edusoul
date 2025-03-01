@@ -35,7 +35,6 @@ const DashboardHeader = () => {
 
   //------------------------------------------------------------------USE EFFECTS
   useEffect(() => {
-    dispatch(fetchCourses(1));
     dispatch(fetchUsers());
   }, []);
 

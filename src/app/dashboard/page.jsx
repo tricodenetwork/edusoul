@@ -2,11 +2,13 @@
 import CircularProgressBar from "@/components/CircularProgressBar";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import React, { useEffect } from "react";
 import { getUser } from "@/lib/actions";
 import NoCoursesDisplayHolder from "@/components/shared/NoCoursesDisplayHolder";
 import { useUser } from "@/context/UserContext";
 import { useSelector } from "react-redux";
+import { fetchCourses } from "@/redux/slices/networkSlice";
+import { useDispatch } from "react-redux";
 
 const Index = () => {
   const { user } = useUser();
@@ -14,6 +16,11 @@ const Index = () => {
   const userCourses = courses.filter((item) =>
     user?.courses?.map((item) => item.id).includes(item.id)
   );
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchCourses(1));
+  }, []);
 
   if (user) {
     return (
@@ -135,7 +142,8 @@ const Index = () => {
                         <strong>Instructor:</strong>John Smith
                       </p> */}
                               <p className="text-appBlack text-[10px]">
-                                <strong>Due Date:</strong> 15/07/2024
+                                <strong>Due Date:</strong>{" "}
+                                {item?.modules[numerator]?.dueDate.toString()}
                               </p>
                             </div>
                           </div>
@@ -160,11 +168,11 @@ const Index = () => {
               <div className="rounded-[8px] mt-[24px] w-full flex flex-col border border-appAsh2 p-3 lg:p-6">
                 <div className="flex items-center justify-between">
                   <p className="font-semibold  text-appBlack">Notifications</p>
-                  <p className="text-xs text-appAsh uppercase font-bold">
+                  {/* <p className="text-xs text-appAsh uppercase font-bold">
                     {!user?.notifications ? "None" : `View All`}
-                  </p>
+                  </p> */}
                 </div>
-                <div className="mt-[24px] grid h-[50px] items-center grid-cols-[1.5fr,3.5fr] lg:mx-[16px]">
+                <div className="mt-[24px] grid h-[50px] border-t border-appAsh2 border-x items-center grid-cols-[1.5fr,3.5fr] lg:mx-[16px]">
                   <div className="text-[10px] px-2  lg:px-[24px] h-full flex items-center border-r border-appAsh2 font-medium text-appBlack">
                     Category
                   </div>
@@ -172,20 +180,17 @@ const Index = () => {
                     Notifications
                   </div>
                 </div>
-                {[1, 2].map((item, index) => {
+                {user?.notifications.map((item, index) => {
                   return (
                     <div
                       key={index.toString()}
                       className="border border-appAsh2 grid h-[58px] items-center grid-cols-[1.5fr,3.5fr] lg:mx-[16px]"
                     >
                       <div className="text-[10px] px-2  lg:px-[24px]  py-[8px] h-full flex items-center border-r border-appAsh2 font-medium text-appBlack">
-                        Course Progress
+                        {item.title}
                       </div>
                       <div className="text-[10px] px-2  lg:px-[24px]  py-[8px]  font-medium text-appBlack">
-                        <p className="text-xs  text-appBlack">
-                          You're 15% done with 'Introduction to Biblical
-                          Studies'. Keep going!
-                        </p>
+                        <p className="text-xs  text-appBlack">{item.message}</p>
                       </div>
                     </div>
                   );

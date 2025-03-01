@@ -1,14 +1,10 @@
 "use client";
 import AppButton from "@/components/ui/AppButton";
-import SelectComponent from "@/components/ui/Select";
-import { setActiveModule } from "@/redux/slices/moduleSlice";
 import { fetchAssignments, fetchCourses } from "@/redux/slices/networkSlice";
 import axios from "axios";
-import Image from "next/image";
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import toast from "react-hot-toast";
-import { useDispatch } from "react-redux";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { ClockLoader } from "react-spinners";
 
 const Index = () => {
@@ -16,9 +12,12 @@ const Index = () => {
   const [file, setFile] = useState(null);
   const { module } = useSelector((state) => state.module);
   const { course, loading } = useSelector((state) => state.network);
+
   const dispatch = useDispatch();
   const activeModule = course?.modules?.find((item) => item.id == module);
+  const [link, setLink] = useState(activeModule?.link ?? "");
   const [title, setTitle] = useState(activeModule?.title ?? "");
+  const [dueDate, setDueDate] = useState(activeModule?.dueDate ?? "");
   const inputFileRef = useRef(null);
   const handleButtonClick = () => {
     inputFileRef.current.click();
@@ -65,14 +64,16 @@ const Index = () => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          id: activeModule?.id ?? course?.modules.length + 1,
-          title: title,
+          id: activeModule?.id ?? (course?.modules?.length ?? 0) + 1,
+          title,
+          link,
+          dueDate: dueDate,
         }),
       });
 
       if (response.ok) {
         const result = await response.json();
-        toast.success("Module updated successfully!", { id: loader });
+        toast.success(result?.message, { id: loader });
         dispatch(fetchCourses(course?.id));
         console.log("Update Result:", result);
       } else {
@@ -105,8 +106,9 @@ const Index = () => {
 
   useEffect(() => {
     setTitle(activeModule?.title);
+    setLink(activeModule?.link);
+    setDueDate(activeModule?.dueDate);
     dispatch(fetchAssignments());
-    // dispatch(setActiveModule(items?.length ?? 1));
   }, [activeModule]);
 
   if (loading) {
@@ -134,66 +136,25 @@ const Index = () => {
             className="bg-white rounded-[8px] border-[#D0D5DD] text-sm border-2  focus:outline-appAsh py-3 px-[14px] text-appBlack placeholder:text-[#717171]"
           />
         </div>
-        {/* <div className='flex flex-col mt-[30px] '>
-        <p className='text-sm text-appBlack px-1 mb-[6px]'>Module Objectives</p>
-        <textarea
-          type='text'
-          placeholder='Enter module objectives'
-          className='bg-white rounded-[8px] border-[#D0D5DD] h-[164px] text-sm border-2  focus:outline-appAsh py-3 px-[14px] text-appBlack placeholder:text-[#717171]'
-        />
-      </div>
-      <div className='flex flex-col mt-[30px] '>
-        <p className='text-sm text-appBlack px-1 mb-[6px]'>
-          Module pre-requisite
-        </p>
-        <textarea
-          type='text'
-          placeholder='Enter module pre-requisites'
-          className='bg-white rounded-[8px] border-[#D0D5DD] h-[164px] text-sm border-2  focus:outline-appAsh py-3 px-[14px] text-appBlack placeholder:text-[#717171]'
-        />
-      </div>
-      <div
-        onDragEnter={handleDragEnter}
-        onDragLeave={handleDragLeave}
-        onDragOver={handleDragOver}
-        onDrop={handleDrop}
-        onClick={handleButtonClick}
-        className={`drag-and-drop ${
-          isDragging ? "border-primary" : ""
-        } flex flex-col mt-[30px] cursor-pointer relative w-full bg-white rounded-[8px] ${
-          file && "border-none"
-        } border-[#D0D5DD] h-[305px]  border-2   py-3 px-[14px]`}
-      >
-        {file && (
-          <Image
-            src={URL.createObjectURL(file)}
-            className='z-20 object-cover border-[#D0D5DD] border-2 rounded-[8px] bg-white'
-            fill
-            alt='image'
+        <div className="flex flex-col mt-[30px] ">
+          <p className="text-sm text-appBlack px-1 mb-[6px]">Workshop link</p>
+          <input
+            type="text"
+            value={link}
+            onChange={(e) => setLink(e.target.value)}
+            placeholder="Enter workshop link"
+            className="bg-white rounded-[8px] border-[#D0D5DD] text-sm border-2  focus:outline-appAsh py-3 px-[14px] text-appBlack placeholder:text-[#717171]"
           />
-        )}
-
-        <input
-          ref={inputFileRef}
-          onChange={handleFileChange}
-          type={`file`}
-          accept={true ? "image/*" : undefined} // Conditionally set accept attribute for images
-          className='h-full  hidden w-full bord'
-        />
-        <p className='text-sm text-appBlack px-1 z-10 mb-[6px]'>Module Image</p>
-        <div className='w-full flex-1 flex flex-col items-center justify-center '>
-          <Image
-            src={"/assets/icons/image.svg"}
-            width={40}
-            height={40}
-            alt='upload'
-          />
-          <h6 className='text-appBlack2 mt-3 mb-1 text-sm'>Upload Image</h6>
-          <p className='text-appBlack2 font-light text-xs'>
-            click to upload or drag and drop
-          </p>
         </div>
-      </div> */}
+        <div className="flex flex-col mt-[30px] ">
+          <p className="text-sm text-appBlack px-1 mb-[6px]">Due Date</p>
+          <input
+            type="date"
+            value={dueDate}
+            onChange={(e) => setDueDate(e.target.value)}
+            className="bg-white rounded-[8px] border-[#D0D5DD] text-sm border-2  focus:outline-appAsh py-3 px-[14px] text-appBlack placeholder:text-[#717171]"
+          />
+        </div>
         <div className="flex w-full items-center justify-between">
           <AppButton
             style={{ marginTop: 60 }}

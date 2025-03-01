@@ -45,7 +45,10 @@ const Submissions = ({ close }) => {
         {
           user,
           comment,
-          grade,
+          grade:
+            new Date(activeModule?.dueDate) < Date.now()
+              ? parseInt(grade) * 0.95
+              : grade,
         }
       );
       toast.success(res?.data?.message, { id: loader });

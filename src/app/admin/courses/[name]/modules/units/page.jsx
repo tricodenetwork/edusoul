@@ -16,6 +16,7 @@ const Index = () => {
   const [add, setAdd] = useState(false);
   const { module } = useSelector((state) => state.module);
   const { course } = useSelector((state) => state.network);
+
   const dispatch = useDispatch();
   const activeModule = course?.modules?.find((_, index) => index == module - 1);
 

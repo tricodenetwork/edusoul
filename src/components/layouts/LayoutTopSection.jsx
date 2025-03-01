@@ -17,7 +17,7 @@ const LayoutTopSection = ({ courseId }) => {
   // const course = coursesData.find((item) => item.id == courseId);
   const { module } = useSelector((state) => state.module);
   const router = useRouter();
-  const { courses, items, course, loading } = useSelector(
+  const { courses, items, course, loading, error } = useSelector(
     (state) => state.network
   );
   const activeModule = course?.modules?.find((item) => item.id == module);
@@ -40,8 +40,8 @@ const LayoutTopSection = ({ courseId }) => {
     const loader = toast.loading("Loading...");
     try {
       const res = await axios.post(`/api/add-module?course=${course?.id}`, {
-        id: course?.modules?.length + 1,
-        title: `Module ${course?.modules?.length + 1}`,
+        id: (course?.modules?.length ?? 0) + 1,
+        title: `Module ${(course?.modules?.length ?? 0) + 1}`,
         units: [],
       });
       fetchAllCourses();

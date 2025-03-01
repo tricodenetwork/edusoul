@@ -19,7 +19,6 @@ const AddLesson = ({ setAdd }) => {
   const { course } = useSelector((state) => state.network);
   const [title, setTitle] = useState(lesson?.title);
   const [note, setNote] = useState(lesson?.note);
-  const [link, setLink] = useState(lesson?.link);
   const dispatch = useDispatch();
   const activeModule = course?.modules?.find((item) => item.id == module);
   console.log(lesson, "lesson");
@@ -57,19 +56,17 @@ const AddLesson = ({ setAdd }) => {
   const handleFileChange = (e) => {
     setFile(e.target.files[0]);
   };
+  console.log(lesson?.id ?? (activeModule?.units?.length ?? 0) + 1, "knlsnsl");
   const handleSubmit = async () => {
     const loading = toast.loading("Adding...");
-    console.log(lesson?.id ?? activeModule?.units?.length + 1, "knlsnsl");
     try {
       const response = await axios.post(
         `/api/add-lesson?course=${course.id}&module=${module}`,
         {
-          id: lesson?.id ?? activeModule?.units?.length + 1,
+          id: lesson?.id ?? (activeModule?.units?.length ?? 0) + 1,
           title,
-          link,
           note: note,
           file: file ? file.name : null,
-          assignment: lesson.assignment,
         }
       );
 
@@ -110,16 +107,7 @@ const AddLesson = ({ setAdd }) => {
         <p className="text-sm text-appBlack px-1 mb-[6px]">Lesson note</p>
         <ContentBox content={note} setContent={setNote} />
       </div>
-      <div className="flex flex-col mt-[30px] ">
-        <p className="text-sm text-appBlack px-1 mb-[6px]">Class link</p>
-        <input
-          type="text"
-          value={link}
-          onChange={(e) => setLink(e.target.value)}
-          placeholder="Enter class link"
-          className="bg-white rounded-[8px] border-[#D0D5DD] text-sm border-2  focus:outline-appAsh py-3 px-[14px] text-appBlack placeholder:text-[#717171]"
-        />
-      </div>
+
       {/* <div
         onDragEnter={handleDragEnter}
         onDragLeave={handleDragLeave}
