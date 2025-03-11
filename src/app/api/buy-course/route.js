@@ -6,7 +6,14 @@ import { headers } from "next/headers";
 if (process.env.STRIPE_SECRET_KEY_TEST === undefined) {
   throw new Error("STRIPE_SECRETE_KEY_TEST is not defined");
 }
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY_TEST);
+if (process.env.STRIPE_SECRET_KEY === undefined) {
+  throw new Error("STRIPE_SECRETE_KEY is not defined");
+}
+const stripe = new Stripe(
+  process.env.NODE_ENV == "production"
+    ? process.env.STRIPE_SECRET_KEY
+    : process.env.STRIPE_SECRET_KEY_TEST
+);
 
 const buy = async (req) => {
   try {

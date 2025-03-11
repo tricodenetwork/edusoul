@@ -21,10 +21,17 @@ import Link from "next/link";
 import TimeTable from "@/components/TimeTable";
 
 if (process.env.NEXT_PUBLIC_STRIPE_KEY_TEST === undefined) {
+  throw new Error("NEXT_PUBLIC_STRIPE_KEY_TEST is not defined");
+}
+if (process.env.NEXT_PUBLIC_STRIPE_KEY === undefined) {
   throw new Error("NEXT_PUBLIC_STRIPE_KEY is not defined");
 }
 
-loadStripe(process.env.NEXT_PUBLIC_STRIPE_KEY_TEST);
+loadStripe(
+  process.env.NODE_ENV == "production"
+    ? process.env.NEXT_PUBLIC_STRIPE_KEY
+    : process.env.NEXT_PUBLIC_STRIPE_KEY_TEST
+);
 function CourseDetails() {
   const searchParams = useSearchParams();
   const CourseId = searchParams.get("id");
@@ -184,8 +191,10 @@ function CourseDetails() {
                 </p>
 
                 <Link
-                  href={""}
+                  href={`/assets/prospectus/${course.id}.pdf`}
                   className="w-full py-3.5 bg-white border border-red-800 justify-center items-center inline-flex"
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
                   <div className="w-48 h-5 text-center text-red-800 text-base font-bold">
                     {"Download"}
@@ -198,8 +207,7 @@ function CourseDetails() {
                 </div>
                 <div className='self-stretch h-4 text-center text-neutral-500 text-xs font-normal'>
                   Cancel anytime
-                </div>
-              </div> */}
+                </div> */}
             </div>
           </div>
         </div>

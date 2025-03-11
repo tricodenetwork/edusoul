@@ -91,30 +91,38 @@ export default function Footer({ mobile }) {
           <div className="flex w-auto flex-row gap-4 justify-center items-center">
             <div className="py-3 justify-start items-center gap-2 flex">
               <Link
+                target="_blank"
                 href={
                   "https://docs.google.com/document/d/1uDpbCQDvDR5tIw-_5bneIZxUJhtbVEpsIhuVsXJRB0w/edit?tab=t.0"
                 }
                 className="text-slate-600 text-base font-normal font-['Roboto'] leading-snug"
               >
-                Terms
+                Terms & Privacy
               </Link>
             </div>
-            <div className="py-3 justify-start items-center gap-2 flex">
+            {/* <div className="py-3 justify-start items-center gap-2 flex">
               <div className="text-slate-600 text-base font-normal font-['Roboto'] leading-snug">
                 Privacy
               </div>
-            </div>
-            <div className="py-3 justify-start items-center gap-2 flex">
+            </div> */}
+            {/* <div className="py-3 justify-start items-center gap-2 flex">
               <div className="text-slate-600 text-base font-normal font-['Roboto'] leading-snug">
                 Contact
               </div>
-            </div>
+            </div> */}
           </div>
 
           <div className="justify-end items-center gap-4 flex">
             <LinkedInIcon />
             <TwitterIcon />
-            <InstagramIcon />
+            <Link
+              target="_blank"
+              href={
+                "https://www.instagram.com/edusouldistinct?igsh=MWt6MG84MGNzNmhraw=="
+              }
+            >
+              <InstagramIcon />
+            </Link>
           </div>
         </div>
       </div>
