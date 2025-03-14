@@ -212,17 +212,19 @@ function CourseDetails() {
           </div>
         </div>
       </div>
-      <div className="px-[5vw]">
-        <p>Click on the link below to apply for a scholarship</p>
-        <Link
-          className="text-blue-700 text-xl"
-          href={
-            "https://docs.google.com/forms/d/e/1FAIpQLSdf-vJK77PPLR-ZOOlhN9fXRhI1crItqMHIa0Zm5Pxp3Hg47g/viewform?usp=sharing"
-          }
-        >
-          Apply for scholarship
-        </Link>
-      </div>
+      {course?.id == 2 && (
+        <div className="px-[5vw]">
+          <p>Click on the link below to apply for a bursary </p>
+          <Link
+            className="text-blue-700 text-xl"
+            href={
+              "https://docs.google.com/forms/d/e/1FAIpQLSdf-vJK77PPLR-ZOOlhN9fXRhI1crItqMHIa0Zm5Pxp3Hg47g/viewform?usp=sharing"
+            }
+          >
+            Apply for Bursary
+          </Link>
+        </div>
+      )}
 
       <section className="mt-[2vh] md:mt-[9vh] w-full px-3 md:px-[7vw]">
         <Courses />

@@ -55,6 +55,12 @@ export const navdata = [
     route2: "/#faq",
     label: "FAQ",
   },
+  {
+    imgURL: <LocalLibraryIcon />,
+    route: "#contact",
+    route2: "/#contact",
+    label: "Contact us",
+  },
 ];
 
 export const adminNavData = [

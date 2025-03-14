@@ -6,7 +6,7 @@ const initialState = {
   course: {},
   items: [],
   users: [],
-  assignments:[],
+  assignments: [],
   loading: false,
   error: null,
 };
@@ -16,20 +16,26 @@ export const fetchCourses = createAsyncThunk("api/courses", async (id) => {
   const res = await axios.get(`/api/courses`);
   const course = res.data.find((item) => item.id == id);
   const items = course?.modules?.map((module) => module.id);
-  return { courses: res.data, course: course, items: items };
+  return {
+    courses: res.data.sort((a, b) => a.id - b.id),
+    course: course,
+    items: items,
+  };
 });
 
 export const fetchUsers = createAsyncThunk("api/users", async () => {
   const res = await axios.get(`/api/users`);
- 
+
   return res.data;
 });
 
-export const fetchAssignments = createAsyncThunk("api/assignments", async () => {
-  const res = await axios.get(`/api/assignments`);
+export const fetchAssignments = createAsyncThunk(
+  "api/assignments",
+  async () => {
+    const res = await axios.get(`/api/assignments`);
     return res.data;
-  
-});
+  }
+);
 
 const networkSlice = createSlice({
   name: "network",
@@ -74,7 +80,7 @@ const networkSlice = createSlice({
       .addCase(fetchAssignments.pending, (state) => {
         state.loading = true;
         state.error = null;
-      })
+      });
   },
 });
 

@@ -1,13 +1,9 @@
 "use client";
 
-import { useState, useEffect } from "react";
 import CourseList from "@/components/shared/Courses/courseList";
-import { coursesData } from "@/data";
-import Footer from "@/components/shared/Footer";
-import Navbar from "@/components/shared/NavBar/nav";
-import { useSelector } from "react-redux";
 import { fetchCourses } from "@/redux/slices/networkSlice";
-import { useDispatch } from "react-redux";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 const state = [
   "All Programme",
@@ -29,17 +25,17 @@ export default function Courses() {
   return (
     <>
       <section
-        className='pt-[7em] sm:pt-2 md:pt-[9em] mb-8 px-[7vw] w-full justify-center items-center'
-        id='courses'
+        className="pt-[7em] sm:pt-2 md:pt-[9em] mb-8 px-[7vw] w-full justify-center items-center"
+        id="courses"
       >
-        <div className='flex flex-col justify-center items-center gap-4'>
-          <h5 className='text-center text-slate-600 text-xl font-bold uppercase leading-tight tracking-[3px]'>
+        <div className="flex flex-col justify-center items-center gap-4">
+          <h5 className="text-center text-slate-600 text-xl font-bold uppercase leading-tight tracking-[3px]">
             OUR courses
           </h5>
-          <h2 className='text-center text-slate-900 text-[30px] md:text-[56px] font-bold'>
+          <h2 className="text-center text-slate-900 text-[30px] md:text-[56px] font-bold">
             Access transformational courses
           </h2>
-          <p className='w-[90%] text-center text-slate-900 text-lg font-normal'>
+          <p className="w-[90%] text-center text-slate-900 text-lg font-normal">
             Here are a list of all courses we currently offer at Edusoul
           </p>
 
@@ -57,7 +53,7 @@ export default function Courses() {
             ))}
           </div> */}
 
-          <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4  gap-5 mt-6'>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4  gap-5 mt-6">
             {courses.map((course) => (
               <CourseList key={course.id} id={course.id} course={course} />
             ))}

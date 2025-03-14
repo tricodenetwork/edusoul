@@ -119,7 +119,7 @@ export default function Footer({ mobile }) {
             </Link>
           </div>
         </div>
-        <div>
+        <div id="contact">
           <p className="text-slate-600 text-base font-normal font-['Roboto'] leading-snug">
             info@edusouldistinct.com
           </p>
