@@ -10,7 +10,7 @@ import { useDispatch } from "react-redux";
 import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
 import { fetchCourses, fetchUsers } from "@/redux/slices/networkSlice";
-import { useUser } from "@/context/UserContext";
+import { useUser } from "@/hooks/useUser";
 
 const DashboardHeader = () => {
   // --------------------------------------------VARIABLES

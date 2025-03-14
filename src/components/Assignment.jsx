@@ -6,7 +6,7 @@ import AppButton from "./ui/AppButton";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { useSelector } from "react-redux";
-import { useUser } from "@/context/UserContext";
+import { useUser } from "@/hooks/useUser";
 import { useDispatch } from "react-redux";
 import { fetchAssignments } from "@/redux/slices/networkSlice";
 

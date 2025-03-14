@@ -8,7 +8,7 @@ import { upload } from "@vercel/blob/client";
 import { useSession } from "next-auth/react";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
-import { useUser } from "@/context/UserContext";
+import { useUser } from "@/hooks/useUser";
 import { baseUrl } from "../../../../../config/config";
 
 const Index = () => {

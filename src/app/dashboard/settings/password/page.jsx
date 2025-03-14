@@ -1,7 +1,7 @@
 "use client";
 
 import AppButton from "@/components/ui/AppButton";
-import { useUser } from "@/context/UserContext";
+import { useUser } from "@/hooks/useUser";
 import axios from "axios";
 import { useState } from "react";
 import toast from "react-hot-toast";
@@ -41,38 +41,38 @@ const Index = () => {
   };
 
   return (
-    <div className='border border-[#99B2C6] w-full h-max px-[3%]  mt-4 pt-[40px] pb-[40px] my-4 bg-white rounded-[8px]'>
-      <div className=' flex flex-col px-[5%]'>
-        <div className='flex flex-col items-start mt-[20px] gap-[48px]'>
-          <div className='flex flex-col w-[60%] mt-[0px] '>
-            <p className='text-sm text-appBlack px-1 mb-[6px]'>
+    <div className="border border-[#99B2C6] w-full h-max px-[3%]  mt-4 pt-[40px] pb-[40px] my-4 bg-white rounded-[8px]">
+      <div className=" flex flex-col px-[5%]">
+        <div className="flex flex-col items-start mt-[20px] gap-[48px]">
+          <div className="flex flex-col w-[60%] mt-[0px] ">
+            <p className="text-sm text-appBlack px-1 mb-[6px]">
               Current Password
             </p>
             <input
-              type='password'
+              type="password"
               value={currentPassword}
               onChange={(e) => setCurrentPassword(e.target.value)}
-              className='bg-white rounded-[8px] border-[#D0D5DD] text-sm border-2 focus:outline-appAsh py-3 px-[14px] text-appBlack placeholder:text-[#717171]'
+              className="bg-white rounded-[8px] border-[#D0D5DD] text-sm border-2 focus:outline-appAsh py-3 px-[14px] text-appBlack placeholder:text-[#717171]"
             />
           </div>
-          <div className='flex flex-col w-[60%] mt-[0px] '>
-            <p className='text-sm text-appBlack px-1 mb-[6px]'>New Password</p>
+          <div className="flex flex-col w-[60%] mt-[0px] ">
+            <p className="text-sm text-appBlack px-1 mb-[6px]">New Password</p>
             <input
-              type='password'
+              type="password"
               value={newPassword}
               onChange={(e) => setNewPassword(e.target.value)}
-              className='bg-white rounded-[8px] border-[#D0D5DD] text-sm border-2 focus:outline-appAsh py-3 px-[14px] text-appBlack placeholder:text-[#717171]'
+              className="bg-white rounded-[8px] border-[#D0D5DD] text-sm border-2 focus:outline-appAsh py-3 px-[14px] text-appBlack placeholder:text-[#717171]"
             />
           </div>
-          <div className='flex flex-col w-[60%] mt-[0px] '>
-            <p className='text-sm text-appBlack px-1 mb-[6px]'>
+          <div className="flex flex-col w-[60%] mt-[0px] ">
+            <p className="text-sm text-appBlack px-1 mb-[6px]">
               Re-Type New Password
             </p>
             <input
-              type='password'
+              type="password"
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
-              className='bg-white rounded-[8px] border-[#D0D5DD] text-sm border-2 focus:outline-appAsh py-3 px-[14px] text-appBlack placeholder:text-[#717171]'
+              className="bg-white rounded-[8px] border-[#D0D5DD] text-sm border-2 focus:outline-appAsh py-3 px-[14px] text-appBlack placeholder:text-[#717171]"
             />
           </div>
         </div>

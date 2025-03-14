@@ -2,7 +2,7 @@
 
 import Courses from "@/components/shared/Courses";
 import AppButton from "@/components/ui/AppButton";
-import { useUser } from "@/context/UserContext";
+import { useUser } from "@/hooks/useUser";
 import { coursesData } from "@/data";
 import { loadStripe } from "@stripe/stripe-js";
 import axios from "axios";

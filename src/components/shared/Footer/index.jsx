@@ -105,13 +105,7 @@ export default function Footer({ mobile }) {
                 Privacy
               </div>
             </div> */}
-            {/* <div className="py-3 justify-start items-center gap-2 flex">
-              <div className="text-slate-600 text-base font-normal font-['Roboto'] leading-snug">
-                Contact
-              </div>
-            </div> */}
           </div>
-
           <div className="justify-end items-center gap-4 flex">
             <LinkedInIcon />
             <TwitterIcon />
@@ -124,6 +118,14 @@ export default function Footer({ mobile }) {
               <InstagramIcon />
             </Link>
           </div>
+        </div>
+        <div>
+          <p className="text-slate-600 text-base font-normal font-['Roboto'] leading-snug">
+            info@edusouldistinct.com
+          </p>
+          <p className="text-slate-600 text-base font-normal font-['Roboto'] leading-snug">
+            +447305764788
+          </p>
         </div>
       </div>
     </section>

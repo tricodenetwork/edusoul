@@ -6,7 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import NoCoursesDisplayHolder from "@/components/shared/NoCoursesDisplayHolder";
-import { useUser } from "@/context/UserContext";
+import { useUser } from "@/hooks/useUser";
 import { ClockLoader } from "react-spinners";
 import { useSelector } from "react-redux";
 
@@ -44,12 +44,12 @@ const Index = () => {
   }, [active, user]);
 
   return (
-    <div className='p-[44px] bg-white h-full'>
-      <h4 className='font-medium text-xl text-appBlack mb-[40px]'>
+    <div className="p-[44px] bg-white h-full">
+      <h4 className="font-medium text-xl text-appBlack mb-[40px]">
         Your Courses
       </h4>
-      <div className='flex items-center justify-between'>
-        <div className='w-[60%] flex justify-between items-center'>
+      <div className="flex items-center justify-between">
+        <div className="w-[60%] flex justify-between items-center">
           {state.map((item, index) => (
             <button
               onClick={() => setActive(item)}
@@ -62,7 +62,7 @@ const Index = () => {
             </button>
           ))}
         </div>
-        <p className=' text-primary'>1/10 Completed</p>
+        <p className=" text-primary">1/10 Completed</p>
       </div>
       {/* Notifications */}
       {/* <div className='w-full p-6 mt-8 rounded-lg border border-stone-300 flex-col justify-start items-start gap-6 inline-flex'>
@@ -101,42 +101,42 @@ const Index = () => {
           </tbody>
         </table>
       </div> */}
-      <div className='h-[90%] my-2 w-full relative overflow-y-scroll'>
+      <div className="h-[90%] my-2 w-full relative overflow-y-scroll">
         {!user ? (
           <ClockLoader
             loading={true}
             width={500}
             height={500}
-            color='#90050f'
-            className='absolute mx-auto top-1/2 -translate-y-1/2 text-primary'
+            color="#90050f"
+            className="absolute mx-auto top-1/2 -translate-y-1/2 text-primary"
           />
         ) : (
           activeCourseList?.map((item, index) => (
             <div
               key={index + 1}
-              className='flex relative items-center justify-between bg-white my-4  rounded-[8px] py-4 pl-4 pr-[55px]'
+              className="flex relative items-center justify-between bg-white my-4  rounded-[8px] py-4 pl-4 pr-[55px]"
             >
-              <div className='h-[85%] absolute right-[25%] bg-appAsh2 w-[1px]'></div>
+              <div className="h-[85%] absolute right-[25%] bg-appAsh2 w-[1px]"></div>
               <Image
                 // src='/assets/images/course.png'
                 src={`/assets/images${item.imgURL}`}
                 width={250}
                 height={120}
-                alt='course'
-                className='mr-[24px]'
+                alt="course"
+                className="mr-[24px]"
               />
-              <div className='w-[50%]'>
-                <h5 className='font-medium text-primary text-lg '>
+              <div className="w-[50%]">
+                <h5 className="font-medium text-primary text-lg ">
                   {item.title}
                 </h5>
-                <p className='mt-[8px] text-appBlack'>{`Modules: ${
+                <p className="mt-[8px] text-appBlack">{`Modules: ${
                   item?.modules?.length ?? "0"
                 }`}</p>
-                <div className='mt-[16px] flex items-center justify-between w-max space-x-3'>
+                <div className="mt-[16px] flex items-center justify-between w-max space-x-3">
                   {/* <p className='text-appBlack text-sm'>
                 <strong>Instructor:</strong> John Smith
               </p> */}
-                  <p className='text-appBlack text-sm'>
+                  <p className="text-appBlack text-sm">
                     <strong>Due Date:</strong> 15/07/2024
                   </p>
                 </div>
@@ -150,7 +150,7 @@ const Index = () => {
                     ? `/course-details?id=${item.id}`
                     : ""
                 }
-                className='bg-primary hover:-translate-y-1 duration-200 text-white font-bold w-[180px] h-[52px] flex items-center justify-center rounded hover:bg-red-800'
+                className="bg-primary hover:-translate-y-1 duration-200 text-white font-bold w-[180px] h-[52px] flex items-center justify-center rounded hover:bg-red-800"
               >
                 {active == "Recommended" ? `Enroll` : `Continue Course`}
               </Link>
@@ -172,7 +172,7 @@ const Index = () => {
               </div> */}
             </div>
           )) ?? (
-            <div className='flex relative  items-center  bg-white my-4  rounded-[8px] py-4 pl-4 pr-[55px]'>
+            <div className="flex relative  items-center  bg-white my-4  rounded-[8px] py-4 pl-4 pr-[55px]">
               <NoCoursesDisplayHolder state={active} setState={setActive} />
             </div>
           )

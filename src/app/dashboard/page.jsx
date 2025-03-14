@@ -3,15 +3,14 @@ import CircularProgressBar from "@/components/CircularProgressBar";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect } from "react";
-import { getUser } from "@/lib/actions";
 import NoCoursesDisplayHolder from "@/components/shared/NoCoursesDisplayHolder";
-import { useUser } from "@/context/UserContext";
+import { useUser } from "@/hooks/useUser";
 import { useSelector } from "react-redux";
 import { fetchCourses } from "@/redux/slices/networkSlice";
 import { useDispatch } from "react-redux";
 
 const Index = () => {
-  const { user } = useUser();
+  const { user } = useUser(true);
   const { courses, assignments } = useSelector((state) => state.network);
   const userCourses = courses.filter((item) =>
     user?.courses?.map((item) => item.id).includes(item.id)

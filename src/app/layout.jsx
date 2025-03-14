@@ -5,7 +5,7 @@ import Footer from "@/components/shared/Footer";
 import { Toaster } from "react-hot-toast";
 import NextAuthSessionProvider from "@/context/SessionProvider";
 import AuthContextProvider from "@/context/AuthContext";
-import UserContextProvider from "@/context/UserContext";
+import UserContextProvider from "@/hooks/useUser";
 import StoreProvider from "@/components/StoreProvider";
 
 const inter = Roboto({
@@ -21,21 +21,19 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang='en'>
+    <html lang="en">
       <body
         style={inter.style}
         className={`${inter.className} flex w-full h-full overflow-y-scroll flex-col`}
       >
         <NextAuthSessionProvider>
           <AuthContextProvider>
-            <UserContextProvider>
-              <StoreProvider>
-                <Toaster position='top-center' />
-                <Navbar />
-                {children}
-                <Footer />
-              </StoreProvider>
-            </UserContextProvider>
+            <StoreProvider>
+              <Toaster position="top-center" />
+              <Navbar />
+              {children}
+              <Footer />
+            </StoreProvider>
           </AuthContextProvider>
         </NextAuthSessionProvider>
       </body>
