@@ -55,7 +55,7 @@ function CourseDetails() {
     try {
       const res = await axios.post(`${baseUrl}api/buy-course`, {
         id,
-        priceId: course?.priceId,
+        priceId: course?.priceId.trim(),
         email: user?.email,
       });
 
