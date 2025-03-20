@@ -41,9 +41,9 @@ const buy = async (req) => {
       { status: 200 }
     );
   } catch (error) {
-    console.error("Error:", error);
+    console.error("Error:", error.message);
     return Response.json(
-      { error: "Something went wrong" },
+      { message: error.message },
       {
         status: 500,
       }

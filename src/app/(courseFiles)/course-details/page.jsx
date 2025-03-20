@@ -64,7 +64,9 @@ function CourseDetails() {
       router.replace(res.data.url);
     } catch (error) {
       console.error("This is the error", error);
-      toast.error("Problem Purchasing", { id: toastId });
+      toast.error(error.response.data.message ?? "Problem Purchasing", {
+        id: toastId,
+      });
     }
   };
 
