@@ -91,7 +91,7 @@ const DashboardHeader = () => {
           />
         </Link> */}
         <Link
-          href={"/"}
+          href={"#"}
           className="px-[16px] py-[9px] flex items-center justify-center rounded-full shadow-[0px_2px_8px] shadow-black/10"
         >
           <Image

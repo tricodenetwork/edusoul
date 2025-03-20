@@ -144,22 +144,24 @@ function CourseDetails() {
                 </div>
               </div>
             ))}
-            <div className="flex-col justify-start items-start gap-3 flex">
-              <div className="h-8 flex-col  justify-start  gap-3 flex">
-                <h5 className=" text-zinc-800 text-base md:text-2xl font-bold leading-normal">
-                  {course.price}
-                </h5>
+            {course?.id > 1 && (
+              <div className="flex-col justify-start items-start gap-3 flex">
+                <div className="h-8 flex-col  justify-start  gap-3 flex">
+                  <h5 className=" text-zinc-800 text-base md:text-2xl font-bold leading-normal">
+                    {course.price}
+                  </h5>
+                </div>
+                <AppButton
+                  styles={
+                    userHasCourse
+                      ? "bg-green-500 cursor-not-allowed opacity-50 text-black"
+                      : ""
+                  }
+                  title={userHasCourse ? "Purchased" : "Buy Course"}
+                  action={buyCourse}
+                />
               </div>
-              <AppButton
-                styles={
-                  userHasCourse
-                    ? "bg-green-500 cursor-not-allowed opacity-50 text-black"
-                    : ""
-                }
-                title={userHasCourse ? "Purchased" : "Buy Course"}
-                action={buyCourse}
-              />
-            </div>
+            )}
           </div>
 
           <div className="w-full   md:w-[340px]  relative bg-white shadow border-b border-gray-300">
@@ -213,7 +215,7 @@ function CourseDetails() {
         </div>
       </div>
       {course?.id == 2 && (
-        <div className="px-[5vw]">
+        <div className="px-[5vw] text-lg">
           <p>Click on the link below to apply for a bursary </p>
           <Link
             className="text-blue-700 text-xl"
@@ -222,6 +224,19 @@ function CourseDetails() {
             }
           >
             Apply for Bursary
+          </Link>
+        </div>
+      )}
+      {course?.id == 1 && (
+        <div className="px-[5vw] text-lg">
+          <p>Click on the link below to apply for a scholarship </p>
+          <Link
+            className="text-blue-700 text-xl"
+            href={
+              "https://docs.google.com/forms/d/e/1FAIpQLSdf-vJK77PPLR-ZOOlhN9fXRhI1crItqMHIa0Zm5Pxp3Hg47g/viewform?usp=sharing"
+            }
+          >
+            Apply for Scholarship
           </Link>
         </div>
       )}

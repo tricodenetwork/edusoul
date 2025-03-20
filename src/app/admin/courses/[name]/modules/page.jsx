@@ -1,55 +1,20 @@
 "use client";
+import axios from "axios";
 import AppButton from "@/components/ui/AppButton";
 import { fetchAssignments, fetchCourses } from "@/redux/slices/networkSlice";
-import axios from "axios";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { useDispatch, useSelector } from "react-redux";
 import { ClockLoader } from "react-spinners";
 
 const Index = () => {
-  const [isDragging, setIsDragging] = useState(false);
-  const [file, setFile] = useState(null);
   const { module } = useSelector((state) => state.module);
   const { course, loading } = useSelector((state) => state.network);
-
   const dispatch = useDispatch();
   const activeModule = course?.modules?.find((item) => item.id == module);
   const [link, setLink] = useState(activeModule?.link ?? "");
   const [title, setTitle] = useState(activeModule?.title ?? "");
   const [dueDate, setDueDate] = useState(activeModule?.dueDate ?? "");
-  const inputFileRef = useRef(null);
-  const handleButtonClick = () => {
-    inputFileRef.current.click();
-  };
-  const handleDragEnter = (e) => {
-    e.preventDefault();
-    setIsDragging(true);
-  };
-
-  const handleDragLeave = (e) => {
-    if (!e.currentTarget.contains(e.relatedTarget)) {
-      setIsDragging(false);
-    }
-  };
-
-  const handleDragOver = (e) => {
-    e.preventDefault();
-  };
-
-  function handleDrop(e) {
-    e.preventDefault();
-    e.stopPropagation();
-    setIsDragging(false);
-    if (e.dataTransfer.files && e.dataTransfer.files[0]) {
-      const file = e.dataTransfer.files[0];
-      setFile(file); // Save the file to state
-    }
-  }
-
-  const handleFileChange = (e) => {
-    setFile(e.target.files[0]);
-  };
 
   const handleUpdateModuleTitle = async () => {
     const loader = toast.loading("Loading...");

@@ -16,6 +16,7 @@ const update = async (req) => {
 
     // Check if the user exists
     const existingUser = await db.collection("users").findOne({ email });
+    console.log(existingUser);
     if (!existingUser) {
       return Response.json({ message: "User not found." }, { status: 404 });
     }

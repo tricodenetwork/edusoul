@@ -63,7 +63,9 @@ const AddLesson = ({ setAdd }) => {
       const response = await axios.post(
         `/api/add-lesson?course=${course.id}&module=${module}`,
         {
-          id: lesson?.id ?? (activeModule?.units?.length ?? 0) + 1,
+          id:
+            lesson?.id ??
+            (activeModule?.units[activeModule?.units?.length - 1]?.id ?? 0) + 1,
           title,
           note: note,
           file: file ? file.name : null,

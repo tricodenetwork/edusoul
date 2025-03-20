@@ -8,6 +8,7 @@ export const POST = async (req) => {
     const title = formData.get("title");
     const price = formData.get("price");
     const priceId = formData.get("priceId");
+    const priceId2 = formData.get("priceId2");
     const description = formData.get("description");
     const image = formData.get("image");
     const courseId = parseInt(formData.get("id")); // Optional: For editing
@@ -36,6 +37,7 @@ export const POST = async (req) => {
         title,
         price,
         priceId,
+        priceId2,
         snippet: description,
       };
 
@@ -53,13 +55,22 @@ export const POST = async (req) => {
       );
     }
 
+    const imageOptions = [
+      "/headphones.png",
+      "/leadership.png",
+      "/book.png",
+      "/hat.png",
+    ];
+    const randomIndex = Math.floor(Math.random() * imageOptions.length);
     // If no courseId, create a new course
     const newCourse = {
       id: courseId,
       title,
       price,
       priceId,
+      priceId2,
       snippet: description,
+      imgURL: imageOptions[randomIndex], // Randomly selected image URL
       modules: [], // Initialize with an empty array of modules
       createdAt: new Date(),
       updatedAt: new Date(),

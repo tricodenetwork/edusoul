@@ -24,6 +24,7 @@ const Index = () => {
   const [courseTitle, setCourseTitle] = useState(course?.title ?? "");
   const [price, setPrice] = useState(course?.price ?? "");
   const [priceId, setPriceId] = useState(course?.priceId ?? "");
+  const [priceId2, setPriceId2] = useState(course?.priceId2 ?? "");
   const [description, setDescription] = useState(course?.snippet ?? "");
   const [file, setFile] = useState(null);
   const [isDragging, setIsDragging] = useState(false);
@@ -77,6 +78,7 @@ const Index = () => {
       formData.append("id", course.id ?? courses.length + 1);
       formData.append("price", price);
       formData.append("priceId", priceId);
+      formData.append("priceId2", priceId2);
       formData.append("description", description);
       if (file) {
         formData.append("image", file);
@@ -112,68 +114,81 @@ const Index = () => {
   };
 
   return (
-    <div style={poppins.style} className='h-max pl-[5%] pr-[20%]  pt-[2.5%]'>
+    <div style={poppins.style} className="h-max pl-[5%] pr-[20%]  pt-[2.5%]">
       <Link
         href={"/admin/courses"}
-        className='font-medium flex items-center gap-2  mb-8'
+        className="font-medium flex items-center gap-2  mb-8"
       >
         <Image
           src={"/assets/icons/back.svg"}
           width={16}
           height={16}
-          alt='back'
+          alt="back"
         />
-        <p className='text-xs text-[#1A1818]'>Back</p>
+        <p className="text-xs text-[#1A1818]">Back</p>
       </Link>
-      <div className='flex w-full justify-between'>
+      <div className="flex w-full justify-between">
         <TopNav
-          main='Courses'
-          homeLink='/admin/courses'
+          main="Courses"
+          homeLink="/admin/courses"
           first={"Add"}
           firstLink={""}
         />
       </div>
-      <div className='border border-[#99B2C6] w-full h-max pl-[5%] pr-[12%] pt-[40px] pb-[120px] my-8 bg-white rounded-[8px]'>
-        <div className='flex flex-col '>
-          <p className='text-sm text-appBlack px-1 mb-[6px]'>Name of course</p>
+      <div className="border border-[#99B2C6] w-full h-max pl-[5%] pr-[12%] pt-[40px] pb-[120px] my-8 bg-white rounded-[8px]">
+        <div className="flex flex-col ">
+          <p className="text-sm text-appBlack px-1 mb-[6px]">Name of course</p>
           <input
-            type='text'
-            placeholder='Enter name of course'
+            type="text"
+            placeholder="Enter name of course"
             value={courseTitle}
             onChange={(e) => setCourseTitle(e.target.value)}
-            className='bg-white rounded-[8px] border-[#D0D5DD] text-sm border-2 focus:outline-appAsh py-3 px-[14px] text-appBlack placeholder:text-[#717171]'
+            className="bg-white rounded-[8px] border-[#D0D5DD] text-sm border-2 focus:outline-appAsh py-3 px-[14px] text-appBlack placeholder:text-[#717171]"
           />
         </div>
-        <div className='flex flex-col mt-[30px] '>
-          <p className='text-sm text-appBlack px-1 mb-[6px]'>Price</p>
+        <div className="flex flex-col mt-[30px] ">
+          <p className="text-sm text-appBlack px-1 mb-[6px]">Price</p>
           <input
-            type='text'
-            placeholder='Enter course amount'
+            type="text"
+            placeholder="Enter course amount"
             value={price}
             onChange={(e) => setPrice(e.target.value)}
-            className='bg-white rounded-[8px] border-[#D0D5DD] text-sm border-2  focus:outline-appAsh py-3 px-[14px] text-appBlack placeholder:text-[#717171]'
+            className="bg-white rounded-[8px] border-[#D0D5DD] text-sm border-2  focus:outline-appAsh py-3 px-[14px] text-appBlack placeholder:text-[#717171]"
           />
         </div>
-        <div className='flex flex-col mt-[30px] '>
-          <p className='text-sm text-appBlack px-1 mb-[6px]'>Price Id</p>
+
+        <div className="flex flex-col mt-[30px] ">
+          <p className="text-sm text-appBlack px-1 mb-[6px]">Price Id</p>
           <input
-            type='text'
-            placeholder='Enter price id'
+            type="text"
+            placeholder="Enter price id"
             value={priceId}
             onChange={(e) => setPriceId(e.target.value)}
-            className='bg-white rounded-[8px] border-[#D0D5DD] text-sm border-2  focus:outline-appAsh py-3 px-[14px] text-appBlack placeholder:text-[#717171]'
+            className="bg-white rounded-[8px] border-[#D0D5DD] text-sm border-2  focus:outline-appAsh py-3 px-[14px] text-appBlack placeholder:text-[#717171]"
           />
         </div>
-        <div className='flex flex-col mt-[30px] '>
-          <p className='text-sm text-appBlack px-1 mb-[6px]'>
+        <div className="flex flex-col mt-[30px] ">
+          <p className="text-sm text-appBlack px-1 mb-[6px]">
+            Price Id - Bursary
+          </p>
+          <input
+            type="text"
+            placeholder="Enter price id"
+            value={priceId2}
+            onChange={(e) => setPriceId2(e.target.value)}
+            className="bg-white rounded-[8px] border-[#D0D5DD] text-sm border-2  focus:outline-appAsh py-3 px-[14px] text-appBlack placeholder:text-[#717171]"
+          />
+        </div>
+        <div className="flex flex-col mt-[30px] ">
+          <p className="text-sm text-appBlack px-1 mb-[6px]">
             Course description
           </p>
           <textarea
-            type='text'
-            placeholder='Enter course objective'
+            type="text"
+            placeholder="Enter course objective"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
-            className='bg-white rounded-[8px] border-[#D0D5DD] h-[164px] text-sm border-2  focus:outline-appAsh py-3 px-[14px] text-appBlack placeholder:text-[#717171]'
+            className="bg-white rounded-[8px] border-[#D0D5DD] h-[164px] text-sm border-2  focus:outline-appAsh py-3 px-[14px] text-appBlack placeholder:text-[#717171]"
           />
         </div>
         <div
@@ -189,31 +204,31 @@ const Index = () => {
           {file && (
             <Image
               src={URL.createObjectURL(file)}
-              className='z-20 object-cover border-[#D0D5DD] border-2 rounded-[8px] bg-white'
+              className="z-20 object-cover border-[#D0D5DD] border-2 rounded-[8px] bg-white"
               fill
-              alt='image'
+              alt="image"
             />
           )}
 
           <input
             ref={inputFileRef}
             onChange={handleFileChange}
-            type='file'
-            accept='image/*'
-            className='h-full hidden w-full'
+            type="file"
+            accept="image/*"
+            className="h-full hidden w-full"
           />
-          <p className='text-sm text-appBlack px-1 z-10 mb-[6px]'>
+          <p className="text-sm text-appBlack px-1 z-10 mb-[6px]">
             Course Image
           </p>
-          <div className='w-full flex-1 flex flex-col items-center justify-center '>
+          <div className="w-full flex-1 flex flex-col items-center justify-center ">
             <Image
               src={"/assets/icons/image.svg"}
               width={40}
               height={40}
-              alt='upload'
+              alt="upload"
             />
-            <h6 className='text-appBlack2 mt-3 mb-1 text-sm'>Upload Image</h6>
-            <p className='text-appBlack2 font-light text-xs'>
+            <h6 className="text-appBlack2 mt-3 mb-1 text-sm">Upload Image</h6>
+            <p className="text-appBlack2 font-light text-xs">
               click to upload or drag and drop
             </p>
           </div>

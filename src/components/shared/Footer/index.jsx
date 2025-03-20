@@ -6,6 +6,7 @@ import Image from "next/image";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import InstagramIcon from "@mui/icons-material/Instagram";
+import WhatsappIcon from "@mui/icons-material/WhatsApp";
 import useFunctions from "@/hooks/useFunctions";
 import { Inter } from "next/font/google";
 import Link from "next/link";
@@ -15,6 +16,14 @@ const inter = Inter({ subsets: ["latin"] });
 export default function Footer({ mobile }) {
   const pathname = usePathname();
   const { imageLoader } = useFunctions();
+
+  const handleContactClick = () => {
+    const whatsappUrl = "https://wa.me/+447376268747";
+
+    // Change the preferred contact method
+    // window.open(whatsappUrl, "_blank");
+    window.open(whatsappUrl, "_blank"); // Uncomment if you prefer Telegram
+  };
   return (
     <section
       className={`w-full md:h-72 px-5 md:px-12 bg-gray ${
@@ -117,6 +126,15 @@ export default function Footer({ mobile }) {
             >
               <InstagramIcon />
             </Link>
+            <button onClick={handleContactClick}>
+              {/* <Image
+                src={"/assets/icons/whatsapp.svg"}
+                width={24}
+                height={24}
+                alt="whatsapp"
+              /> */}
+              <WhatsappIcon />
+            </button>
           </div>
         </div>
         <div id="contact">

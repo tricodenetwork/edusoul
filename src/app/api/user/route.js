@@ -11,7 +11,9 @@ const user = async (req) => {
     }
 
     // Check if the email already exists in the database
-    const existingUser = await db.collection("users").findOne({ email: email });
+    const existingUser = await db
+      .collection("users")
+      .findOne({ email: email }, { projection: { _id: 0 } });
 
     if (existingUser) {
       const { password, ...userData } = existingUser;

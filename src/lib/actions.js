@@ -14,7 +14,7 @@ export const getUser = async () => {
 
     const existingUser = await db
       .collection("users")
-      .findOne({ email: session?.user?.email });
+      .findOne({ email: session?.user?.email }, { projection: { _id: 0 } });
     return existingUser;
   } catch (error) {
     console.error(error);
@@ -81,7 +81,7 @@ export const addCourseToUser = async (courseId) => {
       { email: session?.user?.email },
       {
         $push: {
-          courses: { id,registerd:Date.now() },
+          courses: { id, registerd: Date.now() },
         },
       }
     );
