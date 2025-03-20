@@ -18,7 +18,7 @@ export default function Footer({ mobile }) {
   const { imageLoader } = useFunctions();
 
   const handleContactClick = () => {
-    const whatsappUrl = "https://wa.me/+447376268747";
+    const whatsappUrl = "https://wa.me/+447305764788";
 
     // Change the preferred contact method
     // window.open(whatsappUrl, "_blank");
