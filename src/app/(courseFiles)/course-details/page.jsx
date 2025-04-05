@@ -2,23 +2,21 @@
 
 import Courses from "@/components/shared/Courses";
 import AppButton from "@/components/ui/AppButton";
+import Loader from "@/components/ui/Loader";
 import { useUser } from "@/hooks/useUser";
-import { coursesData } from "@/data";
+import { addCourseToUser } from "@/lib/actions";
+import { formatDateWithSuffix } from "@/lib/helper";
+import { fetchCourses } from "@/redux/slices/networkSlice";
 import { loadStripe } from "@stripe/stripe-js";
 import axios from "axios";
 import { useSession } from "next-auth/react";
 import Image from "next/image";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import React, { Suspense, useEffect, useState } from "react";
-import toast from "react-hot-toast";
-import { baseUrl } from "../../../../config/config";
-import { addCourseToUser } from "@/lib/actions";
-import { useSelector } from "react-redux";
-import { useDispatch } from "react-redux";
-import { fetchCourses } from "@/redux/slices/networkSlice";
-import Loader from "@/components/ui/Loader";
 import Link from "next/link";
-import TimeTable from "@/components/TimeTable";
+import { useRouter, useSearchParams } from "next/navigation";
+import { Suspense, useEffect } from "react";
+import toast from "react-hot-toast";
+import { useDispatch, useSelector } from "react-redux";
+import { baseUrl } from "../../../../config/config";
 
 if (process.env.NEXT_PUBLIC_STRIPE_KEY_TEST === undefined) {
   throw new Error("NEXT_PUBLIC_STRIPE_KEY_TEST is not defined");
@@ -43,7 +41,7 @@ function CourseDetails() {
   const { course, loading } = useSelector((state) => state.network);
   const dispatch = useDispatch();
 
-  console.log("user", course);
+  // console.log("user", course);
   const userHasCourse = user?.courses?.some((item) => item.id == CourseId);
 
   const buyCourse = async () => {
@@ -55,7 +53,10 @@ function CourseDetails() {
     try {
       const res = await axios.post(`${baseUrl}api/buy-course`, {
         id,
-        priceId: course?.priceId.trim(),
+        priceId:
+          course?.awardees?.includes(user?.email) && course?.id > 1
+            ? course?.priceId2
+            : course?.priceId.trim(),
         email: user?.email,
       });
 
@@ -97,20 +98,20 @@ function CourseDetails() {
     }
   }, []);
 
-  if (loading) {
-    return (
-      <div className="text-black flex-1 min-h-[88vh] mt-14">
-        <Loader />
-      </div>
-    ); // Show loading indicator
-  }
-  if (!course) {
-    return (
-      <div className="text-black flex-1 min-h-[88vh] mt-14">
-        <Loader />
-      </div>
-    ); // Show loading indicator
-  }
+  // if (loading) {
+  //   return (
+  //     <div className="text-black flex-1 min-h-[88vh] mt-14">
+  //       <Loader />
+  //     </div>
+  //   ); // Show loading indicator
+  // }
+  // if (!course) {
+  //   return (
+  //     <div className="text-black flex-1 min-h-[88vh] mt-14">
+  //       <Loader />
+  //     </div>
+  //   ); // Show loading indicator
+  // }
 
   return (
     <>
@@ -159,7 +160,13 @@ function CourseDetails() {
                       ? "bg-green-500 cursor-not-allowed opacity-50 text-black"
                       : ""
                   }
-                  title={userHasCourse ? "Purchased" : "Buy Course"}
+                  title={
+                    userHasCourse
+                      ? "Enrolled"
+                      : course?.awardees?.includes(user?.email)
+                      ? "Scholarship"
+                      : "Buy Course"
+                  }
                   action={buyCourse}
                 />
               </div>
@@ -187,7 +194,7 @@ function CourseDetails() {
                     />
                   </div>
                   <h2 className="text-zinc-800 text-sm font-normal">
-                    Content Information
+                    Begins {formatDateWithSuffix(course?.start)}
                   </h2>
                 </div>
                 <p className="text-neutral-600 text-sm font-normal">
@@ -196,7 +203,7 @@ function CourseDetails() {
 
                 <Link
                   href={`/assets/prospectus/${course.id}.pdf`}
-                  className="w-full py-3.5 bg-white border border-red-800 justify-center items-center inline-flex"
+                  className="w-full py-3.5 hover:scale-105 duration-200 bg-white border border-red-800 justify-center items-center inline-flex"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -216,8 +223,8 @@ function CourseDetails() {
           </div>
         </div>
       </div>
-      {course?.id == 2 && (
-        <div className="px-[5vw] text-lg">
+      {course?.id == 2 && !course?.awardees?.includes(user?.email) && (
+        <div className="px-[5vw] my-4 text-lg">
           <p>Click on the link below to apply for a bursary </p>
           <Link
             className="text-blue-700 text-xl"
@@ -229,8 +236,8 @@ function CourseDetails() {
           </Link>
         </div>
       )}
-      {course?.id == 1 && (
-        <div className="px-[5vw] text-lg">
+      {course?.id == 1 && !course?.awardees?.includes(user?.email) && (
+        <div className="px-[5vw] my-4 text-lg">
           <p>Click on the link below to apply for a scholarship </p>
           <Link
             className="text-blue-700 text-xl"
@@ -243,9 +250,9 @@ function CourseDetails() {
         </div>
       )}
 
-      <section className="mt-[2vh] md:mt-[9vh] w-full px-3 md:px-[7vw]">
+      {/* <section className="mt-[2vh] md:mt-[9vh] w-full px-3 md:px-[7vw]">
         <Courses />
-      </section>
+      </section> */}
     </>
   );
 }

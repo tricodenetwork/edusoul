@@ -112,7 +112,9 @@ const Index = () => {
           />
         </div>
         <div className="flex flex-col mt-[30px] ">
-          <p className="text-sm text-appBlack px-1 mb-[6px]">Due Date</p>
+          <p className="text-sm text-appBlack px-1 mb-[6px]">
+            Assignment Due Date
+          </p>
           <input
             type="date"
             value={dueDate}

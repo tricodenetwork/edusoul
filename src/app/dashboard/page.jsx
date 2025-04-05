@@ -179,7 +179,7 @@ const Index = () => {
                     Notifications
                   </div>
                 </div>
-                {user?.notifications.map((item, index) => {
+                {user?.notifications?.map((item, index) => {
                   return (
                     <div
                       key={index.toString()}

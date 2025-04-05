@@ -26,6 +26,8 @@ const Index = () => {
   const [priceId, setPriceId] = useState(course?.priceId ?? "");
   const [priceId2, setPriceId2] = useState(course?.priceId2 ?? "");
   const [description, setDescription] = useState(course?.snippet ?? "");
+  const [start, setStart] = useState(course?.start ?? "");
+  const [end, setEnd] = useState(course?.end ?? "");
   const [file, setFile] = useState(null);
   const [isDragging, setIsDragging] = useState(false);
   const inputFileRef = useRef(null);
@@ -80,6 +82,8 @@ const Index = () => {
       formData.append("priceId", priceId);
       formData.append("priceId2", priceId2);
       formData.append("description", description);
+      formData.append("start", start);
+      formData.append("end", end);
       if (file) {
         formData.append("image", file);
       }
@@ -191,7 +195,25 @@ const Index = () => {
             className="bg-white rounded-[8px] border-[#D0D5DD] h-[164px] text-sm border-2  focus:outline-appAsh py-3 px-[14px] text-appBlack placeholder:text-[#717171]"
           />
         </div>
-        <div
+        <div className="flex flex-col mt-[30px] ">
+          <p className="text-sm text-appBlack px-1 mb-[6px]">Start Date</p>
+          <input
+            type="date"
+            value={start}
+            onChange={(e) => setStart(e.target.value)}
+            className="bg-white rounded-[8px] border-[#D0D5DD] text-sm border-2  focus:outline-appAsh py-3 px-[14px] text-appBlack placeholder:text-[#717171]"
+          />
+        </div>
+        <div className="flex flex-col mt-[30px] ">
+          <p className="text-sm text-appBlack px-1 mb-[6px]">End Date</p>
+          <input
+            type="date"
+            value={end}
+            onChange={(e) => setEnd(e.target.value)}
+            className="bg-white rounded-[8px] border-[#D0D5DD] text-sm border-2  focus:outline-appAsh py-3 px-[14px] text-appBlack placeholder:text-[#717171]"
+          />
+        </div>
+        {/* <div
           onDragEnter={handleDragEnter}
           onDragLeave={handleDragLeave}
           onDragOver={handleDragOver}
@@ -232,7 +254,7 @@ const Index = () => {
               click to upload or drag and drop
             </p>
           </div>
-        </div>
+        </div> */}
         <AppButton
           style={{ marginTop: 60 }}
           title={course?.title ? "Edit Course" : "Add Course"}

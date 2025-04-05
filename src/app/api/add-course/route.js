@@ -10,6 +10,8 @@ export const POST = async (req) => {
     const priceId = formData.get("priceId");
     const priceId2 = formData.get("priceId2");
     const description = formData.get("description");
+    const start = formData.get("start");
+    const end = formData.get("end");
     const image = formData.get("image");
     const courseId = parseInt(formData.get("id")); // Optional: For editing
     console.log(courseId, "courseId");
@@ -39,6 +41,8 @@ export const POST = async (req) => {
         priceId,
         priceId2,
         snippet: description,
+        start,
+        end,
       };
 
       const result = await db
@@ -69,6 +73,8 @@ export const POST = async (req) => {
       price,
       priceId,
       priceId2,
+      start,
+      end,
       snippet: description,
       imgURL: imageOptions[randomIndex], // Randomly selected image URL
       modules: [], // Initialize with an empty array of modules

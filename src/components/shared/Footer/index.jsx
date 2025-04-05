@@ -19,7 +19,7 @@ export default function Footer({ mobile }) {
 
   const handleContactClick = () => {
     const whatsappUrl = "https://wa.me/+447305764788";
-
+    C;
     // Change the preferred contact method
     // window.open(whatsappUrl, "_blank");
     window.open(whatsappUrl, "_blank"); // Uncomment if you prefer Telegram

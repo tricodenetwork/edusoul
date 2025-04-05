@@ -13,9 +13,9 @@ export default async function RootLayout({ children }) {
     redirect("/admin");
   }
   return (
-    <div className='flex w-full h-screen items-center justify-center bg-appPink'>
+    <div className="flex w-full h-screen items-center justify-center bg-appPink">
       <DashboardSidebar />
-      <div className='w-full flex flex-col md:w-[85%] pt-[11vh]  overflow-y-scroll h-full'>
+      <div className="w-full flex flex-col md:w-[85%] pt-[11vh]  overflow-y-scroll h-full">
         <DashboardHeader />
         {children}
       </div>
