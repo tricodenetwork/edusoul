@@ -18,8 +18,8 @@ export default function Footer({ mobile }) {
   const { imageLoader } = useFunctions();
 
   const handleContactClick = () => {
-    const whatsappUrl = "https://wa.me/+447305764788";
-    C;
+    const whatsappUrl = "https://wa.me/+447303004615";
+
     // Change the preferred contact method
     // window.open(whatsappUrl, "_blank");
     window.open(whatsappUrl, "_blank"); // Uncomment if you prefer Telegram
@@ -142,7 +142,7 @@ export default function Footer({ mobile }) {
             info@edusouldistinct.com
           </p>
           <p className="text-slate-600 text-base font-normal font-['Roboto'] leading-snug">
-            +447305764788
+            +447303004615
           </p>
         </div>
       </div>

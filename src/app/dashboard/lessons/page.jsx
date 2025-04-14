@@ -16,6 +16,7 @@ import { proseFormatting } from "@/lib/helper";
 import AppButton from "@/components/ui/AppButton";
 import Assignment from "@/components/Assignment";
 import TopNav from "@/components/ui/TopNav";
+import { useUser } from "@/hooks/useUser";
 
 const state2 = ["Note", "Resources", "Assignments"];
 
@@ -23,10 +24,12 @@ const Index = () => {
   const searchParams = useSearchParams();
   const courseId = searchParams.get("course");
   const [active2, setActive2] = useState("Note");
-  // const { user } = useUser();
+  const { user } = useUser();
   const dispatch = useDispatch();
   const { module } = useSelector((state) => state.module);
-  const { items, course, loading } = useSelector((state) => state.network);
+  const { items, course, loading, assignments } = useSelector(
+    (state) => state.network
+  );
   const activeModule = course?.modules?.find((item) => item.id == module);
   const [assignmentPage, setAssignmentPage] = useState(false);
 
@@ -35,6 +38,13 @@ const Index = () => {
   const set = (item) => {
     dispatch(setActiveModule(item));
   };
+
+  const userAssignment = assignments.find(
+    (item) =>
+      item.module == module &&
+      item.user == user?.email &&
+      item.course == course.id
+  );
 
   useEffect(() => {
     setActive({
@@ -170,7 +180,7 @@ const Index = () => {
                       height={12}
                       alt="donwload"
                     />
-                    <p className="text-primary text-xs font-normal leading-none">
+                    <p className="text-primary  w-max text-xs font-normal leading-none">
                       {item?.pathname}
                     </p>
                   </Link>
@@ -194,14 +204,24 @@ const Index = () => {
                       __html: activeModule.assignment,
                     }}
                   ></p>
-                  <div className="flex absolute flex-col w-full bottom-8 items-start justify-between">
+                  <div className="flex absolute  w-full bottom-8 items-center justify-between">
                     {activeModule?.assignment && (
                       <AppButton
-                        title={"Start Assignment"}
-                        styles={"w-[200px] mt-8"}
+                        title={
+                          userAssignment?.answer
+                            ? "Edit Assignment"
+                            : "Start Assignment"
+                        }
+                        styles={"w-[200px]"}
                         action={() => setAssignmentPage(true)}
                       />
                     )}
+                    <p>
+                      Submit before:{" "}
+                      <span className="text-primary">
+                        {activeModule.dueDate}
+                      </span>
+                    </p>
                   </div>
                 </div>
               )}

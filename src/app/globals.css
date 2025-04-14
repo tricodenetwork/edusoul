@@ -204,3 +204,28 @@ section {
   flex-direction: column;
   gap: 20px;
 }
+
+/* Modal */
+
+.modal {
+	background-color: rgba(0, 0, 0, 0.5);
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	z-index: var(--z-index-2);
+}
+
+.modal-content {
+	background-color: white;
+	padding: 2rem;
+	margin: 1rem;
+	overflow: auto;
+	position: relative;
+	overflow-y: auto;
+	max-height: calc(100% - 2rem);
+}

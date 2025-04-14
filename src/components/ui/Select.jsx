@@ -6,6 +6,7 @@ import { AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { useSelector } from "react-redux";
 import { usePathname } from "next/navigation";
+import { useUser } from "@/hooks/useUser";
 
 const SelectComponent = ({
   label,
@@ -21,6 +22,9 @@ const SelectComponent = ({
   // --------------------------------------------VARIABLES
   const [open, setOpen] = useState(false);
   const { module } = useSelector((state) => state.module);
+  const { course, assignments } = useSelector((state) => state.network);
+  const { user } = useUser();
+
   const [value, setValue] = useState(
     type === "units"
       ? `Unit ${1}`
@@ -125,23 +129,39 @@ const SelectComponent = ({
                 !dropDownStyles ? "top-full" : ""
               } mt-1 border border-[#D0D5DD] bg-white rounded-md z-10`}
             >
-              {items?.map((item, i) => (
-                <button
-                  key={i.toString()}
-                  onClick={() => handleSelect(item)}
-                  className={`cursor-pointer border-b w-full text-left px-4 py-3 mb-2 ${
-                    module == item ? "bg-[#D0D5DD]" : ""
-                  } ${
-                    focusedIndex === i ? "bg-[#D0D5DD]" : ""
-                  } hover:bg-[#D0D5DD] transition`}
-                >
-                  {type === "units"
-                    ? `Unit ${item}`
-                    : typeof item === "number"
-                    ? `Module ${item}`
-                    : item}
-                </button>
-              ))}
+              {items?.map((item, i) => {
+                const prevMod = item - 1;
+                const userAssignment = assignments.find(
+                  (it) =>
+                    it.module == prevMod &&
+                    it.user == user?.email &&
+                    it.course == course.id
+                );
+                console.log(userAssignment?.status, "status");
+                const notAcessible =
+                  item !== 1 &&
+                  (!userAssignment || userAssignment.status !== "completed");
+                return (
+                  <button
+                    key={i.toString()}
+                    disabled={notAcessible}
+                    onClick={() => (notAcessible ? null : handleSelect(item))}
+                    className={`border-b w-full text-left px-4 py-3 mb-2 ${
+                      module == item ? "bg-[#D0D5DD]" : ""
+                    } ${focusedIndex === i ? "bg-[#D0D5DD]" : ""} ${
+                      !notAcessible
+                        ? "hover:bg-[#D0D5DD] cursor-pointer"
+                        : " cursor-not-allowed"
+                    } transition`}
+                  >
+                    {type === "units"
+                      ? `Unit ${item}`
+                      : typeof item === "number"
+                      ? `Module ${item}`
+                      : item}
+                  </button>
+                );
+              })}
             </motion.div>
           )}
         </AnimatePresence>

@@ -4,7 +4,7 @@ import React from "react";
 import Tiptap from "./TipTap";
 import { v4 as uuidv4 } from "uuid";
 
-const ContentBox = ({ content, setContent }) => {
+const ContentBox = ({ content, setContent, disabled = false }) => {
   const handleContentChange = (reason) => {
     setContent(reason);
     console.log(reason);
@@ -27,10 +27,11 @@ const ContentBox = ({ content, setContent }) => {
   return (
     <form
       onSubmit={handleSubmit}
-      className='bg-white rounded-[8px] border-[#D0D5DD] h-[300px]  text-sm border-2 focus:outline-appAsh '
+      className="bg-white rounded-[8px] border-[#D0D5DD] h-[300px]  text-sm border-2 focus:outline-appAsh "
     >
       <Tiptap
         content={content}
+        disabled={disabled}
         onChange={(newContent) => handleContentChange(newContent)}
       />
     </form>

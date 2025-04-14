@@ -15,13 +15,14 @@ import {
   Code,
 } from "lucide-react";
 import Image from "next/image";
+import { AddHyperlink } from "./AddHyperLink";
 
 const Toolbar = ({ editor, content }) => {
   if (!editor) {
     return null;
   }
   return (
-    <div className='flex m-2 border-b border-[#EAECF0] justify-start items-center gap-1 w-full lg:w-[97%] flex-wrap '>
+    <div className="flex m-2 border-b border-[#EAECF0] justify-start items-center gap-1 w-full lg:w-[97%] flex-wrap ">
       <button
         onClick={(e) => {
           e.preventDefault();
@@ -37,7 +38,7 @@ const Toolbar = ({ editor, content }) => {
           src={"/assets/icons/bold.svg"}
           width={32}
           height={32}
-          alt='bold'
+          alt="bold"
         />
       </button>
       <button
@@ -55,7 +56,7 @@ const Toolbar = ({ editor, content }) => {
           src={"/assets/icons/italic.svg"}
           width={32}
           height={32}
-          alt='italic'
+          alt="italic"
         />
       </button>
       {/* <button
@@ -82,7 +83,7 @@ const Toolbar = ({ editor, content }) => {
             : "text-[#717171] p-1"
         }
       >
-        <Image src={"/assets/icons/h1.svg"} width={32} height={32} alt='h1' />
+        <Image src={"/assets/icons/h1.svg"} width={32} height={32} alt="h1" />
       </button>
       <button
         onClick={(e) => {
@@ -95,7 +96,7 @@ const Toolbar = ({ editor, content }) => {
             : "text-[#717171] p-1"
         }
       >
-        <Image src={"/assets/icons/h2.svg"} width={32} height={32} alt='h2' />
+        <Image src={"/assets/icons/h2.svg"} width={32} height={32} alt="h2" />
       </button>
       <button
         onClick={(e) => {
@@ -112,7 +113,7 @@ const Toolbar = ({ editor, content }) => {
           src={"/assets/icons/quote.svg"}
           width={32}
           height={32}
-          alt='quote'
+          alt="quote"
         />
       </button>
 
@@ -131,7 +132,7 @@ const Toolbar = ({ editor, content }) => {
           src={"/assets/icons/bullet.svg"}
           width={32}
           height={32}
-          alt='bullet'
+          alt="bullet"
         />
       </button>
       <button
@@ -145,8 +146,10 @@ const Toolbar = ({ editor, content }) => {
             : "text-[#717171] p-1"
         }
       >
-        <Image src={"/assets/icons/num.svg"} width={32} height={32} alt='num' />
+        <Image src={"/assets/icons/num.svg"} width={32} height={32} alt="num" />
       </button>
+      {/* AddHyperlink Component */}
+      <AddHyperlink editor={editor} />
       {/* <button
           onClick={(e) => {
             e.preventDefault();

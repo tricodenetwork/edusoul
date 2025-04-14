@@ -323,7 +323,7 @@ const Index = () => {
                   </p>
                 </div>
                 <div>
-                  {user?.courses?.map((item, index) => {
+                  {userCourses.map((item, index) => {
                     return (
                       <div key={index.toString()} className=" mb-4">
                         <div className="flex mb-[8px] items-center justify-normal space-x-2">

@@ -9,6 +9,7 @@ import { useSelector } from "react-redux";
 import { useUser } from "@/hooks/useUser";
 import { useDispatch } from "react-redux";
 import { fetchAssignments } from "@/redux/slices/networkSlice";
+import Loader from "./ui/Loader";
 
 const Assignment = ({ question, cancel, lessonId }) => {
   const [assignment, setAssignment] = useState("");
@@ -23,7 +24,6 @@ const Assignment = ({ question, cancel, lessonId }) => {
       item.user == user?.email &&
       item.course == course.id
   );
-  console.log(userAssignment);
 
   const submitAssignment = async () => {
     const loader = toast.loading("Submitting..");
@@ -51,15 +51,27 @@ const Assignment = ({ question, cancel, lessonId }) => {
   //------------------------------------------------------------------USE EFFECTS
   // a dispatch effect to fetchassignments
 
+  // if (userAssignment == undefined) {
+  //   return <Loader />;
+  // }
   return (
     <div>
       <ContentBox
+        disabled={
+          userAssignment?.answer && userAssignment.status == "completed"
+        }
         content={userAssignment ? userAssignment.answer : assignment}
         setContent={setAssignment}
       />
       <div className="flex items-center justify-between w-full mt-8">
         <AppButton
-          title={userAssignment ? "Edit" : "Submit"}
+          title={
+            userAssignment?.status == "completed"
+              ? "Passed"
+              : userAssignment?.answer
+              ? "Edit"
+              : "Submit"
+          }
           action={submitAssignment}
         />
         <AppButton title={"Cancel"} action={() => cancel(false)} />
