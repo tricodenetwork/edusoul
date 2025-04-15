@@ -6,19 +6,55 @@ import React, { useEffect } from "react";
 import NoCoursesDisplayHolder from "@/components/shared/NoCoursesDisplayHolder";
 import { useUser } from "@/hooks/useUser";
 import { useSelector } from "react-redux";
-import { fetchCourses } from "@/redux/slices/networkSlice";
+import { fetchAssignments, fetchCourses } from "@/redux/slices/networkSlice";
 import { useDispatch } from "react-redux";
+import toast from "react-hot-toast";
+import { motion, AnimatePresence } from "framer-motion";
 
 const Index = () => {
-  const { user } = useUser(true);
+  const { user, refetch } = useUser(true);
   const { courses, assignments } = useSelector((state) => state.network);
   const userCourses = courses.filter((item) =>
     user?.courses?.map((item) => item.id).includes(item.id)
   );
   const dispatch = useDispatch();
 
+  const handleDeleteNotification = async (title, message, isRead) => {
+    try {
+      const response = await fetch(
+        `/api/delete-notification?email=${
+          user.email
+        }&title=${encodeURIComponent(title)}&message=${encodeURIComponent(
+          message
+        )}`,
+        {
+          method: "DELETE",
+        }
+      );
+
+      if (response.ok) {
+        toast.success("Notification deleted successfully!", {
+          position: "bottom-right",
+        });
+        refetch();
+        // Optionally, refresh the user data or remove the notification from the UI
+      } else {
+        const error = await response.json();
+        toast.error(error.message || "Failed to delete notification.", {
+          position: "bottom-right",
+        });
+      }
+    } catch (error) {
+      console.error("Error deleting notification:", error);
+      toast.error("An unexpected error occurred.", {
+        position: "bottom-right",
+      });
+    }
+  };
+
   useEffect(() => {
     dispatch(fetchCourses(1));
+    dispatch(fetchAssignments());
   }, []);
 
   if (user) {
@@ -179,21 +215,36 @@ const Index = () => {
                     Notifications
                   </div>
                 </div>
-                {user?.notifications?.map((item, index) => {
-                  return (
-                    <div
+                <AnimatePresence>
+                  {user?.notifications?.map((item, index) => (
+                    <motion.div
                       key={index.toString()}
-                      className="border border-appAsh2 grid h-[58px] items-center grid-cols-[1.5fr,3.5fr] lg:mx-[16px]"
+                      initial={{ opacity: 1, x: 0 }}
+                      exit={{ opacity: 0, x: 100 }} // Slide out to the right
+                      transition={{ duration: 0.3 }}
+                      className="border border-appAsh2 grid h-[58px] items-center grid-cols-[1.5fr,3.5fr] lg:mx-[16px] relative"
                     >
-                      <div className="text-[10px] px-2  lg:px-[24px]  py-[8px] h-full flex items-center border-r border-appAsh2 font-medium text-appBlack">
+                      <div className="text-[10px] px-2 lg:px-[24px] py-[8px] h-full flex items-center border-r border-appAsh2 font-medium text-appBlack">
                         {item.title}
                       </div>
-                      <div className="text-[10px] px-2  lg:px-[24px]  py-[8px]  font-medium text-appBlack">
-                        <p className="text-xs  text-appBlack">{item.message}</p>
+                      <div className="text-[10px] px-2 lg:px-[24px] py-[8px] font-medium text-appBlack">
+                        <p className="text-xs text-appBlack">{item.message}</p>
                       </div>
-                    </div>
-                  );
-                })}
+                      <button
+                        onClick={() =>
+                          handleDeleteNotification(
+                            item.title,
+                            item.message,
+                            item.isRead
+                          )
+                        }
+                        className="absolute top-1/2 -translate-y-1/2 right-3 text-red-500 text-xs font-bold"
+                      >
+                        x
+                      </button>
+                    </motion.div>
+                  ))}
+                </AnimatePresence>
               </div>
               {/* Certificates */}
 
@@ -254,7 +305,7 @@ const Index = () => {
                           {item.title}
                         </p>
                         <p className="font-medium  mt-2 text-[10px] text-appBlack">
-                          <strong>Exam Date:</strong> July 15, 2024
+                          <strong>End Date:</strong> {item.end}
                         </p>
                       </div>
                       <button className="bg-primary text-[12px] text-white rounded-[2px] w-[83px] py-2">
@@ -337,9 +388,12 @@ const Index = () => {
                             (ass) =>
                               ass.user == user?.email && ass.course == item.id
                           )
-                          .map((assignment) => {
+                          .map((assignment, index) => {
                             return (
-                              <div className="flex items-center justify-between w-full">
+                              <div
+                                key={index.toString()}
+                                className="flex items-center justify-between w-full"
+                              >
                                 <p className="text-[10px] text-appBlack">
                                   {`Assignment ${assignment.module}`}
                                 </p>

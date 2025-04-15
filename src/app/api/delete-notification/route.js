@@ -3,11 +3,13 @@ import clientPromise from "@/lib/mongodb";
 export const DELETE = async (req) => {
   try {
     const params = req.nextUrl.searchParams;
-    const notificationId = params.get("id");
+    const email = params.get("email");
+    const title = params.get("title");
+    const message = params.get("message");
 
-    if (!notificationId) {
+    if (!email || !title || !message) {
       return Response.json(
-        { message: "Notification ID is required" },
+        { message: "Email, title, and message are required" },
         { status: 400 }
       );
     }
@@ -15,16 +17,21 @@ export const DELETE = async (req) => {
     const client = await clientPromise;
     const db = client.db("Edusoul");
 
-    const result = await db
-      .collection("users")
-      .updateOne(
-        { "notifications.notificationId": notificationId },
-        { $pull: { notifications: { notificationId } } }
-      );
+    const result = await db.collection("users").updateOne(
+      { email },
+      {
+        $pull: {
+          notifications: {
+            title,
+            message,
+          },
+        },
+      }
+    );
 
     if (result.modifiedCount === 0) {
       return Response.json(
-        { message: "Notification not found" },
+        { message: "Notification not found or already deleted" },
         { status: 404 }
       );
     }
@@ -35,6 +42,6 @@ export const DELETE = async (req) => {
     );
   } catch (error) {
     console.error("Error deleting notification:", error);
-    return Response.json({ message: "Something went wrong" }, { status: 500 });
+    return Response.json({ message: "Server Error" }, { status: 500 });
   }
 };
