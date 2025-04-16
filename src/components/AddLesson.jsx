@@ -107,7 +107,7 @@ const AddLesson = ({ setAdd }) => {
       </div> */}
       <div className="flex flex-col w-full mt-[30px] ">
         <p className="text-sm text-appBlack px-1 mb-[6px]">Lesson note</p>
-        <ContentBox content={note} setContent={setNote} />
+        <ContentBox disabled={false} content={note} setContent={setNote} />
       </div>
 
       {/* <div

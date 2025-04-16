@@ -72,7 +72,7 @@ const LayoutTopSection = ({ courseId }) => {
         />
       </div>
       <div className="flex w-full  justify-between">
-        {loading && (
+        {/* {loading && (
           <div className="w-[78%] h-[79vh]  z-50 absolute bg-[#FFF5F6] flex items-center justify-center">
             <ClockLoader
               loading={true}
@@ -82,7 +82,7 @@ const LayoutTopSection = ({ courseId }) => {
               className=""
             />
           </div>
-        )}
+        )} */}
         <SelectComponent
           modules={course?.modules}
           onChange={set}

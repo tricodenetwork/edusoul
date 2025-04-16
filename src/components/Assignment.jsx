@@ -12,7 +12,7 @@ import { fetchAssignments } from "@/redux/slices/networkSlice";
 import Loader from "./ui/Loader";
 
 const Assignment = ({ question, cancel, lessonId }) => {
-  const [assignment, setAssignment] = useState("");
+  const [assignment, setAssignment] = useState("<p>Enter your assignments here</p>");
   const { module } = useSelector((state) => state.module);
   const { course, assignments } = useSelector((state) => state.network);
   const { user } = useUser();

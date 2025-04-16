@@ -4,7 +4,7 @@ import React from "react";
 import Tiptap from "./TipTap";
 import { v4 as uuidv4 } from "uuid";
 
-const ContentBox = ({ content, setContent, disabled = false }) => {
+const ContentBox = ({ content, setContent, disabled }) => {
   const handleContentChange = (reason) => {
     setContent(reason);
     console.log(reason);

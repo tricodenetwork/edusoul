@@ -14,7 +14,7 @@ const Tiptap = ({ onChange, content, disabled }) => {
   const editor = useEditor(
     {
       editable: !disabled,
-      immediatelyRender: false,
+      // immediatelyRender: false,
 
       extensions: [
         StarterKit,
@@ -101,7 +101,7 @@ const Tiptap = ({ onChange, content, disabled }) => {
         handleChange(editor.getHTML());
       },
     },
-    [content]
+    [disabled]
   );
 
   return (
