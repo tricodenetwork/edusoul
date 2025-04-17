@@ -141,7 +141,7 @@ const SelectComponent = ({
                 const notAcessible =
                   item !== 1 &&
                   (!userAssignment || userAssignment.status !== "completed") &&
-                  !user.admin;
+                  (!user.admin || !user.isTest);
                 return (
                   <button
                     key={i.toString()}
