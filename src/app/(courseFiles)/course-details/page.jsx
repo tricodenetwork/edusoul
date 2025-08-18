@@ -226,27 +226,51 @@ function CourseDetails() {
       {course?.id == 2 && !course?.awardees?.includes(user?.email) && (
         <div className="px-[5vw] my-4 text-lg">
           <p>Click on the link below to apply for a bursary </p>
-          <Link
-            className="text-blue-700 text-xl"
-            href={
-              "https://docs.google.com/forms/d/e/1FAIpQLSdf-vJK77PPLR-ZOOlhN9fXRhI1crItqMHIa0Zm5Pxp3Hg47g/viewform?usp=sharing"
-            }
-          >
-            Apply for Bursary
-          </Link>
+          {session?.user ? (
+            <Link
+              className="text-blue-700 text-xl"
+              href={
+                "https://docs.google.com/forms/d/e/1FAIpQLSdf-vJK77PPLR-ZOOlhN9fXRhI1crItqMHIa0Zm5Pxp3Hg47g/viewform?usp=sharing"
+              }
+            >
+              Apply for Bursary
+            </Link>
+          ) : (
+            <button
+              className="text-blue-700 text-xl hover:underline cursor-pointer"
+              onClick={() => {
+                toast.error("You need to be authenticated to apply for a bursary");
+                router.push("/auth/login");
+              }}
+            >
+              Apply for Bursary
+            </button>
+          )}
         </div>
       )}
       {course?.id == 1 && !course?.awardees?.includes(user?.email) && (
         <div className="px-[5vw] my-4 text-lg">
           <p>Click on the link below to apply for a scholarship </p>
-          <Link
-            className="text-blue-700 text-xl"
-            href={
-              "https://docs.google.com/forms/d/e/1FAIpQLSdf-vJK77PPLR-ZOOlhN9fXRhI1crItqMHIa0Zm5Pxp3Hg47g/viewform?usp=sharing"
-            }
-          >
-            Apply for Scholarship
-          </Link>
+          {session?.user ? (
+            <Link
+              className="text-blue-700 text-xl"
+              href={
+                "https://docs.google.com/forms/d/e/1FAIpQLSdf-vJK77PPLR-ZOOlhN9fXRhI1crItqMHIa0Zm5Pxp3Hg47g/viewform?usp=sharing"
+              }
+            >
+              Apply for Scholarship
+            </Link>
+          ) : (
+            <button
+              className="text-blue-700 text-xl hover:underline cursor-pointer"
+              onClick={() => {
+                toast.error("You need to be authenticated to apply for a scholarship");
+                router.push("/auth/login");
+              }}
+            >
+              Apply for Scholarship
+            </button>
+          )}
         </div>
       )}
 
