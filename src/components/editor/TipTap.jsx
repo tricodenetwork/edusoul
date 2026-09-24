@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect } from "react";
 import { useEditor, EditorContent } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import Toolbar from "./Toolbar";
@@ -103,6 +104,12 @@ const Tiptap = ({ onChange, content, disabled }) => {
     },
     [disabled]
   );
+
+  useEffect(() => {
+    if (editor && content != null && content !== editor.getHTML()) {
+      editor.commands.setContent(content);
+    }
+  }, [content, editor]);
 
   return (
     <div className="h-full flex flex-col ">

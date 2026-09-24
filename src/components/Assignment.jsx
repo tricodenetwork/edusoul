@@ -9,10 +9,15 @@ import { useSelector } from "react-redux";
 import { useUser } from "@/hooks/useUser";
 import { useDispatch } from "react-redux";
 import { fetchAssignments } from "@/redux/slices/networkSlice";
+import {
+  ASSIGNMENT_PLACEHOLDER,
+  getAssignmentButton,
+  isSubmittable,
+} from "@/lib/assignment";
 import Loader from "./ui/Loader";
 
 const Assignment = ({ question, cancel, lessonId }) => {
-  const [assignment, setAssignment] = useState("<p>Enter your assignments here</p>");
+  const [assignment, setAssignment] = useState(ASSIGNMENT_PLACEHOLDER);
   const { module } = useSelector((state) => state.module);
   const { course, assignments } = useSelector((state) => state.network);
   const { user } = useUser();
@@ -25,7 +30,21 @@ const Assignment = ({ question, cancel, lessonId }) => {
       item.course == course.id
   );
 
+  const isCompleted = userAssignment?.status == "completed";
+  const button = getAssignmentButton(userAssignment);
+
+  useEffect(() => {
+    if (userAssignment?.answer) {
+      setAssignment(userAssignment.answer);
+    }
+  }, [userAssignment?.answer]);
+
   const submitAssignment = async () => {
+    if (isCompleted) return;
+    if (!isSubmittable(assignment)) {
+      toast.error("Please write your assignment before submitting");
+      return;
+    }
     const loader = toast.loading("Submitting..");
     try {
       const res = await axios.post(
@@ -57,22 +76,15 @@ const Assignment = ({ question, cancel, lessonId }) => {
   return (
     <div>
       <ContentBox
-        disabled={
-          userAssignment?.answer && userAssignment.status == "completed"
-        }
-        content={userAssignment ? userAssignment.answer : assignment}
+        disabled={isCompleted}
+        content={assignment}
         setContent={setAssignment}
       />
       <div className="flex items-center justify-between w-full mt-8">
         <AppButton
-          title={
-            userAssignment?.status == "completed"
-              ? "Passed"
-              : userAssignment?.answer
-              ? "Edit"
-              : "Submit"
-          }
+          title={button.title}
           action={submitAssignment}
+          disabled={button.disabled}
         />
         <AppButton title={"Cancel"} action={() => cancel(false)} />
       </div>
