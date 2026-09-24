@@ -3,7 +3,7 @@ import {
   ASSIGNMENT_PLACEHOLDER,
   getAssignmentButton,
   isSubmittable,
-} from "../lib/assignment";
+} from "../lib/helper";
 
 test("new student (no record) gets an enabled Submit button", () => {
   expect(getAssignmentButton(undefined)).toEqual({

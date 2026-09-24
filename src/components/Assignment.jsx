@@ -13,7 +13,7 @@ import {
   ASSIGNMENT_PLACEHOLDER,
   getAssignmentButton,
   isSubmittable,
-} from "@/lib/assignment";
+} from "@/lib/helper";
 import Loader from "./ui/Loader";
 
 const Assignment = ({ question, cancel, lessonId }) => {
