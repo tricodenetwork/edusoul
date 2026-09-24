@@ -14,7 +14,6 @@ import {
   getAssignmentButton,
   isSubmittable,
 } from "@/lib/helper";
-import Loader from "./ui/Loader";
 
 const Assignment = ({ question, cancel, lessonId }) => {
   const [assignment, setAssignment] = useState(ASSIGNMENT_PLACEHOLDER);
